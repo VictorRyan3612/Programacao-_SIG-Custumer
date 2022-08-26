@@ -6,6 +6,7 @@ As seguintes linhas:
 #include <locale.h>
 
 setlocale (LC_ALL, "portuguese");
+
 */
 fazem que os caracteres acentuados funcionem.
 
@@ -18,7 +19,6 @@ fazem que os caracteres acentuados funcionem.
 printf("Aperte ENTER para continuar\n");
 getch();
 
-input("Aperte ENTER para continuar")
 ### Em python
 
 input("Aperte enter para continuar")
