@@ -2,12 +2,9 @@
 #include <locale.h>
 
 // Para explicações sobre o código, por favor verificar o arquivo
-// Explicações.txt
+// detalhes.md
 
 
-/*
-
-*/
 int main() {
 
     menu_Principal();
@@ -61,7 +58,7 @@ int menu_Sobre(){
     "facilitando a gestão\n"
     "\n\n"
 
-    "\t\tDiscente/Autore do Projeto:\n"
+    "\t\tDiscente/Autor do Projeto:\n"
     "Victor Ryan Galvão Silva\n"
     "matrícula:20220035163\n"
     "email:\n"
