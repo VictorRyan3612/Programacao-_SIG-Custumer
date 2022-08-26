@@ -17,6 +17,7 @@ fazem que os caracteres acentuados funcionem.
 ### Em C
 
 printf("Aperte ENTER para continuar\n");
+
 getch();
 
 ### Em python
