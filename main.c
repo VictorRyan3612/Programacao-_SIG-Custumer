@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include <locale.h>
 
+// Para explicações sobre o código, por favor verificar o arquivo
+// Explicações.txt
+
+
+/*
+
+*/
 int main() {
-    int opcao = 0;
 
     menu_Principal();
 
@@ -55,10 +61,16 @@ int menu_Sobre(){
     "facilitando a gestão\n"
     "\n\n"
 
-    "\t\tDiscente/Autor do Projeto:\n"
-    "\tVictor Ryan Galvão Silva, matrícula:20220035163\n"
+    "\t\tDiscente/Autore do Projeto:\n"
+    "Victor Ryan Galvão Silva\n"
+    "matrícula:20220035163\n"
+    "email:\n"
+    "vitorsilva3612@gmail.com\n"
+    "ryan.silva.706@ufrn.edu.br\n"
     "\n"
     );
+
+    printf("Aperte enter para continuar\n");
     getch(); // Aperte enter para continuar
     return 0;
 }
