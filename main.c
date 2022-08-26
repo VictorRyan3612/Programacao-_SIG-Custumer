@@ -2,11 +2,30 @@
 #include <locale.h>
 
 int main() {
+    int opcao = 0;
+
+    menu_Principal();
+
+    int opcao = 0;
+    printf("Digite uma opção:\n");
+    scanf("%d", &opcao);
+
+    if (opcao == 4)
+    {
+        menu_Sobre();
+    }
+    
+    
+    return 0;
+}
+
+
+int menu_Principal(){
     setlocale (LC_ALL, "portuguese");
 
     printf("\n"
     "\t\t==============================\n"
-    "\t\tPrograma Controle de Financias\n"
+    "\t\tPrograma Controle de Clientes\n"
     "\t\t==============================\n"
     "\t\t1 - Módulo clientes\n"
     "\t\t2 - Módulo em desenvolvimento\n"
@@ -16,7 +35,7 @@ int main() {
     "\n"
     );
 
-
+    
 
     return 0;
 }
