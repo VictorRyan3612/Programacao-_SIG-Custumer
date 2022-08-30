@@ -6,18 +6,24 @@
 
 
 int main() {
+    setlocale (LC_ALL, "portuguese");
 
     menu_Principal();
 
     int opcao = 0;
-    printf("Digite uma opção:\n");
+    printf("Digite uma opção (por favor, digite um número):\n");
     scanf("%d", &opcao);
 
-    if (opcao == 4)
-    {
-        menu_Sobre();
+    while (opcao != 0){
+        if (opcao == 4){
+            menu_Sobre();
+        }
+        else{
+            printf("Opção não dessenvolvida\n");
+        }
+        printf("\n\nDigite uma opção (por favor, digite um número):\n");
+        scanf("%d", &opcao);
     }
-    
     
     return 0;
 }
