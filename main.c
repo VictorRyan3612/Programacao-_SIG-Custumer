@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <locale.h>
+#include <stdlib.h>
 
 // Para explicações sobre o código, por favor verificar o arquivo
 // detalhes.md
 
 
 int main() {
+    system("cls");
     setlocale (LC_ALL, "portuguese");
 
     menu_Principal();
@@ -15,6 +17,7 @@ int main() {
     scanf("%d", &opcao);
 
     while (opcao != 0){
+        system("cls");
         if (opcao == 4){
             menu_Sobre();
         }
@@ -50,6 +53,7 @@ int menu_Principal(){
 }
 
 int menu_Sobre(){
+    system("cls");
     setlocale (LC_ALL, "portuguese");
 
     printf("\n"
