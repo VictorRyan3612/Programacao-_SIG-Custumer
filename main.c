@@ -7,25 +7,23 @@
 
 
 int main() {
-    system("cls");
     setlocale (LC_ALL, "portuguese");
 
-    menu_Principal();
-
-    int opcao = 0;
-    printf("Digite uma opção (por favor, digite um número):\n");
-    scanf("%d", &opcao);
-
-    while (opcao != 0){
+    char opcao = "";
+    while (opcao != '0'){
         system("cls");
-        if (opcao == 4){
+        menu_Principal();
+
+        printf("Digite uma opção:\n");
+        scanf("%c", &opcao);
+        if (opcao == '4'){
             menu_Sobre();
         }
         else{
             printf("Opção não dessenvolvida\n");
         }
-        printf("\n\nDigite uma opção (por favor, digite um número):\n");
-        scanf("%d", &opcao);
+        printf("Aperte enter para continuar\n");
+        getch();
     }
     
     return 0;
@@ -47,17 +45,13 @@ int menu_Principal(){
     "\n"
     );
 
-    
-
     return 0;
 }
 
 int menu_Sobre(){
-    system("cls");
     setlocale (LC_ALL, "portuguese");
 
     printf("\n"
-
     "\t\tSobre o projeto:\n"
     "\tSIG-Custumer: Um sistema de controle de cliente\n"
     "As empresas da atualidade utilizam complexos sistemas gerenciais para, "
@@ -77,7 +71,5 @@ int menu_Sobre(){
     "\n"
     );
 
-    printf("Aperte enter para continuar\n");
-    getch(); // Aperte enter para continuar
     return 0;
 }
