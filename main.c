@@ -16,6 +16,7 @@ int main() {
 
         printf("Digite uma opção:\n");
         scanf("%c", &opcao);
+        getchar();
         if (opcao == '4'){
             menu_Sobre();
         }
