@@ -11,17 +11,18 @@ int main() {
 
     char opcao = "";
     while (opcao != '0'){
-        system("cls");
-        menu_Principal();
+        system("clear||cls");
+        menu_principal();
 
         printf("Digite uma opção:\n");
         scanf("%c", &opcao);
         getchar();
-        if (opcao == '4'){
-            menu_Sobre();
+
+        if (opcao == '1'){
+            printf("Desenvolvendo\n");
         }
-        else{
-            printf("Opção não dessenvolvida\n");
+        if (opcao == '4'){
+            menu_sobre();
         }
         printf("Aperte enter para continuar\n");
         getch();
@@ -29,11 +30,8 @@ int main() {
     
     return 0;
 }
-
-
-int menu_Principal(){
+int menu_principal(){
     setlocale (LC_ALL, "portuguese");
-
     printf("\n"
     "\t\t==============================\n"
     "\t\tPrograma Controle de Clientes\n"
@@ -45,13 +43,11 @@ int menu_Principal(){
     "\t\t0 - Encerrar\n"
     "\n"
     );
-
+    
     return 0;
 }
-
-int menu_Sobre(){
+int menu_sobre(){
     setlocale (LC_ALL, "portuguese");
-
     printf("\n"
     "\t\tSobre o projeto:\n"
     "\tSIG-Custumer: Um sistema de controle de cliente\n"
@@ -71,6 +67,5 @@ int menu_Sobre(){
     "ryan.silva.706@ufrn.edu.br\n"
     "\n"
     );
-
     return 0;
 }
