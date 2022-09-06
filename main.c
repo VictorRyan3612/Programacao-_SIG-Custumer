@@ -11,7 +11,7 @@ int main() {
 
     char opcao = "";
     while (opcao != '0'){
-        system("clear||cls");
+        //system("cls");
         menu_principal();
 
         printf("Digite uma opção:\n");
@@ -19,7 +19,7 @@ int main() {
         getchar();
 
         if (opcao == '1'){
-            printf("Desenvolvendo\n");
+            menu_clientes();
         }
         if (opcao == '4'){
             menu_sobre();
@@ -44,6 +44,28 @@ int menu_principal(){
     "\n"
     );
     
+    return 0;
+}
+
+int menu_clientes(){
+    //system("cls");
+    setlocale (LC_ALL, "portuguese");
+
+    printf("\n"
+    "\t==============================\n"
+    "\t\tMenu controle de clientes\n"
+    "\t==============================\n"
+    "\t1 - Cadastrar cliente\n"
+    "\t2 - Exibir lista de cliente\n"
+    "\t3 - Procurar cliente\n"
+    "\t4 - Editar cliente\n"
+    "\t5 - Excluir cliente\n"
+    "\t0 - Sair\n"
+    );
+
+    printf("\n\nApenas o menu, sem funcionalidades ainda\n\n");
+
+
     return 0;
 }
 int menu_sobre(){
