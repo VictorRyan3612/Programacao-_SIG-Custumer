@@ -16,7 +16,7 @@ int main() {
     setlocale (LC_ALL, "portuguese");
 
     char opcao = '\0';
-    while (opcao != '0'){
+    do {
         system("cls||clear");
         menu_principal();
 
@@ -27,15 +27,20 @@ int main() {
         if (opcao == '1'){
             menu_clientes();
         }
-        if (opcao == '4'){
+        else if (opcao == '4'){
             menu_sobre();
+        }
+        else if (opcao == '0'){
+            printf("Fechando...\n");
         }
         printf("Aperte enter para continuar\n");
         getchar();
+        }
+
+        while (opcao != '0');
+        return 0;
     }
-    
-    return 0;
-}
+
 int menu_principal(){
     setlocale (LC_ALL, "portuguese");
     printf("\n"
