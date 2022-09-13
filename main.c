@@ -6,12 +6,18 @@
 // detalhes.md
 
 
+// Assinatura das funções:
+int menu_principal();
+int menu_clientes();
+int menu_sobre();
+
+
 int main() {
     setlocale (LC_ALL, "portuguese");
 
-    char opcao = "";
+    char opcao = '\0';
     while (opcao != '0'){
-        //system("cls");
+        system("cls||clear");
         menu_principal();
 
         printf("Digite uma opção:\n");
@@ -25,7 +31,7 @@ int main() {
             menu_sobre();
         }
         printf("Aperte enter para continuar\n");
-        getch();
+        getchar();
     }
     
     return 0;
@@ -48,7 +54,7 @@ int menu_principal(){
 }
 
 int menu_clientes(){
-    //system("cls");
+    system("cls||clear");
     setlocale (LC_ALL, "portuguese");
 
     printf("\n"
