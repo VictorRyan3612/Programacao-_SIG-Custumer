@@ -1,6 +1,0 @@
-gcc -c -Wall *.h  #compila todos os .h
-gcc -c -Wall .\*.c #compila todos os .c
-gcc -o teste.exe *.o #junta tudo no arquivo .exe
-
-.\teste.exe #roda o .exe
-       
