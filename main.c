@@ -8,7 +8,7 @@
 
 // Assinatura das funções:
 int menu_principal();
-int menu_clientes();
+int menu_usuario();
 int menu_sobre();
 
 
@@ -25,7 +25,7 @@ int main() {
         getchar();
 
         if (opcao == '1'){
-            menu_clientes();
+            menu_usuario();
         }
         else if (opcao == '4'){
             menu_sobre();
@@ -58,27 +58,42 @@ int menu_principal(){
     return 0;
 }
 
-int menu_clientes(){
-    system("cls||clear");
+int menu_usuario(){
+    
     setlocale (LC_ALL, "portuguese");
+    char opcao = '\0';
 
-    printf("\n"
-    "\t==============================\n"
-    "\t\tMenu Ccontrole de Usuário\n"
-    "\t==============================\n"
-    "\t1 - Cadastrar suário\n"
-    "\t2 - Exibir lista de usuários\n"
-    "\t3 - Procurar usuário\n"
-    "\t4 - Editar usuário\n"
-    "\t5 - Excluir usuário\n"
-    "\t0 - Sair\n"
-    );
+    do{
+        system("cls||clear");
+        printf("\n"
+        "\t==============================\n"
+        "\t\tMenu Controle de Usuário\n"
+        "\t==============================\n"
+        "\t1 - Cadastrar usuário\n"
+        "\t2 - Exibir lista de usuários\n"
+        "\t3 - Procurar usuário\n"
+        "\t4 - Editar usuário\n"
+        "\t5 - Excluir usuário\n"
+        "\t0 - Sair\n"
+        );
 
-    printf("\n\nApenas o menu, sem funcionalidades ainda\n\n");
+        printf("Digite uma opção:\n");
+        scanf("%c", &opcao);
+        getchar();
 
+        if(opcao != '0'){
+            printf("opção não dessenvolvida ou inválida");
+            getchar();
+        }
 
+    }
+    while (opcao != '0');
     return 0;
 }
+
+
+
+
 int menu_sobre(){
     setlocale (LC_ALL, "portuguese");
     printf("\n"
