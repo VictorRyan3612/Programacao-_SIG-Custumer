@@ -10,6 +10,11 @@
 int menu_principal();
 int menu_usuario();
 int menu_sobre();
+int usuario_cadastro();
+int usuario_vizualizar();
+int usuario_pesquisar();
+int usuario_editar();
+int usuario_excluir();
 
 
 int main() {
@@ -40,6 +45,8 @@ int main() {
         while (opcao != '0');
         return 0;
     }
+
+
 
 int menu_principal(){
     setlocale (LC_ALL, "portuguese");
@@ -81,9 +88,32 @@ int menu_usuario(){
         scanf("%c", &opcao);
         getchar();
 
-        if(opcao != '0'){
-            printf("opção não dessenvolvida ou inválida");
+        if (opcao != '0'){
+            if (opcao == '1'){
+                usuario_cadastro();
+            }
+            if (opcao == '2'){
+                usuario_vizualizar();
+            }
+            if (opcao == '3'){
+                usuario_pesquisar();
+            }
+            if (opcao == '4'){
+                usuario_editar();
+            }
+            if (opcao == '5'){
+                usuario_excluir();
+            }
+            
+            else {
+               printf("Opção não dessenvolvida ou inválida\n");
+            }
+            }
+            printf("Aperte enter para continuar\n");
             getchar();
+        
+        if (opcao == '0'){
+            printf("Voltando ao menu principal...\n");
         }
 
     }
@@ -115,5 +145,32 @@ int menu_sobre(){
     "ryan.silva.706@ufrn.edu.br\n"
     "\n"
     );
+    return 0;
+}
+
+int usuario_cadastro(){
+    printf("Cadastro não disponível\n");
+
+    return 0;
+}
+int usuario_vizualizar(){
+    printf("vizualização não disponível\n");
+
+    return 0;
+}
+int usuario_pesquisar(){
+    printf("Busca não disponível\n");
+
+    return 0;
+}
+
+int usuario_editar(){
+    printf("Edição não disponível\n");
+
+    return 0;
+}
+int usuario_excluir(){
+    printf("Exclusão não disponível\n");
+
     return 0;
 }
