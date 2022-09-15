@@ -92,25 +92,26 @@ int menu_usuario(){
             if (opcao == '1'){
                 usuario_cadastro();
             }
-            if (opcao == '2'){
+            else if (opcao == '2'){
                 usuario_vizualizar();
             }
-            if (opcao == '3'){
+            else if (opcao == '3'){
                 usuario_pesquisar();
             }
-            if (opcao == '4'){
+            else if (opcao == '4'){
                 usuario_editar();
             }
-            if (opcao == '5'){
+            else if (opcao == '5'){
                 usuario_excluir();
             }
             
             else {
                printf("Opção não dessenvolvida ou inválida\n");
             }
-            }
             printf("Aperte enter para continuar\n");
             getchar();
+            }
+            
         
         if (opcao == '0'){
             printf("Voltando ao menu principal...\n");
