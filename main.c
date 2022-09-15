@@ -47,7 +47,7 @@ int menu_principal(){
     "\t\t==============================\n"
     "\t\tPrograma Controle de Clientes\n"
     "\t\t==============================\n"
-    "\t\t1 - Módulo clientes\n"
+    "\t\t1 - Módulo usuário\n"
     "\t\t2 - Módulo em desenvolvimento\n"
     "\t\t3 - Módulo em desenvolvimento\n"
     "\t\t4 - Sobre e equipe\n"
@@ -64,13 +64,13 @@ int menu_clientes(){
 
     printf("\n"
     "\t==============================\n"
-    "\t\tMenu controle de clientes\n"
+    "\t\tMenu Ccontrole de Usuário\n"
     "\t==============================\n"
-    "\t1 - Cadastrar cliente\n"
-    "\t2 - Exibir lista de cliente\n"
-    "\t3 - Procurar cliente\n"
-    "\t4 - Editar cliente\n"
-    "\t5 - Excluir cliente\n"
+    "\t1 - Cadastrar suário\n"
+    "\t2 - Exibir lista de usuários\n"
+    "\t3 - Procurar usuário\n"
+    "\t4 - Editar usuário\n"
+    "\t5 - Excluir usuário\n"
     "\t0 - Sair\n"
     );
 
