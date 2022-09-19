@@ -70,7 +70,7 @@ int usuario_cadastro(){
 
     //nome
     printf("Infome seu nome:\n");
-    scanf("%s", nome);
+    scanf("%[A-Z a-z]", nome);
     getchar();
 
     printf("Seu nome é esse?\n");
@@ -80,7 +80,7 @@ int usuario_cadastro(){
 
     //email
     printf("Infome seu email:\n");
-    scanf("%s", email);
+    scanf("%[A-Za-z0-9.,@-]", email);
     getchar();
 
     printf("Seu email é esse?\n");
@@ -90,7 +90,7 @@ int usuario_cadastro(){
 
     //telefone
     printf("Infome seu telefone:\n");
-    scanf("%s", telefone);
+    scanf("%[0-9 +()-]", telefone);
     getchar();
 
     printf("Seu telefone é esse?\n");
