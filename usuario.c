@@ -123,7 +123,6 @@ int usuario_pesquisar(){
 }
 
 int usuario_editar(){
-    //printf("Edição não disponível\n");
 
     char editar;
     printf("Digite o que deseja editar:\n\n");
@@ -208,6 +207,53 @@ int usuario_editar(){
 }
 int usuario_excluir(){
     printf("Exclusão não disponível\n");
+    /*
+    char excluir;
+    char resp;
+
+    printf("Digite o que deseja excluir:\n\n");
+    printf("\n"
+        "Nome:\t\t 1\n"
+        "Email:\t\t 2\n"
+        "Telefone:\t 3\n");
     
+    scanf("%[1-3]", &excluir);   
+    getchar();
+
+    if (excluir == '1'){
+        printf("O seu nome atual é %s\n", nome);
+        printf("Tem certeza que deseja exluir? (s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+
+        if (resp == 's'){
+            for (int i =0; i <= nome;i++){
+                nome[i] = NULL;
+            }
+        }
+    }
+    else if (excluir == '2'){
+        printf("O seu email atual é %s\n", email);
+        printf("Tem certeza que deseja exluir? (s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+
+        if (resp == 's'){
+            email = NULL;
+        }
+    }
+    
+    else if (excluir == '3'){
+        printf("O seu telefone atual é %s\n", telefone);
+        printf("Tem certeza que deseja exluir? (s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+
+        if (resp == 's'){
+            telefone = NULL;
+        }
+    }
+
+*/
     return 0;
 }
