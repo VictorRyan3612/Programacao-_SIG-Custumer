@@ -169,6 +169,20 @@ int usuario_editar(){
         printf("\n\n\n");
     }
 
+    // Editar telefone
+    else if (editar == '3'){
+        printf("Seu atual telefone é esse:\n");
+        printf("%s", telefone);
+        printf("\n\n");
+
+        printf("Infome seu novo telefone:\n");
+        scanf("%[0-9 +()-]", telefone);
+        getchar();
+
+        printf("Seu novo telefone é esse?\n");
+        printf("%s", telefone);
+        printf("\n\n\n");
+    }
 
     return 0;
 }
