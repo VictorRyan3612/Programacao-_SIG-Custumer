@@ -62,25 +62,39 @@ int modulo_usuario(){
 
 
 
-
-
 int usuario_cadastro(){
     char nome[50];
-    char telefone;
-    char email;
+    char email[50];
+    char telefone[20];
 
+    //nome
     printf("Infome seu nome:\n");
     scanf("%s", nome);
     getchar();
 
-
     printf("Seu nome é esse?\n");
-    printf("%s", nome,);
-    printf("\n")
+    printf("%s", nome);
+    printf("\n\n\n");
 
 
+    //email
+    printf("Infome seu email:\n");
+    scanf("%s", email);
+    getchar();
+
+    printf("Seu email é esse?\n");
+    printf("%s", email);
+    printf("\n\n\n");
 
 
+    //telefone
+    printf("Infome seu telefone:\n");
+    scanf("%s", telefone);
+    getchar();
+
+    printf("Seu teçefone é esse?\n");
+    printf("%s", telefone);
+    printf("\n\n\n");
 
     return 0;
 }
