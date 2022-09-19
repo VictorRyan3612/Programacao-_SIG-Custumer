@@ -139,6 +139,9 @@ int usuario_editar(){
 
     // Editar nome
     if (editar == '1'){
+        char resp;
+        do {
+
         printf("Seu atual nome é esse:\n");
         printf("%s", nome);
         printf("\n\n\n");
@@ -148,10 +151,13 @@ int usuario_editar(){
         getchar();
 
 
-        printf("Seu nome é esse?\n");
+        printf("Seu nome é esse? (s para sim)\n");
         printf("%s", nome);
-        printf("\n\n\n");
+        printf("\n\n");
 
+        scanf("%c", &resp);
+        getchar();
+        } while (resp != 's');
     }
     // Editar email
     else if (editar == '2'){
