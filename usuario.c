@@ -65,7 +65,22 @@ int modulo_usuario(){
 
 
 int usuario_cadastro(){
-    printf("Cadastro não disponível\n");
+    char nome[50];
+    char telefone;
+    char email;
+
+    printf("Infome seu nome:\n");
+    scanf("%s", nome);
+    getchar();
+
+
+    printf("Seu nome é esse?\n");
+    printf("%s", nome,);
+    printf("\n")
+
+
+
+
 
     return 0;
 }
