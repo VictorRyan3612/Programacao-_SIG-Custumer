@@ -153,6 +153,22 @@ int usuario_editar(){
         printf("\n\n\n");
 
     }
+    // Editar email
+    else if (editar == '2'){
+
+        printf("Seu atual email é esse:\n");
+        printf("%s", email);
+        printf("\n\n");
+
+        printf("Infome seu novo email:\n");
+        scanf("%[A-Za-z0-9.,@-]", email);
+        getchar();
+
+        printf("Seu email novo é esse?\n");
+        printf("%s", email);
+        printf("\n\n\n");
+    }
+
 
     return 0;
 }
