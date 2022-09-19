@@ -67,7 +67,6 @@ int modulo_usuario(){
 
 int usuario_cadastro(){
 
-
     //nome
     printf("Infome seu nome:\n");
     scanf("%[A-Z a-z]", nome);
@@ -100,7 +99,6 @@ int usuario_cadastro(){
     return 0;
 }
 int usuario_vizualizar(){
-    // printf("vizualização não disponível\n");
 
     printf("Seu nome é esse?\n");
     printf("%s", nome);
@@ -115,6 +113,7 @@ int usuario_vizualizar(){
     printf("Seu telefone é esse?\n");
     printf("%s", telefone);
     printf("\n\n\n");
+
     return 0;
 }
 int usuario_pesquisar(){
@@ -124,7 +123,36 @@ int usuario_pesquisar(){
 }
 
 int usuario_editar(){
-    printf("Edição não disponível\n");
+    //printf("Edição não disponível\n");
+
+    char editar;
+    printf("Digite o que deseja editar:\n\n");
+    printf("\n"
+        "Nome:\t\t 1\n"
+        "Email:\t\t 2\n"
+        "Telefone:\t 3\n");
+    
+    scanf("%[1-3]", &editar);   
+    getchar();
+
+    
+
+    // Editar nome
+    if (editar == '1'){
+        printf("Seu atual nome é esse:\n");
+        printf("%s", nome);
+        printf("\n\n\n");
+        
+        printf("Infome seu novo nome:\n");
+        scanf("%[A-Z a-z]", nome);
+        getchar();
+
+
+        printf("Seu nome é esse?\n");
+        printf("%s", nome);
+        printf("\n\n\n");
+
+    }
 
     return 0;
 }
