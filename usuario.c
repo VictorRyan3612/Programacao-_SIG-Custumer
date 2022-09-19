@@ -11,7 +11,10 @@ int usuario_pesquisar();
 int usuario_editar();
 int usuario_excluir();
 
-
+//variaveis globais de usuario
+char nome[50];
+char email[50];
+char telefone[20];
 
 
 int modulo_usuario(){
@@ -63,9 +66,7 @@ int modulo_usuario(){
 
 
 int usuario_cadastro(){
-    char nome[50];
-    char email[50];
-    char telefone[20];
+
 
     //nome
     printf("Infome seu nome:\n");
@@ -92,15 +93,28 @@ int usuario_cadastro(){
     scanf("%s", telefone);
     getchar();
 
-    printf("Seu teçefone é esse?\n");
+    printf("Seu telefone é esse?\n");
     printf("%s", telefone);
     printf("\n\n\n");
 
     return 0;
 }
 int usuario_vizualizar(){
-    printf("vizualização não disponível\n");
+    // printf("vizualização não disponível\n");
 
+    printf("Seu nome é esse?\n");
+    printf("%s", nome);
+    printf("\n\n\n");
+
+
+    printf("Seu email é esse?\n");
+    printf("%s", email);
+    printf("\n\n\n");
+
+
+    printf("Seu telefone é esse?\n");
+    printf("%s", telefone);
+    printf("\n\n\n");
     return 0;
 }
 int usuario_pesquisar(){
