@@ -142,58 +142,72 @@ int usuario_editar(){
         char resp;
         do {
 
-        printf("Seu atual nome é esse:\n");
-        printf("%s", nome);
-        printf("\n\n\n");
-        
-        printf("Infome seu novo nome:\n");
-        scanf("%[A-Z a-z]", nome);
-        getchar();
+            printf("Seu atual nome é esse:\n");
+            printf("%s", nome);
+            printf("\n\n\n");
+            
+            printf("Infome seu novo nome:\n");
+            scanf("%[A-Z a-z]", nome);
+            getchar();
 
 
-        printf("Seu nome é esse? (s para sim)\n");
-        printf("%s", nome);
-        printf("\n\n");
+            printf("Seu nome é esse? (s para sim)\n");
+            printf("%s", nome);
+            printf("\n\n");
 
-        scanf("%c", &resp);
-        getchar();
-        } while (resp != 's');
+            scanf("%c", &resp);
+            getchar();
+            } while (resp != 's');
     }
     // Editar email
     else if (editar == '2'){
+        char resp;
+        do {
 
-        printf("Seu atual email é esse:\n");
-        printf("%s", email);
-        printf("\n\n");
+            printf("Seu atual email é esse:\n");
+            printf("%s", email);
+            printf("\n\n");
 
-        printf("Infome seu novo email:\n");
-        scanf("%[A-Za-z0-9.,@-]", email);
-        getchar();
+            printf("Infome seu novo email:\n");
+            scanf("%[A-Za-z0-9.,@-]", email);
+            getchar();
 
-        printf("Seu email novo é esse?\n");
-        printf("%s", email);
-        printf("\n\n\n");
+            printf("Seu email novo é esse? (s para sim)\n");
+            printf("%s", email);
+            printf("\n\n\n");
+
+            scanf("%c", &resp);
+            getchar();
+            } while (resp != 's');
     }
 
+        
     // Editar telefone
     else if (editar == '3'){
-        printf("Seu atual telefone é esse:\n");
-        printf("%s", telefone);
-        printf("\n\n");
+        char resp;
+        do {
 
-        printf("Infome seu novo telefone:\n");
-        scanf("%[0-9 +()-]", telefone);
-        getchar();
+            printf("Seu atual telefone é esse:\n");
+            printf("%s", telefone);
+            printf("\n\n");
 
-        printf("Seu novo telefone é esse?\n");
-        printf("%s", telefone);
-        printf("\n\n\n");
+            printf("Infome seu novo telefone:\n");
+            scanf("%[0-9 +()-]", telefone);
+            getchar();
+
+            printf("Seu novo telefone é esse? (s para sim)\n");
+            printf("%s", telefone);
+            printf("\n\n\n");
+            scanf("%c", &resp);
+            getchar();
+        } while (resp != 's');
     }
+
 
     return 0;
 }
 int usuario_excluir(){
     printf("Exclusão não disponível\n");
-
+    
     return 0;
 }
