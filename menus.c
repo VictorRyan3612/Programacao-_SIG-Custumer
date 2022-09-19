@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
+#include <stdlib.h>
+
 
 int menu_sobre(void){
     setlocale (LC_ALL, "portuguese");
@@ -42,4 +44,22 @@ int menu_principal(void){
     );
     
     return 0;
+}
+
+int menu_usuario(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+
+        printf("\n"
+        "\t==============================\n"
+        "\t\tMenu Controle de Usuário\n"
+        "\t==============================\n"
+        "\t1 - Cadastrar usuário\n"
+        "\t2 - Exibir lista de usuários\n"
+        "\t3 - Procurar usuário\n"
+        "\t4 - Editar usuário\n"
+        "\t5 - Excluir usuário\n"
+        "\t0 - Sair\n"
+        );
+        return 0;
 }

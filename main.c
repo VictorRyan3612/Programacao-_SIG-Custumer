@@ -8,6 +8,7 @@
 
 // Assinatura das funções:
 int menu_principal();
+int modulo_usuario();
 int menu_usuario();
 int menu_sobre();
 int usuario_cadastro();
@@ -30,7 +31,7 @@ int main() {
         getchar();
 
         if (opcao == '1'){
-            menu_usuario();
+            modulo_usuario();
         }
         else if (opcao == '4'){
             menu_sobre();
@@ -49,24 +50,13 @@ int main() {
 
 
 
-int menu_usuario(){
+int modulo_usuario(){
     
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
 
     do{
-        system("cls||clear");
-        printf("\n"
-        "\t==============================\n"
-        "\t\tMenu Controle de Usuário\n"
-        "\t==============================\n"
-        "\t1 - Cadastrar usuário\n"
-        "\t2 - Exibir lista de usuários\n"
-        "\t3 - Procurar usuário\n"
-        "\t4 - Editar usuário\n"
-        "\t5 - Excluir usuário\n"
-        "\t0 - Sair\n"
-        );
+        menu_usuario();
 
         printf("Digite uma opção:\n");
         scanf("%c", &opcao);
