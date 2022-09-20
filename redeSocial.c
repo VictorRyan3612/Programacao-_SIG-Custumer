@@ -114,7 +114,20 @@ int redeSocial_cadastro(){
 }
 
 int redeSocial_vizualizar(){
-    printf("vizualização não disponível\n");
+
+    printf("Seu facebook é esse:\n");
+    printf("%s", facebook);
+    printf("\n\n\n");
+
+
+    printf("Seu twitter é esse:\n");
+    printf("%s", twitter);
+    printf("\n\n\n");
+
+
+    printf("Seu youtube é esse:\n");
+    printf("%s", youtube);
+    printf("\n\n\n");
 
     return 0;
 }

@@ -101,17 +101,17 @@ int usuario_cadastro(){
 }
 int usuario_vizualizar(){
 
-    printf("Seu nome é esse?\n");
+    printf("Seu nome é esse:\n");
     printf("%s", nome);
     printf("\n\n\n");
 
 
-    printf("Seu email é esse?\n");
+    printf("Seu email é esse:\n");
     printf("%s", email);
     printf("\n\n\n");
 
 
-    printf("Seu telefone é esse?\n");
+    printf("Seu telefone é esse:\n");
     printf("%s", telefone);
     printf("\n\n\n");
 
