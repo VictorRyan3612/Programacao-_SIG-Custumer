@@ -136,7 +136,8 @@ int interesse_cadastro(){
     } 
     return 0;
 }
-int interesse_vizualizar(){
+
+int interesse_vizualizar(void){
 
     printf("Esse é o jogo que está interessado:\n");
     printf("%s", jogo);
@@ -154,13 +155,14 @@ int interesse_vizualizar(){
 
     return 0;
 }
-int interesse_pesquisar(){
+
+int interesse_pesquisar(void){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int interesse_editar(){
+int interesse_editar(void){
     char editar;
     printf("Digite o que deseja editar:\n\n");
     printf("\n"
@@ -246,7 +248,8 @@ int interesse_editar(){
 
     return 0;
 }
-int interesse_excluir(){
+
+int interesse_excluir(void){
     char opcao;
 
     printf("Qual deseja Excluir?\n"

@@ -4,12 +4,12 @@
 #include <string.h>
 
 // Assinatura das funções:
-int menu_usuario();
-int usuario_cadastro();
-int usuario_vizualizar();
-int usuario_pesquisar();
-int usuario_editar();
-int usuario_excluir();
+int menu_usuario(void);
+int usuario_cadastro(void);
+int usuario_vizualizar(void);
+int usuario_pesquisar(void);
+int usuario_editar(void);
+int usuario_excluir(void);
 
 
 //variaveis globais de usuario
@@ -18,7 +18,7 @@ char email[50];
 char telefone[20];
 
 
-int modulo_usuario(){
+int modulo_usuario(void){
     
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
@@ -66,7 +66,7 @@ int modulo_usuario(){
 
 
 
-int usuario_cadastro(){
+int usuario_cadastro(void){
     char resp;
 
     //nome
@@ -116,7 +116,8 @@ int usuario_cadastro(){
 
     return 0;
 }
-int usuario_vizualizar(){
+
+int usuario_vizualizar(void){
 
     printf("Seu nome é esse:\n");
     printf("%s", nome);
@@ -134,13 +135,14 @@ int usuario_vizualizar(){
 
     return 0;
 }
-int usuario_pesquisar(){
+
+int usuario_pesquisar(void){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int usuario_editar(){
+int usuario_editar(void){
 
     char editar;
     printf("Digite o que deseja editar:\n\n");
@@ -229,7 +231,8 @@ int usuario_editar(){
 
     return 0;
 }
-int usuario_excluir(){
+
+int usuario_excluir(void){
     char opcao;
 
     printf("Qual deseja Excluir?\n"

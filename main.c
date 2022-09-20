@@ -7,11 +7,11 @@
 
 
 // Assinatura das funções:
-int menu_principal();
-int modulo_usuario();
-int modulo_redeSocial();
-int menu_usuario();
-int menu_sobre();
+int menu_principal(void);
+int modulo_usuario(void);
+int modulo_redeSocial(void);
+int menu_usuario(void);
+int menu_sobre(void);
 
 
 

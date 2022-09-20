@@ -12,28 +12,28 @@ int menu_interesse(void);
 
 // in usuario.c
 
-int modulo_usuario();
+int modulo_usuario(void);
 
-int usuario_cadastro();
-int usuario_vizualizar();
-int usuario_pesquisar();
-int usuario_editar();
-int usuario_excluir();
+int usuario_cadastro(void);
+int usuario_vizualizar(void);
+int usuario_pesquisar(void);
+int usuario_editar(void);
+int usuario_excluir(void);
 
 // in redeSocial.c
 
-int modulo_redeSocial();
-int redeSocial_cadastro();
-int redeSocial_vizualizar();
-int redeSocial_pesquisar();
-int redeSocial_editar();
-int redeSocial_excluir();
+int modulo_redeSocial(void);
+int redeSocial_cadastro(void);
+int redeSocial_vizualizar(void);
+int redeSocial_pesquisar(void);
+int redeSocial_editar(void);
+int redeSocial_excluir(void);
 
 // in interesses.c
 
-int modulo_interesse();
-int interesse_cadastro();
-int interesse_vizualizar();
-int interesse_pesquisar();
-int interesse_editar();
-int interesse_excluir();
+int modulo_interesse(void);
+int interesse_cadastro(void);
+int interesse_vizualizar(void);
+int interesse_pesquisar(void);
+int interesse_editar(void);
+int interesse_excluir(void);

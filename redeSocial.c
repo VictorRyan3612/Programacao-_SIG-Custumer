@@ -4,12 +4,12 @@
 #include <string.h>
 
 // Assinatura das funções:
-int menu_redeSocial();
-int redeSocial_cadastro();
-int redeSocial_vizualizar();
-int redeSocial_pesquisar();
-int redeSocial_editar();
-int redeSocial_excluir();
+int menu_redeSocial(void);
+int redeSocial_cadastro(void);
+int redeSocial_vizualizar(void);
+int redeSocial_pesquisar(void);
+int redeSocial_editar(void);
+int redeSocial_excluir(void);
 
 
 //variaveis globais de redeSocial
@@ -18,7 +18,7 @@ char twitter[30];
 char youtube[50];
 
 
-int modulo_redeSocial(){     
+int modulo_redeSocial(void){
 
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
@@ -64,7 +64,7 @@ int modulo_redeSocial(){
     return 0;
 }
 
-int redeSocial_cadastro(){
+int redeSocial_cadastro(void){
     char opcao;
     char resp;
 
@@ -136,7 +136,8 @@ int redeSocial_cadastro(){
     }
     return 0;
 }
-int redeSocial_vizualizar(){
+
+int redeSocial_vizualizar(void){
 
     printf("Seu perfil do steam é essa:\n");
     printf("%s", steam);
@@ -154,13 +155,14 @@ int redeSocial_vizualizar(){
 
     return 0;
 }
+
 int redeSocial_pesquisar(){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int redeSocial_editar(){
+int redeSocial_editar(void){
     char editar;
     printf("Digite o que deseja editar:\n\n");
     printf("\n"
@@ -248,8 +250,7 @@ int redeSocial_editar(){
     return 0;
 }
 
-
-int redeSocial_excluir(){
+int redeSocial_excluir(void){
     char opcao;
 
     printf("Qual deseja Excluir?\n"
