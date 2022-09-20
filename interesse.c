@@ -140,7 +140,83 @@ int interesse_pesquisar(){
 }
 
 int interesse_editar(){
-    printf("Edição não disponível\n");
+    char editar;
+    printf("Digite o que deseja editar:\n\n");
+    printf("\n"
+        "jogo:\t\t 1\n"
+        "livro:\t\t 2\n"
+        "filme:\t 3\n");
+    
+    scanf("%[1-3]", &editar);   
+    getchar();
+
+    
+    // Editar Jogo
+    if (editar == '1'){
+        char resp;
+        do {
+
+            printf("Seu atual interesse em jogo é:\n");
+            printf("%s", jogo);
+            printf("\n\n\n");
+            
+            printf("Informe qual jogo está interessado:\n");
+            scanf("%[A-Z a-z0-9 ,.'""()]", jogo);
+            getchar();
+
+
+            printf("Esse é seu novo interesse? (s para sim)\n");
+            printf("%s", jogo);
+            printf("\n\n");
+
+            scanf("%c", &resp);
+            getchar();
+            } while (resp != 's');
+    }
+    // Editar livro
+    else if (editar == '2'){
+        char resp;
+        do {
+
+            printf("Seu atual interesse em livro é:\n");
+            printf("%s", livro);
+            printf("\n\n");
+
+            printf("Informe qual livro está interessado:\n");
+            scanf("%[A-Za-z0-9 ,.'""()]", livro);
+            getchar();
+
+            printf("Esse é seu novo interesse? (s para sim)\n");
+            printf("%s", livro);
+            printf("\n\n\n");
+
+            scanf("%c", &resp);
+            getchar();
+            } while (resp != 's');
+    }
+
+        
+    // Editar filme
+    else if (editar == '3'){
+        char resp;
+        do {
+
+            printf("Seu atual interesse em filme é:\n");
+            printf("%s", filme);
+            printf("\n\n");
+
+            printf("Informe qual filme está interessado:\n");
+            scanf("%[A-Za-z0-9 ,.()'""]", filme);
+            getchar();
+
+            printf("Esse é seu novo interesse? (s para sim)\n");
+            printf("%s", filme);
+            printf("\n\n");
+            scanf("%c", &resp);
+            getchar();
+        } while (resp != 's');
+    }
+
 
     return 0;
 }
