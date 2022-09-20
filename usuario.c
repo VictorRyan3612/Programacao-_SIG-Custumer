@@ -69,7 +69,7 @@ int modulo_usuario(){
 int usuario_cadastro(){
 
     //nome
-    printf("informe seu nome:\n");
+    printf("Informe seu nome:\n");
     scanf("%[A-Z a-z]", nome);
     getchar();
 
@@ -79,7 +79,7 @@ int usuario_cadastro(){
 
 
     //email
-    printf("informe seu email:\n");
+    printf("Informe seu email:\n");
     scanf("%[A-Za-z0-9.@-]", email);
     getchar();
 
@@ -89,7 +89,7 @@ int usuario_cadastro(){
 
 
     //telefone
-    printf("informe seu telefone:\n");
+    printf("Informe seu telefone:\n");
     scanf("%[0-9 +()-]", telefone);
     getchar();
 
@@ -146,7 +146,7 @@ int usuario_editar(){
             printf("%s", nome);
             printf("\n\n\n");
             
-            printf("informe seu novo nome:\n");
+            printf("Informe seu novo nome:\n");
             scanf("%[A-Z a-z]", nome);
             getchar();
 
@@ -168,7 +168,7 @@ int usuario_editar(){
             printf("%s", email);
             printf("\n\n");
 
-            printf("informe seu novo email:\n");
+            printf("Informe seu novo email:\n");
             scanf("%[A-Za-z0-9.,@-]", email);
             getchar();
 
@@ -191,7 +191,7 @@ int usuario_editar(){
             printf("%s", telefone);
             printf("\n\n");
 
-            printf("informe seu novo telefone:\n");
+            printf("Informe seu novo telefone:\n");
             scanf("%[0-9 +()-]", telefone);
             getchar();
 

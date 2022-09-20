@@ -13,7 +13,7 @@ int redeSocial_excluir();
 
 
 //variaveis globais de redeSocial
-char facebook[50];
+char steam[50];
 char twitter[50];
 char youtube[20];
 
@@ -68,7 +68,7 @@ int redeSocial_cadastro(){
     char opcao;
 
     printf("Qual deseja Cadastrar?\n"
-    "Facebook:\t 1\n"
+    "Steam:\t 1\n"
     "Twitter:\t 2\n"
     "Youtube:\t 3\n"
     );
@@ -77,14 +77,14 @@ int redeSocial_cadastro(){
     getchar();
 
 
-    //facebook
+    //steam
     if (opcao == '1'){
-        printf("informe seu facebook:\n");
-        scanf("%[A-Za-z0-9.@]", facebook);
+        printf("Informe sua steam:\n");
+        scanf("%[A-Za-z0-9]", steam);
         getchar();
 
-        printf("Seu facebook é esse?\n");
-        printf("%s", facebook);
+        printf("Sua steam é esse?\n");
+        printf("%s", steam);
         printf("\n\n\n");
 
     }
@@ -92,7 +92,7 @@ int redeSocial_cadastro(){
 
     //twitter
     if (opcao == '2'){
-        printf("informe seu twitter:\n");
+        printf("Informe seu twitter:\n");
         scanf("%[A-Za-z0-9@_]", twitter);
         getchar();
 
@@ -102,7 +102,7 @@ int redeSocial_cadastro(){
     }
 
     //youtube
-    printf("informe seu youtube:\n");
+    printf("Informe seu youtube:\n");
     scanf("%[A-Za-z 0-9]", youtube);
     getchar();
 
@@ -115,8 +115,8 @@ int redeSocial_cadastro(){
 
 int redeSocial_vizualizar(){
 
-    printf("Seu facebook é esse:\n");
-    printf("%s", facebook);
+    printf("Sua steam é essa:\n");
+    printf("%s", steam);
     printf("\n\n\n");
 
 
@@ -138,10 +138,89 @@ int redeSocial_pesquisar(){
 }
 
 int redeSocial_editar(){
-    printf("Edição não disponível\n");
+    char editar;
+    printf("Digite o que deseja editar:\n\n");
+    printf("\n"
+        "steam:\t\t 1\n"
+        "twitter:\t\t 2\n"
+        "youtube:\t 3\n");
+    
+    scanf("%[1-3]", &editar);   
+    getchar();
+
+    
+
+    // Editar steam
+    if (editar == '1'){
+        char resp;
+        do {
+
+            printf("Sua atual steam é essa:\n");
+            printf("%s", steam);
+            printf("\n\n\n");
+            
+            printf("Informe seu novo perfil steam:\n");
+            scanf("%[A-Z a-z]", steam);
+            getchar();
+
+
+            printf("Seu steam é esse? (s para sim)\n");
+            printf("%s", steam);
+            printf("\n\n");
+
+            scanf("%c", &resp);
+            getchar();
+            } while (resp != 's');
+    }
+    // Editar twitter
+    else if (editar == '2'){
+        char resp;
+        do {
+
+            printf("Seu atual twitter é esse:\n");
+            printf("%s", twitter);
+            printf("\n\n");
+
+            printf("Informe seu novo twitter:\n");
+            scanf("%[A-Za-z0-9.,@-]", twitter);
+            getchar();
+
+            printf("Seu twitter novo é esse? (s para sim)\n");
+            printf("%s", twitter);
+            printf("\n\n\n");
+
+            scanf("%c", &resp);
+            getchar();
+            } while (resp != 's');
+    }
+
+        
+    // Editar youtube
+    else if (editar == '3'){
+        char resp;
+        do {
+
+            printf("Seu atual youtube é esse:\n");
+            printf("%s", youtube);
+            printf("\n\n");
+
+            printf("Informe seu novo youtube:\n");
+            scanf("%[0-9 +()-]", youtube);
+            getchar();
+
+            printf("Seu novo youtube é esse? (s para sim)\n");
+            printf("%s", youtube);
+            printf("\n\n\n");
+            scanf("%c", &resp);
+            getchar();
+        } while (resp != 's');
+    }
+
 
     return 0;
 }
+
+
 int redeSocial_excluir(){
     printf("Exclusão não disponível\n");
 
