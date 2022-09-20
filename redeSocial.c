@@ -150,7 +150,6 @@ int redeSocial_editar(){
     getchar();
 
     
-
     // Editar steam
     if (editar == '1'){
         char resp;

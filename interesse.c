@@ -116,7 +116,20 @@ int interesse_cadastro(){
     return 0;
 }
 int interesse_vizualizar(){
-    printf("vizualização não disponível\n");
+
+    printf("Esse é o jogo que está interessado:\n");
+    printf("%s", jogo);
+    printf("\n\n\n");
+
+
+    printf("Esse é o livro que está interessado:\n");
+    printf("%s", livro);
+    printf("\n\n\n");
+
+
+    printf("Esse é o filme que está interessado:\n");
+    printf("%s", filme);
+    printf("\n\n\n");
 
     return 0;
 }
