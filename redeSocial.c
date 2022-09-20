@@ -75,13 +75,16 @@ int redeSocial_cadastro(){
     );
 
     scanf("%c", &opcao);
+    printf("\n\n");
     getchar();
+    
 
 
     //steam
     if (opcao == '1'){
         printf("Informe seu perfil da steam:\n");
         scanf("%[A-Za-z0-9]", steam);
+        printf("\n\n");
         getchar();
         
         do {
@@ -100,12 +103,14 @@ int redeSocial_cadastro(){
     if (opcao == '2'){
         printf("Informe seu twitter:\n");
         scanf("%[A-Za-z0-9@_.]", twitter);
+        printf("\n\n");
         getchar();
 
         do {
             printf("Seu twitter é esse?\n");
             printf("%s", twitter);
             printf("\n\n");
+
             printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
@@ -114,14 +119,16 @@ int redeSocial_cadastro(){
 
     //youtube
     if (opcao == '2'){
-    printf("Informe seu canal do youtube:\n");
-    scanf("%[A-Za-z 0-9]", youtube);
-    getchar();
+        printf("Informe seu canal do youtube:\n");
+        scanf("%[A-Za-z 0-9]", youtube);
+        getchar();
+        printf("\n\n");
 
     do {
         printf("Seu youtube é esse?\n");
         printf("%s", youtube);
         printf("\n\n");
+
         printf("(s para sim)\n");
         scanf("%c", &resp);
         getchar();
@@ -158,52 +165,55 @@ int redeSocial_editar(){
     printf("Digite o que deseja editar:\n\n");
     printf("\n"
         "Steam:\t\t 1\n"
-        "Twitter:\t\t 2\n"
+        "Twitter:\t 2\n"
         "Youtube:\t 3\n");
     
     scanf("%[1-3]", &editar);   
+    printf("\n\n");
     getchar();
 
     
     // Editar steam
     if (editar == '1'){
         char resp;
-        do {
 
-            printf("Seu atual perfil da steam é esse:\n");
-            printf("%s", steam);
-            printf("\n\n\n");
-            
+        printf("Seu atual perfil da steam é esse:\n");
+        printf("%s", steam);
+        printf("\n\n");
+        do{
             printf("Informe seu novo perfil steam:\n");
             scanf("%[A-Z a-z]", steam);
+            printf("\n");
             getchar();
 
-
-            printf("Seu perfil da steam é esse? (s para sim)\n");
+            printf("Seu perfil da steam é esse?\n");
             printf("%s", steam);
             printf("\n\n");
 
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
-            } while (resp != 's');
-    }
+        } while (resp != 's');
+}
     // Editar twitter
     else if (editar == '2'){
         char resp;
-        do {
 
-            printf("Sua atual conta do twitter é essa:\n");
+
+        printf("Sua atual conta do twitter é essa:\n");
+        printf("%s", twitter);
+        printf("\n\n");
+        do{
+            printf("Informe seu novo twitter:\n");
+            scanf("%[A-Za-z0-9.,@-]", twitter);
+            printf("\n\n");
+            getchar();
+
+            printf("Seu twitter novo é esse?\n");
             printf("%s", twitter);
             printf("\n\n");
 
-            printf("Informe seu novo twitter:\n");
-            scanf("%[A-Za-z0-9.,@-]", twitter);
-            getchar();
-
-            printf("Seu twitter novo é esse? (s para sim)\n");
-            printf("%s", twitter);
-            printf("\n\n\n");
-
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
             } while (resp != 's');
@@ -213,19 +223,22 @@ int redeSocial_editar(){
     // Editar youtube
     else if (editar == '3'){
         char resp;
-        do {
+
 
             printf("Seu atual canal do youtube é esse:\n");
             printf("%s", youtube);
             printf("\n\n");
-
+        do{
             printf("Informe seu novo canal do youtube:\n");
             scanf("%[0-9 +()-]", youtube);
+            printf("\n\n");
             getchar();
 
-            printf("Seu novo youtube é esse? (s para sim)\n");
+            printf("Seu novo youtube é esse?\n");
             printf("%s", youtube);
             printf("\n\n");
+
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
         } while (resp != 's');

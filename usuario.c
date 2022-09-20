@@ -77,7 +77,8 @@ int usuario_cadastro(){
     do {
         printf("Seu nome é esse?\n");
         printf("%s", nome);
-        printf("\n\n\n");
+        printf("\n\n");
+        
         printf("(s para sim)\n");
         scanf("%c", &resp);
         getchar();
@@ -91,7 +92,8 @@ int usuario_cadastro(){
     do {
         printf("Seu email é esse?\n");
         printf("%s", email);
-        printf("\n\n\n");
+        printf("\n\n");
+
         printf("(s para sim)\n");
         scanf("%c", &resp);
         getchar();
@@ -105,7 +107,8 @@ int usuario_cadastro(){
     do {
         printf("Seu telefone é esse?\n");
         printf("%s", telefone);
-        printf("\n\n\n");
+        printf("\n\n");
+
         printf("(s para sim)\n");
         scanf("%c", &resp);
         getchar();
@@ -154,21 +157,23 @@ int usuario_editar(){
     // Editar nome
     if (editar == '1'){
         char resp;
-        do {
+
 
             printf("Seu atual nome é esse:\n");
             printf("%s", nome);
             printf("\n\n");
-            
+        do{
             printf("Informe seu novo nome:\n");
             scanf("%[A-Z a-z]", nome);
+            printf("\n\n");
             getchar();
 
 
-            printf("Seu nome é esse? (s para sim)\n");
+            printf("Esse é seu nome?\n");
             printf("%s", nome);
             printf("\n\n");
 
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
             } while (resp != 's');
@@ -176,20 +181,22 @@ int usuario_editar(){
     // Editar email
     else if (editar == '2'){
         char resp;
-        do {
 
-            printf("Seu atual email é esse:\n");
-            printf("%s", email);
-            printf("\n\n");
 
+        printf("Seu atual email é esse:\n");
+        printf("%s", email);
+        printf("\n\n");
+        do{
             printf("Informe seu novo email:\n");
             scanf("%[A-Za-z0-9.,@-]", email);
+            printf("\n\n");
             getchar();
 
-            printf("Seu email novo é esse? (s para sim)\n");
+            printf("Seu email novo é esse?\n");
             printf("%s", email);
             printf("\n\n");
 
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
             } while (resp != 's');
@@ -199,19 +206,21 @@ int usuario_editar(){
     // Editar telefone
     else if (editar == '3'){
         char resp;
-        do {
 
-            printf("Seu atual telefone é esse:\n");
-            printf("%s", telefone);
-            printf("\n\n");
-
+        printf("Seu atual telefone é esse:\n");
+        printf("%s", telefone);
+        printf("\n\n");
+        do{
             printf("Informe seu novo telefone:\n");
             scanf("%[0-9 +()-]", telefone);
+            printf("\n\n");
             getchar();
 
-            printf("Seu novo telefone é esse? (s para sim)\n");
+            printf("Seu novo telefone é esse?\n");
             printf("%s", telefone);
             printf("\n\n");
+
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
         } while (resp != 's');

@@ -85,7 +85,7 @@ int interesse_cadastro(){
     if (opcao == '1'){
         printf("Informe qual jogo está interessado:\n");
         scanf("%[A-Za-z0-9 ']", jogo);
-        printf("\n");
+        printf("\n\n");
         getchar();
 
         do {
@@ -104,11 +104,13 @@ int interesse_cadastro(){
     if (opcao == '2'){
         printf("Informe qual livro está interessado:\n");
         scanf("%[A-Za-z0-9 .,'""()]", livro);
+        printf("\n\n");
         getchar();
+
         do {
             printf("Está interessado nesse livro?\n");
             printf("%s", livro);
-            printf("\n\n\n");
+            printf("\n\n");
 
             printf("(s para sim)\n");
             scanf("%c", &resp);
@@ -119,11 +121,14 @@ int interesse_cadastro(){
     if (opcao == '3'){
         printf("Informe qual filme está interessado:\n");
         scanf("%[A-Za-z0-9]", filme);
+        printf("\n\n");
         getchar();
+
         do {
             printf("Está interessado nesse filme?\n");
             printf("%s", filme);
-            printf("\n\n\n");
+            printf("\n\n");
+
             printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
@@ -170,21 +175,22 @@ int interesse_editar(){
     // Editar Jogo
     if (editar == '1'){
         char resp;
-        do {
 
-            printf("Seu atual interesse em jogo é:\n");
-            printf("%s", jogo);
-            printf("\n\n\n");
-            
+        printf("Seu atual interesse em jogo é:\n");
+        printf("%s", jogo);
+        printf("\n\n");
+        do{
             printf("Informe qual jogo está interessado:\n");
             scanf("%[A-Z a-z0-9 ,.'""()]", jogo);
+            printf("\n\n");
             getchar();
 
 
-            printf("Esse é seu novo interesse? (s para sim)\n");
+            printf("Esse é seu novo interesse?\n");
             printf("%s", jogo);
             printf("\n\n");
 
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
             } while (resp != 's');
@@ -192,20 +198,21 @@ int interesse_editar(){
     // Editar livro
     else if (editar == '2'){
         char resp;
-        do {
 
-            printf("Seu atual interesse em livro é:\n");
+        printf("Seu atual interesse em livro é:\n");
+        printf("%s", livro);
+        printf("\n\n");
+        do{
+            printf("Informe qual livro está interessado:\n");
+            scanf("%[A-Za-z0-9 ,.'""()]", livro);
+            printf("\n\n");
+            getchar();
+
+            printf("Esse é seu novo interesse?\n");
             printf("%s", livro);
             printf("\n\n");
 
-            printf("Informe qual livro está interessado:\n");
-            scanf("%[A-Za-z0-9 ,.'""()]", livro);
-            getchar();
-
-            printf("Esse é seu novo interesse? (s para sim)\n");
-            printf("%s", livro);
-            printf("\n\n\n");
-
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
             } while (resp != 's');
@@ -215,19 +222,22 @@ int interesse_editar(){
     // Editar filme
     else if (editar == '3'){
         char resp;
-        do {
+
 
             printf("Seu atual interesse em filme é:\n");
             printf("%s", filme);
             printf("\n\n");
-
+        do{
             printf("Informe qual filme está interessado:\n");
             scanf("%[A-Za-z0-9 ,.()'""]", filme);
+            printf("\n\n");
             getchar();
 
-            printf("Esse é seu novo interesse? (s para sim)\n");
+            printf("Esse é seu novo interesse?\n");
             printf("%s", filme);
             printf("\n\n");
+
+            printf("(s para sim)\n");
             scanf("%c", &resp);
             getchar();
         } while (resp != 's');
