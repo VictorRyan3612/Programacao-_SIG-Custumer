@@ -230,7 +230,53 @@ int usuario_editar(){
     return 0;
 }
 int usuario_excluir(){
-    printf("Exclusão não disponível\n");
+    char opcao;
+
+    printf("Qual deseja Excluir?\n"
+    "Nome:\t 1\n"
+    "Email:\t 2\n"
+    "telefone:\t 3\n"
+    );
+
+
+    scanf("%c", &opcao);
+    printf("\n\n");
+    getchar();
+
+
+    if (opcao == '1'){
+        printf("Exluindo seu nome\n");
+        strcpy(nome, "");
+        printf("%s",nome);
+        printf("Exluído com sucesso\n");
+
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+
+    else if (opcao == '2'){
+        printf("Exluindo seu email cadastrado\n");
+        strcpy(email, "");
+        printf("%s",email);
+        printf("Exluído com sucesso\n");
+
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+    
+    else if (opcao == '3'){
+        printf("Exluindo seu telefone cadastrado\n");
+        strcpy(telefone, "");
+        printf("%s",telefone);
+        printf("Exluído com sucesso\n");
+        
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+
     
     return 0;
 }
