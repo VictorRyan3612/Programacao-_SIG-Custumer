@@ -83,12 +83,12 @@ int interesse_cadastro(void){
 
     //Jogo
     if (opcao == '1'){
-        printf("Informe qual jogo está interessado:\n");
-        scanf("%[A-Za-z0-9 ']", jogo);
-        printf("\n\n");
-        getchar();
-
         do {
+            printf("Informe qual jogo está interessado:\n");
+            scanf("%[A-Za-z0-9 ']", jogo);
+            printf("\n\n");
+            getchar();
+
             printf("Está interessado nesse jogo?\n");
             printf("%s", jogo);
             printf("\n\n");
@@ -102,12 +102,13 @@ int interesse_cadastro(void){
 
     //Livro
     if (opcao == '2'){
-        printf("Informe qual livro está interessado:\n");
-        scanf("%[A-Za-z0-9 .,'""()]", livro);
-        printf("\n\n");
-        getchar();
-
         do {
+            printf("Informe qual livro está interessado:\n");
+            scanf("%[A-Za-z0-9 .,'""()]", livro);
+            printf("\n\n");
+            getchar();
+
+
             printf("Está interessado nesse livro?\n");
             printf("%s", livro);
             printf("\n\n");
@@ -119,12 +120,12 @@ int interesse_cadastro(void){
     }
     //Filme
     if (opcao == '3'){
-        printf("Informe qual filme está interessado:\n");
-        scanf("%[A-Za-z0-9]", filme);
-        printf("\n\n");
-        getchar();
+        do{
+            printf("Informe qual filme está interessado:\n");
+            scanf("%[A-Za-z0-9]", filme);
+            printf("\n\n");
+            getchar();
 
-        do {
             printf("Está interessado nesse filme?\n");
             printf("%s", filme);
             printf("\n\n");
@@ -197,6 +198,7 @@ int interesse_editar(void){
             getchar();
             } while (resp != 's');
     }
+    
     // Editar livro
     else if (editar == '2'){
         char resp;

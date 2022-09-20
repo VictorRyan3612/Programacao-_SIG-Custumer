@@ -70,11 +70,11 @@ int usuario_cadastro(void){
     char resp;
 
     //nome
-    printf("Informe seu nome:\n");
-    scanf("%[A-Z a-z]", nome);
-    getchar();
-
     do {
+        printf("Informe seu nome:\n");
+        scanf("%[A-Z a-z]", nome);
+        getchar();
+
         printf("Seu nome é esse?\n");
         printf("%s", nome);
         printf("\n\n");
@@ -86,10 +86,11 @@ int usuario_cadastro(void){
 
 
     //email
-    printf("Informe seu email:\n");
-    scanf("%[A-Za-z0-9.@-]", email);
-    getchar();
     do {
+        printf("Informe seu email:\n");
+        scanf("%[A-Za-z0-9.@-]", email);
+        getchar();
+
         printf("Seu email é esse?\n");
         printf("%s", email);
         printf("\n\n");
@@ -99,12 +100,13 @@ int usuario_cadastro(void){
         getchar();
         } while (resp != 's');
 
-    //telefone
-    printf("Informe seu telefone:\n");
-    scanf("%[0-9 +()-]", telefone);
-    getchar();
 
+    //telefone
     do {
+        printf("Informe seu telefone:\n");
+        scanf("%[0-9 +()-]", telefone);
+        getchar();
+
         printf("Seu telefone é esse?\n");
         printf("%s", telefone);
         printf("\n\n");
