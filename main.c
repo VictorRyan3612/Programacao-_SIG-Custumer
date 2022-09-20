@@ -9,6 +9,7 @@
 // Assinatura das funções:
 int menu_principal();
 int modulo_usuario();
+int modulo_redeSocial();
 int menu_usuario();
 int menu_sobre();
 
@@ -28,6 +29,9 @@ int main() {
 
         if (opcao == '1'){
             modulo_usuario();
+        }
+        else if (opcao == '2'){
+            modulo_redeSocial();
         }
         else if (opcao == '4'){
             menu_sobre();

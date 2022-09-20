@@ -11,6 +11,7 @@ int usuario_pesquisar();
 int usuario_editar();
 int usuario_excluir();
 
+
 //variaveis globais de usuario
 char nome[50];
 char email[50];
@@ -68,7 +69,7 @@ int modulo_usuario(){
 int usuario_cadastro(){
 
     //nome
-    printf("Infome seu nome:\n");
+    printf("informe seu nome:\n");
     scanf("%[A-Z a-z]", nome);
     getchar();
 
@@ -78,8 +79,8 @@ int usuario_cadastro(){
 
 
     //email
-    printf("Infome seu email:\n");
-    scanf("%[A-Za-z0-9.,@-]", email);
+    printf("informe seu email:\n");
+    scanf("%[A-Za-z0-9.@-]", email);
     getchar();
 
     printf("Seu email é esse?\n");
@@ -88,7 +89,7 @@ int usuario_cadastro(){
 
 
     //telefone
-    printf("Infome seu telefone:\n");
+    printf("informe seu telefone:\n");
     scanf("%[0-9 +()-]", telefone);
     getchar();
 
@@ -145,7 +146,7 @@ int usuario_editar(){
             printf("%s", nome);
             printf("\n\n\n");
             
-            printf("Infome seu novo nome:\n");
+            printf("informe seu novo nome:\n");
             scanf("%[A-Z a-z]", nome);
             getchar();
 
@@ -167,7 +168,7 @@ int usuario_editar(){
             printf("%s", email);
             printf("\n\n");
 
-            printf("Infome seu novo email:\n");
+            printf("informe seu novo email:\n");
             scanf("%[A-Za-z0-9.,@-]", email);
             getchar();
 
@@ -190,7 +191,7 @@ int usuario_editar(){
             printf("%s", telefone);
             printf("\n\n");
 
-            printf("Infome seu novo telefone:\n");
+            printf("informe seu novo telefone:\n");
             scanf("%[0-9 +()-]", telefone);
             getchar();
 

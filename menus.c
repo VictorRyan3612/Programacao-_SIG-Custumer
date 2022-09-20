@@ -52,13 +52,31 @@ int menu_usuario(void){
 
         printf("\n"
         "\t==============================\n"
-        "\t\tMenu Controle de Usuário\n"
+        "\tMenu Controle de Usuário\n"
         "\t==============================\n"
         "\t1 - Cadastrar usuário\n"
         "\t2 - Exibir lista de usuários\n"
         "\t3 - Procurar usuário\n"
         "\t4 - Editar usuário\n"
         "\t5 - Excluir usuário\n"
+        "\t0 - Sair\n"
+        );
+        return 0;
+}
+
+int menu_redeSocial(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+
+        printf("\n"
+        "\t==============================\n"
+        "\tMenu Controle de rede social\n"
+        "\t==============================\n"
+        "\t1 - Cadastrar rede social\n"
+        "\t2 - Exibir lista de rede social\n"
+        "\t3 - Procurar rede social\n"
+        "\t4 - Editar rede social\n"
+        "\t5 - Excluir rede social\n"
         "\t0 - Sair\n"
         );
         return 0;
