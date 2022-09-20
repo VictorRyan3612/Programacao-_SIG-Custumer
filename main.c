@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-
+#include "biblio.h"
 // Para explicações sobre o código, por favor verificar o arquivo
 // detalhes.md
 
@@ -32,6 +32,9 @@ int main() {
         }
         else if (opcao == '2'){
             modulo_redeSocial();
+        }
+        else if (opcao == '3'){
+            modulo_interesse();
         }
         else if (opcao == '4'){
             menu_sobre();

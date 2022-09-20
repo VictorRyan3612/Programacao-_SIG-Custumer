@@ -68,7 +68,7 @@ int redeSocial_cadastro(){
     char opcao;
 
     printf("Qual deseja Cadastrar?\n"
-    "Steam:\t 1\n"
+    "Steam:\t\t 1\n"
     "Twitter:\t 2\n"
     "Youtube:\t 3\n"
     );
@@ -102,6 +102,7 @@ int redeSocial_cadastro(){
     }
 
     //youtube
+    if (opcao == '2'){
     printf("Informe seu canal do youtube:\n");
     scanf("%[A-Za-z 0-9]", youtube);
     getchar();
@@ -109,7 +110,7 @@ int redeSocial_cadastro(){
     printf("Seu youtube é esse?\n");
     printf("%s", youtube);
     printf("\n\n\n");
-
+    }
     return 0;
 }
 

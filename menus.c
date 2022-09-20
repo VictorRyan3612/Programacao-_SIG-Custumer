@@ -35,9 +35,9 @@ int menu_principal(void){
     "\t\t==============================\n"
     "\t\tPrograma Controle de Clientes\n"
     "\t\t==============================\n"
-    "\t\t1 - Módulo usuário\n"
+    "\t\t1 - Módulo Usuário\n"
     "\t\t2 - Módulo Redes Sociais\n"
-    "\t\t3 - Módulo em desenvolvimento\n"
+    "\t\t3 - Módulo Interesses\n"
     "\t\t4 - Sobre e equipe\n"
     "\t\t0 - Encerrar\n"
     "\n"
@@ -77,6 +77,24 @@ int menu_redeSocial(void){
         "\t3 - Procurar rede social\n"
         "\t4 - Editar rede social\n"
         "\t5 - Excluir rede social\n"
+        "\t0 - Sair\n"
+        );
+        return 0;
+}
+
+int menu_interesse(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+
+        printf("\n"
+        "\t==============================\n"
+        "\tMenu Controle de Interesses\n"
+        "\t==============================\n"
+        "\t1 - Cadastrar Interesses\n"
+        "\t2 - Exibir lista de Interesses\n"
+        "\t3 - Procurar Interesse\n"
+        "\t4 - Editar Interesse\n"
+        "\t5 - Excluir Interesse\n"
         "\t0 - Sair\n"
         );
         return 0;

@@ -8,6 +8,8 @@ int menu_usuario(void);
 
 int menu_redeSocial(void);
 
+int menu_interesse(void);
+
 // in usuario.c
 
 int modulo_usuario();
@@ -26,3 +28,12 @@ int redeSocial_vizualizar();
 int redeSocial_pesquisar();
 int redeSocial_editar();
 int redeSocial_excluir();
+
+// in interesses.c
+
+int modulo_interesse();
+int interesse_cadastro();
+int interesse_vizualizar();
+int interesse_pesquisar();
+int interesse_editar();
+int interesse_excluir();
