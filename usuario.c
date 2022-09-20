@@ -67,35 +67,49 @@ int modulo_usuario(){
 
 
 int usuario_cadastro(){
+    char resp;
 
     //nome
     printf("Informe seu nome:\n");
     scanf("%[A-Z a-z]", nome);
     getchar();
 
-    printf("Seu nome é esse?\n");
-    printf("%s", nome);
-    printf("\n\n\n");
+    do {
+        printf("Seu nome é esse?\n");
+        printf("%s", nome);
+        printf("\n\n\n");
+        printf("(s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+        } while (resp != 's');
 
 
     //email
     printf("Informe seu email:\n");
     scanf("%[A-Za-z0-9.@-]", email);
     getchar();
-
-    printf("Seu email é esse?\n");
-    printf("%s", email);
-    printf("\n\n\n");
-
+    do {
+        printf("Seu email é esse?\n");
+        printf("%s", email);
+        printf("\n\n\n");
+        printf("(s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+        } while (resp != 's');
 
     //telefone
     printf("Informe seu telefone:\n");
     scanf("%[0-9 +()-]", telefone);
     getchar();
 
-    printf("Seu telefone é esse?\n");
-    printf("%s", telefone);
-    printf("\n\n\n");
+    do {
+        printf("Seu telefone é esse?\n");
+        printf("%s", telefone);
+        printf("\n\n\n");
+        printf("(s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+        } while (resp != 's');
 
     return 0;
 }
@@ -144,7 +158,7 @@ int usuario_editar(){
 
             printf("Seu atual nome é esse:\n");
             printf("%s", nome);
-            printf("\n\n\n");
+            printf("\n\n");
             
             printf("Informe seu novo nome:\n");
             scanf("%[A-Z a-z]", nome);
@@ -174,7 +188,7 @@ int usuario_editar(){
 
             printf("Seu email novo é esse? (s para sim)\n");
             printf("%s", email);
-            printf("\n\n\n");
+            printf("\n\n");
 
             scanf("%c", &resp);
             getchar();
@@ -197,7 +211,7 @@ int usuario_editar(){
 
             printf("Seu novo telefone é esse? (s para sim)\n");
             printf("%s", telefone);
-            printf("\n\n\n");
+            printf("\n\n");
             scanf("%c", &resp);
             getchar();
         } while (resp != 's');

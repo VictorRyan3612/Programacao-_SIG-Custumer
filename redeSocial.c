@@ -66,6 +66,7 @@ int modulo_redeSocial(){
 
 int redeSocial_cadastro(){
     char opcao;
+    char resp;
 
     printf("Qual deseja Cadastrar?\n"
     "Steam:\t\t 1\n"
@@ -82,11 +83,16 @@ int redeSocial_cadastro(){
         printf("Informe seu perfil da steam:\n");
         scanf("%[A-Za-z0-9]", steam);
         getchar();
+        
+        do {
+            printf("Sua steam é esse?\n");
+            printf("%s", steam);
+            printf("\n\n");
 
-        printf("Sua steam é esse?\n");
-        printf("%s", steam);
-        printf("\n\n\n");
-
+            printf("(s para sim)\n");
+            scanf("%c", &resp);
+            getchar();
+        } while (resp != 's');
     }
     
 
@@ -96,9 +102,14 @@ int redeSocial_cadastro(){
         scanf("%[A-Za-z0-9@_.]", twitter);
         getchar();
 
-        printf("Seu twitter é esse?\n");
-        printf("%s", twitter);
-        printf("\n\n\n");
+        do {
+            printf("Seu twitter é esse?\n");
+            printf("%s", twitter);
+            printf("\n\n");
+            printf("(s para sim)\n");
+            scanf("%c", &resp);
+            getchar();
+        } while (resp != 's');
     }
 
     //youtube
@@ -107,13 +118,17 @@ int redeSocial_cadastro(){
     scanf("%[A-Za-z 0-9]", youtube);
     getchar();
 
-    printf("Seu youtube é esse?\n");
-    printf("%s", youtube);
-    printf("\n\n\n");
+    do {
+        printf("Seu youtube é esse?\n");
+        printf("%s", youtube);
+        printf("\n\n");
+        printf("(s para sim)\n");
+        scanf("%c", &resp);
+        getchar();
+        } while (resp != 's');
     }
     return 0;
 }
-
 int redeSocial_vizualizar(){
 
     printf("Seu perfil do steam é essa:\n");
