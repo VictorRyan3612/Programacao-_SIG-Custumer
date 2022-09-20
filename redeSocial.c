@@ -250,7 +250,52 @@ int redeSocial_editar(){
 
 
 int redeSocial_excluir(){
-    printf("Exclusão não disponível\n");
+    char opcao;
+
+    printf("Qual deseja Excluir?\n"
+    "Steam:\t 1\n"
+    "Twitter:\t 2\n"
+    "Youtube:\t 3\n"
+    );
+
+
+    scanf("%c", &opcao);
+    printf("\n\n");
+    getchar();
+
+
+    if (opcao == '1'){
+        printf("Exluindo seu perfil steam cadastrado\n");
+        strcpy(steam, "");
+        printf("%s",steam);
+        printf("Exluído com sucesso\n");
+
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+
+    else if (opcao == '2'){
+        printf("Exluindo seu perfil do twitter cadastrado\n");
+        strcpy(twitter, "");
+        printf("%s",twitter);
+        printf("Exluído com sucesso\n");
+
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+    
+    else if (opcao == '3'){
+        printf("Exluindo seu canal youtube cadastrado\n");
+        strcpy(youtube, "");
+        printf("%s",youtube);
+        printf("Exluído com sucesso\n");
+        
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
 
     return 0;
 }
