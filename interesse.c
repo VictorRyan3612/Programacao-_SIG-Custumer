@@ -18,7 +18,7 @@ char livro[50];
 char filme[50];
 
 
-int modulo_interesse(){
+int modulo_interesse(void){
 
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
@@ -66,7 +66,7 @@ int modulo_interesse(){
 
 
 
-int interesse_cadastro(){
+int interesse_cadastro(void){
     char opcao;
     char resp;
     printf("No momento, apenas 1 interesse está disponível\n\n");

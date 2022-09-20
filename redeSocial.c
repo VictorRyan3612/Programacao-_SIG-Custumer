@@ -156,7 +156,7 @@ int redeSocial_vizualizar(void){
     return 0;
 }
 
-int redeSocial_pesquisar(){
+int redeSocial_pesquisar(void){
     printf("Busca não disponível\n");
 
     return 0;
