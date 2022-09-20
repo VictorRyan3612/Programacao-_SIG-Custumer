@@ -36,7 +36,7 @@ int menu_principal(void){
     "\t\tPrograma Controle de Clientes\n"
     "\t\t==============================\n"
     "\t\t1 - Módulo usuário\n"
-    "\t\t2 - Módulo em desenvolvimento\n"
+    "\t\t2 - Módulo Redes Sociais\n"
     "\t\t3 - Módulo em desenvolvimento\n"
     "\t\t4 - Sobre e equipe\n"
     "\t\t0 - Encerrar\n"

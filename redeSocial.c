@@ -14,8 +14,8 @@ int redeSocial_excluir();
 
 //variaveis globais de redeSocial
 char steam[50];
-char twitter[50];
-char youtube[20];
+char twitter[30];
+char youtube[50];
 
 
 int modulo_redeSocial(){     
@@ -79,7 +79,7 @@ int redeSocial_cadastro(){
 
     //steam
     if (opcao == '1'){
-        printf("Informe sua steam:\n");
+        printf("Informe seu perfil da steam:\n");
         scanf("%[A-Za-z0-9]", steam);
         getchar();
 
@@ -93,7 +93,7 @@ int redeSocial_cadastro(){
     //twitter
     if (opcao == '2'){
         printf("Informe seu twitter:\n");
-        scanf("%[A-Za-z0-9@_]", twitter);
+        scanf("%[A-Za-z0-9@_.]", twitter);
         getchar();
 
         printf("Seu twitter é esse?\n");
@@ -102,7 +102,7 @@ int redeSocial_cadastro(){
     }
 
     //youtube
-    printf("Informe seu youtube:\n");
+    printf("Informe seu canal do youtube:\n");
     scanf("%[A-Za-z 0-9]", youtube);
     getchar();
 
@@ -115,7 +115,7 @@ int redeSocial_cadastro(){
 
 int redeSocial_vizualizar(){
 
-    printf("Sua steam é essa:\n");
+    printf("Seu perfil do steam é essa:\n");
     printf("%s", steam);
     printf("\n\n\n");
 
@@ -125,7 +125,7 @@ int redeSocial_vizualizar(){
     printf("\n\n\n");
 
 
-    printf("Seu youtube é esse:\n");
+    printf("Seu canal do youtube é esse:\n");
     printf("%s", youtube);
     printf("\n\n\n");
 
@@ -141,9 +141,9 @@ int redeSocial_editar(){
     char editar;
     printf("Digite o que deseja editar:\n\n");
     printf("\n"
-        "steam:\t\t 1\n"
-        "twitter:\t\t 2\n"
-        "youtube:\t 3\n");
+        "Steam:\t\t 1\n"
+        "Twitter:\t\t 2\n"
+        "Youtube:\t 3\n");
     
     scanf("%[1-3]", &editar);   
     getchar();
@@ -155,7 +155,7 @@ int redeSocial_editar(){
         char resp;
         do {
 
-            printf("Sua atual steam é essa:\n");
+            printf("Seu atual perfil da steam é esse:\n");
             printf("%s", steam);
             printf("\n\n\n");
             
@@ -164,7 +164,7 @@ int redeSocial_editar(){
             getchar();
 
 
-            printf("Seu steam é esse? (s para sim)\n");
+            printf("Seu perfil da steam é esse? (s para sim)\n");
             printf("%s", steam);
             printf("\n\n");
 
@@ -177,7 +177,7 @@ int redeSocial_editar(){
         char resp;
         do {
 
-            printf("Seu atual twitter é esse:\n");
+            printf("Sua atual conta do twitter é essa:\n");
             printf("%s", twitter);
             printf("\n\n");
 
@@ -200,17 +200,17 @@ int redeSocial_editar(){
         char resp;
         do {
 
-            printf("Seu atual youtube é esse:\n");
+            printf("Seu atual canal do youtube é esse:\n");
             printf("%s", youtube);
             printf("\n\n");
 
-            printf("Informe seu novo youtube:\n");
+            printf("Informe seu novo canal do youtube:\n");
             scanf("%[0-9 +()-]", youtube);
             getchar();
 
             printf("Seu novo youtube é esse? (s para sim)\n");
             printf("%s", youtube);
-            printf("\n\n\n");
+            printf("\n\n");
             scanf("%c", &resp);
             getchar();
         } while (resp != 's');
