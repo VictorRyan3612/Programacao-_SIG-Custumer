@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 // Assinatura das funções:
 int menu_interesse();
@@ -168,7 +168,7 @@ int interesse_editar(){
         "Livro:\t 2\n"
         "filme:\t 3\n");
     
-    scanf("%[1-3]", &editar);   
+    scanf("%[1-3]", &editar);
     getchar();
 
     
@@ -247,7 +247,51 @@ int interesse_editar(){
     return 0;
 }
 int interesse_excluir(){
-    printf("Exclusão não disponível\n");
+    char opcao;
 
+    printf("Qual deseja Excluir?\n"
+    "Jogo:\t 1\n"
+    "Livro:\t 2\n"
+    "Filme:\t 3\n"
+    );
+
+
+    scanf("%c", &opcao);
+    printf("\n\n");
+    getchar();
+
+
+    if (opcao == '1'){
+        printf("Exluindo seu interesse em jogo\n");
+        strcpy(jogo, "");
+        printf("%s",jogo);
+        printf("Exluído com sucesso\n");
+
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+
+    else if (opcao == '2'){
+        printf("Exluindo seu livro interessado\n");
+        strcpy(livro, "");
+        printf("%s",livro);
+        printf("Exluído com sucesso\n");
+
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
+
+    else if (opcao == '3'){
+        printf("Exluindo seu filme interessado\n");
+        strcpy(filme, "");
+        printf("%s",filme);
+        printf("Exluído com sucesso\n");
+        
+        printf("Aperte enter para continuar\n");
+        scanf("%c", &opcao);
+        getchar();
+    }
     return 0;
 }

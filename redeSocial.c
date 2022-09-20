@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 // Assinatura das funções:
 int menu_redeSocial();
