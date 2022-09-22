@@ -10,16 +10,21 @@
 // Assinatura das funções:
 int menu_principal(void);
 int modulo_usuario(char a[], char b[], char c[]);
-int modulo_redeSocial();
+int modulo_redeSocial(void);
 int menu_usuario(void);
 int menu_sobre(void);
 
 
 // variaveis globais
+
+// usuario.c
 char nome[50];
 char email[50];
 char telefone[20];
-
+//interesse.c
+char jogo[50];
+char livro[50];
+char filme[50];
 
 int main(void){
     setlocale (LC_ALL, "portuguese");
@@ -40,7 +45,7 @@ int main(void){
             modulo_redeSocial();
         }
         else if (opcao == '3'){
-            modulo_interesse();
+            modulo_interesse(jogo,livro,filme);
         }
         else if (opcao == '4'){
             menu_sobre();

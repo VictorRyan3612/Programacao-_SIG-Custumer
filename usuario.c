@@ -8,7 +8,7 @@
 int menu_usuario(void);
 int usuario_cadastro(char a[], char b[], char c[]);
 int usuario_vizualizar(char a[], char b[], char c[]);
-int usuario_pesquisar(void);
+int usuario_pesquisar(char a[], char b[], char c[]);
 int usuario_editar(char a[], char b[], char c[]);
 int usuario_excluir(char a[], char b[], char c[]);
 
@@ -37,7 +37,7 @@ int modulo_usuario(char a[], char b[], char c[]){
                 usuario_vizualizar(a,b, c);
             }
             else if (opcao == '3'){
-                usuario_pesquisar();
+                usuario_pesquisar(a,b,c);
             }
             else if (opcao == '4'){
                 usuario_editar(a, b, c);
@@ -137,7 +137,7 @@ int usuario_vizualizar(char a[], char b[], char c[]){
     return 0;
 }
 
-int usuario_pesquisar(void){
+int usuario_pesquisar(char a[], char b[], char c[]){
     printf("Busca não disponível\n");
 
     return 0;
