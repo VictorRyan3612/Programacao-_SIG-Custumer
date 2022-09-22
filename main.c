@@ -1,73 +1,53 @@
 #include <stdio.h>
 #include <locale.h>
-
+#include <stdlib.h>
+#include "biblio.h"
 // Para explicações sobre o código, por favor verificar o arquivo
 // detalhes.md
 
 
+// Assinatura das funções:
+int menu_principal(void);
+int modulo_usuario(void);
+int modulo_redeSocial(void);
+int menu_usuario(void);
+int menu_sobre(void);
+
+
+
 int main() {
+    setlocale (LC_ALL, "portuguese");
 
-    menu_Principal();
+    char opcao = '\0';
+    do {
+        system("cls||clear");
+        menu_principal();
 
-    int opcao = 0;
-    printf("Digite uma opção:\n");
-    scanf("%d", &opcao);
+        printf("Digite uma opção:\n");
+        scanf("%c", &opcao);
+        getchar();
 
-    if (opcao == 4)
-    {
-        menu_Sobre();
+        if (opcao == '1'){
+            modulo_usuario();
+        }
+        else if (opcao == '2'){
+            modulo_redeSocial();
+        }
+        else if (opcao == '3'){
+            modulo_interesse();
+        }
+        else if (opcao == '4'){
+            menu_sobre();
+        }
+        else if (opcao == '0'){
+            printf("Fechando...\n");
+        }
+        printf("Aperte enter para continuar\n");
+        getchar();
+        }
+
+        while (opcao != '0');
+        return 0;
     }
-    
-    
-    return 0;
-}
 
 
-int menu_Principal(){
-    setlocale (LC_ALL, "portuguese");
-
-    printf("\n"
-    "\t\t==============================\n"
-    "\t\tPrograma Controle de Clientes\n"
-    "\t\t==============================\n"
-    "\t\t1 - Módulo clientes\n"
-    "\t\t2 - Módulo em desenvolvimento\n"
-    "\t\t3 - Módulo em desenvolvimento\n"
-    "\t\t4 - Sobre e equipe\n"
-    "\t\t0 - Encerrar\n"
-    "\n"
-    );
-
-    
-
-    return 0;
-}
-
-int menu_Sobre(){
-    setlocale (LC_ALL, "portuguese");
-
-    printf("\n"
-
-    "\t\tSobre o projeto:\n"
-    "\tSIG-Custumer: Um sistema de controle de cliente\n"
-    "As empresas da atualidade utilizam complexos sistemas gerenciais para, "
-    "entre várias outras funções, gerenciar e manter seus clientes, "
-    "além de ajudar a conseguir novos clientes. "
-    "O presente projeto tem como objetivo propor um software que implementa "
-    "funcionalidades básicas relacionadas ao controle de clientes de uma empresa, "
-    "facilitando a gestão\n"
-    "\n\n"
-
-    "\t\tDiscente/Autor do Projeto:\n"
-    "Victor Ryan Galvão Silva\n"
-    "matrícula:20220035163\n"
-    "email:\n"
-    "vitorsilva3612@gmail.com\n"
-    "ryan.silva.706@ufrn.edu.br\n"
-    "\n"
-    );
-
-    printf("Aperte enter para continuar\n");
-    getch(); // Aperte enter para continuar
-    return 0;
-}
