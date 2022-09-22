@@ -2,23 +2,22 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
+#include "biblio.h"
 
 // Assinatura das funções:
 int menu_usuario(void);
-int usuario_cadastro(void);
-int usuario_vizualizar(void);
-int usuario_pesquisar(void);
-int usuario_editar(void);
-int usuario_excluir(void);
+int usuario_cadastro(char a[], char b[], char c[]);
+int usuario_vizualizar(char a[], char b[], char c[]);
+int usuario_pesquisar(char a[], char b[], char c[]);
+int usuario_editar(char a[], char b[], char c[]);
+int usuario_excluir(char a[], char b[], char c[]);
 
 
 //variaveis globais de usuario
-char nome[50];
-char email[50];
-char telefone[20];
 
 
-int modulo_usuario(void){
+
+int modulo_usuario(char a[], char b[], char c[]){
     
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
@@ -32,19 +31,19 @@ int modulo_usuario(void){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                usuario_cadastro();
+                usuario_cadastro(a, b, c);
             }
             else if (opcao == '2'){
-                usuario_vizualizar();
+                usuario_vizualizar(a,b, c);
             }
             else if (opcao == '3'){
-                usuario_pesquisar();
+                usuario_pesquisar(a,b,c);
             }
             else if (opcao == '4'){
-                usuario_editar();
+                usuario_editar(a, b, c);
             }
             else if (opcao == '5'){
-                usuario_excluir();
+                usuario_excluir(a, b, c);
             }
             
             else {
@@ -66,17 +65,17 @@ int modulo_usuario(void){
 
 
 
-int usuario_cadastro(void){
+int usuario_cadastro(char a[], char b[], char c[]){
     char resp;
 
     //nome
     do {
         printf("Informe seu nome:\n");
-        scanf("%[A-Z a-z]", nome);
+        scanf("%[A-Z a-z]", a);
         getchar();
 
         printf("Seu nome é esse?\n");
-        printf("%s", nome);
+        printf("%s", a);
         printf("\n\n");
         
         printf("(s para sim)\n");
@@ -88,11 +87,11 @@ int usuario_cadastro(void){
     //email
     do {
         printf("Informe seu email:\n");
-        scanf("%[A-Za-z0-9.@-]", email);
+        scanf("%[A-Za-z0-9.@-]", b);
         getchar();
 
         printf("Seu email é esse?\n");
-        printf("%s", email);
+        printf("%s", b);
         printf("\n\n");
 
         printf("(s para sim)\n");
@@ -104,11 +103,11 @@ int usuario_cadastro(void){
     //telefone
     do {
         printf("Informe seu telefone:\n");
-        scanf("%[0-9 +()-]", telefone);
+        scanf("%[0-9 +()-]", c);
         getchar();
 
         printf("Seu telefone é esse?\n");
-        printf("%s", telefone);
+        printf("%s", c);
         printf("\n\n");
 
         printf("(s para sim)\n");
@@ -119,32 +118,32 @@ int usuario_cadastro(void){
     return 0;
 }
 
-int usuario_vizualizar(void){
+int usuario_vizualizar(char a[], char b[], char c[]){
 
     printf("Seu nome é esse:\n");
-    printf("%s", nome);
+    printf("%s", a);
     printf("\n\n\n");
 
 
     printf("Seu email é esse:\n");
-    printf("%s", email);
+    printf("%s", b);
     printf("\n\n\n");
 
 
     printf("Seu telefone é esse:\n");
-    printf("%s", telefone);
+    printf("%s", c);
     printf("\n\n\n");
 
     return 0;
 }
 
-int usuario_pesquisar(void){
+int usuario_pesquisar(char a[], char b[], char c[]){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int usuario_editar(void){
+int usuario_editar(char a[], char b[], char c[]){
 
     char editar;
     printf("Digite o que deseja editar:\n\n");
@@ -164,17 +163,17 @@ int usuario_editar(void){
 
 
             printf("Seu atual nome é esse:\n");
-            printf("%s", nome);
+            printf("%s", a);
             printf("\n\n");
         do{
             printf("Informe seu novo nome:\n");
-            scanf("%[A-Z a-z]", nome);
+            scanf("%[A-Z a-z]", a);
             printf("\n\n");
             getchar();
 
 
             printf("Esse é seu nome?\n");
-            printf("%s", nome);
+            printf("%s", a);
             printf("\n\n");
 
             printf("(s para sim)\n");
@@ -188,16 +187,16 @@ int usuario_editar(void){
 
 
         printf("Seu atual email é esse:\n");
-        printf("%s", email);
+        printf("%s", b);
         printf("\n\n");
         do{
             printf("Informe seu novo email:\n");
-            scanf("%[A-Za-z0-9.,@-]", email);
+            scanf("%[A-Za-z0-9.,@-]", b);
             printf("\n\n");
             getchar();
 
             printf("Seu email novo é esse?\n");
-            printf("%s", email);
+            printf("%s", b);
             printf("\n\n");
 
             printf("(s para sim)\n");
@@ -212,16 +211,16 @@ int usuario_editar(void){
         char resp;
 
         printf("Seu atual telefone é esse:\n");
-        printf("%s", telefone);
+        printf("%s", c);
         printf("\n\n");
         do{
             printf("Informe seu novo telefone:\n");
-            scanf("%[0-9 +()-]", telefone);
+            scanf("%[0-9 +()-]", c);
             printf("\n\n");
             getchar();
 
             printf("Seu novo telefone é esse?\n");
-            printf("%s", telefone);
+            printf("%s", c);
             printf("\n\n");
 
             printf("(s para sim)\n");
@@ -234,12 +233,12 @@ int usuario_editar(void){
     return 0;
 }
 
-int usuario_excluir(void){
+int usuario_excluir(char a[], char b[], char c[]){
     char opcao;
 
     printf("Qual deseja Excluir?\n"
-    "Nome:\t 1\n"
-    "Email:\t 2\n"
+    "Nome:\t\t 1\n"
+    "Email:\t\t 2\n"
     "telefone:\t 3\n"
     );
 
@@ -251,8 +250,8 @@ int usuario_excluir(void){
 
     if (opcao == '1'){
         printf("Exluindo seu nome\n");
-        strcpy(nome, "");
-        printf("%s",nome);
+        strcpy(a, "");
+        printf("%s",a);
         printf("Exluído com sucesso\n");
 
         printf("Aperte enter para continuar\n");
@@ -262,8 +261,8 @@ int usuario_excluir(void){
 
     else if (opcao == '2'){
         printf("Exluindo seu email cadastrado\n");
-        strcpy(email, "");
-        printf("%s",email);
+        strcpy(b, "");
+        printf("%s",b);
         printf("Exluído com sucesso\n");
 
         printf("Aperte enter para continuar\n");
@@ -273,8 +272,8 @@ int usuario_excluir(void){
     
     else if (opcao == '3'){
         printf("Exluindo seu telefone cadastrado\n");
-        strcpy(telefone, "");
-        printf("%s",telefone);
+        strcpy(c, "");
+        printf("%s",c);
         printf("Exluído com sucesso\n");
         
         printf("Aperte enter para continuar\n");

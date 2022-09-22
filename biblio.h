@@ -10,30 +10,32 @@ int menu_redeSocial(void);
 
 int menu_interesse(void);
 
+int main(void);
+
 // in usuario.c
 
-int modulo_usuario(void);
+int modulo_usuario(char a[], char b[], char c[]);
 
-int usuario_cadastro(void);
-int usuario_vizualizar(void);
-int usuario_pesquisar(void);
-int usuario_editar(void);
-int usuario_excluir(void);
+int usuario_cadastro(char a[], char b[], char c[]);
+int usuario_vizualizar(char a[], char b[], char c[]);
+int usuario_pesquisar(char a[], char b[], char c[]);
+int usuario_editar(char a[], char b[], char c[]);
+int usuario_excluir(char a[], char b[], char c[]);
 
 // in redeSocial.c
 
-int modulo_redeSocial(void);
-int redeSocial_cadastro(void);
-int redeSocial_vizualizar(void);
-int redeSocial_pesquisar(void);
-int redeSocial_editar(void);
-int redeSocial_excluir(void);
+int modulo_redeSocial(char a[], char b[], char c[]);
+int redeSocial_cadastro(char a[], char b[], char c[]);
+int redeSocial_vizualizar(char a[], char b[], char c[]);
+int redeSocial_pesquisar(char a[], char b[], char c[]);
+int redeSocial_editar(char a[], char b[], char c[]);
+int redeSocial_excluir(char a[], char b[], char c[]);
 
 // in interesses.c
 
-int modulo_interesse(void);
-int interesse_cadastro(void);
-int interesse_vizualizar(void);
-int interesse_pesquisar(void);
-int interesse_editar(void);
-int interesse_excluir(void);
+int modulo_interesse(char a[], char b[], char c[]);
+int interesse_cadastro(char a[], char b[], char c[]);
+int interesse_vizualizar(char a[], char b[], char c[]);
+int interesse_pesquisar(char a[], char b[], char c[]);
+int interesse_editar(char a[], char b[], char c[]);
+int interesse_excluir(char a[], char b[], char c[]);
