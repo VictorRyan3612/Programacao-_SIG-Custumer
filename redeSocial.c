@@ -13,6 +13,7 @@ int redeSocial_excluir(char a[], char b[], char c[]);
 
 
 
+
 int modulo_redeSocial(char a[], char b[], char c[]){
 
     setlocale (LC_ALL, "portuguese");

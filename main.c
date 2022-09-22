@@ -15,9 +15,7 @@ int modulo_redeSocial(char a[], char b[], char c[]);
 int modulo_interesse(char a[], char b[], char c[]);
 
 
-
 // variaveis globais
-
 // usuario.c
 char nome[50];
 char email[50];
@@ -30,6 +28,7 @@ char filme[50];
 char steam[50];
 char twitter[30];
 char youtube[50];
+
 
 
 
