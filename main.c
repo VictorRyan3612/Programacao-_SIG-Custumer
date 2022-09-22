@@ -2,20 +2,26 @@
 #include <locale.h>
 #include <stdlib.h>
 #include "biblio.h"
+
 // Para explicações sobre o código, por favor verificar o arquivo
 // detalhes.md
 
 
 // Assinatura das funções:
 int menu_principal(void);
-int modulo_usuario(void);
-int modulo_redeSocial(void);
+int modulo_usuario(char a[], char b[], char c[]);
+int modulo_redeSocial();
 int menu_usuario(void);
 int menu_sobre(void);
 
 
+// variaveis globais
+char nome[50];
+char email[50];
+char telefone[20];
 
-int main() {
+
+int main(void){
     setlocale (LC_ALL, "portuguese");
 
     char opcao = '\0';
@@ -28,7 +34,7 @@ int main() {
         getchar();
 
         if (opcao == '1'){
-            modulo_usuario();
+            modulo_usuario(nome, email, telefone);
         }
         else if (opcao == '2'){
             modulo_redeSocial();
