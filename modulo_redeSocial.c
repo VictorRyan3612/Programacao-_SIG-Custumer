@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
+#include "biblio.h"
 
 // Assinatura das funções:
 int menu_redeSocial(void);
@@ -64,7 +65,7 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
 
-    printf("Qual deseja Cadastrar?\n"
+    printf("\nQual deseja Cadastrar?\n"
     "Steam:\t\t 1\n"
     "Twitter:\t 2\n"
     "Youtube:\t 3\n"
@@ -81,17 +82,9 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
         do {
             printf("Informe seu perfil da steam:\n");
             scanf("%[A-Za-z0-9]", a);
-            printf("\n\n");
             getchar();
         
-
-            printf("Sua steam é esse?\n");
-            printf("%s", a);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
     
@@ -101,17 +94,9 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
         do {
             printf("Informe seu twitter:\n");
             scanf("%[A-Za-z0-9@_.]", b);
-            printf("\n\n");
             getchar();
 
-
-            printf("Seu twitter é esse?\n");
-            printf("%s", b);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);;
         } while (resp != 's');
     }
 
@@ -121,15 +106,8 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             printf("Informe seu canal do youtube:\n");
             scanf("%[A-Za-z 0-9]", c);
             getchar();
-            printf("\n\n");
 
-            printf("Seu youtube é esse?\n");
-            printf("%s", c);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
     return 0;
@@ -162,16 +140,16 @@ int redeSocial_pesquisar(char a[], char b[], char c[]){
 
 int redeSocial_editar(char a[], char b[], char c[]){
     char editar;
-    printf("Digite o que deseja editar:\n\n");
+
+    printf("\nDigite o que deseja editar:\n\n");
     printf("\n"
         "Steam:\t\t 1\n"
         "Twitter:\t 2\n"
         "Youtube:\t 3\n");
     
     scanf("%[1-3]", &editar);   
-    printf("\n\n");
     getchar();
-
+    printf("\n\n");
     
     // Editar steam
     if (editar == '1'){
@@ -183,16 +161,9 @@ int redeSocial_editar(char a[], char b[], char c[]){
         do{
             printf("Informe seu novo perfil steam:\n");
             scanf("%[A-Z a-z]", a);
-            printf("\n");
             getchar();
 
-            printf("Seu perfil da steam é esse?\n");
-            printf("%s", a);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
 }
     // Editar twitter
@@ -206,16 +177,9 @@ int redeSocial_editar(char a[], char b[], char c[]){
         do{
             printf("Informe seu novo twitter:\n");
             scanf("%[A-Za-z0-9.,@-]", b);
-            printf("\n\n");
             getchar();
 
-            printf("Seu twitter novo é esse?\n");
-            printf("%s", b);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
             } while (resp != 's');
     }
 
@@ -225,22 +189,15 @@ int redeSocial_editar(char a[], char b[], char c[]){
         char resp;
 
 
-            printf("Seu atual canal do youtube é esse:\n");
-            printf("%s", c);
-            printf("\n\n");
+        printf("Seu atual canal do youtube é esse:\n");
+        printf("%s", c);
+        printf("\n\n");
         do{
             printf("Informe seu novo canal do youtube:\n");
             scanf("%[0-9 +()-]", c);
-            printf("\n\n");
             getchar();
 
-            printf("Seu novo youtube é esse?\n");
-            printf("%s", c);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
 

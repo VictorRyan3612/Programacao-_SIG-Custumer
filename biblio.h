@@ -12,7 +12,12 @@ int menu_interesse(void);
 
 int main(void);
 
+// funcoes_aux.c
+
+char confirmacao(char);
+
 // in usuario.c
+
 
 int modulo_usuario(char a[], char b[], char c[]);
 

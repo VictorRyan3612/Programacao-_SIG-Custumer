@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
+#include "biblio.h"
 
 // Assinatura das funções:
 int menu_interesse();
@@ -79,21 +80,16 @@ int interesse_cadastro(char a[], char b[], char c[]){
     printf("\n\n");
     getchar();
 
+    printf("\n");
+
     //Jogo
     if (opcao == '1'){
         do {
             printf("Informe qual jogo está interessado:\n");
             scanf("%[A-Za-z0-9 ']", a);
-            printf("\n\n");
             getchar();
 
-            printf("Está interessado nesse jogo?\n");
-            printf("%s", a);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
 
@@ -103,17 +99,10 @@ int interesse_cadastro(char a[], char b[], char c[]){
         do {
             printf("Informe qual livro está interessado:\n");
             scanf("%[A-Za-z0-9 .,'""()]", b);
-            printf("\n\n");
             getchar();
 
 
-            printf("Está interessado nesse livro?\n");
-            printf("%s", b);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
     //Filme
@@ -121,16 +110,9 @@ int interesse_cadastro(char a[], char b[], char c[]){
         do{
             printf("Informe qual filme está interessado:\n");
             scanf("%[A-Za-z0-9]", c);
-            printf("\n\n");
             getchar();
 
-            printf("Está interessado nesse filme?\n");
-            printf("%s", c);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     } 
     return 0;
@@ -163,7 +145,8 @@ int interesse_pesquisar(char a[], char b[], char c[]){
 
 int interesse_editar(char a[], char b[], char c[]){
     char editar;
-    printf("Digite o que deseja editar:\n\n");
+
+    printf("\nDigite o que deseja editar:\n\n");
     printf("\n"
         "Jogo:\t 1\n"
         "Livro:\t 2\n"
@@ -171,6 +154,7 @@ int interesse_editar(char a[], char b[], char c[]){
     
     scanf("%[1-3]", &editar);
     getchar();
+    printf("\n");
 
     
     // Editar Jogo
@@ -183,17 +167,9 @@ int interesse_editar(char a[], char b[], char c[]){
         do{
             printf("Informe qual jogo está interessado:\n");
             scanf("%[A-Z a-z0-9 ,.'""()]", a);
-            printf("\n\n");
             getchar();
 
-
-            printf("Esse é seu novo interesse?\n");
-            printf("%s", a);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
             } while (resp != 's');
     }
     
@@ -207,16 +183,9 @@ int interesse_editar(char a[], char b[], char c[]){
         do{
             printf("Informe qual livro está interessado:\n");
             scanf("%[A-Za-z0-9 ,.'""()]", b);
-            printf("\n\n");
             getchar();
 
-            printf("Esse é seu novo interesse?\n");
-            printf("%s", b);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
             } while (resp != 's');
     }
 
@@ -226,22 +195,15 @@ int interesse_editar(char a[], char b[], char c[]){
         char resp;
 
 
-            printf("Seu atual interesse em filme é:\n");
-            printf("%s", c);
-            printf("\n\n");
+        printf("Seu atual interesse em filme é:\n");
+        printf("%s", c);
+        printf("\n\n");
         do{
             printf("Informe qual filme está interessado:\n");
             scanf("%[A-Za-z0-9 ,.()'""]", c);
-            printf("\n\n");
             getchar();
 
-            printf("Esse é seu novo interesse?\n");
-            printf("%s", c);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
 

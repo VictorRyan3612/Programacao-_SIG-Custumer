@@ -67,6 +67,7 @@ int modulo_usuario(char a[], char b[], char c[]){
 
 int usuario_cadastro(char a[], char b[], char c[]){
     char resp;
+    printf("\n");
 
     //nome
     do {
@@ -74,13 +75,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%[A-Z a-z]", a);
         getchar();
 
-        printf("Seu nome é esse?\n");
-        printf("%s", a);
-        printf("\n\n");
-        
-        printf("(s para sim)\n");
-        scanf("%c", &resp);
-        getchar();
+        resp = confirmacao(resp);
         } while (resp != 's');
 
 
@@ -89,14 +84,8 @@ int usuario_cadastro(char a[], char b[], char c[]){
         printf("Informe seu email:\n");
         scanf("%[A-Za-z0-9.@-]", b);
         getchar();
-
-        printf("Seu email é esse?\n");
-        printf("%s", b);
-        printf("\n\n");
-
-        printf("(s para sim)\n");
-        scanf("%c", &resp);
-        getchar();
+        
+        resp = confirmacao(resp);
         } while (resp != 's');
 
 
@@ -106,13 +95,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%[0-9 +()-]", c);
         getchar();
 
-        printf("Seu telefone é esse?\n");
-        printf("%s", c);
-        printf("\n\n");
-
-        printf("(s para sim)\n");
-        scanf("%c", &resp);
-        getchar();
+        resp = confirmacao(resp);
         } while (resp != 's');
 
     return 0;
@@ -144,9 +127,8 @@ int usuario_pesquisar(char a[], char b[], char c[]){
 }
 
 int usuario_editar(char a[], char b[], char c[]){
-
     char editar;
-    printf("Digite o que deseja editar:\n\n");
+    printf("\nDigite o que deseja editar:\n\n");
     printf("\n"
         "Nome:\t\t 1\n"
         "Email:\t\t 2\n"
@@ -154,37 +136,27 @@ int usuario_editar(char a[], char b[], char c[]){
     
     scanf("%[1-3]", &editar);   
     getchar();
-
+    printf("\n");
     
 
     // Editar nome
     if (editar == '1'){
         char resp;
 
-
-            printf("Seu atual nome é esse:\n");
-            printf("%s", a);
-            printf("\n\n");
+        printf("Seu atual nome é esse:\n");
+        printf("%s", a);
+        printf("\n\n");
         do{
             printf("Informe seu novo nome:\n");
             scanf("%[A-Z a-z]", a);
-            printf("\n\n");
             getchar();
 
-
-            printf("Esse é seu nome?\n");
-            printf("%s", a);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
             } while (resp != 's');
     }
     // Editar email
     else if (editar == '2'){
         char resp;
-
 
         printf("Seu atual email é esse:\n");
         printf("%s", b);
@@ -192,16 +164,9 @@ int usuario_editar(char a[], char b[], char c[]){
         do{
             printf("Informe seu novo email:\n");
             scanf("%[A-Za-z0-9.,@-]", b);
-            printf("\n\n");
             getchar();
 
-            printf("Seu email novo é esse?\n");
-            printf("%s", b);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
             } while (resp != 's');
     }
 
@@ -216,20 +181,11 @@ int usuario_editar(char a[], char b[], char c[]){
         do{
             printf("Informe seu novo telefone:\n");
             scanf("%[0-9 +()-]", c);
-            printf("\n\n");
             getchar();
 
-            printf("Seu novo telefone é esse?\n");
-            printf("%s", c);
-            printf("\n\n");
-
-            printf("(s para sim)\n");
-            scanf("%c", &resp);
-            getchar();
+            resp = confirmacao(resp);
         } while (resp != 's');
     }
-
-
     return 0;
 }
 
@@ -281,6 +237,5 @@ int usuario_excluir(char a[], char b[], char c[]){
         getchar();
     }
 
-    
     return 0;
 }
