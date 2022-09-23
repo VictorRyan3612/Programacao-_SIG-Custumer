@@ -1,4 +1,4 @@
-//in main.c ↓
+//menus.c ↓
 
 int menu_sobre(void);
 
