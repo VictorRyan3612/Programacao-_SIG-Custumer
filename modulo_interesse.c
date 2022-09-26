@@ -67,12 +67,10 @@ int modulo_interesse(char a[], char b[], char c[]){
 }
 
 
-
 int interesse_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
 
-    printf("\n");
     opcoes_interesse();
     opcao = opcoes_pergunta();
 
@@ -143,21 +141,14 @@ int interesse_pesquisar(char a[], char b[], char c[]){
 }
 
 int interesse_editar(char a[], char b[], char c[]){
-    char editar;
+    char opcao;
 
-    printf("\nDigite o que deseja editar:\n\n");
-    printf("\n"
-        "Jogo:\t 1\n"
-        "Livro:\t 2\n"
-        "filme:\t 3\n");
-    
-    scanf("%[1-3]", &editar);
-    getchar();
-    printf("\n");
+    opcoes_interesse();
+    opcao = opcoes_pergunta();
 
     
     // Editar Jogo
-    if (editar == '1'){
+    if (opcao == '1'){
         char resp;
 
         printf("Seu atual interesse em jogo é:\n");
@@ -173,7 +164,7 @@ int interesse_editar(char a[], char b[], char c[]){
     }
     
     // Editar livro
-    else if (editar == '2'){
+    else if (opcao == '2'){
         char resp;
 
         printf("Seu atual interesse em livro é:\n");
@@ -190,7 +181,7 @@ int interesse_editar(char a[], char b[], char c[]){
 
         
     // Editar filme
-    else if (editar == '3'){
+    else if (opcao == '3'){
         char resp;
 
 

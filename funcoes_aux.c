@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "biblio.h"
 
+
 char confirmacao(char resp){
 
     printf("\n");
@@ -11,23 +12,31 @@ char confirmacao(char resp){
     return resp;
 }
 
-
 char opcoes_pergunta(void){
     char opcoes;
-    scanf("%c", &opcoes);
+    scanf("%[1-3]", &opcoes);
     printf("\n\n");
     getchar();
     return opcoes;
 }
 
-void opcoes_interesse(void){
-    printf("Qual deseja Cadastrar?\n"
-    "Jogo:\t 1\n"
-    "Livro:\t 2\n"
-    "Filme:\t 3\n"
+void opcoes_redeSocial(void){
+    printf("\n");
+    printf("Digite qual deseja:\n"
+        "Steam:\t\t 1\n"
+        "Twitter:\t 2\n"
+        "Youtube:\t 3\n"
     );
 }
 
+void opcoes_interesse(void){
+    printf("\n");
+    printf("Digite qual deseja:\n"
+        "Jogo:\t 1\n"
+        "Livro:\t 2\n"
+        "Filme:\t 3\n"
+    );
+}
 
 void vizualizar_lista(char a[]){
     int i;

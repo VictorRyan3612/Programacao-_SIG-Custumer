@@ -12,6 +12,8 @@ int redeSocial_pesquisar(char a[], char b[], char c[]);
 int redeSocial_editar(char a[], char b[], char c[]);
 int redeSocial_excluir(char a[], char b[], char c[]);
 
+char opcoes_pergunta(void);
+void opcoes_redeSocial(void);
 
 
 
@@ -65,16 +67,8 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
 
-    printf("\nQual deseja Cadastrar?\n"
-    "Steam:\t\t 1\n"
-    "Twitter:\t 2\n"
-    "Youtube:\t 3\n"
-    );
-
-    scanf("%c", &opcao);
-    printf("\n\n");
-    getchar();
-    
+    opcoes_redeSocial();
+    opcao = opcoes_pergunta();
 
 
     //steam
@@ -116,17 +110,17 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
 int redeSocial_vizualizar(char a[], char b[], char c[]){
 
     printf("Seu perfil do steam é essa:\n");
-    printf("%s", a);
+    vizualizar_lista(a);
     printf("\n\n\n");
 
 
     printf("Seu twitter é esse:\n");
-    printf("%s", b);
+    vizualizar_lista(b);
     printf("\n\n\n");
 
 
     printf("Seu canal do youtube é esse:\n");
-    printf("%s", c);
+    vizualizar_lista(c);
     printf("\n\n\n");
 
     return 0;
@@ -139,20 +133,14 @@ int redeSocial_pesquisar(char a[], char b[], char c[]){
 }
 
 int redeSocial_editar(char a[], char b[], char c[]){
-    char editar;
+    char opcao;
 
-    printf("\nDigite o que deseja editar:\n\n");
-    printf("\n"
-        "Steam:\t\t 1\n"
-        "Twitter:\t 2\n"
-        "Youtube:\t 3\n");
-    
-    scanf("%[1-3]", &editar);   
-    getchar();
-    printf("\n\n");
+    opcoes_redeSocial();
+    opcao = opcoes_pergunta();
+
     
     // Editar steam
-    if (editar == '1'){
+    if (opcao == '1'){
         char resp;
 
         printf("Seu atual perfil da steam é esse:\n");
@@ -167,7 +155,7 @@ int redeSocial_editar(char a[], char b[], char c[]){
         } while (resp != 's');
 }
     // Editar twitter
-    else if (editar == '2'){
+    else if (opcao == '2'){
         char resp;
 
 
@@ -185,7 +173,7 @@ int redeSocial_editar(char a[], char b[], char c[]){
 
         
     // Editar youtube
-    else if (editar == '3'){
+    else if (opcao == '3'){
         char resp;
 
 
