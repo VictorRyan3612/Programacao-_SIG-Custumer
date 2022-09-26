@@ -68,7 +68,6 @@ int modulo_interesse(char a[], char b[], char c[]){
 int interesse_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
-    printf("No momento, apenas 1 interesse está disponível\n\n");
 
     printf("Qual deseja Cadastrar?\n"
     "Jogo:\t 1\n"
@@ -86,7 +85,8 @@ int interesse_cadastro(char a[], char b[], char c[]){
     if (opcao == '1'){
         do {
             printf("Informe qual jogo está interessado:\n");
-            scanf("%[A-Za-z0-9 ']", a);
+            printf("use ; para mais de um\n");
+            scanf("%[A-Za-z0-9 ;']", a);
             getchar();
 
             resp = confirmacao(resp);
@@ -98,7 +98,8 @@ int interesse_cadastro(char a[], char b[], char c[]){
     if (opcao == '2'){
         do {
             printf("Informe qual livro está interessado:\n");
-            scanf("%[A-Za-z0-9 .,'""()]", b);
+            printf("use ; para mais de um\n");
+            scanf("%[A-Za-z0-9 .,'""();]", b);
             getchar();
 
 
@@ -109,7 +110,8 @@ int interesse_cadastro(char a[], char b[], char c[]){
     if (opcao == '3'){
         do{
             printf("Informe qual filme está interessado:\n");
-            scanf("%[A-Za-z0-9]", c);
+            printf("use ; para mais de um\n");
+            scanf("%[A-Za-z0-9';]", c);
             getchar();
 
             resp = confirmacao(resp);
@@ -118,20 +120,32 @@ int interesse_cadastro(char a[], char b[], char c[]){
     return 0;
 }
 
-int interesse_vizualizar(char a[], char b[], char c[]){
+void vizualizar_lista(char a[]){
+    int i;
+    i = '\0';
+    while (a[i] != '\0'){
+        if(a[i] == ';'){
+            printf("\n");
+        } else{
+            printf("%c",a[i]);
+        }
+        i++;
+    }
+}
 
+int interesse_vizualizar(char a[], char b[], char c[]){
+    
     printf("Esse é o jogo que está interessado:\n");
-    printf("%s", a);
+    vizualizar_lista(a);
     printf("\n\n\n");
 
-
     printf("Esse é o livro que está interessado:\n");
-    printf("%s", b);
+    vizualizar_lista(b);
     printf("\n\n\n");
 
 
     printf("Esse é o filme que está interessado:\n");
-    printf("%s", c);
+    vizualizar_lista(c);
     printf("\n\n\n");
 
     return 0;
