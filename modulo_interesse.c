@@ -12,6 +12,9 @@ int interesse_pesquisar(char a[], char b[], char c[]);
 int interesse_editar(char a[], char b[], char c[]);
 int interesse_excluir(char a[], char b[], char c[]);
 
+char opcoes_pergunta(void);
+void opcoes_interesse(void);
+
 
 //variaveis globais de redeSocial
 
@@ -69,24 +72,17 @@ int interesse_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
 
-    printf("Qual deseja Cadastrar?\n"
-    "Jogo:\t 1\n"
-    "Livro:\t 2\n"
-    "Filme:\t 3\n"
-    );
-
-    scanf("%c", &opcao);
-    printf("\n\n");
-    getchar();
-
     printf("\n");
+    opcoes_interesse();
+    opcao = opcoes_pergunta();
+
 
     //Jogo
     if (opcao == '1'){
         do {
             printf("Informe qual jogo está interessado:\n");
-            printf("use ; para mais de um\n");
-            scanf("%[A-Za-z0-9 ;']", a);
+            printf("(use ; para mais de um)\n");
+            scanf("%[A-Za-z0-9 .,;'""()]", a);
             getchar();
 
             resp = confirmacao(resp);
@@ -99,7 +95,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
         do {
             printf("Informe qual livro está interessado:\n");
             printf("use ; para mais de um\n");
-            scanf("%[A-Za-z0-9 .,'""();]", b);
+            scanf("%[A-Za-z0-9 .,;'""()]", b);
             getchar();
 
 
@@ -111,7 +107,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
         do{
             printf("Informe qual filme está interessado:\n");
             printf("use ; para mais de um\n");
-            scanf("%[A-Za-z0-9';]", c);
+            scanf("%[A-Za-z0-9 .,;'""()]", c);
             getchar();
 
             resp = confirmacao(resp);
@@ -120,18 +116,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
     return 0;
 }
 
-void vizualizar_lista(char a[]){
-    int i;
-    i = '\0';
-    while (a[i] != '\0'){
-        if(a[i] == ';'){
-            printf("\n");
-        } else{
-            printf("%c",a[i]);
-        }
-        i++;
-    }
-}
+
 
 int interesse_vizualizar(char a[], char b[], char c[]){
     

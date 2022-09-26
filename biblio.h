@@ -15,6 +15,10 @@ int main(void);
 // funcoes_aux.c
 
 char confirmacao(char);
+char opcoes_pergunta(void);
+
+void opcoes_interesse(void);
+void vizualizar_lista(char a[]);
 
 // in usuario.c
 
