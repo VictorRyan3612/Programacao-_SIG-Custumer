@@ -29,14 +29,6 @@ void opcoes_redeSocial(void){
     );
 }
 
-void opcoes_interesse(void){
-    printf("\n");
-    printf("Digite qual deseja:\n"
-        "Jogo:\t 1\n"
-        "Livro:\t 2\n"
-        "Filme:\t 3\n"
-    );
-}
 
 void vizualizar_lista(char a[]){
     int i;

@@ -13,8 +13,9 @@ int interesse_editar(char a[], char b[], char c[]);
 int interesse_excluir(char a[], char b[], char c[]);
 
 char opcoes_pergunta(void);
-void opcoes_interesse(void);
-
+void menu_interesse_cadastro(void);
+void menu_interesse_editar(void);
+void menu_interesse_excluir(void);
 
 //variaveis globais de redeSocial
 
@@ -70,8 +71,8 @@ int modulo_interesse(char a[], char b[], char c[]){
 int interesse_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
-
-    opcoes_interesse();
+    
+    menu_interesse_cadastro();
     opcao = opcoes_pergunta();
 
 
@@ -143,7 +144,7 @@ int interesse_pesquisar(char a[], char b[], char c[]){
 int interesse_editar(char a[], char b[], char c[]){
     char opcao;
 
-    opcoes_interesse();
+    menu_interesse_editar();
     opcao = opcoes_pergunta();
 
     
@@ -204,16 +205,8 @@ int interesse_editar(char a[], char b[], char c[]){
 int interesse_excluir(char a[], char b[], char c[]){
     char opcao;
 
-    printf("Qual deseja Excluir?\n"
-    "Jogo:\t 1\n"
-    "Livro:\t 2\n"
-    "Filme:\t 3\n"
-    );
-
-
-    scanf("%c", &opcao);
-    printf("\n\n");
-    getchar();
+    menu_interesse_excluir();
+    opcao = opcoes_pergunta();
 
 
     if (opcao == '1'){

@@ -1,3 +1,5 @@
+int main(void);
+
 //menus.c ↓
 
 int menu_sobre(void);
@@ -9,8 +11,10 @@ int menu_usuario(void);
 int menu_redeSocial(void);
 
 int menu_interesse(void);
+void menu_interesse_cadastro(void);
+void menu_interesse_editar(void);
+void menu_interesse_excluir(void);
 
-int main(void);
 
 // funcoes_aux.c
 

@@ -99,3 +99,53 @@ int menu_interesse(void){
         );
         return 0;
 }
+
+void menu_interesse_cadastro(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####            Cadastro de Interesse          ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Jogo:  1                    ####\n"
+        "####               Livro: 2                    ####\n"
+        "####               Filme: 3                    ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+void menu_interesse_editar(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####              Edição de Interesse          ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Jogo:  1                    ####\n"
+        "####               Livro: 2                    ####\n"
+        "####               Filme: 3                    ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+
+void menu_interesse_excluir(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####            Exclusão de Interesse          ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Jogo:  1                    ####\n"
+        "####               Livro: 2                    ####\n"
+        "####               Filme: 3                    ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
