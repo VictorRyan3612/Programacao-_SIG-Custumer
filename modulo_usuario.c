@@ -73,11 +73,17 @@ int modulo_usuario(char a[], char b[], char c[]){
 int usuario_cadastro(char a[], char b[], char c[]){
     char resp;
 
-    
+    system("cls||clear");
+    printf("\n");
 
     //nome
     do {
-        printf("Informe seu nome:\n");
+        printf(""
+            "=======================================\n"
+            "====       Informe seu nome:       ====\n"
+            "=======================================\n"
+        );
+        printf("\n");
         scanf("%[A-Z a-z]", a);
         getchar();
 
@@ -87,7 +93,12 @@ int usuario_cadastro(char a[], char b[], char c[]){
 
     //email
     do {
-        printf("Informe seu email:\n");
+        printf(""
+            "=======================================\n"
+            "====       Informe seu email:      ====\n"
+            "=======================================\n"
+        );
+        printf("\n");
         scanf("%[A-Za-z0-9.@-]", b);
         getchar();
         
@@ -97,7 +108,12 @@ int usuario_cadastro(char a[], char b[], char c[]){
 
     //telefone
     do {
-        printf("Informe seu telefone:\n");
+        printf(""
+            "=======================================\n"
+            "====     Informe seu telefone:     ====\n"
+            "=======================================\n"
+        );
+        printf("\n");
         scanf("%[0-9 +()-]", c);
         getchar();
 
@@ -198,7 +214,7 @@ int usuario_excluir(char a[], char b[], char c[]){
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
     usuario_vizualizar(a,b,c);
-    
+
     opcao = opcoes_pergunta();
 
     resp = confirmacao();

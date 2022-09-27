@@ -76,7 +76,7 @@ printf(""
         "===================================================\n"
         "===================================================\n"
     );
-        return 0;
+    return 0;
 }
 
 int menu_redeSocial(void){
@@ -102,7 +102,7 @@ printf(""
         "===================================================\n"
         "===================================================\n"
     );
-        return 0;
+    return 0;
 }
 
 int menu_interesse(void){
@@ -128,7 +128,8 @@ int menu_interesse(void){
         "===================================================\n"
         "===================================================\n"
     );
-        return 0;
+    printf("\n\n");
+    return 0;
 }
 
 /////// Interesse
@@ -148,6 +149,7 @@ void menu_interesse_cadastro(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 void menu_interesse_editar(void){
@@ -166,6 +168,7 @@ void menu_interesse_editar(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 void menu_interesse_excluir(void){
@@ -184,6 +187,7 @@ void menu_interesse_excluir(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 
@@ -205,6 +209,7 @@ void menu_redeSocial_cadastro(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 void menu_redeSocial_editar(void){
@@ -223,6 +228,7 @@ void menu_redeSocial_editar(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 void menu_redeSocial_excluir(void){
@@ -241,6 +247,7 @@ void menu_redeSocial_excluir(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 
@@ -270,6 +277,7 @@ void menu_usuario_editar(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }
 
 void menu_usuario_excluir(void){
@@ -288,4 +296,5 @@ void menu_usuario_excluir(void){
         "####                                           ####\n"
         "###################################################\n"
     );
+    printf("\n\n");
 }

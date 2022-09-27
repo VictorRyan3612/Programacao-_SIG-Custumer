@@ -80,7 +80,12 @@ int interesse_cadastro(char a[], char b[], char c[]){
     //Jogo
     if (opcao == '1'){
         do {
-            printf("Informe qual jogo está interessado:\n");
+            printf(""
+                "=======================================\n"
+                "====  Qual jogo está interessado:  ====\n"
+                "=======================================\n"
+                );
+            printf("\n");
             printf("(use ; para mais de um)\n");
             scanf("%[A-Za-z0-9 .,;'""()]", a);
             getchar();
@@ -93,7 +98,12 @@ int interesse_cadastro(char a[], char b[], char c[]){
     //Livro
     if (opcao == '2'){
         do {
-            printf("Informe qual livro está interessado:\n");
+            printf(""
+                "=======================================\n"
+                "====  Qual livro está interessado: ====\n"
+                "=======================================\n"
+                );
+            printf("\n");
             printf("use ; para mais de um\n");
             scanf("%[A-Za-z0-9 .,;'""()]", b);
             getchar();
@@ -105,7 +115,12 @@ int interesse_cadastro(char a[], char b[], char c[]){
     //Filme
     if (opcao == '3'){
         do{
-            printf("Informe qual filme está interessado:\n");
+            printf(""
+                "=======================================\n"
+                "====  Qual Filme está interessado: ====\n"
+                "=======================================\n"
+                );
+            printf("\n");
             printf("use ; para mais de um\n");
             scanf("%[A-Za-z0-9 .,;'""()]", c);
             getchar();

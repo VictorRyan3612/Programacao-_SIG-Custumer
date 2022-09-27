@@ -38,7 +38,7 @@ int main(void){
     do {
         system("cls||clear");
         menu_principal();
-
+        printf("\n\n");
         printf("Digite uma opção:\n");
         scanf("%c", &opcao);
         getchar();

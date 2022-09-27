@@ -80,7 +80,12 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
     //steam
     if (opcao == '1'){
         do {
-            printf("Informe seu perfil da steam:\n");
+            printf(""
+                "=======================================\n"
+                "====  Informe seu perfil da steam: ====\n"
+                "=======================================\n"
+                );
+            printf("\n");
             scanf("%[A-Za-z0-9]", a);
             getchar();
         
@@ -92,7 +97,12 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
     //twitter
     if (opcao == '2'){
         do {
-            printf("Informe seu twitter:\n");
+            printf(""
+                "=======================================\n"
+                "====     Informe seu Twitter:      ====\n"
+                "=======================================\n"
+                );
+            printf("\n");
             scanf("%[A-Za-z0-9@_.]", b);
             getchar();
 
@@ -103,7 +113,12 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
     //youtube
     if (opcao == '3'){
         do {
-            printf("Informe seu canal do youtube:\n");
+            printf(""
+                "=======================================\n"
+                "====     Informe seu Youtube:      ====\n"
+                "=======================================\n"
+                );
+            printf("\n");
             scanf("%[A-Za-z 0-9]", c);
             getchar();
 
@@ -204,7 +219,7 @@ int redeSocial_excluir(char a[], char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    
+
     redeSocial_vizualizar(a,b,c);
 
     opcao = opcoes_pergunta();
