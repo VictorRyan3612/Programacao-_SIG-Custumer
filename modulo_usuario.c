@@ -169,7 +169,7 @@ int usuario_editar(char a[], char b[], char c[]){
         do{
             printf(""
                 "=======================================\n"
-                "====      Informe o atualizado     ====\n"
+                "====      Informe o atualizado:    ====\n"
                 "=======================================\n"
             );
             scanf("%[A-Z a-z]", a);
@@ -186,7 +186,7 @@ int usuario_editar(char a[], char b[], char c[]){
         do{
             printf(""
                 "=======================================\n"
-                "====      Informe o atualizado     ====\n"
+                "====      Informe o atualizado:    ====\n"
                 "=======================================\n"
             );
             printf("\n");
@@ -206,7 +206,7 @@ int usuario_editar(char a[], char b[], char c[]){
         do{
             printf(""
                 "=======================================\n"
-                "====      Informe o atualizado     ====\n"
+                "====      Informe o atualizado:    ====\n"
                 "=======================================\n"
             );
             printf("\n");
