@@ -102,6 +102,7 @@ int menu_interesse(void){
 
 /////// Interesse
 void menu_interesse_cadastro(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -119,6 +120,7 @@ void menu_interesse_cadastro(void){
 }
 
 void menu_interesse_editar(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -136,6 +138,7 @@ void menu_interesse_editar(void){
 }
 
 void menu_interesse_excluir(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -156,6 +159,7 @@ void menu_interesse_excluir(void){
 
 ////// Rede Social
 void menu_redeSocial_cadastro(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -173,6 +177,7 @@ void menu_redeSocial_cadastro(void){
 }
 
 void menu_redeSocial_editar(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -190,6 +195,7 @@ void menu_redeSocial_editar(void){
 }
 
 void menu_redeSocial_excluir(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -211,6 +217,7 @@ void menu_redeSocial_excluir(void){
 
 ///// Usuário
 void menu_usuario_editar(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -228,6 +235,7 @@ void menu_usuario_editar(void){
 }
 
 void menu_usuario_excluir(void){
+    setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"

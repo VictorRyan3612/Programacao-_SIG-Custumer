@@ -84,7 +84,7 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             scanf("%[A-Za-z0-9]", a);
             getchar();
         
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
     
@@ -96,7 +96,7 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             scanf("%[A-Za-z0-9@_.]", b);
             getchar();
 
-            resp = confirmacao(resp);;
+            resp = confirmacao();
         } while (resp != 's');
     }
 
@@ -107,13 +107,14 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             scanf("%[A-Za-z 0-9]", c);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
     return 0;
 }
 
 int redeSocial_vizualizar(char a[], char b[], char c[]){
+    printf("\n");
 
     printf("Seu perfil do steam é essa:\n");
     vizualizar_lista(a);
@@ -140,6 +141,7 @@ int redeSocial_pesquisar(char a[], char b[], char c[]){
 
 int redeSocial_editar(char a[], char b[], char c[]){
     char opcao;
+    char resp;
 
     menu_redeSocial_editar();
     opcao = opcoes_pergunta();
@@ -147,8 +149,6 @@ int redeSocial_editar(char a[], char b[], char c[]){
     
     // Editar steam
     if (opcao == '1'){
-        char resp;
-
         printf("Seu atual perfil da steam é esse:\n");
         printf("%s", a);
         printf("\n\n");
@@ -157,14 +157,11 @@ int redeSocial_editar(char a[], char b[], char c[]){
             scanf("%[A-Z a-z]", a);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
 }
     // Editar twitter
     else if (opcao == '2'){
-        char resp;
-
-
         printf("Sua atual conta do twitter é essa:\n");
         printf("%s", b);
         printf("\n\n");
@@ -173,16 +170,13 @@ int redeSocial_editar(char a[], char b[], char c[]){
             scanf("%[A-Za-z0-9.,@-]", b);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
             } while (resp != 's');
     }
 
         
     // Editar youtube
     else if (opcao == '3'){
-        char resp;
-
-
         printf("Seu atual canal do youtube é esse:\n");
         printf("%s", c);
         printf("\n\n");
@@ -191,7 +185,7 @@ int redeSocial_editar(char a[], char b[], char c[]){
             scanf("%[0-9 +()-]", c);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
 
@@ -201,43 +195,37 @@ int redeSocial_editar(char a[], char b[], char c[]){
 
 int redeSocial_excluir(char a[], char b[], char c[]){
     char opcao;
+    char resp;
 
     menu_redeSocial_excluir();
     opcao = opcoes_pergunta();
 
+    resp = confirmacao();
+    if (resp == 's'){
+        if (opcao == '1'){
+            
+            printf("Exluindo seu perfil steam cadastrado\n");
+            strcpy(a, "");
+            printf("%s",a);
+            printf("Exluído com sucesso\n");
 
-    if (opcao == '1'){
-        printf("Exluindo seu perfil steam cadastrado\n");
-        strcpy(a, "");
-        printf("%s",a);
-        printf("Exluído com sucesso\n");
+        }
 
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
-    }
+        else if (opcao == '2'){
+            printf("Exluindo seu perfil do twitter cadastrado\n");
+            strcpy(b, "");
+            printf("%s",b);
+            printf("Exluído com sucesso\n");
 
-    else if (opcao == '2'){
-        printf("Exluindo seu perfil do twitter cadastrado\n");
-        strcpy(b, "");
-        printf("%s",b);
-        printf("Exluído com sucesso\n");
-
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
-    }
-    
-    else if (opcao == '3'){
-        printf("Exluindo seu canal youtube cadastrado\n");
-        strcpy(c, "");
-        printf("%s",c);
-        printf("Exluído com sucesso\n");
+        }
         
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
+        else if (opcao == '3'){
+            printf("Exluindo seu canal youtube cadastrado\n");
+            strcpy(c, "");
+            printf("%s",c);
+            printf("Exluído com sucesso\n");
+            
+        }
     }
-
     return 0;
 }

@@ -4,10 +4,12 @@
 #include <string.h>
 #include "biblio.h"
 
+
 // Assinatura das funções:
 int menu_usuario(void);
 void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
+char confirmacao(void);
 
 int usuario_cadastro(char a[], char b[], char c[]);
 int usuario_vizualizar(char a[], char b[], char c[]);
@@ -70,7 +72,8 @@ int modulo_usuario(char a[], char b[], char c[]){
 
 int usuario_cadastro(char a[], char b[], char c[]){
     char resp;
-    printf("\n");
+
+    
 
     //nome
     do {
@@ -78,7 +81,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%[A-Z a-z]", a);
         getchar();
 
-        resp = confirmacao(resp);
+        resp = confirmacao();
         } while (resp != 's');
 
 
@@ -88,7 +91,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%[A-Za-z0-9.@-]", b);
         getchar();
         
-        resp = confirmacao(resp);
+        resp = confirmacao();
         } while (resp != 's');
 
 
@@ -98,14 +101,15 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%[0-9 +()-]", c);
         getchar();
 
-        resp = confirmacao(resp);
+        resp = confirmacao();
         } while (resp != 's');
 
     return 0;
 }
 
 int usuario_vizualizar(char a[], char b[], char c[]){
-
+    printf("\n");
+    
     printf("Seu nome é esse:\n");
     printf("%s", a);
     printf("\n\n\n");
@@ -130,22 +134,14 @@ int usuario_pesquisar(char a[], char b[], char c[]){
 }
 
 int usuario_editar(char a[], char b[], char c[]){
-    char editar;
-    printf("\nDigite o que deseja editar:\n\n");
-    printf("\n"
-        "Nome:\t\t 1\n"
-        "Email:\t\t 2\n"
-        "Telefone:\t 3\n");
+    char opcao;
+    char resp;
     
-    scanf("%[1-3]", &editar);   
-    getchar();
-    printf("\n");
-    
+    menu_usuario_editar();
+    opcao = opcoes_pergunta();
 
     // Editar nome
-    if (editar == '1'){
-        char resp;
-
+    if (opcao == '1'){
         printf("Seu atual nome é esse:\n");
         printf("%s", a);
         printf("\n\n");
@@ -154,13 +150,11 @@ int usuario_editar(char a[], char b[], char c[]){
             scanf("%[A-Z a-z]", a);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
             } while (resp != 's');
     }
     // Editar email
-    else if (editar == '2'){
-        char resp;
-
+    else if (opcao == '2'){
         printf("Seu atual email é esse:\n");
         printf("%s", b);
         printf("\n\n");
@@ -169,15 +163,13 @@ int usuario_editar(char a[], char b[], char c[]){
             scanf("%[A-Za-z0-9.,@-]", b);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
             } while (resp != 's');
     }
 
         
     // Editar telefone
-    else if (editar == '3'){
-        char resp;
-
+    else if (opcao == '3'){
         printf("Seu atual telefone é esse:\n");
         printf("%s", c);
         printf("\n\n");
@@ -186,7 +178,7 @@ int usuario_editar(char a[], char b[], char c[]){
             scanf("%[0-9 +()-]", c);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
     return 0;
@@ -194,51 +186,36 @@ int usuario_editar(char a[], char b[], char c[]){
 
 int usuario_excluir(char a[], char b[], char c[]){
     char opcao;
+    char resp;
 
-    printf("Qual deseja Excluir?\n"
-    "Nome:\t\t 1\n"
-    "Email:\t\t 2\n"
-    "telefone:\t 3\n"
-    );
+    menu_usuario_excluir();
+    opcao = opcoes_pergunta();
 
+    resp = confirmacao();
+    if (resp == 's'){
+        if (opcao == '1'){
+            printf("Exluindo seu nome\n");
+            strcpy(a, "");
+            printf("%s",a);
+            printf("Exluído com sucesso\n");
 
-    scanf("%c", &opcao);
-    printf("\n\n");
-    getchar();
+        }
 
+        else if (opcao == '2'){
+            printf("Exluindo seu email cadastrado\n");
+            strcpy(b, "");
+            printf("%s",b);
+            printf("Exluído com sucesso\n");
 
-    if (opcao == '1'){
-        printf("Exluindo seu nome\n");
-        strcpy(a, "");
-        printf("%s",a);
-        printf("Exluído com sucesso\n");
-
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
-    }
-
-    else if (opcao == '2'){
-        printf("Exluindo seu email cadastrado\n");
-        strcpy(b, "");
-        printf("%s",b);
-        printf("Exluído com sucesso\n");
-
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
-    }
-    
-    else if (opcao == '3'){
-        printf("Exluindo seu telefone cadastrado\n");
-        strcpy(c, "");
-        printf("%s",c);
-        printf("Exluído com sucesso\n");
+        }
         
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
+        else if (opcao == '3'){
+            printf("Exluindo seu telefone cadastrado\n");
+            strcpy(c, "");
+            printf("%s",c);
+            printf("Exluído com sucesso\n");
+            
+        }
     }
-
     return 0;
 }

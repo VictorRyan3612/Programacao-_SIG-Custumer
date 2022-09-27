@@ -85,7 +85,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
             scanf("%[A-Za-z0-9 .,;'""()]", a);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
 
@@ -99,7 +99,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
             getchar();
 
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
     //Filme
@@ -110,7 +110,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
             scanf("%[A-Za-z0-9 .,;'""()]", c);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     } 
     return 0;
@@ -119,6 +119,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
 
 
 int interesse_vizualizar(char a[], char b[], char c[]){
+    printf("\n");
     
     printf("Esse é o jogo que está interessado:\n");
     vizualizar_lista(a);
@@ -144,6 +145,7 @@ int interesse_pesquisar(char a[], char b[], char c[]){
 
 int interesse_editar(char a[], char b[], char c[]){
     char opcao;
+    char resp;
 
     menu_interesse_editar();
     opcao = opcoes_pergunta();
@@ -151,40 +153,35 @@ int interesse_editar(char a[], char b[], char c[]){
     
     // Editar Jogo
     if (opcao == '1'){
-        char resp;
-
         printf("Seu atual interesse em jogo é:\n");
         printf("%s", a);
         printf("\n\n");
         do{
             printf("Informe qual jogo está interessado:\n");
-            scanf("%[A-Z a-z0-9 ,.'""()]", a);
+            scanf("%[A-Z a-z0-9 ,.'""();]", a);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
             } while (resp != 's');
     }
     
     // Editar livro
     else if (opcao == '2'){
-        char resp;
-
         printf("Seu atual interesse em livro é:\n");
         printf("%s", b);
         printf("\n\n");
         do{
             printf("Informe qual livro está interessado:\n");
-            scanf("%[A-Za-z0-9 ,.'""()]", b);
+            scanf("%[A-Za-z0-9 ,.'""();]", b);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
             } while (resp != 's');
     }
 
         
     // Editar filme
     else if (opcao == '3'){
-        char resp;
 
 
         printf("Seu atual interesse em filme é:\n");
@@ -192,10 +189,10 @@ int interesse_editar(char a[], char b[], char c[]){
         printf("\n\n");
         do{
             printf("Informe qual filme está interessado:\n");
-            scanf("%[A-Za-z0-9 ,.()'""]", c);
+            scanf("%[A-Za-z0-9 ,.()'"";]", c);
             getchar();
 
-            resp = confirmacao(resp);
+            resp = confirmacao();
         } while (resp != 's');
     }
 
@@ -205,42 +202,36 @@ int interesse_editar(char a[], char b[], char c[]){
 
 int interesse_excluir(char a[], char b[], char c[]){
     char opcao;
+    char resp;
 
     menu_interesse_excluir();
     opcao = opcoes_pergunta();
 
+    resp = confirmacao();
+    if (resp == 's'){
+        if (opcao == '1'){
+            printf("Exluindo seu interesse em jogo\n");
+            strcpy(a, "");
+            printf("%s",a);
+            printf("Exluído com sucesso\n");
 
-    if (opcao == '1'){
-        printf("Exluindo seu interesse em jogo\n");
-        strcpy(a, "");
-        printf("%s",a);
-        printf("Exluído com sucesso\n");
+        }
 
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
-    }
+        else if (opcao == '2'){
+            printf("Exluindo seu livro interessado\n");
+            strcpy(b, "");
+            printf("%s",b);
+            printf("Exluído com sucesso\n");
 
-    else if (opcao == '2'){
-        printf("Exluindo seu livro interessado\n");
-        strcpy(b, "");
-        printf("%s",b);
-        printf("Exluído com sucesso\n");
+        }
 
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
-    }
-
-    else if (opcao == '3'){
-        printf("Exluindo seu filme interessado\n");
-        strcpy(c, "");
-        printf("%s",c);
-        printf("Exluído com sucesso\n");
-        
-        printf("Aperte enter para continuar\n");
-        scanf("%c", &opcao);
-        getchar();
+        else if (opcao == '3'){
+            printf("Exluindo seu filme interessado\n");
+            strcpy(c, "");
+            printf("%s",c);
+            printf("Exluído com sucesso\n");
+            
+        }
     }
     return 0;
 }

@@ -23,7 +23,8 @@ void menu_interesse_excluir(void);
 
 // funcoes_aux.c
 
-char confirmacao(char);
+void enter(void);
+char confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 
