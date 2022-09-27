@@ -13,7 +13,7 @@ int menu_sobre(void){
     "além de ajudar a conseguir novos clientes. "
     "O presente projeto tem como objetivo propor um software que implementa "
     "funcionalidades básicas relacionadas ao controle de clientes de uma empresa, "
-    "facilitando a gestão\n"
+    "facilitando a gestão.\n"
     "\n\n"
 
     "\t\tDiscente/Autor do Projeto:\n"

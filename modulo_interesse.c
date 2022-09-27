@@ -120,17 +120,17 @@ int interesse_cadastro(char a[], char b[], char c[]){
 
 int interesse_vizualizar(char a[], char b[], char c[]){
     printf("\n");
-    
-    printf("Esse é o jogo que está interessado:\n");
+
+    printf("Esse são os jogos que está interessado:\n");
     vizualizar_lista(a);
     printf("\n\n\n");
 
-    printf("Esse é o livro que está interessado:\n");
+    printf("Esse são os livros que está interessado:\n");
     vizualizar_lista(b);
     printf("\n\n\n");
 
 
-    printf("Esse é o filme que está interessado:\n");
+    printf("Esse são os filmes que está interessado:\n");
     vizualizar_lista(c);
     printf("\n\n\n");
 
@@ -148,6 +148,11 @@ int interesse_editar(char a[], char b[], char c[]){
     char resp;
 
     menu_interesse_editar();
+
+    printf("\n\n");
+    printf("Suas informações atualmente cadastradas são:\n");
+    interesse_vizualizar(a,b,c);
+
     opcao = opcoes_pergunta();
 
     
@@ -205,6 +210,11 @@ int interesse_excluir(char a[], char b[], char c[]){
     char resp;
 
     menu_interesse_excluir();
+
+    printf("\n\n");
+    printf("Suas informações atualmente cadastradas são:\n");
+    interesse_vizualizar(a,b,c);
+
     opcao = opcoes_pergunta();
 
     resp = confirmacao();

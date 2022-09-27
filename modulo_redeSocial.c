@@ -144,6 +144,9 @@ int redeSocial_editar(char a[], char b[], char c[]){
     char resp;
 
     menu_redeSocial_editar();
+    printf("\n\n");
+    printf("Suas informações atualmente cadastradas são:\n");
+    redeSocial_vizualizar(a,b,c);
     opcao = opcoes_pergunta();
 
     
@@ -198,6 +201,12 @@ int redeSocial_excluir(char a[], char b[], char c[]){
     char resp;
 
     menu_redeSocial_excluir();
+
+    printf("\n\n");
+    printf("Suas informações atualmente cadastradas são:\n");
+    
+    redeSocial_vizualizar(a,b,c);
+
     opcao = opcoes_pergunta();
 
     resp = confirmacao();

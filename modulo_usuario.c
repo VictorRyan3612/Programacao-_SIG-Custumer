@@ -109,7 +109,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
 
 int usuario_vizualizar(char a[], char b[], char c[]){
     printf("\n");
-    
+
     printf("Seu nome é esse:\n");
     printf("%s", a);
     printf("\n\n\n");
@@ -138,6 +138,11 @@ int usuario_editar(char a[], char b[], char c[]){
     char resp;
     
     menu_usuario_editar();
+
+    printf("\n\n");
+    printf("Suas informações atualmente cadastradas são:\n");
+    usuario_vizualizar(a,b,c);
+
     opcao = opcoes_pergunta();
 
     // Editar nome
@@ -189,6 +194,11 @@ int usuario_excluir(char a[], char b[], char c[]){
     char resp;
 
     menu_usuario_excluir();
+
+    printf("\n\n");
+    printf("Suas informações atualmente cadastradas são:\n");
+    usuario_vizualizar(a,b,c);
+    
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
