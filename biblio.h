@@ -1,13 +1,14 @@
 int main(void);
 
-//menus.c ↓
+// funcoes_menus.c ↓
 
 int menu_sobre(void);
 
 int menu_principal(void);
 
 int menu_usuario(void);
-
+void menu_usuario_editar(void);
+void menu_usuario_excluir(void);
 
 int menu_redeSocial(void);
 void menu_redeSocial_cadastro(void);
@@ -24,9 +25,6 @@ void menu_interesse_excluir(void);
 
 char confirmacao(char);
 char opcoes_pergunta(void);
-
-void opcoes_interesse(void);
-void opcoes_redeSocial(void);
 void vizualizar_lista(char a[]);
 
 // in usuario.c

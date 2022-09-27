@@ -117,6 +117,7 @@ void menu_interesse_cadastro(void){
         "###################################################\n"
     );
 }
+
 void menu_interesse_editar(void){
     system("cls||clear");
     printf(""
@@ -170,6 +171,7 @@ void menu_redeSocial_cadastro(void){
         "###################################################\n"
     );
 }
+
 void menu_redeSocial_editar(void){
     system("cls||clear");
     printf(""
@@ -199,6 +201,44 @@ void menu_redeSocial_excluir(void){
         "####               Steam:   1                  ####\n"
         "####               Twitter: 2                  ####\n"
         "####               Youtube: 3                  ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+
+
+
+
+///// Usuário
+void menu_usuario_editar(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####              Edição de Usuário            ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Nome:     1                 ####\n"
+        "####               Email:    2                 ####\n"
+        "####               telefone: 3                 ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+
+void menu_usuario_excluir(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####            Exclusão de Usuário            ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Nome:     1                 ####\n"
+        "####               Email:    2                 ####\n"
+        "####               telefone: 3                 ####\n"
         "####                                           ####\n"
         "###################################################\n"
     );

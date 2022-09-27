@@ -6,6 +6,9 @@
 
 // Assinatura das funções:
 int menu_usuario(void);
+void menu_usuario_editar(void);
+void menu_usuario_excluir(void);
+
 int usuario_cadastro(char a[], char b[], char c[]);
 int usuario_vizualizar(char a[], char b[], char c[]);
 int usuario_pesquisar(char a[], char b[], char c[]);
