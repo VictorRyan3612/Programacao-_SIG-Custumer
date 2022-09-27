@@ -4,20 +4,21 @@
 #include <string.h>
 #include "biblio.h"
 
-// Assinatura das funções:
-int menu_interesse();
+
+///// Assinatura das funções:
+
+char opcoes_pergunta(void);
+int menu_interesse(void);
+void menu_interesse_cadastro(void);
+void menu_interesse_editar(void);
+void menu_interesse_excluir(void);
+
 int interesse_cadastro(char a[], char b[], char c[]);
 int interesse_vizualizar(char a[], char b[], char c[]);
 int interesse_pesquisar(char a[], char b[], char c[]);
 int interesse_editar(char a[], char b[], char c[]);
 int interesse_excluir(char a[], char b[], char c[]);
 
-char opcoes_pergunta(void);
-void menu_interesse_cadastro(void);
-void menu_interesse_editar(void);
-void menu_interesse_excluir(void);
-
-//variaveis globais de redeSocial
 
 
 

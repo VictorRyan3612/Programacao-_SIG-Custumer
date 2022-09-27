@@ -8,7 +8,11 @@ int menu_principal(void);
 
 int menu_usuario(void);
 
+
 int menu_redeSocial(void);
+void menu_redeSocial_cadastro(void);
+void menu_redeSocial_editar(void);
+void menu_redeSocial_excluir(void);
 
 int menu_interesse(void);
 void menu_interesse_cadastro(void);

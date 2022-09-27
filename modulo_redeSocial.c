@@ -4,16 +4,21 @@
 #include <string.h>
 #include "biblio.h"
 
-// Assinatura das funções:
+
+/////  Assinatura das funções:
+
+char opcoes_pergunta(void);
 int menu_redeSocial(void);
+void menu_redeSocial_cadastro(void);
+void menu_redeSocial_editar(void);
+void menu_redeSocial_excluir(void);
+
 int redeSocial_cadastro(char a[], char b[], char c[]);
 int redeSocial_vizualizar(char a[], char b[], char c[]);
 int redeSocial_pesquisar(char a[], char b[], char c[]);
 int redeSocial_editar(char a[], char b[], char c[]);
 int redeSocial_excluir(char a[], char b[], char c[]);
 
-char opcoes_pergunta(void);
-void opcoes_redeSocial(void);
 
 
 
@@ -63,11 +68,12 @@ int modulo_redeSocial(char a[], char b[], char c[]){
     return 0;
 }
 
+
 int redeSocial_cadastro(char a[], char b[], char c[]){
     char opcao;
     char resp;
 
-    opcoes_redeSocial();
+    menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
 
 
@@ -135,7 +141,7 @@ int redeSocial_pesquisar(char a[], char b[], char c[]){
 int redeSocial_editar(char a[], char b[], char c[]){
     char opcao;
 
-    opcoes_redeSocial();
+    menu_redeSocial_editar();
     opcao = opcoes_pergunta();
 
     
@@ -196,16 +202,8 @@ int redeSocial_editar(char a[], char b[], char c[]){
 int redeSocial_excluir(char a[], char b[], char c[]){
     char opcao;
 
-    printf("Qual deseja Excluir?\n"
-    "Steam:\t 1\n"
-    "Twitter:\t 2\n"
-    "Youtube:\t 3\n"
-    );
-
-
-    scanf("%c", &opcao);
-    printf("\n\n");
-    getchar();
+    menu_redeSocial_excluir();
+    opcao = opcoes_pergunta();
 
 
     if (opcao == '1'){

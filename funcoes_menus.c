@@ -100,6 +100,7 @@ int menu_interesse(void){
         return 0;
 }
 
+/////// Interesse
 void menu_interesse_cadastro(void){
     system("cls||clear");
     printf(""
@@ -145,6 +146,59 @@ void menu_interesse_excluir(void){
         "####               Jogo:  1                    ####\n"
         "####               Livro: 2                    ####\n"
         "####               Filme: 3                    ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+
+
+
+////// Rede Social
+void menu_redeSocial_cadastro(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####            Cadastro de Rede Social        ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Steam:   1                  ####\n"
+        "####               Twitter: 2                  ####\n"
+        "####               Youtube: 3                  ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+void menu_redeSocial_editar(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####              Edição de Rede Social        ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Steam:   1                  ####\n"
+        "####               Twitter: 2                  ####\n"
+        "####               Youtube: 3                  ####\n"
+        "####                                           ####\n"
+        "###################################################\n"
+    );
+}
+
+void menu_redeSocial_excluir(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####            Exclusão de Rede Social        ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####               Steam:   1                  ####\n"
+        "####               Twitter: 2                  ####\n"
+        "####               Youtube: 3                  ####\n"
         "####                                           ####\n"
         "###################################################\n"
     );
