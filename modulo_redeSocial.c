@@ -171,7 +171,12 @@ int redeSocial_editar(char a[], char b[], char c[]){
         printf("%s", a);
         printf("\n\n");
         do{
-            printf("Informe seu novo perfil steam:\n");
+            printf(""
+                "=======================================\n"
+                "====      Informe o atualizado:    ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
             scanf("%[A-Z a-z]", a);
             getchar();
 
@@ -184,7 +189,12 @@ int redeSocial_editar(char a[], char b[], char c[]){
         printf("%s", b);
         printf("\n\n");
         do{
-            printf("Informe seu novo twitter:\n");
+            printf(""
+                "=======================================\n"
+                "====      Informe o atualizado:    ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
             scanf("%[A-Za-z0-9.,@-]", b);
             getchar();
 
@@ -199,7 +209,12 @@ int redeSocial_editar(char a[], char b[], char c[]){
         printf("%s", c);
         printf("\n\n");
         do{
-            printf("Informe seu novo canal do youtube:\n");
+            printf(""
+                "=======================================\n"
+                "====      Informe o atualizado:    ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
             scanf("%[0-9 +()-]", c);
             getchar();
 

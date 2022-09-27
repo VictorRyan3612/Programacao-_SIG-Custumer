@@ -177,7 +177,12 @@ int interesse_editar(char a[], char b[], char c[]){
         printf("%s", a);
         printf("\n\n");
         do{
-            printf("Informe qual jogo está interessado:\n");
+            printf(""
+                "=======================================\n"
+                "====        Atualize a lista       ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
             scanf("%[A-Z a-z0-9 ,.'""();]", a);
             getchar();
 
@@ -191,7 +196,12 @@ int interesse_editar(char a[], char b[], char c[]){
         printf("%s", b);
         printf("\n\n");
         do{
-            printf("Informe qual livro está interessado:\n");
+            printf(""
+                "=======================================\n"
+                "====        Atualize a lista       ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
             scanf("%[A-Za-z0-9 ,.'""();]", b);
             getchar();
 
@@ -208,7 +218,12 @@ int interesse_editar(char a[], char b[], char c[]){
         printf("%s", c);
         printf("\n\n");
         do{
-            printf("Informe qual filme está interessado:\n");
+            printf(""
+                "=======================================\n"
+                "====        Atualize a lista       ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
             scanf("%[A-Za-z0-9 ,.()'"";]", c);
             getchar();
 
