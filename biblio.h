@@ -29,6 +29,8 @@ char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 
 char validar_string(char a[]);
+char validar_email(char a[]);
+char validar_telefone(char a[]);
 
 // in usuario.c
 

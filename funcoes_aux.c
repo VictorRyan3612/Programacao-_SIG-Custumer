@@ -40,8 +40,8 @@ void vizualizar_lista(char a[]){
     }
 }
 
-char validar_string(char a[]){
 // Adaptado de Daynne github: https://github.com/DayXL ↓
+char validar_string(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -58,3 +58,41 @@ char validar_string(char a[]){
     return 's';
 }
 
+
+char validar_email(char a[]){
+    int i;
+    i = '\0';
+    while (a[i] != '\0'){
+        if(((a[i] >= '@' ) && (a[i] <= 'z')) || (a[i] == '.')){
+            i += 1;
+        } 
+        else if ((a[i] >= 'A' ) && (a[i] <= 'Z')){
+            i += 1;
+        }
+        else if ((a[i] >= '0') && (a[i] <= '9')){
+            i += 1;
+        }
+        else{
+            return 'n';
+        }
+    }
+    return 's';
+}
+
+
+char validar_telefone(char a[]){
+    int i;
+    i = '\0';
+    while (a[i] != '\0'){
+        if((a[i] >= '0' ) && (a[i] <= '9')){
+            i += 1;
+        } 
+        else if ((a[i] == '(' ) || (a[i] <= ')') || (a[i] == ' ')){
+            i += 1;
+        }
+        else{
+            return 'n';
+        }
+    }
+    return 's';
+}
