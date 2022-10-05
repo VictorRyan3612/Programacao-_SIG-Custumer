@@ -40,3 +40,21 @@ void vizualizar_lista(char a[]){
     }
 }
 
+char validar_string(char a[]){
+// Adaptado de Daynne github: https://github.com/DayXL ↓
+    int i;
+    i = '\0';
+    while (a[i] != '\0'){
+        if(((a[i] >= 'a' ) && (a[i] <= 'z')) || (a[i] == ' ')){
+            i += 1;
+        } 
+        else if ((a[i] >= 'A' ) && (a[i] <= 'Z')){
+            i += 1;
+        }
+        else{
+            return 'n';
+        }
+    }
+    return 's';
+}
+

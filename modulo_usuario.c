@@ -84,10 +84,13 @@ int usuario_cadastro(char a[], char b[], char c[]){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%[A-Z a-z]", a);
+        scanf("%s", a);
         getchar();
 
-        resp = confirmacao();
+        resp = validar_string(a);
+        if (resp != 's'){
+            printf("Caractere inválido detectado, Digite novamente:\n");
+        }
         } while (resp != 's');
 
 

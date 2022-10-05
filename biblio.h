@@ -28,6 +28,8 @@ char confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 
+char validar_string(char a[]);
+
 // in usuario.c
 
 
