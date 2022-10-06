@@ -185,10 +185,12 @@ int redeSocial_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[A-Z a-z]", a);
+            scanf("%s", a);
             getchar();
-
-            resp = confirmacao();
+            resp = validar_twitterSteam(a);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
 }
     // Editar twitter
@@ -203,10 +205,13 @@ int redeSocial_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[A-Za-z0-9.,@-]", b);
+            scanf("%s", b);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_twitterSteam(b);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
             } while (resp != 's');
     }
 
@@ -223,10 +228,13 @@ int redeSocial_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[0-9 +()-]", c);
+            scanf("%s", c);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_youtube(c);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
 
