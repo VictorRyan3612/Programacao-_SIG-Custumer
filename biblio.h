@@ -31,7 +31,8 @@ void vizualizar_lista(char a[]);
 char validar_string(char a[]);
 char validar_email(char a[]);
 char validar_telefone(char a[]);
-
+char validar_twitterSteam(char a[]);
+char validar_youtube(char a[]);
 // in usuario.c
 
 

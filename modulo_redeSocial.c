@@ -86,10 +86,12 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
                 "=======================================\n"
                 );
             printf("\n");
-            scanf("%[A-Za-z0-9]", a);
+            scanf("%s", a);
             getchar();
-        
-            resp = confirmacao();
+            resp = validar_twitterSteam(a);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
     
@@ -103,10 +105,13 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
                 "=======================================\n"
                 );
             printf("\n");
-            scanf("%[A-Za-z0-9@_.]", b);
+            scanf("%s", b);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_twitterSteam(b);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
 
@@ -119,10 +124,13 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
                 "=======================================\n"
                 );
             printf("\n");
-            scanf("%[A-Za-z 0-9]", c);
+            scanf("%s", c);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_youtube(c);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
     return 0;
