@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "biblio.h"
+#define True 1
+#define False 0
 
 
 ///// Assinatura das funções:
@@ -71,7 +73,7 @@ int modulo_interesse(char a[], char b[], char c[]){
 
 int interesse_cadastro(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
     
     menu_interesse_cadastro();
     opcao = opcoes_pergunta();
@@ -91,10 +93,10 @@ int interesse_cadastro(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nomeMidia(a);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
 
 
@@ -112,10 +114,10 @@ int interesse_cadastro(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nomeMidia(b);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
 
     //Filme
@@ -132,11 +134,11 @@ int interesse_cadastro(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nomeMidia(c);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
-    } 
+        } while (resp != True);
+    }
     return 0;
 }
 
@@ -169,7 +171,7 @@ int interesse_pesquisar(char a[], char b[], char c[]){
 
 int interesse_editar(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
 
     menu_interesse_editar();
 
@@ -196,10 +198,10 @@ int interesse_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nomeMidia(a);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-            } while (resp != 's');
+        } while (resp != True);
     }
     
     // Editar livro
@@ -218,10 +220,10 @@ int interesse_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nomeMidia(b);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-            } while (resp != 's');
+        } while (resp != True);
     }
 
         
@@ -243,10 +245,10 @@ int interesse_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nomeMidia(c);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
 
 
@@ -255,7 +257,7 @@ int interesse_editar(char a[], char b[], char c[]){
 
 int interesse_excluir(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
 
     menu_interesse_excluir();
 
@@ -267,7 +269,7 @@ int interesse_excluir(char a[], char b[], char c[]){
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
-    if (resp == 's'){
+    if (resp == True){
         if (opcao == '1'){
             printf("Exluindo seu interesse em jogo\n");
             strcpy(a, "");

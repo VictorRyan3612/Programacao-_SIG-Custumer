@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include "biblio.h"
+#define True 1
+#define False 0
+
 
 void enter(void){
     char opcao;
@@ -8,14 +11,20 @@ void enter(void){
     getchar();
 }
 
-char confirmacao(){
+int confirmacao(void){
     char resp;
     printf("\n");
     printf("Confirme se está correto (s para sim)...\n");
     scanf("%c", &resp);
     getchar();
     printf("\n");
-    return resp;
+    
+    if (resp == 's'){
+        return True;
+    }
+    else{
+        return False;
+    }
 }
 
 char opcoes_pergunta(void){
@@ -42,7 +51,7 @@ void vizualizar_lista(char a[]){
 
 // usado em usuario.c
 // Adaptado de Daynne github: https://github.com/DayXL ↓
-char validar_nome(char a[]){
+int validar_nome(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -53,14 +62,14 @@ char validar_nome(char a[]){
             i += 1;
         }
         else{
-            return 'n';
+            return False;
         }
     }
-    return 's';
+    return True;
 }
 
 // usado em usuario.c
-char validar_email(char a[]){
+int validar_email(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -74,14 +83,14 @@ char validar_email(char a[]){
             i += 1;
         }
         else{
-            return 'n';
+            return False;
         }
     }
-    return 's';
+    return True;
 }
 
 // usado em usuario.c
-char validar_telefone(char a[]){
+int validar_telefone(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -92,14 +101,14 @@ char validar_telefone(char a[]){
             i += 1;
         }
         else{
-            return 'n';
+            return False;
         }
     }
-    return 's';
+    return True;
 }
 
 // usado em redeSocial.c
-char validar_twitterSteam(char a[]){
+int validar_twitterSteam(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -113,14 +122,14 @@ char validar_twitterSteam(char a[]){
             i += 1;
         }
         else{
-            return 'n';
+            return False;
         }
     }
-    return 's';
+    return True;
 }
 
 // usado em redeSocial.c
-char validar_youtube(char a[]){
+int validar_youtube(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -134,14 +143,14 @@ char validar_youtube(char a[]){
             i += 1;
         }
         else{
-            return 'n';
+            return False;
         }
     }
-    return 's';
+    return True;
 }
 
 // usado em interesse.c
-char validar_nomeMidia(char a[]){
+int validar_nomeMidia(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -158,8 +167,8 @@ char validar_nomeMidia(char a[]){
             i += 1;
         }
         else{
-            return 'n';
+            return False;
         }
     }
-    return 's';
+    return True;
 }

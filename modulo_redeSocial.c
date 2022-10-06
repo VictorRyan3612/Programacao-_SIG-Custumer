@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "biblio.h"
-
+#define True 1
+#define False 0
 
 /////  Assinatura das funções:
 
@@ -71,7 +72,7 @@ int modulo_redeSocial(char a[], char b[], char c[]){
 
 int redeSocial_cadastro(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
 
     menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
@@ -89,10 +90,10 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             scanf("%s", a);
             getchar();
             resp = validar_twitterSteam(a);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
     
 
@@ -109,10 +110,10 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_twitterSteam(b);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
 
     //youtube
@@ -128,10 +129,10 @@ int redeSocial_cadastro(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_youtube(c);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
     return 0;
 }
@@ -164,7 +165,7 @@ int redeSocial_pesquisar(char a[], char b[], char c[]){
 
 int redeSocial_editar(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
 
     menu_redeSocial_editar();
     printf("\n\n");
@@ -188,10 +189,10 @@ int redeSocial_editar(char a[], char b[], char c[]){
             scanf("%s", a);
             getchar();
             resp = validar_twitterSteam(a);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
 }
     // Editar twitter
     else if (opcao == '2'){
@@ -209,10 +210,10 @@ int redeSocial_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_twitterSteam(b);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-            } while (resp != 's');
+        } while (resp != True);
     }
 
         
@@ -232,10 +233,10 @@ int redeSocial_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_youtube(c);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
 
 
@@ -244,7 +245,7 @@ int redeSocial_editar(char a[], char b[], char c[]){
 
 int redeSocial_excluir(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
 
     menu_redeSocial_excluir();
 
@@ -257,7 +258,7 @@ int redeSocial_excluir(char a[], char b[], char c[]){
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
-    if (resp == 's'){
+    if (resp == True){
         if (opcao == '1'){
             
             printf("Exluindo seu perfil steam cadastrado\n");

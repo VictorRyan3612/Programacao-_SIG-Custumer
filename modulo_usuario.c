@@ -3,13 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "biblio.h"
-
+#define True 1
+#define False 0
 
 // Assinatura das funções:
 int menu_usuario(void);
 void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
-char confirmacao(void);
+int confirmacao(void);
 
 int usuario_cadastro(char a[], char b[], char c[]);
 int usuario_vizualizar(char a[], char b[], char c[]);
@@ -71,7 +72,7 @@ int modulo_usuario(char a[], char b[], char c[]){
 
 
 int usuario_cadastro(char a[], char b[], char c[]){
-    char resp;
+    int resp;
 
     system("cls||clear");
     printf("\n");
@@ -88,10 +89,10 @@ int usuario_cadastro(char a[], char b[], char c[]){
         getchar();
 
         resp = validar_nome(a);
-        if (resp != 's'){
-            printf("Caractere inválido detectado, Digite novamente:\n");
-        }
-        } while (resp != 's');
+        if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+        } while (resp != True);
 
 
     //email
@@ -106,10 +107,11 @@ int usuario_cadastro(char a[], char b[], char c[]){
         getchar();
         
         resp = validar_email(b);
-        if (resp != 's'){
-            printf("Caractere inválido detectado, Digite novamente:\n");
-        }
-        } while (resp != 's');
+        if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+    } while (resp != True);
+
 
 
     //telefone
@@ -124,10 +126,10 @@ int usuario_cadastro(char a[], char b[], char c[]){
         getchar();
 
         resp = validar_telefone(c);
-        if (resp != 's'){
-            printf("Caractere inválido detectado, Digite novamente:\n");
-        }
-        } while (resp != 's');
+        if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+    } while (resp != True);
 
     return 0;
 }
@@ -160,7 +162,7 @@ int usuario_pesquisar(char a[], char b[], char c[]){
 
 int usuario_editar(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
     
     menu_usuario_editar();
 
@@ -186,10 +188,10 @@ int usuario_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_nome(a);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-            } while (resp != 's');
+        } while (resp != True);
     }
     // Editar email
     else if (opcao == '2'){
@@ -207,10 +209,10 @@ int usuario_editar(char a[], char b[], char c[]){
             getchar();
             
             resp = validar_email(b);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-            } while (resp != 's');
+        } while (resp != True);
     }
 
         
@@ -230,17 +232,18 @@ int usuario_editar(char a[], char b[], char c[]){
             getchar();
 
             resp = validar_telefone(c);
-            if (resp != 's'){
+            if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != 's');
+        } while (resp != True);
     }
+
     return 0;
 }
 
 int usuario_excluir(char a[], char b[], char c[]){
     char opcao;
-    char resp;
+    int resp;
 
     menu_usuario_excluir();
 
@@ -252,7 +255,7 @@ int usuario_excluir(char a[], char b[], char c[]){
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
-    if (resp == 's'){
+    if (resp == True){
         if (opcao == '1'){
             printf("Exluindo seu nome\n");
             strcpy(a, "");

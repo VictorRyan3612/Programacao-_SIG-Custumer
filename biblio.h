@@ -24,16 +24,17 @@ void menu_interesse_excluir(void);
 // funcoes_aux.c
 
 void enter(void);
-char confirmacao(void);
+int confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 
-char validar_nome(char a[]);
-char validar_email(char a[]);
-char validar_telefone(char a[]);
-char validar_twitterSteam(char a[]);
-char validar_youtube(char a[]);
-char validar_nomeMidia(char a[]);
+// validações
+int validar_nome(char a[]);
+int validar_email(char a[]);
+int validar_telefone(char a[]);
+int validar_twitterSteam(char a[]);
+int validar_youtube(char a[]);
+int validar_nomeMidia(char a[]);
 // in usuario.c
 
 
