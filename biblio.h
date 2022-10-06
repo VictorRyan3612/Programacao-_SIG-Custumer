@@ -28,11 +28,12 @@ char confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 
-char validar_string(char a[]);
+char validar_nome(char a[]);
 char validar_email(char a[]);
 char validar_telefone(char a[]);
 char validar_twitterSteam(char a[]);
 char validar_youtube(char a[]);
+char validar_nomeMidia(char a[]);
 // in usuario.c
 
 

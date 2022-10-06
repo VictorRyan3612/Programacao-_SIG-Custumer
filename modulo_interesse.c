@@ -87,10 +87,13 @@ int interesse_cadastro(char a[], char b[], char c[]){
                 );
             printf("(use ; para mais de um)\n");
             printf("\n");
-            scanf("%[A-Za-z0-9 .,;'""()]", a);
+            scanf("%20[^\n]", a);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_nomeMidia(a);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
 
@@ -105,13 +108,16 @@ int interesse_cadastro(char a[], char b[], char c[]){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%[A-Za-z0-9 .,;'""()]", b);
+            scanf("%20[^\n]", b);
             getchar();
 
-
-            resp = confirmacao();
+            resp = validar_nomeMidia(b);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
+    
     //Filme
     if (opcao == '3'){
         do{
@@ -122,10 +128,13 @@ int interesse_cadastro(char a[], char b[], char c[]){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%[A-Za-z0-9 .,;'""()]", c);
+            scanf("%20[^\n]", c);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_nomeMidia(c);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     } 
     return 0;
@@ -183,10 +192,13 @@ int interesse_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[A-Z a-z0-9 ,.'""();]", a);
+            scanf("%20[^\n]", a);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_nomeMidia(a);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
             } while (resp != 's');
     }
     
@@ -202,10 +214,13 @@ int interesse_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[A-Za-z0-9 ,.'""();]", b);
+            scanf("%20[^\n]", b);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_nomeMidia(b);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
             } while (resp != 's');
     }
 
@@ -224,10 +239,13 @@ int interesse_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[A-Za-z0-9 ,.()'"";]", c);
+            scanf("%20[^\n]", c);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_nomeMidia(c);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
 

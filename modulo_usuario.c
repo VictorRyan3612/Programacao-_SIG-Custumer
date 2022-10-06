@@ -87,7 +87,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%20[^\n]", a);
         getchar();
 
-        resp = validar_string(a);
+        resp = validar_nome(a);
         if (resp != 's'){
             printf("Caractere inválido detectado, Digite novamente:\n");
         }
@@ -185,7 +185,7 @@ int usuario_editar(char a[], char b[], char c[]){
             scanf("%20[^\n]", a);
             getchar();
 
-            resp = validar_string(a);
+            resp = validar_nome(a);
             if (resp != 's'){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
