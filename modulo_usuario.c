@@ -248,6 +248,7 @@ int usuario_excluir(char a[], char b[], char c[]){
     printf("Suas informações atualmente cadastradas são:\n");
     usuario_vizualizar(a,b,c);
 
+    printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
@@ -255,7 +256,6 @@ int usuario_excluir(char a[], char b[], char c[]){
         if (opcao == '1'){
             printf("Exluindo seu nome\n");
             strcpy(a, "");
-            printf("%s",a);
             printf("Exluído com sucesso\n");
 
         }
@@ -263,7 +263,6 @@ int usuario_excluir(char a[], char b[], char c[]){
         else if (opcao == '2'){
             printf("Exluindo seu email cadastrado\n");
             strcpy(b, "");
-            printf("%s",b);
             printf("Exluído com sucesso\n");
 
         }
@@ -271,7 +270,6 @@ int usuario_excluir(char a[], char b[], char c[]){
         else if (opcao == '3'){
             printf("Exluindo seu telefone cadastrado\n");
             strcpy(c, "");
-            printf("%s",c);
             printf("Exluído com sucesso\n");
             
         }

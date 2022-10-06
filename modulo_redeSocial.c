@@ -253,6 +253,7 @@ int redeSocial_excluir(char a[], char b[], char c[]){
 
     redeSocial_vizualizar(a,b,c);
 
+    printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
@@ -261,7 +262,6 @@ int redeSocial_excluir(char a[], char b[], char c[]){
             
             printf("Exluindo seu perfil steam cadastrado\n");
             strcpy(a, "");
-            printf("%s",a);
             printf("Exluído com sucesso\n");
 
         }
@@ -269,7 +269,6 @@ int redeSocial_excluir(char a[], char b[], char c[]){
         else if (opcao == '2'){
             printf("Exluindo seu perfil do twitter cadastrado\n");
             strcpy(b, "");
-            printf("%s",b);
             printf("Exluído com sucesso\n");
 
         }
@@ -277,7 +276,6 @@ int redeSocial_excluir(char a[], char b[], char c[]){
         else if (opcao == '3'){
             printf("Exluindo seu canal youtube cadastrado\n");
             strcpy(c, "");
-            printf("%s",c);
             printf("Exluído com sucesso\n");
             
         }

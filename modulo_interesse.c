@@ -117,7 +117,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
             }
         } while (resp != 's');
     }
-    
+
     //Filme
     if (opcao == '3'){
         do{
@@ -263,6 +263,7 @@ int interesse_excluir(char a[], char b[], char c[]){
     printf("Suas informações atualmente cadastradas são:\n");
     interesse_vizualizar(a,b,c);
 
+    printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
 
     resp = confirmacao();
@@ -270,7 +271,6 @@ int interesse_excluir(char a[], char b[], char c[]){
         if (opcao == '1'){
             printf("Exluindo seu interesse em jogo\n");
             strcpy(a, "");
-            printf("%s",a);
             printf("Exluído com sucesso\n");
 
         }
@@ -278,7 +278,6 @@ int interesse_excluir(char a[], char b[], char c[]){
         else if (opcao == '2'){
             printf("Exluindo seu livro interessado\n");
             strcpy(b, "");
-            printf("%s",b);
             printf("Exluído com sucesso\n");
 
         }
@@ -286,7 +285,6 @@ int interesse_excluir(char a[], char b[], char c[]){
         else if (opcao == '3'){
             printf("Exluindo seu filme interessado\n");
             strcpy(c, "");
-            printf("%s",c);
             printf("Exluído com sucesso\n");
             
         }

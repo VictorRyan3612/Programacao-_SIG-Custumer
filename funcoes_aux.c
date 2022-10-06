@@ -40,6 +40,7 @@ void vizualizar_lista(char a[]){
     }
 }
 
+// usado em usuario.c
 // Adaptado de Daynne github: https://github.com/DayXL ↓
 char validar_nome(char a[]){
     int i;
@@ -58,7 +59,7 @@ char validar_nome(char a[]){
     return 's';
 }
 
-
+// usado em usuario.c
 char validar_email(char a[]){
     int i;
     i = '\0';
@@ -79,7 +80,7 @@ char validar_email(char a[]){
     return 's';
 }
 
-
+// usado em usuario.c
 char validar_telefone(char a[]){
     int i;
     i = '\0';
@@ -97,6 +98,7 @@ char validar_telefone(char a[]){
     return 's';
 }
 
+// usado em redeSocial.c
 char validar_twitterSteam(char a[]){
     int i;
     i = '\0';
@@ -116,6 +118,8 @@ char validar_twitterSteam(char a[]){
     }
     return 's';
 }
+
+// usado em redeSocial.c
 char validar_youtube(char a[]){
     int i;
     i = '\0';
@@ -136,11 +140,12 @@ char validar_youtube(char a[]){
     return 's';
 }
 
+// usado em interesse.c
 char validar_nomeMidia(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
-        if(((a[i] >= 'a' ) && (a[i] <= 'z')) || (a[i] == ' ')){
+        if(((a[i] >= 'a' ) && (a[i] <= 'z')) || (a[i] == ' ') || (a[i] == ';')){
             i += 1;
         } 
         else if ((a[i] >= 'A' ) && (a[i] <= 'Z')){
