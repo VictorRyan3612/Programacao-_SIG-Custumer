@@ -181,10 +181,14 @@ int usuario_editar(char a[], char b[], char c[]){
                 "====      Informe o atualizado:    ====\n"
                 "=======================================\n"
             );
-            scanf("%[A-Z a-z]", a);
+            printf("\n");
+            scanf("%20[^\n]", a);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_string(a);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
             } while (resp != 's');
     }
     // Editar email
@@ -199,10 +203,13 @@ int usuario_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[A-Za-z0-9.,@-]", b);
+            scanf("%s", b);
             getchar();
-
-            resp = confirmacao();
+            
+            resp = validar_email(b);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
             } while (resp != 's');
     }
 
@@ -219,10 +226,13 @@ int usuario_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%[0-9 +()-]", c);
+            scanf("%s", c);
             getchar();
 
-            resp = confirmacao();
+            resp = validar_telefone(c);
+            if (resp != 's'){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
         } while (resp != 's');
     }
     return 0;
