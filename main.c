@@ -20,7 +20,7 @@ int modulo_interesse(char a[], char b[], char c[]);
 char nome[50];
 char email[50];
 char telefone[20];
-//interesse.c
+// midia.c
 char jogo[50];
 char livro[50];
 char filme[50];
@@ -50,7 +50,7 @@ int main(void){
             modulo_redeSocial(steam,twitter,youtube);
         }
         else if (opcao == '3'){
-            modulo_interesse(jogo,livro,filme);
+            modulo_midia(jogo,livro,filme);
         }
         else if (opcao == '4'){
             menu_sobre();

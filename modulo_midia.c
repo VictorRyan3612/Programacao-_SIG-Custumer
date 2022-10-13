@@ -10,27 +10,27 @@
 ///// Assinatura das funções:
 
 char opcoes_pergunta(void);
-int menu_interesse(void);
-void menu_interesse_cadastro(void);
-void menu_interesse_editar(void);
-void menu_interesse_excluir(void);
+int menu_midia(void);
+void menu_midia_cadastro(void);
+void menu_midia_editar(void);
+void menu_midia_excluir(void);
 
-int interesse_cadastro(char a[], char b[], char c[]);
-int interesse_vizualizar(char a[], char b[], char c[]);
-int interesse_pesquisar(char a[], char b[], char c[]);
-int interesse_editar(char a[], char b[], char c[]);
-int interesse_excluir(char a[], char b[], char c[]);
-
-
+int midia_cadastro(char a[], char b[], char c[]);
+int midia_vizualizar(char a[], char b[], char c[]);
+int midia_pesquisar(char a[], char b[], char c[]);
+int midia_editar(char a[], char b[], char c[]);
+int midia_excluir(char a[], char b[], char c[]);
 
 
-int modulo_interesse(char a[], char b[], char c[]){
+
+
+int modulo_midia(char a[], char b[], char c[]){
 
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
 
     do{
-        menu_interesse();
+        menu_midia();
 
         printf("Digite uma opção:\n");
         scanf("%c", &opcao);
@@ -38,19 +38,19 @@ int modulo_interesse(char a[], char b[], char c[]){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                interesse_cadastro(a,b,c);
+                midia_cadastro(a,b,c);
             }
             else if (opcao == '2'){
-                interesse_vizualizar(a,b,c);
+                midia_vizualizar(a,b,c);
             }
             else if (opcao == '3'){
-                interesse_pesquisar(a,b,c);
+                midia_pesquisar(a,b,c);
             }
             else if (opcao == '4'){
-                interesse_editar(a,b,c);
+                midia_editar(a,b,c);
             }
             else if (opcao == '5'){
-                interesse_excluir(a,b,c);
+                midia_excluir(a,b,c);
             }
             
             else {
@@ -71,11 +71,11 @@ int modulo_interesse(char a[], char b[], char c[]){
 }
 
 
-int interesse_cadastro(char a[], char b[], char c[]){
+int midia_cadastro(char a[], char b[], char c[]){
     char opcao;
     int resp;
     
-    menu_interesse_cadastro();
+    menu_midia_cadastro();
     opcao = opcoes_pergunta();
 
 
@@ -144,7 +144,7 @@ int interesse_cadastro(char a[], char b[], char c[]){
 
 
 
-int interesse_vizualizar(char a[], char b[], char c[]){
+int midia_vizualizar(char a[], char b[], char c[]){
     printf("\n");
 
     printf("Esse são os jogos que está interessado:\n");
@@ -163,21 +163,21 @@ int interesse_vizualizar(char a[], char b[], char c[]){
     return 0;
 }
 
-int interesse_pesquisar(char a[], char b[], char c[]){
+int midia_pesquisar(char a[], char b[], char c[]){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int interesse_editar(char a[], char b[], char c[]){
+int midia_editar(char a[], char b[], char c[]){
     char opcao;
     int resp;
 
-    menu_interesse_editar();
+    menu_midia_editar();
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    interesse_vizualizar(a,b,c);
+    midia_vizualizar(a,b,c);
 
     opcao = opcoes_pergunta();
 
@@ -255,15 +255,15 @@ int interesse_editar(char a[], char b[], char c[]){
     return 0;
 }
 
-int interesse_excluir(char a[], char b[], char c[]){
+int midia_excluir(char a[], char b[], char c[]){
     char opcao;
     int resp;
 
-    menu_interesse_excluir();
+    menu_midia_excluir();
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    interesse_vizualizar(a,b,c);
+    midia_vizualizar(a,b,c);
 
     printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();

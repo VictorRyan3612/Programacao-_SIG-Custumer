@@ -42,7 +42,7 @@ int menu_principal(void){
         "|====            Digite qual deseja:            ====|\n"
         "|====           1 - Módulo Usuário              ====|\n"
         "|====           2 - Módulo Redes Sociais        ====|\n"
-        "|====           3 - Módulo Interesses           ====|\n"
+        "|====           3 - Módulo Mídia                ====|\n"
         "|====           4 - Sobre e equipe              ====|\n"
         "|====           0 - Encerrar                    ====|\n"
         "|====                                           ====|\n"
@@ -105,7 +105,7 @@ printf(""
     return 0;
 }
 
-int menu_interesse(void){
+int menu_midia(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
 
@@ -113,7 +113,7 @@ int menu_interesse(void){
         "===================================================\n"
         "===================================================\n"
         "====                                           ====\n"
-        "====        Gerenciamento de  Interesse        ====\n"
+        "====         Gerenciamento de Interesse        ====\n"
         "====                                           ====\n"
         "====                                           ====\n"
         "====          Digite qual deseja:              ====\n"
@@ -132,8 +132,8 @@ int menu_interesse(void){
     return 0;
 }
 
-/////// Interesse
-void menu_interesse_cadastro(void){
+/////// midia
+void menu_midia_cadastro(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
@@ -152,13 +152,13 @@ void menu_interesse_cadastro(void){
     printf("\n\n");
 }
 
-void menu_interesse_editar(void){
+void menu_midia_editar(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
         "###################################################\n"
         "####                                           ####\n"
-        "####              Edição de Interesse          ####\n"
+        "####              Edição de Mídia              ####\n"
         "####                                           ####\n"
         "####                                           ####\n"
         "####              Digite qual deseja:          ####\n"
@@ -171,7 +171,7 @@ void menu_interesse_editar(void){
     printf("\n\n");
 }
 
-void menu_interesse_excluir(void){
+void menu_midia_excluir(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
