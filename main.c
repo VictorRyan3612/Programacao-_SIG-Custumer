@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-#include "biblio.h"
+
+#include "modulo_midia.h"
+#include "modulo_usuario.h"
+#include "modulo_redeSocial.h"
+#include "funcoes_aux.h"
+
 
 // Para explicações sobre o código, por favor verificar o arquivo
 // detalhes.md

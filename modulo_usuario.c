@@ -2,7 +2,11 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
-#include "biblio.h"
+
+#include "modulo_usuario.h"
+#include "funcoes_aux.h"
+
+
 #define True 1
 #define False 0
 

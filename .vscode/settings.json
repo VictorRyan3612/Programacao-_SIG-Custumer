@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "biblio.h": "c"
+        "biblio.h": "c",
+        "modulo_midia.h": "c",
+        "modulo_redesocial.h": "c"
     }
 }
