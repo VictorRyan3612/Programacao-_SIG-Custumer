@@ -44,8 +44,9 @@ int menu_principal(void){
         "|====           2 - Módulo Redes Sociais        ====|\n"
         "|====           3 - Módulo Mídia                ====|\n"
         "|====           4 - Sobre e equipe              ====|\n"
-        "|====           0 - Encerrar                    ====|\n"
         "|====                                           ====|\n"
+        "|====                                           ====|\n"
+        "|====               0 - Voltar                  ====|\n"
         "|===================================================|\n"
         "|===================================================|\n"
     );
@@ -70,9 +71,9 @@ printf(""
         "====         3 - Procurar Usuário              ====\n"
         "====         4 - Editar Usuário                ====\n"
         "====         5 - Excluir Usuário               ====\n"
-        "====         0 - Voltar                        ====\n"
         "====                                           ====\n"
         "====                                           ====\n"
+        "====               0 - Voltar                  ====\n"
         "===================================================\n"
         "===================================================\n"
     );
@@ -96,9 +97,8 @@ printf(""
         "====         3 - Procurar Rede Social          ====\n"
         "====         4 - Editar Rede Social            ====\n"
         "====         5 - Excluir Rede Social           ====\n"
-        "====         0 - Voltar                        ====\n"
         "====                                           ====\n"
-        "====                                           ====\n"
+        "====               0 - Voltar                  ====\n"
         "===================================================\n"
         "===================================================\n"
     );
@@ -122,15 +122,62 @@ int menu_midia(void){
         "====         3 - Procurar Interesse            ====\n"
         "====         4 - Editar Interesse              ====\n"
         "====         5 - Exlcuir Interesse             ====\n"
-        "====         0 - Voltar                        ====\n"
         "====                                           ====\n"
-        "====                                           ====\n"
+        "====               0 - Voltar                  ====\n"
         "===================================================\n"
         "===================================================\n"
     );
     printf("\n\n");
     return 0;
 }
+
+
+
+///// Usuário
+
+
+void menu_usuario_editar(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####              Edição de Usuário            ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####                 Nome:     1               ####\n"
+        "####                 Email:    2               ####\n"
+        "####                 Telefone: 3               ####\n"
+        "####                                           ####\n"
+        "####                 Voltar:  0                ####\n"
+        "###################################################\n"
+    );
+    printf("\n\n");
+}
+
+void menu_usuario_excluir(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####            Exclusão de Usuário            ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####                 Nome:     1               ####\n"
+        "####                 Email:    2               ####\n"
+        "####                 Telefone: 3               ####\n"
+        "####                                           ####\n"
+        "####                 Voltar:  0                ####\n"
+        "###################################################\n"
+    );
+    printf("\n\n");
+}
+
+
+
 
 /////// midia
 void menu_midia_cadastro(void){
@@ -143,10 +190,11 @@ void menu_midia_cadastro(void){
         "####                                           ####\n"
         "####                                           ####\n"
         "####              Digite qual deseja:          ####\n"
-        "####               Jogo:  1                    ####\n"
-        "####               Livro: 2                    ####\n"
-        "####               Filme: 3                    ####\n"
+        "####                 Jogo:   1                 ####\n"
+        "####                 Livro:  2                 ####\n"
+        "####                 Filme:  3                 ####\n"
         "####                                           ####\n"
+        "####                 Voltar:  0                ####\n"
         "###################################################\n"
     );
     printf("\n\n");
@@ -162,10 +210,11 @@ void menu_midia_editar(void){
         "####                                           ####\n"
         "####                                           ####\n"
         "####              Digite qual deseja:          ####\n"
-        "####               Jogo:  1                    ####\n"
-        "####               Livro: 2                    ####\n"
-        "####               Filme: 3                    ####\n"
+        "####                 Jogo:   1                 ####\n"
+        "####                 Livro:  2                 ####\n"
+        "####                 Filme:  3                 ####\n"
         "####                                           ####\n"
+        "####                 Voltar:  0                ####\n"
         "###################################################\n"
     );
     printf("\n\n");
@@ -181,10 +230,11 @@ void menu_midia_excluir(void){
         "####                                           ####\n"
         "####                                           ####\n"
         "####              Digite qual deseja:          ####\n"
-        "####               Jogo:  1                    ####\n"
-        "####               Livro: 2                    ####\n"
-        "####               Filme: 3                    ####\n"
+        "####                 Jogo:   1                 ####\n"
+        "####                 Livro:  2                 ####\n"
+        "####                 Filme:  3                 ####\n"
         "####                                           ####\n"
+        "####                 Voltar:  0                ####\n"
         "###################################################\n"
     );
     printf("\n\n");
@@ -202,11 +252,12 @@ void menu_redeSocial_cadastro(void){
         "####            Cadastro de Rede Social        ####\n"
         "####                                           ####\n"
         "####                                           ####\n"
-        "####              Digite qual deseja:          ####\n"
-        "####               Steam:   1                  ####\n"
-        "####               Twitter: 2                  ####\n"
-        "####               Youtube: 3                  ####\n"
+        "####             Digite qual deseja:           ####\n"
+        "####                 Steam:    1               ####\n"
+        "####                 Twitter:  2               ####\n"
+        "####                 Youtube:  3               ####\n"
         "####                                           ####\n"
+        "####                 Voltar:   0               ####\n"
         "###################################################\n"
     );
     printf("\n\n");
@@ -218,14 +269,15 @@ void menu_redeSocial_editar(void){
     printf(""
         "###################################################\n"
         "####                                           ####\n"
-        "####              Edição de Rede Social        ####\n"
+        "####            Edição de Rede Social          ####\n"
         "####                                           ####\n"
         "####                                           ####\n"
-        "####              Digite qual deseja:          ####\n"
-        "####               Steam:   1                  ####\n"
-        "####               Twitter: 2                  ####\n"
-        "####               Youtube: 3                  ####\n"
+        "####             Digite qual deseja:           ####\n"
+        "####                 Steam:    1               ####\n"
+        "####                 Twitter:  2               ####\n"
+        "####                 Youtube:  3               ####\n"
         "####                                           ####\n"
+        "####                 Voltar:   0               ####\n"
         "###################################################\n"
     );
     printf("\n\n");
@@ -241,60 +293,14 @@ void menu_redeSocial_excluir(void){
         "####                                           ####\n"
         "####                                           ####\n"
         "####              Digite qual deseja:          ####\n"
-        "####               Steam:   1                  ####\n"
-        "####               Twitter: 2                  ####\n"
-        "####               Youtube: 3                  ####\n"
+        "####                 Steam:    1               ####\n"
+        "####                 Twitter:  2               ####\n"
+        "####                 Youtube:  3               ####\n"
         "####                                           ####\n"
+        "####                 Voltar:   0               ####\n"
         "###################################################\n"
     );
     printf("\n\n");
 }
 
 
-
-
-///// Usuário
-
-
-void menu_usuario_cadastro(void){
-
-
-
-}
-void menu_usuario_editar(void){
-    setlocale (LC_ALL, "portuguese");
-    system("cls||clear");
-    printf(""
-        "###################################################\n"
-        "####                                           ####\n"
-        "####              Edição de Usuário            ####\n"
-        "####                                           ####\n"
-        "####                                           ####\n"
-        "####              Digite qual deseja:          ####\n"
-        "####               Nome:     1                 ####\n"
-        "####               Email:    2                 ####\n"
-        "####               telefone: 3                 ####\n"
-        "####                                           ####\n"
-        "###################################################\n"
-    );
-    printf("\n\n");
-}
-
-void menu_usuario_excluir(void){
-    setlocale (LC_ALL, "portuguese");
-    system("cls||clear");
-    printf(""
-        "###################################################\n"
-        "####                                           ####\n"
-        "####            Exclusão de Usuário            ####\n"
-        "####                                           ####\n"
-        "####                                           ####\n"
-        "####              Digite qual deseja:          ####\n"
-        "####               Nome:     1                 ####\n"
-        "####               Email:    2                 ####\n"
-        "####               telefone: 3                 ####\n"
-        "####                                           ####\n"
-        "###################################################\n"
-    );
-    printf("\n\n");
-}
