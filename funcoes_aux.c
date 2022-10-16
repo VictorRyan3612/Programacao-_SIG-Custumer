@@ -50,6 +50,27 @@ void vizualizar_lista(char a[]){
     }
 }
 
+int validar_cpf(int a[]){
+    // parte 1, primeiro dígito verificador
+    int b = 0, c = 0, d = 0;
+    int num =10;
+    int valido;
+
+    for (int i = 0; i <= 8; i+=1){
+        
+        b += a[i] * num;
+        num -= 1;
+    }
+
+    c = b % 11;
+    if (c >= 10){
+        c = 0;
+    }
+    d = 11 - c;
+    return 0;
+}
+
+
 // usado em usuario.c
 // Adaptado de Daynne github: https://github.com/DayXL ↓
 int validar_nome(char a[]){
