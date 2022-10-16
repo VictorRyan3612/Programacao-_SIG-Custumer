@@ -51,8 +51,8 @@ void vizualizar_lista(char a[]){
 }
 
 int validar_cpf(int a[]){
-    // parte 1, primeiro dígito verificador
-    int b = 0, c = 0, d = 0;
+    // Parte 1, primeiro dígito verificador
+    int b = 0, c = 0, d = 0, e =0, f=0, g=0;
     int num =10;
     int valido;
 
@@ -67,6 +67,23 @@ int validar_cpf(int a[]){
         c = 0;
     }
     d = 11 - c;
+
+    // Parte 2, segundo dígito verificador
+    num = 11;
+    for (int i = 0; i <= 9; i+=1){
+        e += a[i] * num;
+        num -= 1;
+    }
+
+
+    f = e % 11;
+    if (f >= 10){
+        f=0;
+    }
+    g = 11 - f;
+
+
+
     return 0;
 }
 
