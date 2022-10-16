@@ -82,9 +82,16 @@ int validar_cpf(int a[]){
     }
     g = 11 - f;
 
-
-
-    return 0;
+    // parte 3, verificar se os dígitos verificadores estão certos
+    if ((a[9] == d) && (a[10] == g)){
+        valido = True;
+        printf("true");
+    }
+    else{
+        valido = False;
+        printf("false");
+    }
+    return valido;
 }
 
 
