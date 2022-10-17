@@ -49,6 +49,21 @@ void vizualizar_lista(char a[]){
         i++;
     }
 }
+int validar_cpfnum(char a[]){
+    int i;
+    i = '\0';
+    while (a[i] != '\0'){
+        if((a[i] >= '0' ) && (a[i] <= '9')){
+            i += 1;
+        }
+        else{
+            return False;
+        }
+    }
+    return True;
+}
+
+
 
 int validar_cpf(int a[]){
     // Parte 1, primeiro dígito verificador

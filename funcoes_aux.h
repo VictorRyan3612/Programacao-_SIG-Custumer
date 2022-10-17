@@ -5,6 +5,7 @@ void vizualizar_lista(char a[]);
 
 // validações
 int validar_cpf(int a[]);
+int validar_cpfnum(char a[]);
 
 int validar_nome(char a[]);
 int validar_email(char a[]);
