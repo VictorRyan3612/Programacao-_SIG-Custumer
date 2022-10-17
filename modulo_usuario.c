@@ -77,6 +77,7 @@ int modulo_usuario(char a[], char b[], char c[]){
 
 int usuario_cadastro(char a[], char b[], char c[]){
     int resp;
+    int valido;
 
     system("cls||clear");
     printf("\n");
@@ -98,6 +99,27 @@ int usuario_cadastro(char a[], char b[], char c[]){
             }
         } while (resp != True);
 
+
+    // CPF
+    do {
+        printf(""
+            "=======================================\n"
+            "====       Informe seu cpf:        ====\n"
+            "=======================================\n"
+        );
+        printf("\n");
+        scanf("%s", b);
+        getchar();
+        
+        resp = validar_cpfnum(b);
+        valido = validar_cpf(b);
+        if (resp != True){
+            printf("Caractere inválido detectado, digite novamente:\n");
+            }
+        if (valido != True){
+            printf("CPF inválido, digite novamente:\n");
+        }
+    } while ((resp != True) && (valido != True));
 
     //email
     do {
