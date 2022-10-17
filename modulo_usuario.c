@@ -111,7 +111,7 @@ int usuario_cadastro(char a[], char b[], char c[]){
         scanf("%s", b);
         getchar();
         
-        resp = validar_cpfnum(b);
+        resp = validar_num(b);
         valido = validar_cpf(b);
         if (resp != True){
             printf("Caractere inválido detectado, digite novamente:\n");

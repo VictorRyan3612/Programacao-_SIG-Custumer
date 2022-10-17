@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 
 #define True 1
 #define False 0
@@ -49,7 +49,22 @@ void vizualizar_lista(char a[]){
         i++;
     }
 }
-int validar_cpfnum(char a[]){
+
+
+// adaptado de NadjibSoft no vídeo https://www.youtube.com/watch?v=d_M9PqPpTFI&t=50s
+int string_num(char a[]){
+    int digit, j=1,number=0; // j=casa decimal
+
+    for (int i = strlen(a)-1; i>=0; i-=1){
+        digit = a[i];
+        digit = digit -48;
+        number = number+(digit *j);
+        j *= 10;
+    }
+    return number;
+}
+
+int validar_num(char a[]){
     int i;
     i = '\0';
     while (a[i] != '\0'){
@@ -65,7 +80,7 @@ int validar_cpfnum(char a[]){
 
 
 
-int validar_cpf(int a[]){
+int validar_cpf(char a[]){
     // Parte 1, primeiro dígito verificador
     int b = 0, c = 0, d = 0, e =0, f=0, g=0;
     int num =10;
