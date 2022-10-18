@@ -81,45 +81,68 @@ int validar_num(char a[]){
 
 
 int validar_cpf(char a[]){
+    // printf("%s\n",a);
     // Parte 1, primeiro dígito verificador
     int b = 0, c = 0, d = 0, e =0, f=0, g=0;
     int num =10;
     int valido;
 
-    for (int i = 0; i <= 8; i+=1){
-        
+    for (int i = 0; i <=8; i+=1){
+        a[i] = a[i]-48;
+        // printf("a[i]%d\t",a[i]);
+        // printf("%d",num);
         b += a[i] * num;
         num -= 1;
+        // printf("b[i]=%d\n",b);
     }
-
+    // printf("b=%d\n",b);
     c = b % 11;
+    //printf("c=%d\n",c);   // essencial
     if (c >= 10){
         c = 0;
+        d = 0;
     }
+    else if (c<=1){
+        d=0;
+    }
+    else{
     d = 11 - c;
+    }
+    // printf("d=%d\n",d);  //essencial
 
     // Parte 2, segundo dígito verificador
     num = 11;
+    a[9]= a[9]-48;
+    a[10]= a[10]-48;
     for (int i = 0; i <= 9; i+=1){
+        //printf("a[i]%d\t",a[i]);
+        //printf("%d",num);
         e += a[i] * num;
+        // printf("e[i]=%d\n",e);
         num -= 1;
     }
-
+    //printf("e=%d\n",e);
 
     f = e % 11;
+    // printf("f=%d\n",f);  // essencial
     if (f >= 10){
         f=0;
+        g = 0;
     }
-    g = 11 - f;
+    else if(f<=1){
+        g=0;
+    }
+    else{
+        g = 11 - f;
+    }
+    // printf("g=%d\n",g);   //essencial
 
     // parte 3, verificar se os dígitos verificadores estão certos
     if ((a[9] == d) && (a[10] == g)){
-        valido = True;
-        printf("true");
+        valido =1;
     }
     else{
-        valido = False;
-        printf("false");
+        valido = 0;
     }
     return valido;
 }

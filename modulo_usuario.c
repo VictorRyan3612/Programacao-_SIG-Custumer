@@ -16,18 +16,18 @@ void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
 int confirmacao(void);
 
-int usuario_cadastro(char a[], char b[], char c[]);
-int usuario_vizualizar(char a[], char b[], char c[]);
-int usuario_pesquisar(char a[], char b[], char c[]);
-int usuario_editar(char a[], char b[], char c[]);
-int usuario_excluir(char a[], char b[], char c[]);
+int usuario_cadastro(char a[], char cpf[], char b[], char c[]);
+int usuario_vizualizar(char a[], char cpf[], char b[], char c[]);
+int usuario_pesquisar(char a[], char cpf[], char b[], char c[]);
+int usuario_editar(char a[], char cpf[], char b[], char c[]);
+int usuario_excluir(char a[], char cpf[], char b[], char c[]);
 
 
 //variaveis globais de usuario
 
 
 
-int modulo_usuario(char a[], char b[], char c[]){
+int modulo_usuario(char a[], char cpf[], char b[], char c[]){
     
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
@@ -41,19 +41,19 @@ int modulo_usuario(char a[], char b[], char c[]){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                usuario_cadastro(a, b, c);
+                usuario_cadastro(a, cpf, b, c);
             }
             else if (opcao == '2'){
-                usuario_vizualizar(a,b, c);
+                usuario_vizualizar(a, cpf, b, c);
             }
             else if (opcao == '3'){
-                usuario_pesquisar(a,b,c);
+                usuario_pesquisar(a, cpf, b,c);
             }
             else if (opcao == '4'){
-                usuario_editar(a, b, c);
+                usuario_editar(a, cpf, b, c);
             }
             else if (opcao == '5'){
-                usuario_excluir(a, b, c);
+                usuario_excluir(a, cpf, b, c);
             }
             
             else {
@@ -75,7 +75,7 @@ int modulo_usuario(char a[], char b[], char c[]){
 
 
 
-int usuario_cadastro(char a[], char b[], char c[]){
+int usuario_cadastro(char a[], char cpf[], char b[], char c[]){
     int resp;
     int valido;
 
@@ -108,18 +108,22 @@ int usuario_cadastro(char a[], char b[], char c[]){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%s", b);
+        scanf("%s", cpf);
         getchar();
         
-        resp = validar_num(b);
-        valido = validar_cpf(b);
+        resp = validar_num(cpf);
+        valido = validar_cpf(cpf);
+        printf("%s\n",cpf);
+
         if (resp != True){
             printf("Caractere inválido detectado, digite novamente:\n");
             }
-        if (valido != True){
+        if (valido != 1){
             printf("CPF inválido, digite novamente:\n");
         }
-    } while ((resp != True) && (valido != True));
+    } while ((resp != True) || (valido != 1));
+        // } while (resp != True);
+        
 
     //email
     do {
@@ -160,13 +164,16 @@ int usuario_cadastro(char a[], char b[], char c[]){
     return 0;
 }
 
-int usuario_vizualizar(char a[], char b[], char c[]){
+int usuario_vizualizar(char a[], char cpf[], char b[], char c[]){
     printf("\n");
 
     printf("Seu nome é esse:\n");
     printf("%s", a);
     printf("\n\n\n");
 
+    printf("Seu cpf é esse:\n");
+    printf("%s", cpf);
+    printf("\n\n\n");
 
     printf("Seu email é esse:\n");
     printf("%s", b);
@@ -180,13 +187,13 @@ int usuario_vizualizar(char a[], char b[], char c[]){
     return 0;
 }
 
-int usuario_pesquisar(char a[], char b[], char c[]){
+int usuario_pesquisar(char a[], char cpf[], char b[], char c[]){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int usuario_editar(char a[], char b[], char c[]){
+int usuario_editar(char a[], char cpf[], char b[], char c[]){
     char opcao;
     int resp;
     
@@ -194,7 +201,7 @@ int usuario_editar(char a[], char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    usuario_vizualizar(a,b,c);
+    usuario_vizualizar(a, cpf, b, c);
 
     opcao = opcoes_pergunta();
 
@@ -267,7 +274,7 @@ int usuario_editar(char a[], char b[], char c[]){
     return 0;
 }
 
-int usuario_excluir(char a[], char b[], char c[]){
+int usuario_excluir(char a[], char cpf[], char b[], char c[]){
     char opcao;
     int resp;
 
@@ -275,7 +282,7 @@ int usuario_excluir(char a[], char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    usuario_vizualizar(a,b,c);
+    usuario_vizualizar(a, cpf, b, c);
 
     printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
@@ -290,18 +297,24 @@ int usuario_excluir(char a[], char b[], char c[]){
         }
 
         else if (opcao == '2'){
-            printf("Exluindo seu email cadastrado\n");
-            strcpy(b, "");
+            printf("Exluindo seu cpf cadastrado\n");
+            cpf = '\0';
             printf("Exluído com sucesso\n");
 
         }
         
         else if (opcao == '3'){
+            printf("Exluindo seu email cadastrado\n");
+            strcpy(b, "");
+            printf("Exluído com sucesso\n");
+            
+        }
+    }
+        else if (opcao == '4'){
             printf("Exluindo seu telefone cadastrado\n");
             strcpy(c, "");
             printf("Exluído com sucesso\n");
             
         }
-    }
     return 0;
 }
