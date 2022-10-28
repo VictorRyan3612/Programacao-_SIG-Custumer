@@ -1,4 +1,5 @@
 #include <stdio.h>
+typedef struct usuario Usuario;
 
 struct usuario {
  char nome[81];
@@ -7,8 +8,8 @@ struct usuario {
  char telefone[21];
 };
 
-void preencheUsuario(struct usuario *);
-void exibe_Usuario(struct usuario al);
+void preencheUsuario(Usuario*);
+void exibe_Usuario(Usuario);
 
 
 int main(void){
@@ -23,7 +24,7 @@ int main(void){
 }
 
 
-void preencheUsuario(struct usuario* fulano) {
+void preencheUsuario(Usuario* fulano) {
     printf("Programa Cadastro de usuarios\n\n");
     printf("Informe o nome do usuario: ");
     scanf(" %80[^\n]", fulano -> nome);
