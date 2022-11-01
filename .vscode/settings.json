@@ -3,6 +3,7 @@
         "biblio.h": "c",
         "modulo_midia.h": "c",
         "modulo_redesocial.h": "c",
-        "random": "c"
+        "random": "c",
+        "locale.h": "c"
     }
 }

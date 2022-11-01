@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 
 #include "modulo_midia.h"
@@ -29,7 +28,7 @@ char youtube[50];
 
 
 int main(void){
-    setlocale (LC_ALL, "portuguese");
+    
 
     char opcao = '\0';
     do {

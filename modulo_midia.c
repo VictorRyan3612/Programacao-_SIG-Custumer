@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -35,7 +34,7 @@ struct midia {
 
 int modulo_midia(){
 
-    setlocale (LC_ALL, "portuguese");
+    
     char opcao = '\0';
     Midia fulano;
 

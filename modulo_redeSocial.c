@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -23,6 +22,7 @@ int redeSocial_pesquisar(const RedeSocial* fulano);
 int redeSocial_editar(RedeSocial* fulano);
 int redeSocial_excluir(RedeSocial* fulano);
 
+
 typedef struct redeSocial RedeSocial;
 
 struct redeSocial {
@@ -34,7 +34,7 @@ struct redeSocial {
 
 int modulo_redeSocial(){
 
-    setlocale (LC_ALL, "portuguese");
+    
     char opcao = '\0';
     RedeSocial fulano;
 

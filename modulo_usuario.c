@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -36,7 +35,7 @@ struct usuario {
 
 int modulo_usuario(void){
     
-    setlocale (LC_ALL, "portuguese");
+    
     Usuario fulano;
     char opcao = '\0';
 
