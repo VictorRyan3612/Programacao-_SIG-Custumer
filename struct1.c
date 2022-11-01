@@ -9,16 +9,16 @@ struct usuario {
 };
 
 void preencheUsuario(Usuario*);
-void exibe_Usuario(Usuario);
+void exibe_Usuario(const Usuario*);
 
 
 int main(void){
     system("cls||clear");
-    struct usuario fulano;
+    Usuario fulano;
 
 
     preencheUsuario(&fulano);
-    exibe_Usuario(fulano);
+    exibe_Usuario(&fulano);
     
     return 0;
 }
@@ -37,10 +37,10 @@ void preencheUsuario(Usuario* fulano) {
 
 }
 
-void exibe_Usuario(struct usuario fulano){
+void exibe_Usuario(const Usuario* fulano){
     printf("\n= = = usuario Cadastrado = = =\n");
-    printf("Nome do usuario: %s\n", fulano.nome);
-    printf("cpf: %s\n", fulano.cpf);
-    printf("Ender eletrônico: %s\n", fulano.email);
-    printf("telefone usuario SIGAA: %s\n", fulano.telefone);
+    printf("Nome do usuario: %s\n", fulano -> nome);
+    printf("cpf: %s\n", fulano -> cpf);
+    printf("Ender eletrônico: %s\n", fulano -> email);
+    printf("telefone usuario SIGAA: %s\n", fulano -> telefone);
 }
