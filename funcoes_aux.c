@@ -3,7 +3,7 @@
 
 #define True 1
 #define False 0
-
+typedef struct midia Midia;
 
 void enter(void){
     char opcao;

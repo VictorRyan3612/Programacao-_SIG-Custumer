@@ -18,9 +18,9 @@ void menu_midia_cadastro(void);
 void menu_midia_editar(void);
 void menu_midia_excluir(void);
 
-int midia_cadastro(Midia*);
-int midia_vizualizar(const Midia*);
-int midia_pesquisar(const Midia*);
+int midia_cadastro(Midia* fulano);
+int midia_vizualizar(const Midia* fulano);
+int midia_pesquisar(const Midia* fulano);
 int midia_editar(Midia* fulano);
 int midia_excluir(Midia* fulano);
 
@@ -38,6 +38,7 @@ int modulo_midia(){
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
     Midia fulano;
+
     do{
         menu_midia();
 
@@ -155,18 +156,23 @@ int midia_cadastro(Midia* fulano){
 
 int midia_vizualizar(const Midia* fulano){
     printf("\n");
+    char dovizualizar[50];
 
     printf("Esse são os jogos que está interessado:\n");
-    vizualizar_lista(fulano -> jogo);
+    strcpy(dovizualizar , fulano -> jogo);
+    vizualizar_lista(dovizualizar);
     printf("\n\n\n");
 
+
     printf("Esse são os livros que está interessado:\n");
-    vizualizar_lista(fulano -> livro);
+    strcpy(dovizualizar , fulano -> livro);
+    vizualizar_lista(dovizualizar);
     printf("\n\n\n");
 
 
     printf("Esse são os filmes que está interessado:\n");
-    vizualizar_lista(fulano -> filme);
+    strcpy(dovizualizar , fulano -> filme);
+    vizualizar_lista(dovizualizar);
     printf("\n\n\n");
 
     return 0;

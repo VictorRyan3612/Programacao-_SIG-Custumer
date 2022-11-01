@@ -16,7 +16,7 @@
 int menu_principal(void);
 int menu_sobre(void);
 int modulo_usuario(void);
-int modulo_redeSocial(char a[], char b[], char c[]);
+int modulo_redeSocial(void);
 int modulo_midia(void);
 
 
@@ -44,7 +44,7 @@ int main(void){
             modulo_usuario();
         }
         else if (opcao == '2'){
-            modulo_redeSocial(steam,twitter,youtube);
+            modulo_redeSocial();
         }
         else if (opcao == '3'){
             modulo_midia();
