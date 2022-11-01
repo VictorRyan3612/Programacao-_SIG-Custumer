@@ -97,7 +97,7 @@ int validar_cpf(char a[]){
     }
     // printf("b=%d\n",b);
     c = b % 11;
-    printf("c=%d\n",c);
+    // printf("c=%d\n",c); // essencial
     if (c >= 10){
         c = 0;
         d = 0;
@@ -108,7 +108,7 @@ int validar_cpf(char a[]){
     else{
     d = 11 - c;
     }
-    printf("d=%d\n",d);
+    // printf("d=%d\n",d); // essencial
 
     // Parte 2, segundo dígito verificador
     num = 11;
@@ -124,7 +124,7 @@ int validar_cpf(char a[]){
     //printf("e=%d\n",e);
 
     f = e % 11;
-    printf("f=%d\n",f);
+    // printf("f=%d\n",f); // essencial
     if (f >= 10){
         f=0;
         g = 0;
@@ -135,7 +135,7 @@ int validar_cpf(char a[]){
     else{
         g = 11 - f;
     }
-    printf("g=%d\n",g);
+    // printf("g=%d\n",g); // essencial
 
     // parte 3, verificar se os dígitos verificadores estão certos
     if ((a[9] == d) && (a[10] == g)){
