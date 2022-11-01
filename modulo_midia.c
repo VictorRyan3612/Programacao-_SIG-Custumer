@@ -18,20 +18,26 @@ void menu_midia_cadastro(void);
 void menu_midia_editar(void);
 void menu_midia_excluir(void);
 
-int midia_cadastro(char a[], char b[], char c[]);
-int midia_vizualizar(char a[], char b[], char c[]);
-int midia_pesquisar(char a[], char b[], char c[]);
-int midia_editar(char a[], char b[], char c[]);
-int midia_excluir(char a[], char b[], char c[]);
+int midia_cadastro(Midia*);
+int midia_vizualizar(const Midia*);
+int midia_pesquisar(const Midia*);
+int midia_editar(Midia* fulano);
+int midia_excluir(Midia* fulano);
 
 
+typedef struct midia Midia;
 
+struct midia {
+    char jogo[81];
+    char livro[51];
+    char filme[41];
+};
 
-int modulo_midia(char a[], char b[], char c[]){
+int modulo_midia(){
 
     setlocale (LC_ALL, "portuguese");
     char opcao = '\0';
-
+    Midia fulano;
     do{
         menu_midia();
 
@@ -41,19 +47,19 @@ int modulo_midia(char a[], char b[], char c[]){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                midia_cadastro(a,b,c);
+                midia_cadastro(&fulano);
             }
             else if (opcao == '2'){
-                midia_vizualizar(a,b,c);
+                midia_vizualizar(&fulano);
             }
             else if (opcao == '3'){
-                midia_pesquisar(a,b,c);
+                midia_pesquisar(&fulano);
             }
             else if (opcao == '4'){
-                midia_editar(a,b,c);
+                midia_editar(&fulano);
             }
             else if (opcao == '5'){
-                midia_excluir(a,b,c);
+                midia_excluir(&fulano);
             }
             
             else {
@@ -74,7 +80,7 @@ int modulo_midia(char a[], char b[], char c[]){
 }
 
 
-int midia_cadastro(char a[], char b[], char c[]){
+int midia_cadastro(Midia* fulano){
     char opcao;
     int resp;
     
@@ -92,10 +98,10 @@ int midia_cadastro(char a[], char b[], char c[]){
                 );
             printf("(use ; para mais de um)\n");
             printf("\n");
-            scanf("%20[^\n]", a);
+            scanf("%20[^\n]", fulano -> jogo);
             getchar();
 
-            resp = validar_nomeMidia(a);
+            resp = validar_nomeMidia(fulano -> jogo);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -113,10 +119,10 @@ int midia_cadastro(char a[], char b[], char c[]){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%20[^\n]", b);
+            scanf("%20[^\n]", fulano -> livro);
             getchar();
 
-            resp = validar_nomeMidia(b);
+            resp = validar_nomeMidia(fulano -> livro);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -133,10 +139,10 @@ int midia_cadastro(char a[], char b[], char c[]){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%20[^\n]", c);
+            scanf("%20[^\n]", fulano -> filme);
             getchar();
 
-            resp = validar_nomeMidia(c);
+            resp = validar_nomeMidia(fulano -> filme);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -147,32 +153,32 @@ int midia_cadastro(char a[], char b[], char c[]){
 
 
 
-int midia_vizualizar(char a[], char b[], char c[]){
+int midia_vizualizar(const Midia* fulano){
     printf("\n");
 
     printf("Esse são os jogos que está interessado:\n");
-    vizualizar_lista(a);
+    vizualizar_lista(fulano -> jogo);
     printf("\n\n\n");
 
     printf("Esse são os livros que está interessado:\n");
-    vizualizar_lista(b);
+    vizualizar_lista(fulano -> livro);
     printf("\n\n\n");
 
 
     printf("Esse são os filmes que está interessado:\n");
-    vizualizar_lista(c);
+    vizualizar_lista(fulano -> filme);
     printf("\n\n\n");
 
     return 0;
 }
 
-int midia_pesquisar(char a[], char b[], char c[]){
+int midia_pesquisar(const Midia* fulano){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int midia_editar(char a[], char b[], char c[]){
+int midia_editar(Midia* fulano){
     char opcao;
     int resp;
 
@@ -180,7 +186,7 @@ int midia_editar(char a[], char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    midia_vizualizar(a,b,c);
+    midia_vizualizar(fulano);
 
     opcao = opcoes_pergunta();
 
@@ -188,7 +194,7 @@ int midia_editar(char a[], char b[], char c[]){
     // Editar Jogo
     if (opcao == '1'){
         printf("Seu atual interesse em jogo é:\n");
-        printf("%s", a);
+        printf("%s", fulano -> jogo);
         printf("\n\n");
         do{
             printf(""
@@ -197,10 +203,10 @@ int midia_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%20[^\n]", a);
+            scanf("%20[^\n]", fulano -> jogo);
             getchar();
 
-            resp = validar_nomeMidia(a);
+            resp = validar_nomeMidia(fulano -> jogo);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -210,7 +216,7 @@ int midia_editar(char a[], char b[], char c[]){
     // Editar livro
     else if (opcao == '2'){
         printf("Seu atual interesse em livro é:\n");
-        printf("%s", b);
+        printf("%s", fulano -> livro);
         printf("\n\n");
         do{
             printf(""
@@ -219,10 +225,10 @@ int midia_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%20[^\n]", b);
+            scanf("%20[^\n]", fulano -> livro);
             getchar();
 
-            resp = validar_nomeMidia(b);
+            resp = validar_nomeMidia(fulano -> livro);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -235,7 +241,7 @@ int midia_editar(char a[], char b[], char c[]){
 
 
         printf("Seu atual interesse em filme é:\n");
-        printf("%s", c);
+        printf("%s", fulano -> filme);
         printf("\n\n");
         do{
             printf(""
@@ -244,10 +250,10 @@ int midia_editar(char a[], char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%20[^\n]", c);
+            scanf("%20[^\n]", fulano -> filme);
             getchar();
 
-            resp = validar_nomeMidia(c);
+            resp = validar_nomeMidia(fulano -> filme);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -258,7 +264,7 @@ int midia_editar(char a[], char b[], char c[]){
     return 0;
 }
 
-int midia_excluir(char a[], char b[], char c[]){
+int midia_excluir(Midia* fulano){
     char opcao;
     int resp;
 
@@ -266,7 +272,7 @@ int midia_excluir(char a[], char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    midia_vizualizar(a,b,c);
+    midia_vizualizar(fulano);
 
     printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
@@ -275,21 +281,21 @@ int midia_excluir(char a[], char b[], char c[]){
     if (resp == True){
         if (opcao == '1'){
             printf("Exluindo seu interesse em jogo\n");
-            strcpy(a, "");
+            strcpy(fulano -> jogo, "");
             printf("Exluído com sucesso\n");
 
         }
 
         else if (opcao == '2'){
             printf("Exluindo seu livro interessado\n");
-            strcpy(b, "");
+            strcpy(fulano -> livro, "");
             printf("Exluído com sucesso\n");
 
         }
 
         else if (opcao == '3'){
             printf("Exluindo seu filme interessado\n");
-            strcpy(c, "");
+            strcpy(fulano -> filme, "");
             printf("Exluído com sucesso\n");
             
         }

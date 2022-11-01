@@ -1,6 +1,9 @@
-int modulo_midia(char a[], char b[], char c[]);
-int midia_cadastro(char a[], char b[], char c[]);
-int midia_vizualizar(char a[], char b[], char c[]);
-int midia_pesquisar(char a[], char b[], char c[]);
-int midia_editar(char a[], char b[], char c[]);
-int midia_excluir(char a[], char b[], char c[]);
+typedef struct midia Midia;
+
+
+int modulo_midia(void);
+int midia_cadastro(Midia* fulano);
+int midia_vizualizar(const Midia* fulano);
+int midia_pesquisar(const Midia* fulano);
+int midia_editar(Midia* fulano);
+int midia_excluir(Midia* fulano);
