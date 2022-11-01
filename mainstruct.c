@@ -25,4 +25,7 @@ int main(void){
     if (op =='2'){
         modulo_midia();
     }
+    if (op =='3'){
+        modulo_redeSocial();
+    }
 }
