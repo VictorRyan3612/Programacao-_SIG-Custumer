@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 typedef struct usuario Usuario;
 
 struct usuario {
@@ -8,23 +10,23 @@ struct usuario {
  char telefone[21];
 };
 
-void preencheUsuario(Usuario*);
+void preenche_Usuario(Usuario*);
 void exibe_Usuario(const Usuario*);
 
 
-int main(void){
+int modulo_usuario(void){
     system("cls||clear");
     Usuario fulano;
 
 
-    preencheUsuario(&fulano);
+    preenche_Usuario(&fulano);
     exibe_Usuario(&fulano);
     
     return 0;
 }
 
 
-void preencheUsuario(Usuario* fulano) {
+void preenche_Usuario(Usuario* fulano) {
     printf("Programa Cadastro de usuarios\n\n");
     printf("Informe o nome do usuario: ");
     scanf(" %80[^\n]", fulano -> nome);
