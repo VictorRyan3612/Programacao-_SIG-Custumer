@@ -1,7 +1,9 @@
-int modulo_usuario(char a[], int cpf, char b[], char c[]);
+typedef struct usuario Usuario;
 
-int usuario_cadastro(char a[], int cpf, char b[], char c[]);
-int usuario_vizualizar(char a[], int cpf, char b[], char c[]);
-int usuario_pesquisar(char a[], int cpf, char b[], char c[]);
-int usuario_editar(char a[], int cpf, char b[], char c[]);
-int usuario_excluir(char a[], int cpf, char b[], char c[]);
+int modulo_usuario(void);
+
+int usuario_cadastro(Usuario* fulano);
+int usuario_vizualizar(const Usuario* fulano);
+int usuario_pesquisar(const Usuario* fulano);
+int usuario_editar(Usuario* fulano);
+int usuario_excluir(Usuario* fulano);

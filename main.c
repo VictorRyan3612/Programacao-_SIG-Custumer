@@ -15,17 +15,12 @@
 // Assinatura das funções:
 int menu_principal(void);
 int menu_sobre(void);
-int modulo_usuario(char a[], int cpf, char b[], char c[]);
+int modulo_usuario();
 int modulo_redeSocial(char a[], char b[], char c[]);
 int modulo_interesse(char a[], char b[], char c[]);
 
 
 // variaveis globais
-// usuario.c
-char nome[50];
-char email[50];
-int cpf = '\0';
-char telefone[20];
 // midia.c
 char jogo[50];
 char livro[50];
@@ -50,7 +45,7 @@ int main(void){
         getchar();
 
         if (opcao == '1'){
-            modulo_usuario(nome, cpf, email, telefone);
+            modulo_usuario();
         }
         else if (opcao == '2'){
             modulo_redeSocial(steam,twitter,youtube);

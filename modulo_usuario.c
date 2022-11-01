@@ -16,20 +16,28 @@ void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
 int confirmacao(void);
 
-int usuario_cadastro(char a[], int cpf, char b[], char c[]);
-int usuario_vizualizar(char a[], int cpf, char b[], char c[]);
-int usuario_pesquisar(char a[], int cpf, char b[], char c[]);
-int usuario_editar(char a[], int cpf, char b[], char c[]);
-int usuario_excluir(char a[], int cpf, char b[], char c[]);
+int usuario_cadastro(Usuario* fulano);
+int usuario_vizualizar(const Usuario* fulano);
+int usuario_pesquisar(const Usuario* fulano);
+int usuario_editar(Usuario* fulano);
+int usuario_excluir(Usuario* fulano);
 
 
-//variaveis globais de usuario
+typedef struct usuario Usuario;
+
+struct usuario {
+ char nome[81];
+ char cpf[51];
+ char email[41];
+ char telefone[21];
+};
 
 
 
-int modulo_usuario(char a[], int cpf, char b[], char c[]){
+int modulo_usuario(void){
     
     setlocale (LC_ALL, "portuguese");
+    Usuario fulano;
     char opcao = '\0';
 
     do{
@@ -41,19 +49,19 @@ int modulo_usuario(char a[], int cpf, char b[], char c[]){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                usuario_cadastro(a, cpf, b, c);
+                usuario_cadastro(&fulano);
             }
             else if (opcao == '2'){
-                usuario_vizualizar(a, cpf, b, c);
+                usuario_vizualizar(&fulano);
             }
             else if (opcao == '3'){
-                usuario_pesquisar(a, cpf, b,c);
+                usuario_pesquisar(&fulano);
             }
             else if (opcao == '4'){
-                usuario_editar(a, cpf, b, c);
+                usuario_editar(&fulano);
             }
             else if (opcao == '5'){
-                usuario_excluir(a, cpf, b, c);
+                usuario_excluir(&fulano);
             }
             
             else {
@@ -75,10 +83,9 @@ int modulo_usuario(char a[], int cpf, char b[], char c[]){
 
 
 
-int usuario_cadastro(char a[], int cpf, char b[], char c[]){
+int usuario_cadastro(Usuario* fulano){
     int resp;
     int valido;
-    char cpfstring[12];
 
     system("cls||clear");
     printf("\n");
@@ -91,10 +98,10 @@ int usuario_cadastro(char a[], int cpf, char b[], char c[]){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%20[^\n]", a);
+        scanf("%20[^\n]", fulano -> nome);
         getchar();
 
-        resp = validar_nome(a);
+        resp = validar_nome(fulano -> nome);
         if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -109,11 +116,11 @@ int usuario_cadastro(char a[], int cpf, char b[], char c[]){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%s", cpfstring);
+        scanf("%s", fulano -> cpf);
         getchar();
         
-        resp = validar_num(cpfstring);
-        valido = validar_cpf(cpfstring);
+        resp = validar_num(fulano-> cpf);
+        valido = validar_cpf(fulano -> cpf);
         if (resp != True){
             printf("Caractere inválido detectado, digite novamente:\n");
             }
@@ -130,10 +137,10 @@ int usuario_cadastro(char a[], int cpf, char b[], char c[]){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%s", b);
+        scanf("%s", fulano -> email);
         getchar();
         
-        resp = validar_email(b);
+        resp = validar_email(fulano -> email);
         if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -149,10 +156,10 @@ int usuario_cadastro(char a[], int cpf, char b[], char c[]){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%s", c);
+        scanf("%s", fulano -> telefone);
         getchar();
 
-        resp = validar_telefone(c);
+        resp = validar_telefone(fulano -> telefone);
         if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -161,36 +168,36 @@ int usuario_cadastro(char a[], int cpf, char b[], char c[]){
     return 0;
 }
 
-int usuario_vizualizar(char a[], int cpf, char b[], char c[]){
+int usuario_vizualizar(const Usuario* fulano){
     printf("\n");
 
     printf("Seu nome é esse:\n");
-    printf("%s", a);
+    printf("%s", fulano -> nome);
     printf("\n\n\n");
 
     printf("Seu cpf é esse:\n");
-    printf("%d", cpf);
+    printf("%s", fulano -> cpf);
     printf("\n\n\n");
 
     printf("Seu email é esse:\n");
-    printf("%s", b);
+    printf("%s", fulano -> email);
     printf("\n\n\n");
 
 
     printf("Seu telefone é esse:\n");
-    printf("%s", c);
+    printf("%s", fulano -> telefone);
     printf("\n\n\n");
 
     return 0;
 }
 
-int usuario_pesquisar(char a[], int cpf, char b[], char c[]){
+int usuario_pesquisar(const Usuario* fulano){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int usuario_editar(char a[], int cpf, char b[], char c[]){
+int usuario_editar(Usuario* fulano){
     char opcao;
     int resp;
     
@@ -198,14 +205,14 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    usuario_vizualizar(a, cpf, b, c);
+    usuario_vizualizar(fulano);
 
     opcao = opcoes_pergunta();
 
     // Editar nome
     if (opcao == '1'){
         printf("Seu atual nome é esse:\n");
-        printf("%s", a);
+        printf("%s", fulano -> nome);
         printf("\n\n");
         do{
             printf(""
@@ -214,10 +221,10 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%20[^\n]", a);
+            scanf("%20[^\n]", fulano -> nome);
             getchar();
 
-            resp = validar_nome(a);
+            resp = validar_nome(fulano -> nome);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -226,7 +233,7 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
     // Editar email
     else if (opcao == '2'){
         printf("Seu atual email é esse:\n");
-        printf("%s", b);
+        printf("%s", fulano -> email);
         printf("\n\n");
         do{
             printf(""
@@ -235,10 +242,10 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%s", b);
+            scanf("%s", fulano -> email);
             getchar();
             
-            resp = validar_email(b);
+            resp = validar_email(fulano -> email);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -249,7 +256,7 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
     // Editar telefone
     else if (opcao == '3'){
         printf("Seu atual telefone é esse:\n");
-        printf("%s", c);
+        printf("%s", fulano -> telefone);
         printf("\n\n");
         do{
             printf(""
@@ -258,10 +265,10 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
                 "=======================================\n"
             );
             printf("\n");
-            scanf("%s", c);
+            scanf("%s", fulano -> telefone);
             getchar();
 
-            resp = validar_telefone(c);
+            resp = validar_telefone(fulano -> telefone);
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
@@ -271,7 +278,7 @@ int usuario_editar(char a[], int cpf, char b[], char c[]){
     return 0;
 }
 
-int usuario_excluir(char a[], int cpf, char b[], char c[]){
+int usuario_excluir(Usuario* fulano){
     char opcao;
     int resp;
 
@@ -279,7 +286,7 @@ int usuario_excluir(char a[], int cpf, char b[], char c[]){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    usuario_vizualizar(a, cpf, b, c);
+    usuario_vizualizar(fulano);
 
     printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
@@ -288,28 +295,28 @@ int usuario_excluir(char a[], int cpf, char b[], char c[]){
     if (resp == True){
         if (opcao == '1'){
             printf("Exluindo seu nome\n");
-            strcpy(a, "");
+            strcpy(fulano -> nome, "");
             printf("Exluído com sucesso\n");
 
         }
 
         else if (opcao == '2'){
             printf("Exluindo seu cpf cadastrado\n");
-            cpf = '\0';
+            strcpy(fulano -> cpf, "");
             printf("Exluído com sucesso\n");
 
         }
         
         else if (opcao == '3'){
             printf("Exluindo seu email cadastrado\n");
-            strcpy(b, "");
+            strcpy(fulano -> email, "");
             printf("Exluído com sucesso\n");
             
         }
     }
         else if (opcao == '4'){
             printf("Exluindo seu telefone cadastrado\n");
-            strcpy(c, "");
+            strcpy(fulano -> telefone, "");
             printf("Exluído com sucesso\n");
             
         }
