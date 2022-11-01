@@ -27,18 +27,18 @@ int modulo_midia(void){
 
 void preenche_midia(Midia* fulano) {
     printf("Programa Cadastro de midias\n\n");
-    printf("Informe o jogo do midia: ");
+    printf("Informe o jogo de interesse: ");
     scanf(" %80[^\n]", fulano -> jogo);
-    printf("Informe o livro do midia: ");
+    printf("Informe o livro de interesse: ");
     scanf(" %50[^\n]", fulano -> livro);
-    printf("Informe o e-mail do midia: ");
+    printf("Informe o filme de interesse: ");
     scanf(" %40[^\n]", fulano -> filme);
 
 }
 
 void exibe_midia(const Midia* fulano){
     printf("\n= = = midia Cadastrado = = =\n");
-    printf("jogo do midia: %s\n", fulano -> jogo);
-    printf("livro: %s\n", fulano -> livro);
-    printf("Ender eletrônico: %s\n", fulano -> filme);
+    printf("Jogo  de interesse: %s\n", fulano -> jogo);
+    printf("Livro de interesse: %s\n", fulano -> livro);
+    printf("Filme de interesse: %s\n", fulano -> filme);
 }

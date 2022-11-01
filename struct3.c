@@ -27,11 +27,11 @@ int modulo_redeSocial(void){
 
 void preenche_redeSocial(RedeSocial* fulano) {
     printf("Programa Cadastro de rede socials\n\n");
-    printf("Informe o steam do redeSocial: ");
+    printf("Informe o steam do usuario: ");
     scanf(" %80[^\n]", fulano -> steam);
-    printf("Informe o twitter do redeSocial: ");
+    printf("Informe o twitter do usuario: ");
     scanf(" %50[^\n]", fulano -> twitter);
-    printf("Informe o e-mail do redeSocial: ");
+    printf("Informe o youtube do usuario: ");
     scanf(" %40[^\n]", fulano -> youtube);
 
 
@@ -39,7 +39,7 @@ void preenche_redeSocial(RedeSocial* fulano) {
 
 void exibe_redeSocial(const RedeSocial* fulano){
     printf("\n= = = redeSocial Cadastrado = = =\n");
-    printf("steam do redeSocial: %s\n", fulano -> steam);
-    printf("twitter: %s\n", fulano -> twitter);
-    printf("Ender eletrônico: %s\n", fulano -> youtube);
+    printf("Steam do usuario: %s\n", fulano -> steam);
+    printf("Twitter: %s\n", fulano -> twitter);
+    printf("youtube do usuario: %s\n", fulano -> youtube);
 }
