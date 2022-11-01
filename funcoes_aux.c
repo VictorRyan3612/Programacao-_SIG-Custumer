@@ -80,7 +80,9 @@ int validar_num(char a[]){
 
 
 
-int validar_cpf(char a[]){
+int validar_cpf(char x[]){
+    char a[12];
+    strcpy(a, x);
     // printf("%s\n",a);
     // Parte 1, primeiro dígito verificador
     int b = 0, c = 0, d = 0, e =0, f=0, g=0;

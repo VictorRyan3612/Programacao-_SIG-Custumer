@@ -15,7 +15,7 @@
 int menu_principal(void);
 int menu_sobre(void);
 int modulo_usuario(void);
-int modulo_redeSocial(void);
+void modulo_redeSocial(void);
 int modulo_midia(void);
 
 

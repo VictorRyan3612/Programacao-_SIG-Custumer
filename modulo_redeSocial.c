@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,6 +9,8 @@
 #define True 1
 #define False 0
 
+typedef struct redeSocial RedeSocial;
+
 /////  Assinatura das funções:
 
 char opcoes_pergunta(void);
@@ -16,27 +19,19 @@ void menu_redeSocial_cadastro(void);
 void menu_redeSocial_editar(void);
 void menu_redeSocial_excluir(void);
 
-int redeSocial_cadastro(RedeSocial* fulano);
-int redeSocial_vizualizar(const RedeSocial* fulano);
-int redeSocial_pesquisar(const RedeSocial* fulano);
-int redeSocial_editar(RedeSocial* fulano);
-int redeSocial_excluir(RedeSocial* fulano);
+void redeSocial_cadastro(void);
+void redeSocial_vizualizar(void);
+void redeSocial_pesquisar(void);
+void redeSocial_editar(void);
+void redeSocial_excluir(void);
 
 
-typedef struct redeSocial RedeSocial;
-
-struct redeSocial {
-    char steam[81];
-    char twitter[51];
-    char youtube[41];
-};
 
 
-int modulo_redeSocial(){
 
-    
+
+void modulo_redeSocial(){
     char opcao = '\0';
-    RedeSocial fulano;
 
     do {
         menu_redeSocial();
@@ -47,19 +42,19 @@ int modulo_redeSocial(){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                redeSocial_cadastro(&fulano);
+                redeSocial_cadastro();
             }
             else if (opcao == '2'){
-                redeSocial_vizualizar(&fulano);
+                redeSocial_vizualizar();
             }
             else if (opcao == '3'){
-                redeSocial_pesquisar(&fulano);
+                redeSocial_pesquisar();
             }
             else if (opcao == '4'){
-                redeSocial_editar(&fulano);
+                redeSocial_editar();
             }
             else if (opcao == '5'){
-                redeSocial_excluir(&fulano);
+                redeSocial_excluir();
             }
             
             else {
@@ -76,13 +71,15 @@ int modulo_redeSocial(){
 
     }
     while (opcao != '0');
-    return 0;
+
 }
 
 
-int redeSocial_cadastro(RedeSocial* fulano){
+void redeSocial_cadastro(void){
     char opcao;
     int resp;
+    RedeSocial* fulano;
+    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
@@ -144,152 +141,150 @@ int redeSocial_cadastro(RedeSocial* fulano){
             }
         } while (resp != True);
     }
-    return 0;
+    // Gravar fulano
+    free(fulano);
 }
 
-int redeSocial_vizualizar(const RedeSocial* fulano){
-    printf("\n");
+void redeSocial_vizualizar(void){
+    // printf("\n");
 
-    printf("Seu perfil do steam é essa:\n");
-    printf("%s", fulano -> steam);
-    printf("\n\n\n");
-
-
-    printf("Seu twitter é esse:\n");
-    printf("%s", fulano -> twitter);
-    printf("\n\n\n");
+    // printf("Seu perfil do steam é essa:\n");
+    // printf("%s", fulano -> steam);
+    // printf("\n\n\n");
 
 
-    printf("Seu canal do youtube é esse:\n");
-    printf("%s", fulano -> youtube);
-    printf("\n\n\n");
+    // printf("Seu twitter é esse:\n");
+    // printf("%s", fulano -> twitter);
+    // printf("\n\n\n");
 
-    return 0;
+
+    // printf("Seu canal do youtube é esse:\n");
+    // printf("%s", fulano -> youtube);
+    // printf("\n\n\n");
+
 }
 
-int redeSocial_pesquisar(const RedeSocial* fulano){
+void redeSocial_pesquisar(void){
     printf("Busca não disponível\n");
 
-    return 0;
 }
 
-int redeSocial_editar(RedeSocial* fulano){
-    char opcao;
-    int resp;
+void redeSocial_editar(void){
+    printf("\n");
+//     char opcao;
+//     int resp;
 
-    menu_redeSocial_editar();
-    printf("\n\n");
-    printf("Suas informações atualmente cadastradas são:\n");
-    redeSocial_vizualizar(fulano);
-    opcao = opcoes_pergunta();
+//     menu_redeSocial_editar();
+//     printf("\n\n");
+//     printf("Suas informações atualmente cadastradas são:\n");
+//     redeSocial_vizualizar(fulano);
+//     opcao = opcoes_pergunta();
 
     
-    // Editar steam
-    if (opcao == '1'){
-        printf("Seu atual perfil da steam é esse:\n");
-        printf("%s", fulano -> steam);
-        printf("\n\n");
-        do{
-            printf(""
-                "=======================================\n"
-                "====      Informe o atualizado:    ====\n"
-                "=======================================\n"
-            );
-            printf("\n");
-            scanf("%s", fulano -> steam);
-            getchar();
-            resp = validar_twitterSteam(fulano -> steam);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-}
-    // Editar twitter
-    else if (opcao == '2'){
-        printf("Sua atual conta do twitter é essa:\n");
-        printf("%s", fulano -> twitter);
-        printf("\n\n");
-        do{
-            printf(""
-                "=======================================\n"
-                "====      Informe o atualizado:    ====\n"
-                "=======================================\n"
-            );
-            printf("\n");
-            scanf("%s", fulano -> twitter);
-            getchar();
+//     // Editar steam
+//     if (opcao == '1'){
+//         printf("Seu atual perfil da steam é esse:\n");
+//         printf("%s", fulano -> steam);
+//         printf("\n\n");
+//         do{
+//             printf(""
+//                 "=======================================\n"
+//                 "====      Informe o atualizado:    ====\n"
+//                 "=======================================\n"
+//             );
+//             printf("\n");
+//             scanf("%s", fulano -> steam);
+//             getchar();
+//             resp = validar_twitterSteam(fulano -> steam);
+//             if (resp != True){
+//                 printf("Caractere inválido detectado, Digite novamente:\n");
+//             }
+//         } while (resp != True);
+// }
+//     // Editar twitter
+//     else if (opcao == '2'){
+//         printf("Sua atual conta do twitter é essa:\n");
+//         printf("%s", fulano -> twitter);
+//         printf("\n\n");
+//         do{
+//             printf(""
+//                 "=======================================\n"
+//                 "====      Informe o atualizado:    ====\n"
+//                 "=======================================\n"
+//             );
+//             printf("\n");
+//             scanf("%s", fulano -> twitter);
+//             getchar();
 
-            resp = validar_twitterSteam(fulano -> twitter);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
+//             resp = validar_twitterSteam(fulano -> twitter);
+//             if (resp != True){
+//                 printf("Caractere inválido detectado, Digite novamente:\n");
+//             }
+//         } while (resp != True);
+//     }
 
         
-    // Editar youtube
-    else if (opcao == '3'){
-        printf("Seu atual canal do youtube é esse:\n");
-        printf("%s", fulano -> youtube);
-        printf("\n\n");
-        do{
-            printf(""
-                "=======================================\n"
-                "====      Informe o atualizado:    ====\n"
-                "=======================================\n"
-            );
-            printf("\n");
-            scanf("%s", fulano -> youtube);
-            getchar();
+//     // Editar youtube
+//     else if (opcao == '3'){
+//         printf("Seu atual canal do youtube é esse:\n");
+//         printf("%s", fulano -> youtube);
+//         printf("\n\n");
+//         do{
+//             printf(""
+//                 "=======================================\n"
+//                 "====      Informe o atualizado:    ====\n"
+//                 "=======================================\n"
+//             );
+//             printf("\n");
+//             scanf("%s", fulano -> youtube);
+//             getchar();
 
-            resp = validar_youtube(fulano -> youtube);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
+//             resp = validar_youtube(fulano -> youtube);
+//             if (resp != True){
+//                 printf("Caractere inválido detectado, Digite novamente:\n");
+//             }
+//         } while (resp != True);
+//     }
 
-
-    return 0;
 }
 
-int redeSocial_excluir(RedeSocial* fulano){
-    char opcao;
-    int resp;
+void redeSocial_excluir(void){
+    printf("\n");
+//     char opcao;
+//     int resp;
 
-    menu_redeSocial_excluir();
+//     menu_redeSocial_excluir();
 
-    printf("\n\n");
-    printf("Suas informações atualmente cadastradas são:\n");
+//     printf("\n\n");
+//     printf("Suas informações atualmente cadastradas são:\n");
 
-    redeSocial_vizualizar(fulano);
+//     redeSocial_vizualizar(fulano);
 
-    printf("Digite qual deseja:\n");
-    opcao = opcoes_pergunta();
+//     printf("Digite qual deseja:\n");
+//     opcao = opcoes_pergunta();
 
-    resp = confirmacao();
-    if (resp == True){
-        if (opcao == '1'){
+//     resp = confirmacao();
+//     if (resp == True){
+//         if (opcao == '1'){
             
-            printf("Exluindo seu perfil steam cadastrado\n");
-            strcpy(fulano -> steam, "");
-            printf("Exluído com sucesso\n");
+//             printf("Exluindo seu perfil steam cadastrado\n");
+//             strcpy(fulano -> steam, "");
+//             printf("Exluído com sucesso\n");
 
-        }
+//         }
 
-        else if (opcao == '2'){
-            printf("Exluindo seu perfil do twitter cadastrado\n");
-            strcpy(fulano -> twitter, "");
-            printf("Exluído com sucesso\n");
+//         else if (opcao == '2'){
+//             printf("Exluindo seu perfil do twitter cadastrado\n");
+//             strcpy(fulano -> twitter, "");
+//             printf("Exluído com sucesso\n");
 
-        }
+//         }
         
-        else if (opcao == '3'){
-            printf("Exluindo seu canal youtube cadastrado\n");
-            strcpy(fulano -> youtube, "");
-            printf("Exluído com sucesso\n");
+//         else if (opcao == '3'){
+//             printf("Exluindo seu canal youtube cadastrado\n");
+//             strcpy(fulano -> youtube, "");
+//             printf("Exluído com sucesso\n");
             
-        }
-    }
-    return 0;
+//         }
+//     }
 }
