@@ -21,4 +21,8 @@ int main(void){
     if (op =='1'){
         modulo_usuario();
     }
+
+    if (op =='2'){
+        modulo_midia();
+    }
 }
