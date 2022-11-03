@@ -17,17 +17,18 @@ struct usuario {
 void menuprincipal(void);
 int main(void);
 Usuario* preencheUsuario(void);
-void gravaUsuario(Usuario*);
+void gravaUsuario(Usuario* fulano);
 
 
 
 int main(void){
-    system("cls||clear");
     Usuario* fulano;
     char opcao = '\0';
 
     do{
+        system("cls||clear");
         menuprincipal();
+        printf("\n\n");
 
         printf("Digite uma opção:\n");
         opcao = opcoes_pergunta();
@@ -40,16 +41,15 @@ int main(void){
         else if (opcao == '2'){
             printf("\n");
         }
+
+        else if (opcao == '0'){
+            printf("Saindo do programa...\n");
+        }
         else {
             printf("Opção não dessenvolvida ou inválida\n");
         }
 
-        if (opcao == '0'){
-            printf("Saindo do programa...\n");
-        }
-
-        printf("Aperte enter para continuar\n\n");
-        getchar();
+        enter();
     }while (opcao != '0');
     return 0;
 }
@@ -60,9 +60,6 @@ void menuprincipal(){
     "1: Cadastra Usuario\n"
     "2: Pesquisar Usuario\n"
     );
-}
-void gravaUsuario(Usuario* fulano){
-    printf("\n");
 }
 
 Usuario* preencheUsuario(void){
@@ -77,9 +74,22 @@ Usuario* preencheUsuario(void){
     scanf(" %51[^\n]", fulano->email);
     printf("Informe o telefone do usuario:\n");
     scanf(" %15[^\n]", fulano->telefone);
-    fulano->status = 'c';
+    fulano->status = 'c'; // cadastreado
 
 
     free(fulano);
     return fulano;
+}
+
+
+void gravaUsuario(Usuario* fulano){
+  FILE* fp;
+  fp = fopen("usuario.dat", "ab");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  fwrite(fulano, sizeof(Usuario), 1, fp);
+  fclose(fp);
 }
