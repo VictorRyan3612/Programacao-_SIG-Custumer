@@ -20,13 +20,12 @@ void menu_redeSocial_editar(void);
 void menu_redeSocial_excluir(void);
 
 void redeSocial_cadastro(void);
-void redeSocial_vizualizar(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
 
 void usuario_gravar(RedeSocial* fulano);
-
+void usuario_exibe(RedeSocial* fulano);
 
 
 
@@ -153,22 +152,48 @@ void usuario_gravar(RedeSocial* fulano){
   fwrite(fulano, sizeof(RedeSocial), 1, fp);
   fclose(fp);
 }
-void redeSocial_vizualizar(void){
-    // printf("\n");
 
-    // printf("Seu perfil do steam é essa:\n");
-    // printf("%s", fulano -> steam);
-    // printf("\n\n\n");
+// RedeSocial* usuario_busca(void){
+//     FILE* fp;
+//     RedeSocial* fulano;
+//     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+
+//     char cpf_busca[13];
+//     printf("\n = Busca usuario = \n"); 
+//     printf("Informe o CPF:\n"); 
+//     scanf("%s", cpf_busca);
+//     fp = fopen("redeSocial.dat", "rb");
+//     if (fp == NULL) {
+//         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+//         printf("Não é possível continuar este programa...\n");
+//         exit(1);
+//     }
+
+//     while(!feof(fp)) {
+//         fread(fulano, sizeof(RedeSocial), 1, fp);
+//         if ((strcmp(fulano->cpf, cpf_busca) == 0) && (fulano->status != 'x')){
+//             fclose(fp);
+//             return fulano;
+//         }
+//     }
+//     fclose(fp);
+//     return NULL;
+//     }
 
 
-    // printf("Seu twitter é esse:\n");
-    // printf("%s", fulano -> twitter);
-    // printf("\n\n\n");
+void usuario_exibe(RedeSocial* fulano){
+    printf("\n");
+    
+    char situacao[20];
 
-
-    // printf("Seu canal do youtube é esse:\n");
-    // printf("%s", fulano -> youtube);
-    // printf("\n\n\n");
+    if (fulano == NULL) {
+        printf("\n= = = Usuario Inexistente = = =\n");
+    } 
+    else {
+        printf("Steam do usuario: %s\n", fulano->steam);
+        printf("Twitter do Usuario: %s\n", fulano->twitter);
+        printf("Youtube do usuario: %s\n", fulano->youtube);
+    }
 
 }
 
