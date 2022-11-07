@@ -18,8 +18,9 @@ int confirmacao(void);
 
 int usuario_cadastro(Usuario* fulano);
 void usuario_grava(Usuario* fulano);
-int usuario_vizualizar(const Usuario* fulano);
-int usuario_pesquisar(Usuario* fulano);
+void usuario_exibe(Usuario* fulano);
+void usuario_listar(Usuario* fulano);
+void usuario_pesquisar(Usuario* fulano);
 int usuario_editar(Usuario* fulano);
 int usuario_excluir(Usuario* fulano);
 
@@ -44,7 +45,7 @@ int modulo_usuario(void){
                 usuario_cadastro(&fulano);
             }
             else if (opcao == '2'){
-                usuario_vizualizar(&fulano);
+                usuario_listar(&fulano);
             }
             else if (opcao == '3'){
                 usuario_pesquisar(&fulano);
@@ -77,8 +78,6 @@ int modulo_usuario(void){
 int usuario_cadastro(Usuario* fulano){
     int resp;
     int valido;
-    char cpf_aux[20];
-    // long int cpf_long;
 
     system("cls||clear");
     printf("\n");
@@ -123,10 +122,6 @@ int usuario_cadastro(Usuario* fulano){
     } while ((resp != True) || (valido != True));
 
 
-    // cpf_long = atol(cpf_aux);
-    // printf("%ld\n",cpf_long);
-
-
     //email
     do {
         printf(""
@@ -162,7 +157,7 @@ int usuario_cadastro(Usuario* fulano){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
     } while (resp != True);
-
+    fulano -> status = 'c';
     usuario_grava(fulano);
     return 0;
 }
@@ -205,35 +200,10 @@ Usuario* buscaUsuario(void){
     return NULL;
     }
 
-int usuario_vizualizar(const Usuario* fulano){
-    printf("\n");
-    
-    // printf("Seu nome é esse:\n");
-    // printf("%s", fulano -> nome);
-    // printf("\n\n\n");
-
-    // printf("Seu cpf é esse:\n");
-    // printf("%s", fulano -> cpf);
-    // printf("\n\n\n");
-
-    // printf("Seu email é esse:\n");
-    // printf("%s", fulano -> email);
-    // printf("\n\n\n");
-
-
-    // printf("Seu telefone é esse:\n");
-    // printf("%s", fulano -> telefone);
-    // printf("\n\n\n");
-
-    return 0;
-}
-
-int usuario_pesquisar(Usuario* fulano){
+void usuario_exibe(Usuario* fulano){
     printf("\n");
     
     char situacao[20];
-
-    fulano = buscaUsuario();
 
     if ((fulano == NULL) || (fulano->status == 'x')) {
         printf("\n= = = Usuario Inexistente = = =\n");
@@ -255,8 +225,19 @@ int usuario_pesquisar(Usuario* fulano){
         }
         printf("Situação do Usuario: %s\n", situacao);
     }
+
     enter();
-    return 0;
+
+}
+
+void usuario_listar(Usuario* fulano){
+    printf("\n");
+}
+
+void usuario_pesquisar(Usuario* fulano){
+    
+    fulano = buscaUsuario();
+    usuario_exibe(fulano);
 }
 
 int usuario_editar(Usuario* fulano){

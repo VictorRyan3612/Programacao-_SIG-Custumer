@@ -12,7 +12,8 @@ int modulo_usuario(void);
 
 int usuario_cadastro(Usuario* fulano);
 void usuario_grava(Usuario* fulano);
-int usuario_vizualizar(const Usuario* fulano);
-int usuario_pesquisar(Usuario* fulano);
+void usuario_exibe(Usuario* fulano);
+void usuario_listar(Usuario* fulano);
+void usuario_pesquisar(Usuario* fulano);
 int usuario_editar(Usuario* fulano);
 int usuario_excluir(Usuario* fulano);
