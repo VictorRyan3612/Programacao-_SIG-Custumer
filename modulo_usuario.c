@@ -186,9 +186,9 @@ Usuario* usuario_busca(void){
     scanf("%s", cpf_busca);
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
-    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Não é possível continuar este programa...\n");
-    exit(1);
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
     }
 
     while(!feof(fp)) {
@@ -351,48 +351,53 @@ void usuario_editar(){
     // }
 }
 
-void usuario_excluir(){
+void usuario_excluir(void){
     printf("\n");
+    // char conf;
+    
+    // FILE* fp;
+    // Usuario* fulano_arq;
+    // fulano_arq = (Usuario*) malloc(sizeof(Usuario));
+    
+    // char cpf_busca[13];
+    // int achou = 0;
 
-    // char opcao;
-    // int resp;
+    // printf("Digite o cpf a buscar\n");
+    // scanf("%s",cpf_busca);
+    // getchar();
 
-    // menu_usuario_excluir();
-
-    // printf("\n\n");
-    // printf("Suas informações atualmente cadastradas são:\n");
-    // usuario_vizualizar(fulano);
-
-    // printf("Digite qual deseja:\n");
-    // opcao = opcoes_pergunta();
-
-    // resp = confirmacao();
-    // if (resp == True){
-    //     if (opcao == '1'){
-    //         printf("Exluindo seu nome\n");
-    //         strcpy(fulano -> nome, "");
-    //         printf("Exluído com sucesso\n");
-
-    //     }
-
-    //     else if (opcao == '2'){
-    //         printf("Exluindo seu cpf cadastrado\n");
-    //         strcpy(fulano -> cpf, "");
-    //         printf("Exluído com sucesso\n");
-
-    //     }
-        
-    //     else if (opcao == '3'){
-    //         printf("Exluindo seu email cadastrado\n");
-    //         strcpy(fulano -> email, "");
-    //         printf("Exluído com sucesso\n");
-            
-    //     }
+    // if (fulano_arq == NULL) {
+    //     printf("Ops! O aluno informado não existe!\n");
     // }
-    //     else if (opcao == '4'){
-    //         printf("Exluindo seu telefone cadastrado\n");
-    //         strcpy(fulano -> telefone, "");
-    //         printf("Exluído com sucesso\n");
-            
+    // else {
+    //     fp = fopen("usuarios.dat", "r+b");
+    //     if (fp == NULL) {
+    //         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    //         printf("Não é possível continuar este programa...\n");
+    //         exit(1);
     //     }
+    //     while(!feof(fp)) {
+    //         fread(fulano_arq, sizeof(Usuario), 1, fp);
+    //         if ((strcmp(fulano_arq->cpf, cpf_busca) == 0) && (fulano_arq->status != 'x')){
+    //             achou = 1;
+
+    //             conf =confirmacao();
+    //             if (conf == True){
+    //                 fulano_arq->status = 'x';
+    //                 fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
+    //                 fwrite(fulano_arq, sizeof(Usuario), 1, fp);
+    //                 printf("\nUsuario excluído com sucesso!\n");
+    //             }
+
+    //             else{
+    //                 printf("Exclusão cancelada\n");
+    //             }
+    //         }
+    //     }
+    //     if (!achou) {
+    //         printf("\nUsuario não encontrado!\n");
+    //     }
+    //     fclose(fp);
+    //     free(fulano_arq);
+    // }
 }
