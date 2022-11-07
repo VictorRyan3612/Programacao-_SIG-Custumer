@@ -17,6 +17,7 @@ void menu_usuario_excluir(void);
 int confirmacao(void);
 
 int usuario_cadastro(Usuario* fulano);
+void usuario_grava(Usuario* fulano);
 int usuario_vizualizar(const Usuario* fulano);
 int usuario_pesquisar(const Usuario* fulano);
 int usuario_editar(Usuario* fulano);
@@ -155,7 +156,20 @@ int usuario_cadastro(Usuario* fulano){
             }
     } while (resp != True);
 
+    usuario_grava(fulano);
     return 0;
+}
+
+void usuario_grava(Usuario* fulano){
+  FILE* fp;
+  fp = fopen("usuario.dat", "ab");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  fwrite(fulano, sizeof(Usuario), 1, fp);
+  fclose(fp);
 }
 
 int usuario_vizualizar(const Usuario* fulano){
