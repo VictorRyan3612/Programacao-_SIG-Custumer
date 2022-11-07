@@ -25,12 +25,12 @@ void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
 
+void usuario_gravar(RedeSocial* fulano);
 
 
 
 
-
-void modulo_redeSocial(){
+void modulo_redeSocial(void){
     char opcao = '\0';
 
     do {
@@ -73,10 +73,11 @@ void modulo_redeSocial(){
 
 
 void redeSocial_cadastro(void){
-    char opcao;
-    int resp;
     RedeSocial* fulano;
     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+
+    char opcao;
+    int resp;
 
     menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
@@ -136,12 +137,22 @@ void redeSocial_cadastro(void){
             if (resp != True){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
-        } while (resp != True);
-    }
-    // Gravar fulano
+        }while (resp != True);
+}
+    redesocial_gravar(fulano);
     free(fulano);
 }
-
+void usuario_gravar(RedeSocial* fulano){
+  FILE* fp;
+  fp = fopen("redeSocial.dat", "ab");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  fwrite(fulano, sizeof(RedeSocial), 1, fp);
+  fclose(fp);
+}
 void redeSocial_vizualizar(void){
     // printf("\n");
 
