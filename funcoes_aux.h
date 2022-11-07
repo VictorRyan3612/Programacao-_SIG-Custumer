@@ -3,9 +3,13 @@ int confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 
-// validações
+
+// Conversões
 int string_num(char a[]);
 
+long string_long(char a[]);
+
+// validações
 int validar_cpf(char a[]);
 int validar_num(char a[]);
 

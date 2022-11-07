@@ -62,6 +62,19 @@ int string_num(char a[]){
     return number;
 }
 
+long int string_long(char a[]){
+    int digit, j=1; // j=casa decimal
+    long int number;
+
+    for (int i = strlen(a)-1; i>=0; i-=1){
+        digit = a[i];
+        digit = digit -48;
+        number = number+(digit *j);
+        j *= 10;
+    }
+    return number;
+}
+
 int validar_num(char a[]){
     int i;
     i = '\0';
