@@ -8,6 +8,7 @@ void vizualizar_lista(char a[]);
 int string_num(char a[]);
 
 long string_long(char a[]);
+long string_long2(char a[]);
 
 // validações
 int validar_cpf(char a[]);

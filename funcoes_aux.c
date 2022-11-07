@@ -75,6 +75,17 @@ long int string_long(char a[]){
     return number;
 }
 
+long int string_long2(char a[]){
+    long num =0;
+    int i=0;
+
+    while (a[i] >= '0' && a[i] <= '9'){
+        num = num*10 + (a[i]- '0');
+        i++;
+    }
+    return num;
+}
+
 int validar_num(char a[]){
     int i;
     i = '\0';

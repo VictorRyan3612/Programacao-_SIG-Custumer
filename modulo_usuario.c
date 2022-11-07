@@ -19,7 +19,7 @@ int confirmacao(void);
 int usuario_cadastro(Usuario* fulano);
 void usuario_grava(Usuario* fulano);
 int usuario_vizualizar(const Usuario* fulano);
-int usuario_pesquisar(const Usuario* fulano);
+int usuario_pesquisar(Usuario* fulano);
 int usuario_editar(Usuario* fulano);
 int usuario_excluir(Usuario* fulano);
 
@@ -77,6 +77,8 @@ int modulo_usuario(void){
 int usuario_cadastro(Usuario* fulano){
     int resp;
     int valido;
+    char cpf_aux[20];
+    // long int cpf_long;
 
     system("cls||clear");
     printf("\n");
@@ -110,7 +112,7 @@ int usuario_cadastro(Usuario* fulano){
         scanf("%s", fulano -> cpf);
         getchar();
         
-        resp = validar_num(fulano-> cpf);
+        resp = validar_num(fulano -> cpf);
         valido = validar_cpf(fulano -> cpf);
         if (resp != True){
             printf("Caractere inválido detectado, digite novamente:\n");
@@ -119,6 +121,11 @@ int usuario_cadastro(Usuario* fulano){
             printf("CPF inválido, digite novamente:\n");
         }
     } while ((resp != True) || (valido != True));
+
+
+    // cpf_long = atol(cpf_aux);
+    // printf("%ld\n",cpf_long);
+
 
     //email
     do {
@@ -172,32 +179,83 @@ void usuario_grava(Usuario* fulano){
   fclose(fp);
 }
 
+Usuario* buscaUsuario(void){
+    FILE* fp;
+    Usuario* fulano;
+    char cpf_busca[13];
+    printf("\n = Busca usuario = \n"); 
+    printf("Informe o CPF:\n"); 
+    scanf("%s", cpf_busca);
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuario.dat", "rb");
+    if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano, sizeof(Usuario), 1, fp);
+        if ((strcmp(fulano->cpf, cpf_busca) == 0) && (fulano->status != 'x')){
+            fclose(fp);
+            return fulano;
+        }
+    }
+    fclose(fp);
+    return NULL;
+    }
+
 int usuario_vizualizar(const Usuario* fulano){
     printf("\n");
+    
+    // printf("Seu nome é esse:\n");
+    // printf("%s", fulano -> nome);
+    // printf("\n\n\n");
 
-    printf("Seu nome é esse:\n");
-    printf("%s", fulano -> nome);
-    printf("\n\n\n");
+    // printf("Seu cpf é esse:\n");
+    // printf("%s", fulano -> cpf);
+    // printf("\n\n\n");
 
-    printf("Seu cpf é esse:\n");
-    printf("%s", fulano -> cpf);
-    printf("\n\n\n");
-
-    printf("Seu email é esse:\n");
-    printf("%s", fulano -> email);
-    printf("\n\n\n");
+    // printf("Seu email é esse:\n");
+    // printf("%s", fulano -> email);
+    // printf("\n\n\n");
 
 
-    printf("Seu telefone é esse:\n");
-    printf("%s", fulano -> telefone);
-    printf("\n\n\n");
+    // printf("Seu telefone é esse:\n");
+    // printf("%s", fulano -> telefone);
+    // printf("\n\n\n");
 
     return 0;
 }
 
-int usuario_pesquisar(const Usuario* fulano){
-    printf("Busca não disponível\n");
+int usuario_pesquisar(Usuario* fulano){
+    printf("\n");
+    
+    char situacao[20];
 
+    fulano = buscaUsuario();
+
+    if ((fulano == NULL) || (fulano->status == 'x')) {
+        printf("\n= = = Usuario Inexistente = = =\n");
+    } 
+    else {
+        printf("\n= = = Usuario Cadastrado = = =\n");
+        printf("CPF: %s\n", fulano->cpf);
+        printf("Nome do Usuario: %s\n", fulano->nome);
+        printf("Endereço eletrônico: %s\n", fulano->email);
+        printf("Telefone do usuario: %s\n", fulano->telefone);
+        if (fulano->status == 'c') {
+            strcpy(situacao, "Cadastrado");
+        } 
+        else if (fulano->status == 's') {
+            strcpy(situacao, "Suspenso");
+        } 
+        else {
+            strcpy(situacao, "Não informada");
+        }
+        printf("Situação do Usuario: %s\n", situacao);
+    }
+    enter();
     return 0;
 }
 
