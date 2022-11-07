@@ -6,8 +6,8 @@
 typedef struct usuario Usuario;
 
 struct usuario {
+    long int cpf;
     char nome[81];
-    char cpf[13];
     char email[51];
     char telefone[15];
     char status;
@@ -15,14 +15,14 @@ struct usuario {
 };
 
 void menuprincipal(void);
-int main(void);
+void main(void);
 Usuario* preencheUsuario(void);
 void gravaUsuario(Usuario* fulano);
 Usuario* buscaUsuario(void);
+void exibeUsuario(Usuario* fulano);
 
 
-
-int main(void){
+void main(void){
     Usuario* fulano;
     char opcao = '\0';
 
@@ -40,7 +40,9 @@ int main(void){
             free(fulano);
         }
         else if (opcao == '2'){
-            buscaUsuario();
+            fulano = buscaUsuario();
+            exibeUsuario(fulano);
+            free(fulano);
         }
 
         else if (opcao == '0'){
@@ -52,7 +54,6 @@ int main(void){
 
         enter();
     }while (opcao != '0');
-    return 0;
 }
 
 void menuprincipal(){
@@ -67,18 +68,16 @@ Usuario* preencheUsuario(void){
     Usuario* fulano;
     fulano = (Usuario*) malloc(sizeof(Usuario));
 
+    printf("Informe o cpf do usuario:\n");
+    scanf(" %ld", &fulano->cpf);
     printf("Informe o nome do usuario:\n");
     scanf(" %81[^\n]", fulano->nome);
-    printf("Informe o cpf do usuario:\n");
-    scanf(" %13[^\n]", fulano->cpf);
     printf("Informe o email do usuario:\n");
     scanf(" %51[^\n]", fulano->email);
     printf("Informe o telefone do usuario:\n");
     scanf(" %15[^\n]", fulano->telefone);
     fulano->status = 'c'; // cadastreado
 
-
-    free(fulano);
     return fulano;
 }
 
@@ -108,7 +107,7 @@ Usuario* buscaUsuario(void){
     printf("Informe o CPF:\n"); 
     scanf("%d", &cpf_busca);
     fulano = (Usuario*) malloc(sizeof(Usuario));
-    fp = fopen("usuarios.dat", "rb");
+    fp = fopen("usuario.dat", "rb");
     if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
     printf("Não é possível continuar este programa...\n");
@@ -125,3 +124,27 @@ Usuario* buscaUsuario(void){
     fclose(fp);
     return NULL;
     }
+
+// adaptado de flavius Gorgonio, professor de Programação da UFRN Caicó, link:
+//https://replit.com/@flaviusgorgonio/AplicacaoComStructEArquivoBinarioc?v=1#main.c
+
+void exibeUsuario(Usuario* fulano) {
+  char situacao[20];
+  if ((fulano == NULL) || (fulano->status == 'x')) {
+    printf("\n= = = Usuario Inexistente = = =\n");
+  } else {
+    printf("\n= = = Usuario Cadastrado = = =\n");
+    printf("CPF: %ld\n", fulano->cpf);
+    printf("Nome do Usuario: %s\n", fulano->nome);
+    printf("Endereço eletrônico: %s\n", fulano->email);
+    printf("Telefone do usuario: %s\n", fulano->telefone);
+    if (fulano->status == 'c') {
+      strcpy(situacao, "Cadastrado");
+    } else if (fulano->status == 's') {
+      strcpy(situacao, "Suspenso");
+    } else {
+      strcpy(situacao, "Não informada");
+    }
+    printf("Situação do Usuario: %s\n", situacao);
+  }
+}
