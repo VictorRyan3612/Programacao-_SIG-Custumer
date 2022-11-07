@@ -41,9 +41,7 @@ int modulo_midia(){
     do{
         menu_midia();
 
-        printf("Digite uma opção:\n");
-        scanf("%c", &opcao);
-        getchar();
+        opcao = opcoes_pergunta();
 
         if (opcao != '0'){
             if (opcao == '1'){

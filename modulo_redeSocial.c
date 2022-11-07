@@ -36,9 +36,7 @@ void modulo_redeSocial(){
     do {
         menu_redeSocial();
 
-        printf("Digite uma opção:\n");
-        scanf("%c", &opcao);
-        getchar();
+        opcao = opcoes_pergunta();
 
         if (opcao != '0'){
             if (opcao == '1'){

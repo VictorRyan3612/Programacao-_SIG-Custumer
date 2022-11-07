@@ -30,7 +30,7 @@ int confirmacao(void){
 
 char opcoes_pergunta(void){
     char opcoes;
-    scanf("%[1-3]", &opcoes);
+    scanf("%c", &opcoes);
     printf("\n\n");
     getchar();
     return opcoes;
