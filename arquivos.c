@@ -15,14 +15,14 @@ struct usuario {
 };
 
 void menuprincipal(void);
-void main(void);
+int main(void);
 Usuario* preencheUsuario(void);
 void gravaUsuario(Usuario* fulano);
 Usuario* buscaUsuario(void);
 void exibeUsuario(Usuario* fulano);
 
 
-void main(void){
+int main(void){
     Usuario* fulano;
     char opcao = '\0';
 
@@ -54,6 +54,7 @@ void main(void){
 
         enter();
     }while (opcao != '0');
+    return 0;
 }
 
 void menuprincipal(){
