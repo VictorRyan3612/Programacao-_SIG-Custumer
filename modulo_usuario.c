@@ -5,6 +5,7 @@
 #include "modulo_usuario.h"
 #include "funcoes_aux.h"
 
+typedef struct usuario Usuario;
 
 #define True 1
 #define False 0
@@ -22,14 +23,7 @@ int usuario_editar(Usuario* fulano);
 int usuario_excluir(Usuario* fulano);
 
 
-typedef struct usuario Usuario;
 
-struct usuario {
- char nome[81];
- char cpf[51];
- char email[41];
- char telefone[21];
-};
 
 
 
@@ -64,8 +58,7 @@ int modulo_usuario(void){
             else {
                printf("Opção não dessenvolvida ou inválida\n");
             }
-            printf("Aperte enter para continuar\n");
-            getchar();
+            enter();
         }
             
         

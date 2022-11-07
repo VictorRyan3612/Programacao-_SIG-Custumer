@@ -6,9 +6,7 @@
 typedef struct midia Midia;
 
 void enter(void){
-    char opcao;
     printf("Aperte enter para continuar\n");
-    scanf("%c", &opcao);
     getchar();
 }
 

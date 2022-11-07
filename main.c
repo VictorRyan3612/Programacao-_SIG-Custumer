@@ -35,9 +35,7 @@ int main(void){
         system("cls||clear");
         menu_principal();
         printf("\n\n");
-        printf("Digite uma opção:\n");
-        scanf("%c", &opcao);
-        getchar();
+        opcao = opcoes_pergunta();
 
         if (opcao == '1'){
             modulo_usuario();
@@ -54,11 +52,9 @@ int main(void){
         else if (opcao == '0'){
             printf("Fechando...\n");
         }
-        printf("Aperte enter para continuar\n");
-        getchar();
-        }
-
-        while (opcao != '0');
+        enter();
+        }while (opcao != '0');
+        
         return 0;
     }
 

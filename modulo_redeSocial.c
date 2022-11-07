@@ -58,8 +58,7 @@ void modulo_redeSocial(){
             else {
                 printf("Opção não dessenvolvida ou inválida\n");
             }
-            printf("Aperte enter para continuar\n");
-            getchar();
+            enter();
         }
             
         

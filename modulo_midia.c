@@ -8,6 +8,7 @@
 #define True 1
 #define False 0
 
+typedef struct midia Midia;
 
 ///// Assinatura das funções:
 
@@ -24,13 +25,8 @@ int midia_editar(Midia* fulano);
 int midia_excluir(Midia* fulano);
 
 
-typedef struct midia Midia;
 
-struct midia {
-    char jogo[81];
-    char livro[51];
-    char filme[41];
-};
+
 
 int modulo_midia(){
 
@@ -63,8 +59,7 @@ int modulo_midia(){
             else {
                printf("Opção não dessenvolvida ou inválida\n");
             }
-            printf("Aperte enter para continuar\n");
-            getchar();
+            enter();
         }
             
         

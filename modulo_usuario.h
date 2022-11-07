@@ -1,5 +1,12 @@
 typedef struct usuario Usuario;
 
+struct usuario {
+ char nome[81];
+ char cpf[51];
+ char email[41];
+ char telefone[21];
+};
+
 int modulo_usuario(void);
 
 int usuario_cadastro(Usuario* fulano);
