@@ -18,6 +18,7 @@ void menuprincipal(void);
 int main(void);
 Usuario* preencheUsuario(void);
 void gravaUsuario(Usuario* fulano);
+Usuario* buscaUsuario(void);
 
 
 
@@ -39,7 +40,7 @@ int main(void){
             free(fulano);
         }
         else if (opcao == '2'){
-            printf("\n");
+            buscaUsuario();
         }
 
         else if (opcao == '0'){
@@ -93,3 +94,34 @@ void gravaUsuario(Usuario* fulano){
   fwrite(fulano, sizeof(Usuario), 1, fp);
   fclose(fp);
 }
+
+
+// adaptado de flavius Gorgonio, professor de Programação da UFRN Caicó, link:
+//https://replit.com/@flaviusgorgonio/AplicacaoComStructEArquivoBinarioc?v=1#main.c
+
+Usuario* buscaUsuario(void){
+    FILE* fp;
+    Usuario* fulano;
+    int cpf_busca;
+
+    printf("\n = Busca usuario = \n"); 
+    printf("Informe o CPF:\n"); 
+    scanf("%d", &cpf_busca);
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "rb");
+    if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+    }
+
+    while(!feof(fp)) {
+    fread(fulano, sizeof(Usuario), 1, fp);
+    if ((fulano->cpf == cpf_busca) && (fulano->status != 'x')) {
+        fclose(fp);
+        return fulano;
+    }
+    }
+    fclose(fp);
+    return NULL;
+    }
