@@ -19,7 +19,7 @@ int confirmacao(void);
 int usuario_cadastro(Usuario* fulano);
 void usuario_grava(Usuario* fulano);
 void usuario_exibe(Usuario* fulano);
-void usuario_listar(Usuario* fulano);
+void usuario_listar(void);
 void usuario_pesquisar(Usuario* fulano);
 int usuario_editar(Usuario* fulano);
 int usuario_excluir(Usuario* fulano);
@@ -45,7 +45,7 @@ int modulo_usuario(void){
                 usuario_cadastro(&fulano);
             }
             else if (opcao == '2'){
-                usuario_listar(&fulano);
+                usuario_listar();
             }
             else if (opcao == '3'){
                 usuario_pesquisar(&fulano);
@@ -164,7 +164,7 @@ int usuario_cadastro(Usuario* fulano){
 
 void usuario_grava(Usuario* fulano){
   FILE* fp;
-  fp = fopen("usuario.dat", "ab");
+  fp = fopen("usuarios.dat", "ab");
   if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
     printf("Não é possível continuar este programa...\n");
@@ -182,7 +182,7 @@ Usuario* buscaUsuario(void){
     printf("Informe o CPF:\n"); 
     scanf("%s", cpf_busca);
     fulano = (Usuario*) malloc(sizeof(Usuario));
-    fp = fopen("usuario.dat", "rb");
+    fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
     printf("Não é possível continuar este programa...\n");
@@ -209,7 +209,6 @@ void usuario_exibe(Usuario* fulano){
         printf("\n= = = Usuario Inexistente = = =\n");
     } 
     else {
-        printf("\n= = = Usuario Cadastrado = = =\n");
         printf("CPF: %s\n", fulano->cpf);
         printf("Nome do Usuario: %s\n", fulano->nome);
         printf("Endereço eletrônico: %s\n", fulano->email);
@@ -226,18 +225,42 @@ void usuario_exibe(Usuario* fulano){
         printf("Situação do Usuario: %s\n", situacao);
     }
 
-    enter();
-
 }
 
-void usuario_listar(Usuario* fulano){
-    printf("\n");
+void usuario_listar(void){
+    system("cls||clear");
+    int i;
+    FILE* fp;
+    Usuario* fulano_aqr;
+    printf(""
+    "=================================\n"
+    "======  Lista de Usuários  ======\n"
+    "=================================\n"
+    ""); 
+    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    i = 1;
+    while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
+        if (fulano_aqr->status != 'x') {
+            printf("\n= = = Usuario nº %d = = =\n",i);
+            usuario_exibe(fulano_aqr);
+            i+=1;
+        }
+    }
+    fclose(fp);
+    free(fulano_aqr);
 }
 
 void usuario_pesquisar(Usuario* fulano){
     
     fulano = buscaUsuario();
     usuario_exibe(fulano);
+    enter();
 }
 
 int usuario_editar(Usuario* fulano){

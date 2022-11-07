@@ -13,7 +13,7 @@ int modulo_usuario(void);
 int usuario_cadastro(Usuario* fulano);
 void usuario_grava(Usuario* fulano);
 void usuario_exibe(Usuario* fulano);
-void usuario_listar(Usuario* fulano);
+void usuario_listar(void);
 void usuario_pesquisar(Usuario* fulano);
 int usuario_editar(Usuario* fulano);
 int usuario_excluir(Usuario* fulano);
