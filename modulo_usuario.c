@@ -16,14 +16,14 @@ void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
 int confirmacao(void);
 
-int usuario_cadastro(Usuario* fulano);
+void usuario_cadastro(void);
 void usuario_grava(Usuario* fulano);
 Usuario* usuario_busca(void);
 void usuario_exibe(Usuario* fulano);
 void usuario_listar(void);
-void usuario_pesquisar(Usuario* fulano);
-int usuario_editar(Usuario* fulano);
-int usuario_excluir(Usuario* fulano);
+void usuario_pesquisar(void);
+void usuario_editar(void);
+void usuario_excluir(void);
 
 
 
@@ -32,8 +32,6 @@ int usuario_excluir(Usuario* fulano);
 
 int modulo_usuario(void){
     
-    
-    Usuario fulano;
     char opcao = '\0';
 
     do{
@@ -43,19 +41,19 @@ int modulo_usuario(void){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                usuario_cadastro(&fulano);
+                usuario_cadastro();
             }
             else if (opcao == '2'){
                 usuario_listar();
             }
             else if (opcao == '3'){
-                usuario_pesquisar(&fulano);
+                usuario_pesquisar();
             }
             else if (opcao == '4'){
-                usuario_editar(&fulano);
+                usuario_editar();
             }
             else if (opcao == '5'){
-                usuario_excluir(&fulano);
+                usuario_excluir();
             }
             
             else {
@@ -76,7 +74,10 @@ int modulo_usuario(void){
 
 
 
-int usuario_cadastro(Usuario* fulano){
+void usuario_cadastro(void){
+    Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+
     int resp;
     int valido;
 
@@ -160,7 +161,6 @@ int usuario_cadastro(Usuario* fulano){
     } while (resp != True);
     fulano -> status = 'c';
     usuario_grava(fulano);
-    return 0;
 }
 
 void usuario_grava(Usuario* fulano){
@@ -178,11 +178,12 @@ void usuario_grava(Usuario* fulano){
 Usuario* usuario_busca(void){
     FILE* fp;
     Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+
     char cpf_busca[13];
     printf("\n = Busca usuario = \n"); 
     printf("Informe o CPF:\n"); 
     scanf("%s", cpf_busca);
-    fulano = (Usuario*) malloc(sizeof(Usuario));
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -230,21 +231,24 @@ void usuario_exibe(Usuario* fulano){
 
 void usuario_listar(void){
     system("cls||clear");
-    int i;
+
     FILE* fp;
     Usuario* fulano_aqr;
+    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+
+    int i;
     printf(""
     "=================================\n"
     "======  Lista de Usuários  ======\n"
     "=================================\n"
     ""); 
-    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
         exit(1);
     }
+
     i = 1;
     while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
         if (fulano_aqr->status != 'x') {
@@ -253,18 +257,20 @@ void usuario_listar(void){
             i+=1;
         }
     }
+
     fclose(fp);
     free(fulano_aqr);
 }
 
-void usuario_pesquisar(Usuario* fulano){
-    
+void usuario_pesquisar(){
+    Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
     fulano = usuario_busca();
     usuario_exibe(fulano);
     enter();
 }
 
-int usuario_editar(Usuario* fulano){
+void usuario_editar(){
     printf("\n");
 
     // char opcao;
@@ -343,11 +349,9 @@ int usuario_editar(Usuario* fulano){
     //         }
     //     } while (resp != True);
     // }
-
-    return 0;
 }
 
-int usuario_excluir(Usuario* fulano){
+void usuario_excluir(){
     printf("\n");
 
     // char opcao;
@@ -391,5 +395,4 @@ int usuario_excluir(Usuario* fulano){
     //         printf("Exluído com sucesso\n");
             
     //     }
-    return 0;
 }
