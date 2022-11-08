@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "modulo_usuario.h"
 #include "modulo_redeSocial.h"
 #include "funcoes_aux.h"
 
@@ -20,12 +21,13 @@ void menu_redeSocial_editar(void);
 void menu_redeSocial_excluir(void);
 
 void redeSocial_cadastro(void);
+void redeSocial_vizualizar(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
 
-void usuario_gravar(RedeSocial* fulano);
-void usuario_exibe(RedeSocial* fulano);
+void redesocial_gravar(Usuario* fulano);
+void redeSocial_exibe(Usuario* fulano);
 
 
 
@@ -72,11 +74,17 @@ void modulo_redeSocial(void){
 
 
 void redeSocial_cadastro(void){
-    RedeSocial* fulano;
-    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+    // RedeSocial* fulano;
+    // fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     char opcao;
     int resp;
+
+    Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+    // fulano = usuario_busca();
+
+    
 
     menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
@@ -141,7 +149,9 @@ void redeSocial_cadastro(void){
     redesocial_gravar(fulano);
     free(fulano);
 }
-void usuario_gravar(RedeSocial* fulano){
+
+
+void redesocial_gravar(Usuario* fulano){
   FILE* fp;
   fp = fopen("redeSocial.dat", "ab");
   if (fp == NULL) {
@@ -153,38 +163,9 @@ void usuario_gravar(RedeSocial* fulano){
   fclose(fp);
 }
 
-// RedeSocial* usuario_busca(void){
-//     FILE* fp;
-//     RedeSocial* fulano;
-//     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
 
-//     char cpf_busca[13];
-//     printf("\n = Busca usuario = \n"); 
-//     printf("Informe o CPF:\n"); 
-//     scanf("%s", cpf_busca);
-//     fp = fopen("redeSocial.dat", "rb");
-//     if (fp == NULL) {
-//         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-//         printf("Não é possível continuar este programa...\n");
-//         exit(1);
-//     }
-
-//     while(!feof(fp)) {
-//         fread(fulano, sizeof(RedeSocial), 1, fp);
-//         if ((strcmp(fulano->cpf, cpf_busca) == 0) && (fulano->status != 'x')){
-//             fclose(fp);
-//             return fulano;
-//         }
-//     }
-//     fclose(fp);
-//     return NULL;
-//     }
-
-
-void usuario_exibe(RedeSocial* fulano){
+void redeSocial_exibe(Usuario* fulano){
     printf("\n");
-    
-    char situacao[20];
 
     if (fulano == NULL) {
         printf("\n= = = Usuario Inexistente = = =\n");
@@ -194,11 +175,16 @@ void usuario_exibe(RedeSocial* fulano){
         printf("Twitter do Usuario: %s\n", fulano->twitter);
         printf("Youtube do usuario: %s\n", fulano->youtube);
     }
-
+    enter();
 }
-
+void redeSocial_vizualizar(void){
+    printf("Não disponível\n");
+}
 void redeSocial_pesquisar(void){
-    printf("Busca não disponível\n");
+    Usuario* fulano;
+    fulano = usuario_busca();
+
+    redeSocial_exibe(fulano);
 
 }
 

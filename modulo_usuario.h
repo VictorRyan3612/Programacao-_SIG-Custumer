@@ -6,6 +6,9 @@ struct usuario {
     char email[41];
     char telefone[21];
     char status;
+    char steam[81];
+    char twitter[51];
+    char youtube[41];
 };
 
 int modulo_usuario(void);
