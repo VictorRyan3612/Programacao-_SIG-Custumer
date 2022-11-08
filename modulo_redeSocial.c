@@ -21,7 +21,7 @@ void menu_redeSocial_editar(void);
 void menu_redeSocial_excluir(void);
 
 void redeSocial_cadastro(void);
-void redeSocial_vizualizar(void);
+void redeSocial_listar(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
@@ -44,7 +44,7 @@ void modulo_redeSocial(void){
                 redeSocial_cadastro();
             }
             else if (opcao == '2'){
-                redeSocial_vizualizar();
+                redeSocial_listar();
             }
             else if (opcao == '3'){
                 redeSocial_pesquisar();
@@ -177,7 +177,7 @@ void redeSocial_exibe(Usuario* fulano){
     }
     enter();
 }
-void redeSocial_vizualizar(void){
+void redeSocial_listar(void){
     printf("Não disponível\n");
 }
 void redeSocial_pesquisar(void){
@@ -196,7 +196,7 @@ void redeSocial_editar(void){
 //     menu_redeSocial_editar();
 //     printf("\n\n");
 //     printf("Suas informações atualmente cadastradas são:\n");
-//     redeSocial_vizualizar(fulano);
+//     redeSocial_listar(fulano);
 //     opcao = opcoes_pergunta();
 
     
@@ -277,7 +277,7 @@ void redeSocial_excluir(void){
 //     printf("\n\n");
 //     printf("Suas informações atualmente cadastradas são:\n");
 
-//     redeSocial_vizualizar(fulano);
+//     redeSocial_listar(fulano);
 
 //     printf("Digite qual deseja:\n");
 //     opcao = opcoes_pergunta();
