@@ -82,8 +82,8 @@ void redeSocial_cadastro(void){
 
     char opcao;
     int resp;
-
-    user = usuario_busca();
+    char* cpf_busca_dig;
+    cpf_busca_dig = usuario_busca();
 
     
 
@@ -165,7 +165,6 @@ void redesocial_gravar(RedeSocial* fulano){
 }
 
 
-
 RedeSocial* rede_busca(void){
     FILE* fp;
     RedeSocial* fulano;
@@ -207,10 +206,10 @@ void redeSocial_listar(void){
     printf("Não disponível\n");
 }
 void redeSocial_pesquisar(void){
-    RedeSocial* fulano;
-    // fulano = usuario_busca();
+    printf("\n");
+    // RedeSocial* fulano;
 
-    redeSocial_exibe(fulano);
+    // redeSocial_exibe(fulano);
 
 }
 

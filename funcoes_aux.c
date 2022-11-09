@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define True 1
 #define False 0
@@ -49,6 +50,20 @@ void vizualizar_lista(char a[]){
     }
 }
 
+char* cpf_busca(void){
+    char* cpf_busca_dig;
+
+    cpf_busca_dig = (char*) malloc(13*sizeof(char));
+    printf("\n ==== Busca usuario ==== \n"); 
+    printf("Informe o CPF:\n"); 
+    scanf("%s", cpf_busca_dig);
+    getchar();
+    
+    return cpf_busca_dig;
+}
+
+
+/// Conversões
 
 // adaptado de NadjibSoft no vídeo https://www.youtube.com/watch?v=d_M9PqPpTFI&t=50s
 int string_num(char a[]){
@@ -86,6 +101,9 @@ long int string_long2(char a[]){
     }
     return num;
 }
+
+
+// Validações
 
 int validar_num(char a[]){
     int i;

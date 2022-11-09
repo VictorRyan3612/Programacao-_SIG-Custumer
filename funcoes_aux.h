@@ -1,8 +1,9 @@
+
 void enter(void);
 int confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
-
+char* cpf_busca(void);
 
 // Conversões
 int string_num(char a[]);

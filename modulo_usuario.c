@@ -175,15 +175,16 @@ void usuario_grava(Usuario* fulano){
   fclose(fp);
 }
 
+
+
 Usuario* usuario_busca(void){
     FILE* fp;
     Usuario* fulano;
     fulano = (Usuario*) malloc(sizeof(Usuario));
 
-    char cpf_busca[13];
-    printf("\n = Busca usuario = \n"); 
-    printf("Informe o CPF:\n"); 
-    scanf("%s", cpf_busca);
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -193,11 +194,12 @@ Usuario* usuario_busca(void){
 
     while(!feof(fp)) {
         fread(fulano, sizeof(Usuario), 1, fp);
-        if ((strcmp(fulano->cpf, cpf_busca) == 0) && (fulano->status != 'x')){
+        if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
             fclose(fp);
             return fulano;
         }
     }
+    free(cpf_busca_dig);
     fclose(fp);
     return NULL;
     }
