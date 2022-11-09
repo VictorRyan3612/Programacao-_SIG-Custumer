@@ -26,8 +26,8 @@ void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
 
-void redesocial_gravar(Usuario* fulano);
-void redeSocial_exibe(Usuario* fulano);
+void redesocial_gravar(RedeSocial* fulano);
+void redeSocial_exibe(RedeSocial* fulano);
 
 
 
@@ -74,15 +74,18 @@ void modulo_redeSocial(void){
 
 
 void redeSocial_cadastro(void){
-    // RedeSocial* fulano;
-    // fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+    RedeSocial* fulano;
+    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+    
+    Usuario* user;
+    user = (Usuario*) malloc(sizeof(Usuario));
 
     char opcao;
     int resp;
 
-    Usuario* fulano;
-    fulano = (Usuario*) malloc(sizeof(Usuario));
-    // fulano = usuario_busca();
+    user = usuario_busca();
+
+    
 
     
 
@@ -151,7 +154,7 @@ void redeSocial_cadastro(void){
 }
 
 
-void redesocial_gravar(Usuario* fulano){
+void redesocial_gravar(RedeSocial* fulano){
   FILE* fp;
   fp = fopen("redeSocial.dat", "ab");
   if (fp == NULL) {
@@ -164,7 +167,7 @@ void redesocial_gravar(Usuario* fulano){
 }
 
 
-void redeSocial_exibe(Usuario* fulano){
+void redeSocial_exibe(RedeSocial* fulano){
     printf("\n");
 
     if (fulano == NULL) {
@@ -181,7 +184,7 @@ void redeSocial_listar(void){
     printf("Não disponível\n");
 }
 void redeSocial_pesquisar(void){
-    Usuario* fulano;
+    RedeSocial* fulano;
     fulano = usuario_busca();
 
     redeSocial_exibe(fulano);

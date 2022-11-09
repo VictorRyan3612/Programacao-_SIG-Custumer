@@ -1,5 +1,6 @@
 typedef struct redeSocial RedeSocial;
 struct redeSocial {
+    char cpf[13];
     char steam[81];
     char twitter[51];
     char youtube[41];
@@ -13,5 +14,5 @@ void redeSocial_listar(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
-void redesocial_gravar(Usuario* fulano);
-void redeSocial_exibe(Usuario* fulano);
+void redesocial_gravar(RedeSocial* fulano);
+void redeSocial_exibe(RedeSocial* fulano);
