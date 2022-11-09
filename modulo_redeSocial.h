@@ -4,6 +4,7 @@ struct redeSocial {
     char steam[81];
     char twitter[51];
     char youtube[41];
+    char status;
 };
 
 typedef struct usuario Usuario;
