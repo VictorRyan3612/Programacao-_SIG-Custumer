@@ -437,81 +437,12 @@ void redeSocial_editar(void){
 
     } while(continuar == True);
 
+    int var = -1;
+    fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+    fwrite(fulano, sizeof(Usuario), 1, fp);
 
-
-
-//     menu_redeSocial_editar();
-//     printf("\n\n");
-//     printf("Suas informações atualmente cadastradas são:\n");
-//     redeSocial_listar(fulano);
-//     opcao = opcoes_pergunta();
-
-    
-//     // Editar steam
-//     if (opcao == '1'){
-//         printf("Seu atual perfil da steam é esse:\n");
-//         printf("%s", fulano -> steam);
-//         printf("\n\n");
-//         do{
-//             printf(""
-//                 "=======================================\n"
-//                 "====      Informe o atualizado:    ====\n"
-//                 "=======================================\n"
-//             );
-//             printf("\n");
-//             scanf("%s", fulano -> steam);
-//             getchar();
-//             resp = validar_twitterSteam(fulano -> steam);
-//             if (resp != True){
-//                 printf("Caractere inválido detectado, Digite novamente:\n");
-//             }
-//         } while (resp != True);
-// }
-//     // Editar twitter
-//     else if (opcao == '2'){
-//         printf("Sua atual conta do twitter é essa:\n");
-//         printf("%s", fulano -> twitter);
-//         printf("\n\n");
-//         do{
-//             printf(""
-//                 "=======================================\n"
-//                 "====      Informe o atualizado:    ====\n"
-//                 "=======================================\n"
-//             );
-//             printf("\n");
-//             scanf("%s", fulano -> twitter);
-//             getchar();
-
-//             resp = validar_twitterSteam(fulano -> twitter);
-//             if (resp != True){
-//                 printf("Caractere inválido detectado, Digite novamente:\n");
-//             }
-//         } while (resp != True);
-//     }
-
-        
-//     // Editar youtube
-//     else if (opcao == '3'){
-//         printf("Seu atual canal do youtube é esse:\n");
-//         printf("%s", fulano -> youtube);
-//         printf("\n\n");
-//         do{
-//             printf(""
-//                 "=======================================\n"
-//                 "====      Informe o atualizado:    ====\n"
-//                 "=======================================\n"
-//             );
-//             printf("\n");
-//             scanf("%s", fulano -> youtube);
-//             getchar();
-
-//             resp = validar_youtube(fulano -> youtube);
-//             if (resp != True){
-//                 printf("Caractere inválido detectado, Digite novamente:\n");
-//             }
-//         } while (resp != True);
-//     }
-
+    free(fulano);
+    fclose(fp);
 }
 
 void redeSocial_excluir(void){
