@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -82,9 +81,9 @@ void redeSocial_cadastro(void){
 
     char opcao;
     int resp;
+
     char* cpf_busca_dig;
     cpf_busca_dig = usuario_busca();
-
     
 
     menu_redeSocial_cadastro();
@@ -146,9 +145,13 @@ void redeSocial_cadastro(void){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         }while (resp != True);
-}
+    }
+
+    fulano ->status = 'c'; //cadastrado
+
     redesocial_gravar(fulano);
     free(fulano);
+    free(cpf_busca_dig);
 }
 
 
