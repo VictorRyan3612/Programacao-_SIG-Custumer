@@ -166,12 +166,6 @@ void menu_usuario_excluir(void){
         "####            Exclusão de Usuário            ####\n"
         "####                                           ####\n"
         "####                                           ####\n"
-        "####              Digite qual deseja:          ####\n"
-        "####                 Nome:     1               ####\n"
-        "####                 CPF:      2               ####\n"
-        "####                 Email:    3               ####\n"
-        "####                 Telefone: 4               ####\n"
-        "####                                           ####\n"
         "####                 Voltar:  0                ####\n"
         "###################################################\n"
     );

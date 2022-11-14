@@ -440,11 +440,10 @@ void usuario_excluir(void){
     Usuario* fulano;
     fulano = (Usuario*) malloc(sizeof(Usuario));
 
-    char resp;
     int certeza;
-    char continuar;
-    char opcao;
+    char confir;
     int achou = False;
+    int var;
 
 
     fp = fopen("usuarios.dat", "r+b");
@@ -459,18 +458,32 @@ void usuario_excluir(void){
     menu_usuario_excluir();
 
 
-    do{
-        fulano = usuario_busca();
-        if (fulano != NULL){
-            achou = True;
+        do{
+            fulano = usuario_busca();
+            if (fulano != NULL){
+                achou = True;
+            }
+            else{
+                printf("Não encontrado, Digite novamente\n");
+            }
+        }while(achou == False);
+
+        usuario_exibe(fulano);
+        printf("\n\n\n");
+        printf("Deseja realmente apagar este usuario?");
+        certeza = confirmacao();
+        if (certeza == True){
+
+            fulano->status = 'x';
+            var = -1;
+            fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+            fwrite(fulano, sizeof(Usuario), 1, fp);
+            printf("\nUsuario excluído com sucesso!!!\n");
         }
         else{
-            printf("Não encontrado, Digite novamente\n");
+            printf("\nOk, os dados não foram alterados\n");
         }
-    }while(achou == False);
 
-
-
-
-    
+  free(fulano);
+  fclose(fp);
 }
