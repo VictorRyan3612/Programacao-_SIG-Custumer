@@ -80,12 +80,10 @@ void redeSocial_cadastro(void){
     Usuario* fulano_user;
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
-
-    char opcao;
     int resp;
     int achou;
-    int continuar;
     char cpf_busca_dig[13];
+    char confir;
     
 
     do{
@@ -102,83 +100,86 @@ void redeSocial_cadastro(void){
     strcpy(cpf_busca_dig, fulano -> cpf);
     
 
+    system("cls||clear");
+    menu_redeSocial_cadastro();
 
 
-    do{
-        system("cls||clear");
-        menu_redeSocial_cadastro();
-        opcao = opcoes_pergunta();
+    //steam
+    printf("Deseja Cadastrar uma steam?\n");
+    confir = confirmacao();
+    if (confir == True){
+        do {
+            printf(""
+                "=======================================\n"
+                "====  Informe seu perfil da steam: ====\n"
+                "=======================================\n"
+                );
 
-
-        //steam
-        if (opcao == '1'){
-            do {
-                printf(""
-                    "=======================================\n"
-                    "====  Informe seu perfil da steam: ====\n"
-                    "=======================================\n"
-                    );
-                printf("\n");
-                scanf("%s", fulano -> steam);
-                getchar();
-                resp = validar_twitterSteam(fulano -> steam);
-                if (resp != True){
-                    printf("Caractere inválido detectado, Digite novamente:\n");
-                }
-            } while (resp != True);
-        }
-        
-
-        //twitter
-        else if (opcao == '2'){
-            do {
-                printf(""
-                    "=======================================\n"
-                    "====     Informe seu Twitter:      ====\n"
-                    "=======================================\n"
-                    );
-                printf("\n");
-                scanf("%s", fulano -> twitter);
-                getchar();
-
-                resp = validar_twitterSteam(fulano -> twitter);
-                if (resp != True){
-                    printf("Caractere inválido detectado, Digite novamente:\n");
-                }
-            } while (resp != True);
-        }
-
-        //youtube
-        else if (opcao == '3'){
-            do {
-                printf(""
-                    "=======================================\n"
-                    "====     Informe seu Youtube:      ====\n"
-                    "=======================================\n"
-                    );
-                printf("\n");
-                scanf("%s", fulano -> youtube);
-                getchar();
-
-                resp = validar_youtube(fulano -> youtube);
-                if (resp != True){
-                    printf("Caractere inválido detectado, Digite novamente:\n");
-                }
-            }while (resp != True);
-        }
-        else if (opcao == '0'){
-            printf("Voltando ao menu principal...\n");
+            printf("\n");
+            scanf("%s",fulano -> steam);
             getchar();
-            continuar = False;
-        }
-        else{
-            printf("Opção não dessenvolvida ou inválida\n");
-        }
-        if (opcao!='0'){
-            printf("\nDeseja continuar?");
-            continuar = confirmacao();
-        }
-    }while (continuar == True);
+
+            resp = validar_twitterSteam(fulano -> steam);
+            if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+        } while (resp != True);
+    }
+    
+    
+
+    //twitter
+    printf("Deseja Cadastrar um Twitter?\n");
+    confir = confirmacao();
+    if (confir == True){
+    
+        do {
+            printf(""
+                "=======================================\n"
+                "====     Informe seu Twitter:      ====\n"
+                "=======================================\n"
+                );
+
+            printf("\n");
+            scanf("%s",fulano -> twitter);
+            getchar();
+
+            
+            resp = validar_twitterSteam(fulano -> twitter);
+            if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+            
+        
+            } while (resp != True);
+    }
+
+    //youtube
+    printf("Deseja Cadastrar um Youtube?\n");
+    confir = confirmacao();
+    if (confir == True){
+        do {
+            printf(""
+                "=======================================\n"
+                "====     Informe seu Youtube:      ====\n"
+                "=======================================\n"
+                );
+
+            printf("\n");
+            scanf("%s",fulano -> youtube);
+            getchar();
+
+
+            if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+            
+        }while (resp != True);
+    }
+    
+    printf("Voltando ao menu principal...\n");
+    getchar();
+
     fulano -> status = 'c'; //cadastrado
 
     redeSocial_gravar(fulano);
