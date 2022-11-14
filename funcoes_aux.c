@@ -20,7 +20,7 @@ int confirmacao(void){
     getchar();
     printf("\n");
     
-    if (resp == 's'){
+    if ((resp == 's') || (resp == 'S')){
         return True;
     }
     else{
