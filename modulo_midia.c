@@ -223,29 +223,37 @@ void midia_exibe(Midia* fulano){
 
 
 void midia_listar(void){
-    Midia* fulano;
-    fulano = (Midia*) malloc(sizeof(Midia));
-    printf("\n");
-    char dovizualizar[50];
+    system("cls||clear");
 
-    printf("Esse são os jogos que está interessado:\n");
-    strcpy(dovizualizar , fulano -> jogo);
-    vizualizar_lista(dovizualizar);
-    printf("\n\n\n");
+    FILE* fp;
+    Midia* fulano_aqr;
+    fulano_aqr = (Midia*) malloc(sizeof(Midia));
 
+    int i;
 
-    printf("Esse são os livros que está interessado:\n");
-    strcpy(dovizualizar , fulano -> livro);
-    vizualizar_lista(dovizualizar);
-    printf("\n\n\n");
+    printf(""
+        "=================================\n"
+        "======  Lista de Usuários  ======\n"
+        "=================================\n"
+    "");
+    fp = fopen("Midias.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
 
+    i = 1;
+    while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+        if (fulano_aqr->status != 'x') {
+            printf("\n= = = Midias nº %d = = =\n",i);
+            midia_exibe(fulano_aqr);
+            i+=1;
+        }
+    }
 
-    printf("Esse são os filmes que está interessado:\n");
-    strcpy(dovizualizar , fulano -> filme);
-    vizualizar_lista(dovizualizar);
-    printf("\n\n\n");
-
-
+    fclose(fp);
+    free(fulano_aqr);
 }
 
 
@@ -268,89 +276,89 @@ void midia_editar(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
-    char opcao;
-    int resp;
+    // char opcao;
+    // int resp;
 
-    menu_midia_editar();
+    // menu_midia_editar();
 
-    printf("\n\n");
-    printf("Suas informações atualmente cadastradas são:\n");
-    midia_vizualizar();
+    // printf("\n\n");
+    // printf("Suas informações atualmente cadastradas são:\n");
+    // midia_vizualizar();
 
-    opcao = opcoes_pergunta();
+    // opcao = opcoes_pergunta();
 
     
-    // Editar Jogo
-    if (opcao == '1'){
-        printf("Seu atual interesse em jogo é:\n");
-        printf("%s", fulano -> jogo);
-        printf("\n\n");
-        do{
-            printf(""
-                "=======================================\n"
-                "====        Atualize a lista       ====\n"
-                "=======================================\n"
-            );
-            printf("\n");
-            scanf("%20[^\n]", fulano -> jogo);
-            getchar();
+    // // Editar Jogo
+    // if (opcao == '1'){
+    //     printf("Seu atual interesse em jogo é:\n");
+    //     printf("%s", fulano -> jogo);
+    //     printf("\n\n");
+    //     do{
+    //         printf(""
+    //             "=======================================\n"
+    //             "====        Atualize a lista       ====\n"
+    //             "=======================================\n"
+    //         );
+    //         printf("\n");
+    //         scanf("%20[^\n]", fulano -> jogo);
+    //         getchar();
 
-            resp = validar_nomeMidia(fulano -> jogo);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
+    //         resp = validar_nomeMidia(fulano -> jogo);
+    //         if (resp != True){
+    //             printf("Caractere inválido detectado, Digite novamente:\n");
+    //         }
+    //     } while (resp != True);
+    // }
     
-    // Editar livro
-    else if (opcao == '2'){
-        printf("Seu atual interesse em livro é:\n");
-        printf("%s", fulano -> livro);
-        printf("\n\n");
-        do{
-            printf(""
-                "=======================================\n"
-                "====        Atualize a lista       ====\n"
-                "=======================================\n"
-            );
-            printf("\n");
-            scanf("%20[^\n]", fulano -> livro);
-            getchar();
+    // // Editar livro
+    // else if (opcao == '2'){
+    //     printf("Seu atual interesse em livro é:\n");
+    //     printf("%s", fulano -> livro);
+    //     printf("\n\n");
+    //     do{
+    //         printf(""
+    //             "=======================================\n"
+    //             "====        Atualize a lista       ====\n"
+    //             "=======================================\n"
+    //         );
+    //         printf("\n");
+    //         scanf("%20[^\n]", fulano -> livro);
+    //         getchar();
 
-            resp = validar_nomeMidia(fulano -> livro);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
+    //         resp = validar_nomeMidia(fulano -> livro);
+    //         if (resp != True){
+    //             printf("Caractere inválido detectado, Digite novamente:\n");
+    //         }
+    //     } while (resp != True);
+    // }
 
         
-    // Editar filme
-    else if (opcao == '3'){
+    // // Editar filme
+    // else if (opcao == '3'){
 
 
-        printf("Seu atual interesse em filme é:\n");
-        printf("%s", fulano -> filme);
-        printf("\n\n");
-        do{
-            printf(""
-                "=======================================\n"
-                "====        Atualize a lista       ====\n"
-                "=======================================\n"
-            );
-            printf("\n");
-            scanf("%20[^\n]", fulano -> filme);
-            getchar();
+    //     printf("Seu atual interesse em filme é:\n");
+    //     printf("%s", fulano -> filme);
+    //     printf("\n\n");
+    //     do{
+    //         printf(""
+    //             "=======================================\n"
+    //             "====        Atualize a lista       ====\n"
+    //             "=======================================\n"
+    //         );
+    //         printf("\n");
+    //         scanf("%20[^\n]", fulano -> filme);
+    //         getchar();
 
-            resp = validar_nomeMidia(fulano -> filme);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
-    else{
-        printf("Opção não dessenvolvida ou inválida\n");
-    }
+    //         resp = validar_nomeMidia(fulano -> filme);
+    //         if (resp != True){
+    //             printf("Caractere inválido detectado, Digite novamente:\n");
+    //         }
+    //     } while (resp != True);
+    // }
+    // else{
+    //     printf("Opção não dessenvolvida ou inválida\n");
+    // }
 
 
 }
@@ -359,39 +367,39 @@ void midia_excluir(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
-    char opcao;
-    int resp;
+    // char opcao;
+    // int resp;
 
-    menu_midia_excluir();
+    // menu_midia_excluir();
 
-    printf("\n\n");
-    printf("Suas informações atualmente cadastradas são:\n");
-    midia_vizualizar();
+    // printf("\n\n");
+    // printf("Suas informações atualmente cadastradas são:\n");
+    // midia_vizualizar();
 
-    printf("Digite qual deseja:\n");
-    opcao = opcoes_pergunta();
+    // printf("Digite qual deseja:\n");
+    // opcao = opcoes_pergunta();
 
-    resp = confirmacao();
-    if (resp == True){
-        if (opcao == '1'){
-            printf("Exluindo seu interesse em jogo\n");
-            strcpy(fulano -> jogo, "");
-            printf("Exluído com sucesso\n");
+    // resp = confirmacao();
+    // if (resp == True){
+    //     if (opcao == '1'){
+    //         printf("Exluindo seu interesse em jogo\n");
+    //         strcpy(fulano -> jogo, "");
+    //         printf("Exluído com sucesso\n");
 
-        }
+    //     }
 
-        else if (opcao == '2'){
-            printf("Exluindo seu livro interessado\n");
-            strcpy(fulano -> livro, "");
-            printf("Exluído com sucesso\n");
+    //     else if (opcao == '2'){
+    //         printf("Exluindo seu livro interessado\n");
+    //         strcpy(fulano -> livro, "");
+    //         printf("Exluído com sucesso\n");
 
-        }
+    //     }
 
-        else if (opcao == '3'){
-            printf("Exluindo seu filme interessado\n");
-            strcpy(fulano -> filme, "");
-            printf("Exluído com sucesso\n");
+    //     else if (opcao == '3'){
+    //         printf("Exluindo seu filme interessado\n");
+    //         strcpy(fulano -> filme, "");
+    //         printf("Exluído com sucesso\n");
             
-        }
-    }
+    //     }
+    // }
 }
