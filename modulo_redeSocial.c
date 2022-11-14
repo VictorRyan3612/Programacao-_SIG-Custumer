@@ -273,7 +273,7 @@ RedeSocial* redeSocial_busca(void){
     }
 
     while(!feof(fp)) {
-        fread(fulano, sizeof(Usuario), 1, fp);
+        fread(fulano, sizeof(RedeSocial), 1, fp);
         if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
             fclose(fp);
             return fulano;
@@ -342,13 +342,14 @@ void redeSocial_editar(void){
 
         // Steam
         if (opcao == '1'){
+            printf("Seu atual perfil da steam é esse:\n");
+            printf("%s", fulano -> steam);
+            printf("\n\n");
+
             printf("Deseja realmente editar?\n");
             certeza = confirmacao();
 
             if (certeza == True){
-                printf("Seu atual perfil da steam é esse:\n");
-                printf("%s", fulano -> steam);
-                printf("\n\n");
                 do{
                     printf(""
                         "=======================================\n"
