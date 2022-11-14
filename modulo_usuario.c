@@ -17,7 +17,7 @@ void menu_usuario_excluir(void);
 int confirmacao(void);
 
 void usuario_cadastro(void);
-void usuario_grava(Usuario* fulano);
+void usuario_gravar(Usuario* fulano);
 Usuario* usuario_busca(void);
 void usuario_exibe(Usuario* fulano);
 void usuario_listar(void);
@@ -162,11 +162,11 @@ void usuario_cadastro(void){
 
     
     fulano -> status = 'c';
-    usuario_grava(fulano);
+    usuario_gravar(fulano);
     free(fulano);
 }
 
-void usuario_grava(Usuario* fulano){
+void usuario_gravar(Usuario* fulano){
   FILE* fp;
   fp = fopen("usuarios.dat", "ab");
   if (fp == NULL) {
