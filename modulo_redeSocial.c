@@ -299,7 +299,7 @@ void redeSocial_editar(void){
     system("cls||clear");
 
     FILE* fp;
-    Usuario* fulano;
+    RedeSocial* fulano;
 
     char resp;
     int certeza;
@@ -321,6 +321,69 @@ void redeSocial_editar(void){
 
     menu_redeSocial_editar();
     
+    do{
+        fulano = redeSocial_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+    do{
+        system("cls||clear");
+        menu_redeSocial_editar();
+        redeSocial_exibe(fulano);
+
+        printf("\n\n");
+        printf("Digite qual campo deseja editar\n");
+        opcao = opcoes_pergunta();
+
+        // Steam
+        if (opcao == '1'){
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+
+            if (certeza == True){
+                printf("Seu atual perfil da steam é esse:\n");
+                printf("%s", fulano -> steam);
+                printf("\n\n");
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====      Informe o atualizado:    ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%s", fulano -> steam);
+                    getchar();
+                    resp = validar_twitterSteam(fulano -> steam);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+        }
+
+        else if (opcao == '0'){
+            printf("Voltando ao menu principal...\n");
+            getchar();
+            continuar = False;
+        }
+        else{
+            printf("Opção não dessenvolvida ou inválida\n");
+        }
+        if (opcao!='0'){
+            printf("\nDeseja continuar?");
+            continuar = confirmacao();
+        }
+
+    } while(continuar == True);
+
+
+
+
 //     menu_redeSocial_editar();
 //     printf("\n\n");
 //     printf("Suas informações atualmente cadastradas são:\n");
