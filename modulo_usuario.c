@@ -293,96 +293,117 @@ void usuario_editar(){
         exit(1);
     }
 
+
     menu_usuario_editar();
-
-
     fulano = usuario_busca();
-    usuario_exibe(fulano);
-    enter();
 
-    printf("\n\n");
-    printf("Digite qual campo deseja editar\n");
-    opcao = opcoes_pergunta();
 
-    // Editar nome
-    if (opcao == '1'){
-        printf("Seu atual nome é esse:\n");
-        printf("%s", fulano -> nome);
+    do{
+        system("cls||clear");
+        menu_usuario_editar();
+        usuario_exibe(fulano);
+
         printf("\n\n");
-        
-        printf("Deseja realmente editar?\n");
-        certeza = confirmacao();
-        if (certeza == True){
-            do{
-                printf(""
-                    "=======================================\n"
-                    "====      Informe o atualizado:    ====\n"
-                    "=======================================\n"
-                );
-                printf("\n");
-                scanf("%81[^\n]", fulano -> nome);
-                getchar();
+        printf("Digite qual campo deseja editar\n");
+        opcao = opcoes_pergunta();
 
-                resp = validar_nome(fulano -> nome);
-                if (resp != True){
-                    printf("Caractere inválido detectado, Digite novamente:\n");
-                }
-            } while (resp != True);
+
+        // Editar cpf
+        if (opcao == '1'){
+            printf("Indisponível no momento\n");
+            enter();
+
         }
-    }
 
-    // Editar email
-    else if (opcao == '2'){
-        printf("Seu atual email é esse:\n");
-        printf("%s", fulano -> email);
-        printf("\n\n");
-        
-        certeza = confirmacao();
-        if (certeza == True){
-            do{
-                printf(""
-                    "=======================================\n"
-                    "====      Informe o atualizado:    ====\n"
-                    "=======================================\n"
-                );
-                printf("\n");
-                scanf("%s", fulano -> email);
-                getchar();
-                
-                resp = validar_email(fulano -> email);
-                if (resp != True){
-                    printf("Caractere inválido detectado, Digite novamente:\n");
-                }
-            } while (resp != True);
+
+        // Editar nome
+        else if (opcao == '2'){
+            printf("Seu atual nome é esse:\n");
+            printf("%s", fulano -> nome);
+            printf("\n\n");
+            
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====      Informe o atualizado:    ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%81[^\n]", fulano -> nome);
+                    getchar();
+
+                    resp = validar_nome(fulano -> nome);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
         }
-    }
 
-        
-    // Editar telefone
-    else if (opcao == '3'){
-        printf("Seu atual telefone é esse:\n");
-        printf("%s", fulano -> telefone);
-        printf("\n\n");
-        certeza = confirmacao();
-        if (certeza == True){
-            do{
-                printf(""
-                    "=======================================\n"
-                    "====      Informe o atualizado:    ====\n"
-                    "=======================================\n"
-                );
-                printf("\n");
-                scanf("%s", fulano -> telefone);
-                getchar();
+        // Editar email
+        else if (opcao == '3'){
+            printf("Seu atual email é esse:\n");
+            printf("%s", fulano -> email);
+            printf("\n\n");
 
-                resp = validar_telefone(fulano -> telefone);
-                if (resp != True){
-                    printf("Caractere inválido detectado, Digite novamente:\n");
-                }
-            } while (resp != True);
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====      Informe o atualizado:    ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%s", fulano -> email);
+                    getchar();
+                    
+                    resp = validar_email(fulano -> email);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
         }
-    }
 
+            
+        // Editar telefone
+        else if (opcao == '4'){
+            printf("Seu atual telefone é esse:\n");
+            printf("%s", fulano -> telefone);
+            printf("\n\n");
+
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====      Informe o atualizado:    ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%s", fulano -> telefone);
+                    getchar();
+
+                    resp = validar_telefone(fulano -> telefone);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+        }
+
+        printf("\nDeseja continuar?");
+        continuar = confirmacao();
+        
+    }while(continuar == True);
     free(fulano);
 }
 
