@@ -83,6 +83,7 @@ void redeSocial_cadastro(void){
     char opcao;
     int resp;
     int achou;
+    int continuar;
     
 
     do{
@@ -96,72 +97,83 @@ void redeSocial_cadastro(void){
     }while(achou == False);
 
 
-
-    menu_redeSocial_cadastro();
-    opcao = opcoes_pergunta();
-
     strcpy(fulano -> cpf, fulano_user -> cpf);
 
-    //steam
-    if (opcao == '1'){
-        do {
-            printf(""
-                "=======================================\n"
-                "====  Informe seu perfil da steam: ====\n"
-                "=======================================\n"
-                );
-            printf("\n");
-            scanf("%s", fulano -> steam);
+    do{
+        system("cls||clear");
+        menu_redeSocial_cadastro();
+        opcao = opcoes_pergunta();
+
+
+        //steam
+        if (opcao == '1'){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====  Informe seu perfil da steam: ====\n"
+                    "=======================================\n"
+                    );
+                printf("\n");
+                scanf("%s", fulano -> steam);
+                getchar();
+                resp = validar_twitterSteam(fulano -> steam);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+            } while (resp != True);
+        }
+        
+
+        //twitter
+        else if (opcao == '2'){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====     Informe seu Twitter:      ====\n"
+                    "=======================================\n"
+                    );
+                printf("\n");
+                scanf("%s", fulano -> twitter);
+                getchar();
+
+                resp = validar_twitterSteam(fulano -> twitter);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+            } while (resp != True);
+        }
+
+        //youtube
+        else if (opcao == '3'){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====     Informe seu Youtube:      ====\n"
+                    "=======================================\n"
+                    );
+                printf("\n");
+                scanf("%s", fulano -> youtube);
+                getchar();
+
+                resp = validar_youtube(fulano -> youtube);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+            }while (resp != True);
+        }
+        else if (opcao == '0'){
+            printf("Voltando ao menu principal...\n");
             getchar();
-            resp = validar_twitterSteam(fulano -> steam);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
-    
-
-    //twitter
-    else if (opcao == '2'){
-        do {
-            printf(""
-                "=======================================\n"
-                "====     Informe seu Twitter:      ====\n"
-                "=======================================\n"
-                );
-            printf("\n");
-            scanf("%s", fulano -> twitter);
-            getchar();
-
-            resp = validar_twitterSteam(fulano -> twitter);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
-
-    //youtube
-    else if (opcao == '3'){
-        do {
-            printf(""
-                "=======================================\n"
-                "====     Informe seu Youtube:      ====\n"
-                "=======================================\n"
-                );
-            printf("\n");
-            scanf("%s", fulano -> youtube);
-            getchar();
-
-            resp = validar_youtube(fulano -> youtube);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        }while (resp != True);
-    }
-    else{
-        printf("Opção não dessenvolvida ou inválida\n");
-    }
-
+            continuar = False;
+        }
+        else{
+            printf("Opção não dessenvolvida ou inválida\n");
+        }
+        if (opcao!='0'){
+            printf("\nDeseja continuar?");
+            continuar = confirmacao();
+        }
+    }while (continuar == True);
     fulano -> status = 'c'; //cadastrado
 
     redeSocial_gravar(fulano);
@@ -193,7 +205,7 @@ void redeSocial_exibe(RedeSocial* fulano){
         printf("\n= = = Usuario Inexistente = = =\n");
     } 
     else {
-        printf("Steam do usuario: %s\n", fulano -> cpf);
+        printf("CPF do usuario: %s\n", fulano -> cpf);
         printf("Steam do usuario: %s\n", fulano -> steam);
         printf("Twitter do Usuario: %s\n", fulano -> twitter);
         printf("Youtube do usuario: %s\n", fulano -> youtube);
