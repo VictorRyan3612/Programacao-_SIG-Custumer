@@ -21,6 +21,7 @@ void menu_redeSocial_excluir(void);
 
 void redeSocial_cadastro(void);
 void redeSocial_listar(void);
+RedeSocial* redeSocial_busca(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
@@ -84,6 +85,7 @@ void redeSocial_cadastro(void){
     int resp;
     int achou;
     int continuar;
+    char cpf_busca_dig[13];
     
 
     do{
@@ -96,8 +98,11 @@ void redeSocial_cadastro(void){
         }
     }while(achou == False);
 
-
     strcpy(fulano -> cpf, fulano_user -> cpf);
+    strcpy(cpf_busca_dig, fulano -> cpf);
+    
+
+
 
     do{
         system("cls||clear");
@@ -251,7 +256,7 @@ void redeSocial_listar(void){
     free(fulano_aqr);
 }
 
-RedeSocial* rede_busca(void){
+RedeSocial* redeSocial_busca(void){
     FILE* fp;
     RedeSocial* fulano;
     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
@@ -279,10 +284,12 @@ RedeSocial* rede_busca(void){
 }
 
 
+
+
 void redeSocial_pesquisar(void){
     RedeSocial* fulano;
     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
-    fulano = rede_busca();
+    fulano = redeSocial_busca();
     redeSocial_exibe(fulano);
     enter();
 }

@@ -12,6 +12,7 @@ void modulo_redeSocial(void);
 
 void redeSocial_cadastro(void);
 void redeSocial_listar(void);
+RedeSocial* redeSocial_busca(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
