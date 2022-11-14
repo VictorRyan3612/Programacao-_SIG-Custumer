@@ -366,6 +366,62 @@ void redeSocial_editar(void){
             }
         }
 
+        // Twitter
+        else if (opcao == '2'){
+            printf("Seu atual twitter é esse:\n");
+            printf("%s", fulano -> twitter);
+            printf("\n\n");
+            
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====      Informe o atualizado:    ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%s", fulano -> twitter);
+                    getchar();
+
+                    resp = validar_twitterSteam(fulano -> twitter);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+        }
+
+        // Youtube
+        else if (opcao =='3'){
+            printf("Seu atual nome é esse:\n");
+            printf("%s", fulano -> youtube);
+            printf("\n\n");
+            
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====      Informe o atualizado:    ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%41[^\n]", fulano -> youtube);
+                    getchar();
+
+                    resp = validar_youtube(fulano -> youtube);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+
+        }
         else if (opcao == '0'){
             printf("Voltando ao menu principal...\n");
             getchar();
