@@ -211,7 +211,7 @@ void midia_exibe(Midia* fulano){
         printf("CPF do usuario: %s\n", fulano -> cpf);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         printf("Jogos do usuario:\n");
         strcpy(vizualidar_midia , fulano -> jogo);
         vizualizar_lista(vizualidar_midia);
@@ -399,7 +399,7 @@ void midia_editar(){
                         "=======================================\n"
                     );
                     printf("\n");
-                    scanf("%51[^\n]", fulano -> livro);
+                    scanf("%s", fulano -> livro);
                     getchar();
 
                     resp = validar_nomeMidia(fulano -> livro);
@@ -427,7 +427,7 @@ void midia_editar(){
                         "=======================================\n"
                     );
                     printf("\n");
-                    scanf("%20[^\n]", fulano -> filme);
+                    scanf("%s", fulano -> filme);
                     getchar();
 
                     resp = validar_nomeMidia(fulano -> filme);
@@ -454,49 +454,12 @@ void midia_editar(){
 
     }while(continuar == True);
 
+    int var = -1;
+    fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+    fwrite(fulano, sizeof(Usuario), 1, fp);
 
-
-
-
-
-
-
-
-    
-    // // Editar livro
-    // else if (opcao == '2'){
-    //     
-    // }
-
-        
-    // // Editar filme
-    // else if (opcao == '3'){
-
-
-    //     printf("Seu atual interesse em filme é:\n");
-    //     printf("%s", fulano -> filme);
-    //     printf("\n\n");
-    //     do{
-    //         printf(""
-    //             "=======================================\n"
-    //             "====        Atualize a lista       ====\n"
-    //             "=======================================\n"
-    //         );
-    //         printf("\n");
-    //         scanf("%20[^\n]", fulano -> filme);
-    //         getchar();
-
-    //         resp = validar_nomeMidia(fulano -> filme);
-    //         if (resp != True){
-    //             printf("Caractere inválido detectado, Digite novamente:\n");
-    //         }
-    //     } while (resp != True);
-    // }
-    // else{
-    //     printf("Opção não dessenvolvida ou inválida\n");
-    // }
-
-
+    free(fulano);
+    fclose(fp);
 }
 
 void midia_excluir(){
