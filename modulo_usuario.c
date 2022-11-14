@@ -208,6 +208,7 @@ void usuario_exibe(Usuario* fulano){
     printf("\n");
     
     char situacao[20];
+    char status;
 
     if ((fulano == NULL) || (fulano->status == 'x')) {
         printf("\n= = = Usuario Inexistente = = =\n");
@@ -217,15 +218,9 @@ void usuario_exibe(Usuario* fulano){
         printf("Nome do Usuario: %s\n", fulano->nome);
         printf("Endereço eletrônico: %s\n", fulano->email);
         printf("Telefone do usuario: %s\n", fulano->telefone);
-        if (fulano->status == 'c') {
-            strcpy(situacao, "Cadastrado");
-        } 
-        else if (fulano->status == 's') {
-            strcpy(situacao, "Suspenso");
-        } 
-        else {
-            strcpy(situacao, "Não informada");
-        }
+    
+        status = fulano->status;
+        status_exibe(status, situacao);
         printf("Situação do Usuario: %s\n", situacao);
     }
 

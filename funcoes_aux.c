@@ -61,7 +61,18 @@ char* cpf_busca(void){
     
     return cpf_busca_dig;
 }
+void status_exibe(char status, char* situacao){
 
+    if (status == 'c') {
+        strcpy(situacao, "Cadastrado");
+    }
+    else if (status == 's') {
+        strcpy(situacao, "Suspenso");
+    }
+    else {
+        strcpy(situacao, "Não informada");
+    }
+}
 
 /// Conversões
 

@@ -198,6 +198,8 @@ RedeSocial* rede_busca(void){
 
 void redeSocial_exibe(RedeSocial* fulano){
     printf("\n");
+    char status;
+    char situacao[20];
 
     if (fulano == NULL) {
         printf("\n= = = Usuario Inexistente = = =\n");
@@ -206,6 +208,10 @@ void redeSocial_exibe(RedeSocial* fulano){
         printf("Steam do usuario: %s\n", fulano->steam);
         printf("Twitter do Usuario: %s\n", fulano->twitter);
         printf("Youtube do usuario: %s\n", fulano->youtube);
+
+        status = fulano->status;
+        status_exibe(status, situacao);
+        printf("Situação do Usuario: %s\n", situacao);
     }
     enter();
 }
