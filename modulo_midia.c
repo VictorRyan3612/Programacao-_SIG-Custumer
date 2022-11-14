@@ -332,8 +332,8 @@ void midia_editar(){
 
     do{
         system("cls||clear");
-        menu_redeSocial_editar();
-        redeSocial_exibe(fulano);
+        menu_midia_editar();
+        midia_exibe(fulano);
 
         printf("\n\n");
         printf("Digite qual campo deseja editar\n");
@@ -346,9 +346,96 @@ void midia_editar(){
 
             printf("Deseja realmente editar?\n");
             certeza = confirmacao();
+
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====        Atualize a lista       ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%s", fulano -> jogo);
+                    getchar();
+                    resp = validar_nomeMidia(fulano -> jogo);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+
+        }
+
+        //Livros
+        if (opcao == '2'){
+            printf("Seus atuais Livros são esses:\n");
+            printf("%s", fulano -> livro);
+            printf("\n\n");
+
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====        Atualize a lista       ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%51[^\n]", fulano -> livro);
+                    getchar();
+
+                    resp = validar_nomeMidia(fulano -> livro);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+        }
+
+        // Filmes
+        else if (opcao =='3'){
+            printf("Seu atual nome é esse:\n");
+            printf("%s", fulano -> filme);
+            printf("\n\n");
+            
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+
+            if (certeza == True){
+                do{
+                    printf(""
+                        "=======================================\n"
+                        "====        Atualize a lista       ====\n"
+                        "=======================================\n"
+                    );
+                    printf("\n");
+                    scanf("%20[^\n]", fulano -> filme);
+                    getchar();
+
+                    resp = validar_nomeMidia(fulano -> filme);
+                    if (resp != True){
+                        printf("Caractere inválido detectado, Digite novamente:\n");
+                    }
+                } while (resp != True);
+            }
+        }
+
+        else if (opcao == '0'){
+            printf("Voltando ao menu principal...\n");
+            getchar();
+            continuar = False;
+        }
+        else{
+            printf("Opção não dessenvolvida ou inválida\n");
+        }
+        if (opcao!='0'){
+            printf("\nDeseja continuar?");
+            continuar = confirmacao();
         }
 
 
+    }while(continuar == True);
 
 
 
@@ -358,49 +445,10 @@ void midia_editar(){
 
 
 
-    
-    // // Editar Jogo
-    // if (opcao == '1'){
-    //     printf("Seu atual interesse em jogo é:\n");
-    //     printf("%s", fulano -> jogo);
-    //     printf("\n\n");
-    //     do{
-    //         printf(""
-    //             "=======================================\n"
-    //             "====        Atualize a lista       ====\n"
-    //             "=======================================\n"
-    //         );
-    //         printf("\n");
-    //         scanf("%20[^\n]", fulano -> jogo);
-    //         getchar();
-
-    //         resp = validar_nomeMidia(fulano -> jogo);
-    //         if (resp != True){
-    //             printf("Caractere inválido detectado, Digite novamente:\n");
-    //         }
-    //     } while (resp != True);
-    // }
     
     // // Editar livro
     // else if (opcao == '2'){
-    //     printf("Seu atual interesse em livro é:\n");
-    //     printf("%s", fulano -> livro);
-    //     printf("\n\n");
-    //     do{
-    //         printf(""
-    //             "=======================================\n"
-    //             "====        Atualize a lista       ====\n"
-    //             "=======================================\n"
-    //         );
-    //         printf("\n");
-    //         scanf("%20[^\n]", fulano -> livro);
-    //         getchar();
-
-    //         resp = validar_nomeMidia(fulano -> livro);
-    //         if (resp != True){
-    //             printf("Caractere inválido detectado, Digite novamente:\n");
-    //         }
-    //     } while (resp != True);
+    //     
     // }
 
         
