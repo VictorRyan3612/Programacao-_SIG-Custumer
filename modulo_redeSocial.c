@@ -188,17 +188,16 @@ void redeSocial_cadastro(void){
 
 
 void redeSocial_gravar(RedeSocial* fulano){
-  FILE* fp;
-  fp = fopen("redesSociais.dat", "ab");
-  if (fp == NULL) {
-    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Não é possível continuar este programa...\n");
-    exit(1);
-  }
-  fwrite(fulano, sizeof(RedeSocial), 1, fp);
-  fclose(fp);
+    FILE* fp;
+    fp = fopen("redesSociais.dat", "ab");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    fwrite(fulano, sizeof(RedeSocial), 1, fp);
+    fclose(fp);
 }
-
 
 
 void redeSocial_exibe(RedeSocial* fulano){
@@ -209,7 +208,7 @@ void redeSocial_exibe(RedeSocial* fulano){
 
     if ((fulano == NULL) || (fulano->status == 'x')){
         printf("\n= = = Usuario Inexistente = = =\n");
-    } 
+    }
     else {
         printf("CPF do usuario: %s\n", fulano -> cpf);
         printf("Steam do usuario: %s\n", fulano -> steam);
@@ -220,11 +219,12 @@ void redeSocial_exibe(RedeSocial* fulano){
         strcpy(situacao,status_exibe(status,situacao));
         printf("Situação das Redes Sociais: %s\n", situacao);
 
-    enter();
+        enter();
     }
 }
+
 void redeSocial_listar(void){
-   system("cls||clear");
+    system("cls||clear");
 
     FILE* fp;
     RedeSocial* fulano_aqr;
@@ -233,9 +233,9 @@ void redeSocial_listar(void){
     int i;
 
     printf(""
-    "=================================\n"
-    "======  Lista de Usuários  ======\n"
-    "=================================\n"
+        "=================================\n"
+        "======  Lista de Usuários  ======\n"
+        "=================================\n"
     "");
     fp = fopen("redesSociais.dat", "rb");
     if (fp == NULL) {
