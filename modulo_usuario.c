@@ -434,52 +434,43 @@ void usuario_editar(){
 }
 
 void usuario_excluir(void){
-    printf("\n");
-    // char conf;
+    system("cls||clear");
+
+    FILE* fp;
+    Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+
+    char resp;
+    int certeza;
+    char continuar;
+    char opcao;
+    int achou = False;
+
+
+    fp = fopen("usuarios.dat", "r+b");
+
+    if(fp == NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar o programa...\n");
+        exit(1);
+    }
+
+
+    menu_usuario_excluir();
+
+
+    do{
+        fulano = usuario_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+
+
+
     
-    // FILE* fp;
-    // Usuario* fulano_arq;
-    // fulano_arq = (Usuario*) malloc(sizeof(Usuario));
-    
-    // char cpf_busca[13];
-    // int achou = 0;
-
-    // printf("Digite o cpf a buscar\n");
-    // scanf("%s",cpf_busca);
-    // getchar();
-
-    // if (fulano_arq == NULL) {
-    //     printf("Ops! O aluno informado não existe!\n");
-    // }
-    // else {
-    //     fp = fopen("usuarios.dat", "r+b");
-    //     if (fp == NULL) {
-    //         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    //         printf("Não é possível continuar este programa...\n");
-    //         exit(1);
-    //     }
-    //     while(!feof(fp)) {
-    //         fread(fulano_arq, sizeof(Usuario), 1, fp);
-    //         if ((strcmp(fulano_arq->cpf, cpf_busca) == 0) && (fulano_arq->status != 'x')){
-    //             achou = 1;
-
-    //             conf =confirmacao();
-    //             if (conf == True){
-    //                 fulano_arq->status = 'x';
-    //                 fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
-    //                 fwrite(fulano_arq, sizeof(Usuario), 1, fp);
-    //                 printf("\nUsuario excluído com sucesso!\n");
-    //             }
-
-    //             else{
-    //                 printf("Exclusão cancelada\n");
-    //             }
-    //         }
-    //     }
-    //     if (!achou) {
-    //         printf("\nUsuario não encontrado!\n");
-    //     }
-    //     fclose(fp);
-    //     free(fulano_arq);
-    // }
 }
