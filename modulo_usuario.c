@@ -282,6 +282,7 @@ void usuario_editar(){
     int certeza;
     char continuar;
     char opcao;
+    int achou = False;
 
     fulano = (Usuario*) malloc(sizeof(Usuario));
 
@@ -295,8 +296,17 @@ void usuario_editar(){
 
 
     menu_usuario_editar();
-    fulano = usuario_busca();
 
+    
+    do{
+        fulano = usuario_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
 
     do{
         system("cls||clear");
@@ -402,8 +412,10 @@ void usuario_editar(){
 
         printf("\nDeseja continuar?");
         continuar = confirmacao();
-        
+
     }while(continuar == True);
+
+
     free(fulano);
 }
 
