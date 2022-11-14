@@ -307,13 +307,56 @@ void midia_editar(){
     char opcao;
     int achou = False;
 
-    // menu_midia_editar();
+    
+    fp = fopen("Midias.dat", "r+b");
 
-    // printf("\n\n");
-    // printf("Suas informações atualmente cadastradas são:\n");
-    // midia_vizualizar();
+    if(fp == NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar o programa...\n");
+        exit(1);
+    }
 
-    // opcao = opcoes_pergunta();
+    menu_midia_editar();
+
+
+    do{
+        fulano = midia_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+
+    do{
+        system("cls||clear");
+        menu_redeSocial_editar();
+        redeSocial_exibe(fulano);
+
+        printf("\n\n");
+        printf("Digite qual campo deseja editar\n");
+        opcao = opcoes_pergunta();
+
+        if (opcao == '1'){
+            printf("Seus atuais jogos são esses:\n");
+            printf("%s", fulano -> jogo);
+            printf("\n\n");
+
+            printf("Deseja realmente editar?\n");
+            certeza = confirmacao();
+        }
+
+
+
+
+
+
+
+
+
+
 
     
     // // Editar Jogo
