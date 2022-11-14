@@ -7,8 +7,8 @@ struct midia {
 };
 
 int modulo_midia(void);
-int midia_cadastro(Midia* fulano);
-int midia_vizualizar(const Midia* fulano);
-int midia_pesquisar(const Midia* fulano);
-int midia_editar(Midia* fulano);
-int midia_excluir(Midia* fulano);
+int midia_cadastro(void);
+int midia_vizualizar(void);
+int midia_pesquisar(void);
+int midia_editar(void);
+int midia_excluir(void);

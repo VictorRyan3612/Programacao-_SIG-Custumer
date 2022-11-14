@@ -18,11 +18,11 @@ void menu_midia_cadastro(void);
 void menu_midia_editar(void);
 void menu_midia_excluir(void);
 
-int midia_cadastro(Midia* fulano);
-int midia_vizualizar(const Midia* fulano);
-int midia_pesquisar(const Midia* fulano);
-int midia_editar(Midia* fulano);
-int midia_excluir(Midia* fulano);
+int midia_cadastro(void);
+int midia_vizualizar(void);
+int midia_pesquisar(void);
+int midia_editar(void);
+int midia_excluir(void);
 
 
 
@@ -32,7 +32,7 @@ int modulo_midia(){
 
     
     char opcao = '\0';
-    Midia fulano;
+
 
     do{
         menu_midia();
@@ -41,19 +41,19 @@ int modulo_midia(){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                midia_cadastro(&fulano);
+                midia_cadastro();
             }
             else if (opcao == '2'){
-                midia_vizualizar(&fulano);
+                midia_vizualizar();
             }
             else if (opcao == '3'){
-                midia_pesquisar(&fulano);
+                midia_pesquisar();
             }
             else if (opcao == '4'){
-                midia_editar(&fulano);
+                midia_editar();
             }
             else if (opcao == '5'){
-                midia_excluir(&fulano);
+                midia_excluir();
             }
             
             else {
@@ -73,7 +73,11 @@ int modulo_midia(){
 }
 
 
-int midia_cadastro(Midia* fulano){
+int midia_cadastro(){
+
+    Midia* fulano;
+    fulano = (Midia*) malloc(sizeof(Midia));
+
     char opcao;
     int resp;
     
@@ -146,7 +150,9 @@ int midia_cadastro(Midia* fulano){
 
 
 
-int midia_vizualizar(const Midia* fulano){
+int midia_vizualizar(){
+    Midia* fulano;
+    fulano = (Midia*) malloc(sizeof(Midia));
     printf("\n");
     char dovizualizar[50];
 
@@ -170,13 +176,16 @@ int midia_vizualizar(const Midia* fulano){
     return 0;
 }
 
-int midia_pesquisar(const Midia* fulano){
+int midia_pesquisar(){
     printf("Busca não disponível\n");
 
     return 0;
 }
 
-int midia_editar(Midia* fulano){
+int midia_editar(){
+    Midia* fulano;
+    fulano = (Midia*) malloc(sizeof(Midia));
+
     char opcao;
     int resp;
 
@@ -184,7 +193,7 @@ int midia_editar(Midia* fulano){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    midia_vizualizar(fulano);
+    midia_vizualizar();
 
     opcao = opcoes_pergunta();
 
@@ -264,7 +273,10 @@ int midia_editar(Midia* fulano){
     return 0;
 }
 
-int midia_excluir(Midia* fulano){
+int midia_excluir(){
+    Midia* fulano;
+    fulano = (Midia*) malloc(sizeof(Midia));
+
     char opcao;
     int resp;
 
@@ -272,7 +284,7 @@ int midia_excluir(Midia* fulano){
 
     printf("\n\n");
     printf("Suas informações atualmente cadastradas são:\n");
-    midia_vizualizar(fulano);
+    midia_vizualizar();
 
     printf("Digite qual deseja:\n");
     opcao = opcoes_pergunta();
