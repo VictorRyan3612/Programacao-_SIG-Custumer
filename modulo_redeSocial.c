@@ -296,10 +296,31 @@ void redeSocial_pesquisar(void){
 }
 
 void redeSocial_editar(void){
-    printf("\n");
-//     char opcao;
-//     int resp;
+    system("cls||clear");
 
+    FILE* fp;
+    Usuario* fulano;
+
+    char resp;
+    int certeza;
+    char continuar;
+    char opcao;
+    int achou = False;
+
+
+
+    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+
+    fp = fopen("redesSociais.dat", "r+b");
+
+    if(fp == NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar o programa...\n");
+        exit(1);
+    }
+
+    menu_redeSocial_editar();
+    
 //     menu_redeSocial_editar();
 //     printf("\n\n");
 //     printf("Suas informações atualmente cadastradas são:\n");
