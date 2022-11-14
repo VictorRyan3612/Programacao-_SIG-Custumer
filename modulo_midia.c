@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "modulo_usuario.h"
 #include "modulo_midia.h"
 #include "funcoes_aux.h"
 
@@ -44,7 +45,7 @@ void modulo_midia(){
                 midia_cadastro();
             }
             else if (opcao == '2'){
-                midia_vizualizar();
+                midia_listar();
             }
             else if (opcao == '3'){
                 midia_pesquisar();
@@ -78,15 +79,39 @@ void midia_cadastro(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
-    char opcao;
+    Usuario* fulano_user;
+    fulano_user = (Usuario*) malloc(sizeof(Usuario));
+
     int resp;
+    int achou;
+    char cpf_busca_dig[13];
+    char confir;
     
+
+    do{
+        fulano_user = usuario_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+
+    strcpy(fulano -> cpf, fulano_user -> cpf);
+    strcpy(cpf_busca_dig, fulano -> cpf);
+    
+
+    system("cls||clear");
     menu_midia_cadastro();
-    opcao = opcoes_pergunta();
+
 
 
     //Jogo
-    if (opcao == '1'){
+    printf("Deseja Cadastrar um Jogo?\n");
+    confir = confirmacao();
+    if (confir == True){
         do {
             printf(""
                 "=======================================\n"
@@ -95,7 +120,7 @@ void midia_cadastro(){
                 );
             printf("(use ; para mais de um)\n");
             printf("\n");
-            scanf("%20[^\n]", fulano -> jogo);
+            scanf("%61[^\n]", fulano -> jogo);
             getchar();
 
             resp = validar_nomeMidia(fulano -> jogo);
@@ -107,7 +132,9 @@ void midia_cadastro(){
 
 
     //Livro
-    else if (opcao == '2'){
+    printf("Deseja Cadastrar um livro?\n");
+    confir = confirmacao();
+    if (confir == True){
         do {
             printf(""
                 "=======================================\n"
@@ -116,7 +143,7 @@ void midia_cadastro(){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%20[^\n]", fulano -> livro);
+            scanf("%51[^\n]", fulano -> livro);
             getchar();
 
             resp = validar_nomeMidia(fulano -> livro);
@@ -126,8 +153,11 @@ void midia_cadastro(){
         } while (resp != True);
     }
 
+
     //Filme
-    else if (opcao == '3'){
+    printf("Deseja Cadastrar uma filme?\n");
+    confir = confirmacao();
+    if (confir == True){
         do{
             printf(""
                 "=======================================\n"
@@ -136,7 +166,7 @@ void midia_cadastro(){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%20[^\n]", fulano -> filme);
+            scanf("%41[^\n]", fulano -> filme);
             getchar();
 
             resp = validar_nomeMidia(fulano -> filme);
@@ -149,7 +179,7 @@ void midia_cadastro(){
 
 
 
-void midia_vizualizar(){
+void midia_listar(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
     printf("\n");
