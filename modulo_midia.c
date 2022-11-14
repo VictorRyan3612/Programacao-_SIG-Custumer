@@ -25,8 +25,9 @@ void midia_pesquisar(void);
 void midia_editar(void);
 void midia_excluir(void);
 
-
-
+void midia_exibe(Midia* fulano);
+void midia_listar(void);
+Midia* midia_busca(void);
 
 
 void modulo_midia(){
@@ -175,11 +176,34 @@ void midia_cadastro(){
             }
         } while (resp != True);
     }
+
+    printf("Voltando ao menu principal...\n");
+    getchar();
+
+    fulano -> status = 'c'; //cadastrado
+
+    midia_gravar(fulano);
+    free(fulano);
+}
+
+void midia_gravar(Midia* fulano){
+    FILE* fp;
+    fp = fopen("Midias.dat", "ab");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    fwrite(fulano, sizeof(Midia), 1, fp);
+    fclose(fp);
+}
+
+void midia_exibe(Midia* fulano){
+    printf("\n");
 }
 
 
-
-void midia_listar(){
+void midia_listar(void){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
     printf("\n");
@@ -204,6 +228,16 @@ void midia_listar(){
 
 
 }
+
+
+Midia* midia_busca(void){
+    Midia* fulano;
+    fulano = (Midia*) malloc(sizeof(Midia));
+    
+    printf("\n");
+    return fulano;
+}
+
 
 void midia_pesquisar(){
     printf("Busca não disponível\n");
