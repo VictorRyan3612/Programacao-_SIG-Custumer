@@ -200,6 +200,25 @@ void midia_gravar(Midia* fulano){
 
 void midia_exibe(Midia* fulano){
     printf("\n");
+
+    char situacao[20];
+    char status;
+
+    if ((fulano == NULL) || (fulano->status == 'x')){
+        printf("\n= = = Usuario Inexistente = = =\n");
+    }
+    else {
+        printf("CPF do usuario: %s\n", fulano -> cpf);
+        printf("Jogos do usuario: %s\n", fulano -> jogo);
+        printf("Livros do Usuario: %s\n", fulano -> livro);
+        printf("Filmes do usuario: %s\n", fulano -> filme);
+
+        status = fulano->status;
+        strcpy(situacao,status_exibe(status,situacao));
+        printf("Situação das Redes Sociais: %s\n", situacao);
+
+        enter();
+    }
 }
 
 
@@ -233,7 +252,7 @@ void midia_listar(void){
 Midia* midia_busca(void){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
-    
+
     printf("\n");
     return fulano;
 }
