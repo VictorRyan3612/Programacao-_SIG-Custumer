@@ -25,7 +25,7 @@ void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
 
-void redesocial_gravar(RedeSocial* fulano);
+void redeSocial_gravar(RedeSocial* fulano);
 void redeSocial_exibe(RedeSocial* fulano);
 
 
@@ -75,19 +75,32 @@ void modulo_redeSocial(void){
 void redeSocial_cadastro(void){
     RedeSocial* fulano;
     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
-    
+
+    Usuario* fulano_user;
+    fulano_user = (Usuario*) malloc(sizeof(Usuario));
+
 
     char opcao;
     int resp;
-
-    char* cpf_busca_dig;
-    cpf_busca_dig = usuario_busca();
+    int achou;
     
+
+    do{
+        fulano_user = usuario_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+
 
     menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
 
-    strcpy(fulano -> cpf,cpf_busca_dig);
+    strcpy(fulano -> cpf, fulano_user -> cpf);
 
     //steam
     if (opcao == '1'){
@@ -151,13 +164,12 @@ void redeSocial_cadastro(void){
 
     fulano -> status = 'c'; //cadastrado
 
-    redesocial_gravar(fulano);
+    redeSocial_gravar(fulano);
     free(fulano);
-    free(cpf_busca_dig);
 }
 
 
-void redesocial_gravar(RedeSocial* fulano){
+void redeSocial_gravar(RedeSocial* fulano){
   FILE* fp;
   fp = fopen("redesSociais.dat", "ab");
   if (fp == NULL) {
@@ -181,9 +193,10 @@ void redeSocial_exibe(RedeSocial* fulano){
         printf("\n= = = Usuario Inexistente = = =\n");
     } 
     else {
-        printf("Steam do usuario: %s\n", fulano->steam);
-        printf("Twitter do Usuario: %s\n", fulano->twitter);
-        printf("Youtube do usuario: %s\n", fulano->youtube);
+        printf("Steam do usuario: %s\n", fulano -> cpf);
+        printf("Steam do usuario: %s\n", fulano -> steam);
+        printf("Twitter do Usuario: %s\n", fulano -> twitter);
+        printf("Youtube do usuario: %s\n", fulano -> youtube);
 
         status = fulano->status;
         strcpy(situacao,status_exibe(status,situacao));

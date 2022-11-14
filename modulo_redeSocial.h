@@ -15,5 +15,5 @@ void redeSocial_listar(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
-void redesocial_gravar(RedeSocial* fulano);
+void redeSocial_gravar(RedeSocial* fulano);
 void redeSocial_exibe(RedeSocial* fulano);
