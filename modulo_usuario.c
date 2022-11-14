@@ -163,6 +163,7 @@ void usuario_cadastro(void){
     
     fulano -> status = 'c';
     usuario_grava(fulano);
+    free(fulano);
 }
 
 void usuario_grava(Usuario* fulano){
@@ -178,33 +179,6 @@ void usuario_grava(Usuario* fulano){
 }
 
 
-
-Usuario* usuario_busca(void){
-    FILE* fp;
-    Usuario* fulano;
-    fulano = (Usuario*) malloc(sizeof(Usuario));
-
-    char* cpf_busca_dig;
-    cpf_busca_dig = cpf_busca();
-
-    fp = fopen("usuarios.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-
-    while(!feof(fp)) {
-        fread(fulano, sizeof(Usuario), 1, fp);
-        if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
-            fclose(fp);
-            return fulano;
-        }
-    }
-    free(cpf_busca_dig);
-    fclose(fp);
-    return NULL;
-    }
 
 void usuario_exibe(Usuario* fulano){
     printf("\n");
@@ -261,6 +235,35 @@ void usuario_listar(void){
     free(fulano_aqr);
 }
 
+
+Usuario* usuario_busca(void){
+    FILE* fp;
+    Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
+
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+
+    fp = fopen("usuarios.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano, sizeof(Usuario), 1, fp);
+        if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
+            fclose(fp);
+            return fulano;
+        }
+    }
+    free(cpf_busca_dig);
+    fclose(fp);
+    return NULL;
+}
+
+
 void usuario_pesquisar(){
     Usuario* fulano;
     fulano = (Usuario*) malloc(sizeof(Usuario));
@@ -274,10 +277,11 @@ void usuario_editar(){
 
     FILE* fp;
     Usuario* fulano;
-    int achou;
-    char resp;
-    char cpf_busca_dig[15];
 
+    char resp;
+    char opcao;
+
+    fulano = (Usuario*) malloc(sizeof(Usuario));
 
     fp = fopen("usuarios.dat", "r+b");
 
@@ -289,33 +293,34 @@ void usuario_editar(){
 
     menu_usuario_editar();
 
+
+    usuario_pesquisar();
+
     printf("\n\n");
-    // printf("Suas informações atualmente cadastradas são:\n");
-    // usuario_vizualizar(fulano);
+    printf("Digite qual campo deseja editar\n");
+    opcao = opcoes_pergunta();
 
-    // opcao = opcoes_pergunta();
+    // Editar nome
+    if (opcao == '1'){
+        // printf("Seu atual nome é esse:\n");
+        // printf("%s", fulano -> nome);
+        printf("\n\n");
+        do{
+            printf(""
+                "=======================================\n"
+                "====      Informe o atualizado:    ====\n"
+                "=======================================\n"
+            );
+            printf("\n");
+            scanf("%20[^\n]", fulano -> nome);
+            getchar();
 
-    // // Editar nome
-    // if (opcao == '1'){
-    //     printf("Seu atual nome é esse:\n");
-    //     printf("%s", fulano -> nome);
-    //     printf("\n\n");
-    //     do{
-    //         printf(""
-    //             "=======================================\n"
-    //             "====      Informe o atualizado:    ====\n"
-    //             "=======================================\n"
-    //         );
-    //         printf("\n");
-    //         scanf("%20[^\n]", fulano -> nome);
-    //         getchar();
-
-    //         resp = validar_nome(fulano -> nome);
-    //         if (resp != True){
-    //             printf("Caractere inválido detectado, Digite novamente:\n");
-    //         }
-    //     } while (resp != True);
-    // }
+            resp = validar_nome(fulano -> nome);
+            if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+        } while (resp != True);
+    }
     // // Editar email
     // else if (opcao == '2'){
     //     printf("Seu atual email é esse:\n");
@@ -360,6 +365,7 @@ void usuario_editar(){
     //         }
     //     } while (resp != True);
     // }
+    free(fulano);
 }
 
 void usuario_excluir(void){
