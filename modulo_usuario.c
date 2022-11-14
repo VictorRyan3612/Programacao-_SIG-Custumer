@@ -159,6 +159,8 @@ void usuario_cadastro(void){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
     } while (resp != True);
+
+    
     fulano -> status = 'c';
     usuario_grava(fulano);
 }
@@ -220,7 +222,7 @@ void usuario_exibe(Usuario* fulano){
         printf("Telefone do usuario: %s\n", fulano->telefone);
     
         status = fulano->status;
-        status_exibe(status, situacao);
+        strcpy(situacao,status_exibe(status,situacao));
         printf("Situação do Usuario: %s\n", situacao);
     }
 

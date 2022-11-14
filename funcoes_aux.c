@@ -61,7 +61,8 @@ char* cpf_busca(void){
     
     return cpf_busca_dig;
 }
-void status_exibe(char status, char* situacao){
+
+char* status_exibe(char status, char* situacao){
 
     if (status == 'c') {
         strcpy(situacao, "Cadastrado");
@@ -72,6 +73,7 @@ void status_exibe(char status, char* situacao){
     else {
         strcpy(situacao, "Não informada");
     }
+    return situacao;
 }
 
 /// Conversões

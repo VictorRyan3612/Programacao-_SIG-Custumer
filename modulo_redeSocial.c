@@ -76,8 +76,6 @@ void redeSocial_cadastro(void){
     RedeSocial* fulano;
     fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
     
-    Usuario* user;
-    // user = (Usuario*) malloc(sizeof(Usuario));
 
     char opcao;
     int resp;
@@ -151,7 +149,7 @@ void redeSocial_cadastro(void){
         printf("Opção não dessenvolvida ou inválida\n");
     }
 
-    fulano ->status = 'c'; //cadastrado
+    fulano -> status = 'c'; //cadastrado
 
     redesocial_gravar(fulano);
     free(fulano);
@@ -210,10 +208,11 @@ void redeSocial_exibe(RedeSocial* fulano){
         printf("Youtube do usuario: %s\n", fulano->youtube);
 
         status = fulano->status;
-        status_exibe(status, situacao);
+        strcpy(situacao,status_exibe(status,situacao));
         printf("Situação do Usuario: %s\n", situacao);
-    }
+
     enter();
+    }
 }
 void redeSocial_listar(void){
    system("cls||clear");
