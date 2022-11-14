@@ -234,7 +234,7 @@ void redeSocial_listar(void){
 
     printf(""
         "=================================\n"
-        "======  Lista de Usuários  ======\n"
+        "==== Lista de Redes Sociais  ====\n"
         "=================================\n"
     "");
     fp = fopen("redesSociais.dat", "rb");

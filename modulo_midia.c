@@ -215,7 +215,7 @@ void midia_exibe(Midia* fulano){
 
         status = fulano->status;
         strcpy(situacao,status_exibe(status,situacao));
-        printf("Situação das Redes Sociais: %s\n", situacao);
+        printf("Situação das Midias: %s\n", situacao);
 
         enter();
     }
@@ -233,7 +233,7 @@ void midia_listar(void){
 
     printf(""
         "=================================\n"
-        "======  Lista de Usuários  ======\n"
+        "======   Lista de Midias   ======\n"
         "=================================\n"
     "");
     fp = fopen("Midias.dat", "rb");
@@ -258,11 +258,31 @@ void midia_listar(void){
 
 
 Midia* midia_busca(void){
+    FILE* fp;
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
-    printf("\n");
-    return fulano;
+
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+
+    fp = fopen("Midias.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano, sizeof(Midia), 1, fp);
+        if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
+            fclose(fp);
+            return fulano;
+        }
+    }
+    free(cpf_busca_dig);
+    fclose(fp);
+    return NULL;
 }
 
 
