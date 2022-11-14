@@ -20,7 +20,6 @@ void menu_midia_editar(void);
 void menu_midia_excluir(void);
 
 void midia_cadastro(void);
-void midia_vizualizar(void);
 void midia_pesquisar(void);
 void midia_editar(void);
 void midia_excluir(void);
@@ -110,7 +109,7 @@ void midia_cadastro(){
 
 
     //Jogo
-    printf("Deseja Cadastrar um Jogo?\n");
+    printf("\n\nDeseja Cadastrar um Jogo?\n");
     confir = confirmacao();
     if (confir == True){
         do {
@@ -133,7 +132,7 @@ void midia_cadastro(){
 
 
     //Livro
-    printf("Deseja Cadastrar um livro?\n");
+    printf("\n\nDeseja Cadastrar um livro?\n");
     confir = confirmacao();
     if (confir == True){
         do {
@@ -156,7 +155,7 @@ void midia_cadastro(){
 
 
     //Filme
-    printf("Deseja Cadastrar uma filme?\n");
+    printf("\n\nDeseja Cadastrar uma filme?\n");
     confir = confirmacao();
     if (confir == True){
         do{
@@ -203,16 +202,34 @@ void midia_exibe(Midia* fulano){
 
     char situacao[20];
     char status;
+    char vizualidar_midia[81];
 
     if ((fulano == NULL) || (fulano->status == 'x')){
         printf("\n= = = Usuario Inexistente = = =\n");
     }
     else {
         printf("CPF do usuario: %s\n", fulano -> cpf);
-        printf("Jogos do usuario: %s\n", fulano -> jogo);
-        printf("Livros do Usuario: %s\n", fulano -> livro);
-        printf("Filmes do usuario: %s\n", fulano -> filme);
 
+
+        printf("\n\n\n");
+        printf("Jogos do usuario:\n");
+        strcpy(vizualidar_midia , fulano -> jogo);
+        vizualizar_lista(vizualidar_midia);
+
+
+        printf("\n\n\n");
+        printf("Livros do Usuario:\n");
+        strcpy(vizualidar_midia , fulano -> livro);
+        vizualizar_lista(vizualidar_midia);
+
+
+        printf("\n\n\n");
+        printf("Filmes do usuario:\n");
+        strcpy(vizualidar_midia , fulano -> filme);
+        vizualizar_lista(vizualidar_midia);
+
+
+        printf("\n\n\n");
         status = fulano->status;
         strcpy(situacao,status_exibe(status,situacao));
         printf("Situação das Midias: %s\n", situacao);
