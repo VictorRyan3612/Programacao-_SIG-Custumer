@@ -297,7 +297,7 @@ void usuario_editar(){
 
     menu_usuario_editar();
 
-    
+
     do{
         fulano = usuario_busca();
         if (fulano != NULL){
@@ -410,13 +410,27 @@ void usuario_editar(){
             }
         }
 
-        printf("\nDeseja continuar?");
-        continuar = confirmacao();
+        else if (opcao == '0'){
+            printf("Voltando ao menu principal...\n");
+            getchar();
+            continuar = False;
+        }
+        else{
+            printf("Opção não dessenvolvida ou inválida\n");
+        }
+        if (opcao!='0'){
+            printf("\nDeseja continuar?");
+            continuar = confirmacao();
+        }
 
-    }while(continuar == True);
+    }while(continuar == True); 
 
+    int var = -1;
+    fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+    fwrite(fulano, sizeof(Usuario), 1, fp);
 
     free(fulano);
+    fclose(fp);
 }
 
 void usuario_excluir(void){
