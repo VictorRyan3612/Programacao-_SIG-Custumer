@@ -270,15 +270,26 @@ void usuario_pesquisar(){
 }
 
 void usuario_editar(){
-    printf("\n");
+    system("cls||clear");
+
+    FILE* fp;
+    Usuario* fulano;
+    int achou;
+    char resp;
+    char cpf_busca_dig[15];
 
 
-    // char opcao;
-    // int resp;
-    
-    // menu_usuario_editar();
+    fp = fopen("usuarios.dat", "r+b");
 
-    // printf("\n\n");
+    if(fp == NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar o programa...\n");
+        exit(1);
+    }
+
+    menu_usuario_editar();
+
+    printf("\n\n");
     // printf("Suas informações atualmente cadastradas são:\n");
     // usuario_vizualizar(fulano);
 
