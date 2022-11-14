@@ -287,9 +287,11 @@ Midia* midia_busca(void){
 
 
 void midia_pesquisar(){
-    printf("Busca não disponível\n");
-
-
+    Midia* fulano;
+    fulano = (Midia*) malloc(sizeof(Midia));
+    fulano = midia_busca();
+    midia_exibe(fulano);
+    enter();
 }
 
 void midia_editar(){
