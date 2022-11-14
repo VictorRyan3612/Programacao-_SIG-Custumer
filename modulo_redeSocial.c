@@ -89,6 +89,7 @@ void redeSocial_cadastro(void){
     menu_redeSocial_cadastro();
     opcao = opcoes_pergunta();
 
+    strcpy(fulano -> cpf,cpf_busca_dig);
 
     //steam
     if (opcao == '1'){
@@ -110,7 +111,7 @@ void redeSocial_cadastro(void){
     
 
     //twitter
-    if (opcao == '2'){
+    else if (opcao == '2'){
         do {
             printf(""
                 "=======================================\n"
@@ -129,7 +130,7 @@ void redeSocial_cadastro(void){
     }
 
     //youtube
-    if (opcao == '3'){
+    else if (opcao == '3'){
         do {
             printf(""
                 "=======================================\n"
@@ -145,6 +146,9 @@ void redeSocial_cadastro(void){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         }while (resp != True);
+    }
+    else{
+        printf("Opção não dessenvolvida ou inválida\n");
     }
 
     fulano ->status = 'c'; //cadastrado
@@ -209,8 +213,8 @@ void redeSocial_listar(void){
    system("cls||clear");
 
     FILE* fp;
-    Usuario* fulano_aqr;
-    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+    RedeSocial* fulano_aqr;
+    fulano_aqr = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     int i;
 
@@ -230,7 +234,7 @@ void redeSocial_listar(void){
     while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
         if (fulano_aqr->status != 'x') {
             printf("\n= = = Redes Sociais nº %d = = =\n",i);
-            usuario_exibe(fulano_aqr);
+            redeSocial_exibe(fulano_aqr);
             i+=1;
         }
     }

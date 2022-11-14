@@ -103,7 +103,7 @@ int midia_cadastro(Midia* fulano){
 
 
     //Livro
-    if (opcao == '2'){
+    else if (opcao == '2'){
         do {
             printf(""
                 "=======================================\n"
@@ -123,7 +123,7 @@ int midia_cadastro(Midia* fulano){
     }
 
     //Filme
-    if (opcao == '3'){
+    else if (opcao == '3'){
         do{
             printf(""
                 "=======================================\n"
@@ -257,7 +257,9 @@ int midia_editar(Midia* fulano){
             }
         } while (resp != True);
     }
-
+    else{
+        printf("Opção não dessenvolvida ou inválida\n");
+    }
 
     return 0;
 }

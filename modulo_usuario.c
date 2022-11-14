@@ -118,7 +118,7 @@ void usuario_cadastro(void){
         if (resp != True){
             printf("Caractere inválido detectado, digite novamente:\n");
             }
-        if (valido != True){
+        else if (valido != True){
             printf("CPF inválido, digite novamente:\n");
         }
     } while ((resp != True) || (valido != True));
