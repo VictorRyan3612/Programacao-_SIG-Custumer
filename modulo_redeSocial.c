@@ -206,7 +206,37 @@ void redeSocial_exibe(RedeSocial* fulano){
     enter();
 }
 void redeSocial_listar(void){
-    printf("Não disponível\n");
+   system("cls||clear");
+
+    FILE* fp;
+    Usuario* fulano_aqr;
+    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+
+    int i;
+
+    printf(""
+    "=================================\n"
+    "======  Lista de Usuários  ======\n"
+    "=================================\n"
+    "");
+    fp = fopen("redeSocial.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    i = 1;
+    while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
+        if (fulano_aqr->status != 'x') {
+            printf("\n= = = Redes Sociais nº %d = = =\n",i);
+            usuario_exibe(fulano_aqr);
+            i+=1;
+        }
+    }
+
+    fclose(fp);
+    free(fulano_aqr);
 }
 void redeSocial_pesquisar(void){
     printf("\n");
