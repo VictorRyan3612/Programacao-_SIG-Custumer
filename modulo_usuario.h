@@ -8,7 +8,7 @@ struct usuario {
     char status;
 };
 
-int modulo_usuario(void);
+void modulo_usuario(void);
 
 void usuario_cadastro(void);
 void usuario_gravar(Usuario* fulano);

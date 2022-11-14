@@ -14,9 +14,9 @@
 // Assinatura das funções:
 int menu_principal(void);
 int menu_sobre(void);
-int modulo_usuario(void);
+void modulo_usuario(void);
 void modulo_redeSocial(void);
-int modulo_midia(void);
+void modulo_midia(void);
 
 
 // variaveis globais

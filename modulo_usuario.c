@@ -30,7 +30,7 @@ void usuario_excluir(void);
 
 
 
-int modulo_usuario(void){
+void modulo_usuario(void){
     
     char opcao = '\0';
 
@@ -69,7 +69,7 @@ int modulo_usuario(void){
 
     }
     while (opcao != '0');
-    return 0;
+
 }
 
 

@@ -6,9 +6,9 @@ struct midia {
     char filme[41];
 };
 
-int modulo_midia(void);
-int midia_cadastro(void);
-int midia_vizualizar(void);
-int midia_pesquisar(void);
-int midia_editar(void);
-int midia_excluir(void);
+void modulo_midia(void);
+void midia_cadastro(void);
+void midia_vizualizar(void);
+void midia_pesquisar(void);
+void midia_editar(void);
+void midia_excluir(void);

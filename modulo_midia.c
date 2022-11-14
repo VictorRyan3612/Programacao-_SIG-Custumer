@@ -18,17 +18,17 @@ void menu_midia_cadastro(void);
 void menu_midia_editar(void);
 void menu_midia_excluir(void);
 
-int midia_cadastro(void);
-int midia_vizualizar(void);
-int midia_pesquisar(void);
-int midia_editar(void);
-int midia_excluir(void);
+void midia_cadastro(void);
+void midia_vizualizar(void);
+void midia_pesquisar(void);
+void midia_editar(void);
+void midia_excluir(void);
 
 
 
 
 
-int modulo_midia(){
+void modulo_midia(){
 
     
     char opcao = '\0';
@@ -69,11 +69,11 @@ int modulo_midia(){
 
     }
     while (opcao != '0');
-    return 0;
+
 }
 
 
-int midia_cadastro(){
+void midia_cadastro(){
 
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
@@ -145,12 +145,11 @@ int midia_cadastro(){
             }
         } while (resp != True);
     }
-    return 0;
 }
 
 
 
-int midia_vizualizar(){
+void midia_vizualizar(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
     printf("\n");
@@ -173,16 +172,16 @@ int midia_vizualizar(){
     vizualizar_lista(dovizualizar);
     printf("\n\n\n");
 
-    return 0;
+
 }
 
-int midia_pesquisar(){
+void midia_pesquisar(){
     printf("Busca não disponível\n");
 
-    return 0;
+
 }
 
-int midia_editar(){
+void midia_editar(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
@@ -270,10 +269,10 @@ int midia_editar(){
         printf("Opção não dessenvolvida ou inválida\n");
     }
 
-    return 0;
+
 }
 
-int midia_excluir(){
+void midia_excluir(){
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
@@ -312,5 +311,4 @@ int midia_excluir(){
             
         }
     }
-    return 0;
 }
