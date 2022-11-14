@@ -277,6 +277,7 @@ void usuario_editar(){
 
     FILE* fp;
     Usuario* fulano;
+    fulano = (Usuario*) malloc(sizeof(Usuario));
 
     char resp;
     int certeza;
@@ -284,7 +285,6 @@ void usuario_editar(){
     char opcao;
     int achou = False;
 
-    fulano = (Usuario*) malloc(sizeof(Usuario));
 
     fp = fopen("usuarios.dat", "r+b");
 

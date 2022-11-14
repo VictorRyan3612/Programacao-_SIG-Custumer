@@ -300,6 +300,7 @@ void redeSocial_editar(void){
 
     FILE* fp;
     RedeSocial* fulano;
+    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     char resp;
     int certeza;
@@ -309,7 +310,6 @@ void redeSocial_editar(void){
 
 
 
-    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     fp = fopen("redesSociais.dat", "r+b");
 

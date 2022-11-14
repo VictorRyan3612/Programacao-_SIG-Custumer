@@ -295,11 +295,17 @@ void midia_pesquisar(){
 }
 
 void midia_editar(){
+    system("cls||clear");
+
+    FILE* fp;
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
-    // char opcao;
-    // int resp;
+    char resp;
+    int certeza;
+    char continuar;
+    char opcao;
+    int achou = False;
 
     // menu_midia_editar();
 
