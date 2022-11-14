@@ -272,6 +272,7 @@ void usuario_pesquisar(){
 void usuario_editar(){
     printf("\n");
 
+
     // char opcao;
     // int resp;
     
