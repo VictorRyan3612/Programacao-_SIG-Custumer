@@ -19,11 +19,6 @@ void modulo_redeSocial(void);
 void modulo_midia(void);
 
 
-// variaveis globais
-// redeSocial
-char steam[50];
-char twitter[30];
-char youtube[50];
 
 
 
