@@ -441,7 +441,6 @@ void usuario_excluir(void){
     fulano = (Usuario*) malloc(sizeof(Usuario));
 
     int certeza;
-    char confir;
     int achou = False;
     int var;
 
@@ -458,31 +457,31 @@ void usuario_excluir(void){
     menu_usuario_excluir();
 
 
-        do{
-            fulano = usuario_busca();
-            if (fulano != NULL){
-                achou = True;
-            }
-            else{
-                printf("Não encontrado, Digite novamente\n");
-            }
-        }while(achou == False);
-
-        usuario_exibe(fulano);
-        printf("\n\n\n");
-        printf("Deseja realmente apagar este usuario?");
-        certeza = confirmacao();
-        if (certeza == True){
-
-            fulano->status = 'x';
-            var = -1;
-            fseek(fp, var*sizeof(Usuario), SEEK_CUR);
-            fwrite(fulano, sizeof(Usuario), 1, fp);
-            printf("\nUsuario excluído com sucesso!!!\n");
+    do{
+        fulano = usuario_busca();
+        if (fulano != NULL){
+            achou = True;
         }
         else{
-            printf("\nOk, os dados não foram alterados\n");
+            printf("Não encontrado, Digite novamente\n");
         }
+    }while(achou == False);
+
+    usuario_exibe(fulano);
+    printf("\n\n\n");
+    printf("Deseja realmente apagar este usuario?");
+    certeza = confirmacao();
+    if (certeza == True){
+
+        fulano->status = 'x';
+        var = -1;
+        fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+        fwrite(fulano, sizeof(Usuario), 1, fp);
+        printf("\nUsuario excluído com sucesso!\n");
+    }
+    else{
+        printf("\nOk, os dados não foram alterados\n");
+    }
 
   free(fulano);
   fclose(fp);

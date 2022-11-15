@@ -70,6 +70,9 @@ char* status_exibe(char status, char* situacao){
     else if (status == 's') {
         strcpy(situacao, "Suspenso");
     }
+    else if (status == 'x'){
+        strcpy(situacao, "Excluido");
+    }
     else {
         strcpy(situacao, "Não informada");
     }

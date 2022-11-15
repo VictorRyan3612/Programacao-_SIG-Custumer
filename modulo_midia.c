@@ -463,42 +463,56 @@ void midia_editar(){
 }
 
 void midia_excluir(){
+    system("cls||clear");
+
+    FILE* fp;
     Midia* fulano;
     fulano = (Midia*) malloc(sizeof(Midia));
 
-    // char opcao;
-    // int resp;
 
-    // menu_midia_excluir();
+    int certeza;
+    int achou = False;
+    int var;
 
-    // printf("\n\n");
-    // printf("Suas informações atualmente cadastradas são:\n");
-    // midia_vizualizar();
 
-    // printf("Digite qual deseja:\n");
-    // opcao = opcoes_pergunta();
+    fp = fopen("Midias.dat", "r+b");
 
-    // resp = confirmacao();
-    // if (resp == True){
-    //     if (opcao == '1'){
-    //         printf("Exluindo seu interesse em jogo\n");
-    //         strcpy(fulano -> jogo, "");
-    //         printf("Exluído com sucesso\n");
+    if(fp == NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar o programa...\n");
+        exit(1);
+    }
 
-    //     }
 
-    //     else if (opcao == '2'){
-    //         printf("Exluindo seu livro interessado\n");
-    //         strcpy(fulano -> livro, "");
-    //         printf("Exluído com sucesso\n");
+    menu_midia_excluir();
 
-    //     }
 
-    //     else if (opcao == '3'){
-    //         printf("Exluindo seu filme interessado\n");
-    //         strcpy(fulano -> filme, "");
-    //         printf("Exluído com sucesso\n");
-            
-    //     }
-    // }
+    do{
+        fulano = midia_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+    midia_exibe(fulano);
+    printf("\n\n\n");
+    printf("Deseja realmente apagar este usuario?");
+    certeza = confirmacao();
+    if (certeza == True){
+
+        fulano->status = 'x';
+        var = -1;
+        fseek(fp, var*sizeof(Midia), SEEK_CUR);
+        fwrite(fulano, sizeof(Midia), 1, fp);
+        printf("\nUsuario excluído com sucesso!!!\n");
+    }
+    else{
+        printf("\nOk, os dados não foram alterados\n");
+    }
+
+  free(fulano);
+  fclose(fp);
 }

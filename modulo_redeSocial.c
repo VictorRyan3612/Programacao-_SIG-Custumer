@@ -245,7 +245,7 @@ void redeSocial_listar(void){
     }
 
     i = 1;
-    while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
+    while(fread(fulano_aqr, sizeof(RedeSocial), 1, fp)) {
         if (fulano_aqr->status != 'x') {
             printf("\n= = = Redes Sociais nº %d = = =\n",i);
             redeSocial_exibe(fulano_aqr);
@@ -264,7 +264,7 @@ RedeSocial* redeSocial_busca(void){
 
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
-
+    
     fp = fopen("redesSociais.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -447,42 +447,56 @@ void redeSocial_editar(void){
 }
 
 void redeSocial_excluir(void){
-    printf("\n");
-//     char opcao;
-//     int resp;
+    system("cls||clear");
 
-//     menu_redeSocial_excluir();
+    FILE* fp;
+    RedeSocial* fulano;
+    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
 
-//     printf("\n\n");
-//     printf("Suas informações atualmente cadastradas são:\n");
 
-//     redeSocial_listar(fulano);
+    int certeza;
+    int achou = False;
+    int var;
 
-//     printf("Digite qual deseja:\n");
-//     opcao = opcoes_pergunta();
 
-//     resp = confirmacao();
-//     if (resp == True){
-//         if (opcao == '1'){
-            
-//             printf("Exluindo seu perfil steam cadastrado\n");
-//             strcpy(fulano -> steam, "");
-//             printf("Exluído com sucesso\n");
+    fp = fopen("redesSociais.dat", "r+b");
 
-//         }
+    if(fp == NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar o programa...\n");
+        exit(1);
+    }
 
-//         else if (opcao == '2'){
-//             printf("Exluindo seu perfil do twitter cadastrado\n");
-//             strcpy(fulano -> twitter, "");
-//             printf("Exluído com sucesso\n");
 
-//         }
-        
-//         else if (opcao == '3'){
-//             printf("Exluindo seu canal youtube cadastrado\n");
-//             strcpy(fulano -> youtube, "");
-//             printf("Exluído com sucesso\n");
-            
-//         }
-//     }
+    menu_redeSocial_excluir();
+
+
+    do{
+        fulano = redeSocial_busca();
+        if (fulano != NULL){
+            achou = True;
+        }
+        else{
+            printf("Não encontrado, Digite novamente\n");
+        }
+    }while(achou == False);
+
+    redeSocial_exibe(fulano);
+    printf("\n\n\n");
+    printf("Deseja realmente apagar este usuario?");
+    certeza = confirmacao();
+    if (certeza == True){
+
+        fulano->status = 'x';
+        var = -1;
+        fseek(fp, var*sizeof(RedeSocial), SEEK_CUR);
+        fwrite(fulano, sizeof(RedeSocial), 1, fp);
+        printf("\nUsuario excluído com sucesso!!!\n");
+    }
+    else{
+        printf("\nOk, os dados não foram alterados\n");
+    }
+
+  free(fulano);
+  fclose(fp);
 }
