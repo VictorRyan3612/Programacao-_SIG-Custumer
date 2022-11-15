@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-int menu_sobre(void){
+void menu_sobre(void){
     setlocale (LC_ALL, "portuguese");
     printf("\n"
     "\t\tSobre o projeto:\n"
@@ -13,7 +13,8 @@ int menu_sobre(void){
     "além de ajudar a conseguir novos clientes. "
     "O presente projeto tem como objetivo propor um software que implementa "
     "funcionalidades básicas relacionadas ao controle de clientes de uma empresa, "
-    "facilitando a gestão.\n"
+    "facilitando a gestão, além de, se possível, implementar sistemas de recomendação, "
+    "nesse caso, com foco na área de games,"
     "\n\n"
 
     "\t\tDiscente/Autor do Projeto:\n"
@@ -22,14 +23,21 @@ int menu_sobre(void){
     "email:\n"
     "vitorsilva3612@gmail.com\n"
     "ryan.silva.706@ufrn.edu.br\n"
+    "\n\n"
+
+    "Ajudas externas:\n"
+    "Dayanne Xavier: https://github.com/DayXL\n"
+    "Flavius Gorgonio, professor da disciplina de programação\n"
+    "\t\tlinks:"
+    "https://replit.com/@flaviusgorgonio?tab=repls"
     "\n"
     );
-    return 0;
+
 }
 
 
 
-int menu_principal(void){
+void menu_principal(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
     printf(""
@@ -43,7 +51,7 @@ int menu_principal(void){
         "|====           1 - Módulo Usuário              ====|\n"
         "|====           2 - Módulo Redes Sociais        ====|\n"
         "|====           3 - Módulo Mídia                ====|\n"
-        "|====           4 - Sobre e equipe              ====|\n"
+        "|====           4 - Sobre e créditos            ====|\n"
         "|====                                           ====|\n"
         "|====                                           ====|\n"
         "|====               0 - Voltar                  ====|\n"
@@ -51,61 +59,60 @@ int menu_principal(void){
         "|===================================================|\n"
     );
 
-    return 0;
 }
 
-int menu_usuario(void){
+void menu_usuario(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
 
-printf(""
-        "===================================================\n"
-        "===================================================\n"
-        "====                                           ====\n"
-        "====        Controle de conta de Usuário       ====\n"
-        "====                                           ====\n"
-        "====                                           ====\n"
-        "====          Digite qual deseja:              ====\n"
-        "====         1 - Cadastrar Usuário             ====\n"
-        "====         2 - Listar Usuários               ====\n"
-        "====         3 - Procurar Usuário              ====\n"
-        "====         4 - Editar Usuário                ====\n"
-        "====         5 - Excluir Usuário               ====\n"
-        "====                                           ====\n"
-        "====                                           ====\n"
-        "====               0 - Voltar                  ====\n"
-        "===================================================\n"
-        "===================================================\n"
-    );
-    return 0;
+    printf(""
+            "===================================================\n"
+            "===================================================\n"
+            "====                                           ====\n"
+            "====        Controle de conta de Usuário       ====\n"
+            "====                                           ====\n"
+            "====                                           ====\n"
+            "====          Digite qual deseja:              ====\n"
+            "====         1 - Cadastrar Usuário             ====\n"
+            "====         2 - Listar Usuários               ====\n"
+            "====         3 - Procurar Usuário              ====\n"
+            "====         4 - Editar Usuário                ====\n"
+            "====         5 - Excluir Usuário               ====\n"
+            "====                                           ====\n"
+            "====                                           ====\n"
+            "====               0 - Voltar                  ====\n"
+            "===================================================\n"
+            "===================================================\n"
+        );
+    
 }
 
-int menu_redeSocial(void){
+void menu_redeSocial(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
 
-printf(""
-        "===================================================\n"
-        "===================================================\n"
-        "====                                           ====\n"
-        "====        Controle das Redes Sociais         ====\n"
-        "====                                           ====\n"
-        "====                                           ====\n"
-        "====          Digite qual deseja:              ====\n"
-        "====         1 - Cadastrar Rede Social         ====\n"
-        "====         2 - Vizualizar Redes Sociais      ====\n"
-        "====         3 - Procurar Rede Social          ====\n"
-        "====         4 - Editar Rede Social            ====\n"
-        "====         5 - Excluir Rede Social           ====\n"
-        "====                                           ====\n"
-        "====               0 - Voltar                  ====\n"
-        "===================================================\n"
-        "===================================================\n"
-    );
-    return 0;
+    printf(""
+            "===================================================\n"
+            "===================================================\n"
+            "====                                           ====\n"
+            "====        Controle das Redes Sociais         ====\n"
+            "====                                           ====\n"
+            "====                                           ====\n"
+            "====          Digite qual deseja:              ====\n"
+            "====         1 - Cadastrar Rede Social         ====\n"
+            "====         2 - Vizualizar Redes Sociais      ====\n"
+            "====         3 - Procurar Rede Social          ====\n"
+            "====         4 - Editar Rede Social            ====\n"
+            "====         5 - Excluir Rede Social           ====\n"
+            "====                                           ====\n"
+            "====               0 - Voltar                  ====\n"
+            "===================================================\n"
+            "===================================================\n"
+        );
+    
 }
 
-int menu_midia(void){
+void menu_midia(void){
     setlocale (LC_ALL, "portuguese");
     system("cls||clear");
 
@@ -128,7 +135,7 @@ int menu_midia(void){
         "===================================================\n"
     );
     printf("\n\n");
-    return 0;
+    
 }
 
 
