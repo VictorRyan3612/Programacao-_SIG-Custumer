@@ -90,11 +90,12 @@ void midia_cadastro(){
 
     do{
         fulano_user = usuario_busca();
-        if (fulano != NULL){
+        if (fulano_user != NULL){
             achou = True;
         }
         else{
             printf("Não encontrado, Digite novamente\n");
+            achou = False;
         }
     }while(achou == False);
 
