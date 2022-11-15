@@ -1,8 +1,9 @@
-# Programacao_SIG-Custumer
+# Programacao-_SIG-Custumer
 
-## Projeto da disciplina de Programação, UFRN Caicó
+# Projeto da disciplina de Programação, UFRN Caicó
 
-### Sobre o projeto:
+## Sobre o projeto:
+
     SIG-Custumer: Um sistema de controle de cliente
     As empresas da atualidade utilizam complexos sistemas gerenciais para,
     entre várias outras funções, gerenciar e manter seus clientes, 
