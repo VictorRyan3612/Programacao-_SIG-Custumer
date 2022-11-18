@@ -23,11 +23,22 @@ struct titanic{
 
 void estru_dinam(void){
     printf("\n");
+    char linha[300];
+
     FILE* fp;
     fp = fopen("titanic.csv","rt");
 
+    if (fp == NULL){
+        printf("Erro na criacao do arquivo\n!");
+        exit(1);
+    }
 
+    // fscanf("%[^,]");
 
+    while (fscanf(fp,"%[^,]",linha) == 1) {
+        printf("%s\n",linha);
+        fgetc(fp);
+    }
 
 
 
