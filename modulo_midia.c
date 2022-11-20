@@ -84,7 +84,7 @@ void midia_cadastro(){
 
     int resp;
     int achou;
-    char cpf_busca_dig[13];
+    char cpf_busca_dig[12];
     char confir;
     
 

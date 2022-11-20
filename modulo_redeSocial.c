@@ -82,7 +82,7 @@ void redeSocial_cadastro(void){
 
     int resp;
     int achou;
-    char cpf_busca_dig[13];
+    char cpf_busca_dig[12];
     char confir;
     
 

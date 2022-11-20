@@ -53,7 +53,7 @@ void vizualizar_lista(char a[]){
 char* cpf_busca(void){
     char* cpf_busca_dig;
 
-    cpf_busca_dig = (char*) malloc(13*sizeof(char));
+    cpf_busca_dig = (char*) malloc(12*sizeof(char));
     printf("\n ==== Busca usuario ==== \n"); 
     printf("Informe o CPF:\n"); 
     scanf("%s", cpf_busca_dig);
