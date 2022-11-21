@@ -189,14 +189,14 @@ void redeSocial_cadastro(void){
 
 void redeSocial_arq(void){
     FILE* fp;
-    fp = fopen("redesSociais.dat", "ab");
+    fp = fopen("arq_redes_Sociais.dat", "ab");
     fclose(fp);
 }
 
 
 void redeSocial_gravar(RedeSocial* fulano){
     FILE* fp;
-    fp = fopen("redesSociais.dat", "ab");
+    fp = fopen("arq_redes_Sociais.dat", "ab");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -246,7 +246,7 @@ void redeSocial_listar(void){
         "==== Lista de Redes Sociais  ====\n"
         "=================================\n"
     "");
-    fp = fopen("redesSociais.dat", "rb");
+    fp = fopen("arq_redes_Sociais.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -276,7 +276,7 @@ RedeSocial* redeSocial_busca(void){
     
     redeSocial_arq();
     
-    fp = fopen("redesSociais.dat", "rb");
+    fp = fopen("arq_redes_Sociais.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -323,7 +323,7 @@ void redeSocial_editar(void){
 
     redeSocial_arq();
     
-    fp = fopen("redesSociais.dat", "r+b");
+    fp = fopen("arq_redes_Sociais.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -473,7 +473,7 @@ void redeSocial_excluir(void){
 
     redeSocial_arq();
     
-    fp = fopen("redesSociais.dat", "r+b");
+    fp = fopen("arq_redes_Sociais.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");

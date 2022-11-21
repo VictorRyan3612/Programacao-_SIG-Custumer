@@ -188,13 +188,13 @@ void midia_cadastro(){
 
 void midia_arq(void){
     FILE* fp;
-    fp = fopen("Midias.dat", "ab");
+    fp = fopen("arq_midias.dat", "ab");
     fclose(fp);
 }
 
 void midia_gravar(Midia* fulano){
     FILE* fp;
-    fp = fopen("Midias.dat", "ab");
+    fp = fopen("arq_midias.dat", "ab");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -262,7 +262,7 @@ void midia_listar(void){
         "======   Lista de Midias   ======\n"
         "=================================\n"
     "");
-    fp = fopen("Midias.dat", "rb");
+    fp = fopen("arq_midias.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -294,7 +294,7 @@ Midia* midia_busca(void){
 
     midia_arq();
     
-    fp = fopen("Midias.dat", "rb");
+    fp = fopen("arq_midias.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -338,7 +338,7 @@ void midia_editar(){
     
     midia_arq();
     
-    fp = fopen("Midias.dat", "r+b");
+    fp = fopen("arq_midias.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -489,7 +489,7 @@ void midia_excluir(){
 
     midia_arq();
 
-    fp = fopen("Midias.dat", "r+b");
+    fp = fopen("arq_midias.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");

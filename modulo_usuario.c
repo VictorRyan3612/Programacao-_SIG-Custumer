@@ -169,13 +169,13 @@ void usuario_cadastro(void){
 
 void usuario_arq(void){
     FILE* fp;
-    fp = fopen("usuarios.dat", "ab");
+    fp = fopen("arq_usuarios.dat", "ab");
     fclose(fp);
 }
 
 void usuario_gravar(Usuario* fulano){
   FILE* fp;
-  fp = fopen("usuarios.dat", "ab");
+  fp = fopen("arq_usuarios.dat", "ab");
   if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
     printf("Não é possível continuar este programa...\n");
@@ -225,7 +225,7 @@ void usuario_listar(void){
     "======  Lista de Usuários  ======\n"
     "=================================\n"
     ""); 
-    fp = fopen("usuarios.dat", "rb");
+    fp = fopen("arq_usuarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -256,7 +256,7 @@ Usuario* usuario_busca(void){
 
     usuario_arq();
 
-    fp = fopen("usuarios.dat", "rb");
+    fp = fopen("arq_usuarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -299,7 +299,7 @@ void usuario_editar(){
 
     usuario_arq();
 
-    fp = fopen("usuarios.dat", "r+b");
+    fp = fopen("arq_usuarios.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -459,8 +459,8 @@ void usuario_excluir(void){
 
 
     usuario_arq();
-    
-    fp = fopen("usuarios.dat", "r+b");
+
+    fp = fopen("arq_usuarios.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
