@@ -149,18 +149,18 @@ int validar_cpf(char x[]){
 
     for (int i = 0; i <=8; i+=1){
         a[i] = a[i]-48;
-        // printf("a[i]=%d\t",a[i]);
+        // printf("a[%d]=%d\t",i,a[i]);
         // printf("%d",num);
         b += a[i] * num;
         num -= 1;
-        // printf("\tb[i]=%d\n",b);
+        // printf("\tb[%d]=%d\n",i,b);
     }
     // printf("b = %d\n",b);
     c = b % 11;
     // printf("c = %d\n",c); // essencial
     if (c >= 10){
-        c = 1;
-        d = 1;
+        c = 0;
+        d = 0;
     }
     else if (c <= 1){
         d = 1;
@@ -175,10 +175,10 @@ int validar_cpf(char x[]){
     a[9]= a[9]-48;
     a[10]= a[10]-48;
     for (int i = 0; i <= 9; i+=1){
-        // printf("a[i]%d\t",a[i]);
+        // printf("a[%d]%d\t",i,a[i]);
         // printf("%d",num);
         e += a[i] * num;
-        // printf("e[i]=%d\n",e);
+        // printf("e[%d]=%d\n",i,e);
         num -= 1;
     }
     // printf("e = %d\n",e);
@@ -186,8 +186,8 @@ int validar_cpf(char x[]){
     f = e % 11;
     // printf("f = %d\n",f); // essencial
     if (f >= 10){
-        f = 1;
-        g = 1;
+        f = 0;
+        g = 0;
     }
     else if (f <= 1){
         g = 1;
