@@ -85,23 +85,6 @@ void usuario_cadastro(void){
     system("cls||clear");
     printf("\n");
 
-    //nome
-    do {
-        printf(""
-            "=======================================\n"
-            "====       Informe seu nome:       ====\n"
-            "=======================================\n"
-        );
-        printf("\n");
-        scanf("%81[^\n]", fulano -> nome);
-        getchar();
-
-        resp = validar_nome(fulano -> nome);
-        if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-
 
     // CPF
     do {
@@ -123,6 +106,25 @@ void usuario_cadastro(void){
             printf("CPF inválido, digite novamente:\n");
         }
     } while ((resp != True) || (valido != True));
+
+
+    
+    //nome
+    do {
+        printf(""
+            "=======================================\n"
+            "====       Informe seu nome:       ====\n"
+            "=======================================\n"
+        );
+        printf("\n");
+        scanf("%81[^\n]", fulano -> nome);
+        getchar();
+
+        resp = validar_nome(fulano -> nome);
+        if (resp != True){
+                printf("Caractere inválido detectado, Digite novamente:\n");
+            }
+        } while (resp != True);
 
 
     //email
