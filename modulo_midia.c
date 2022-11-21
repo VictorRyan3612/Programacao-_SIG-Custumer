@@ -186,6 +186,12 @@ void midia_cadastro(){
     free(fulano);
 }
 
+void midia_arq(void){
+    FILE* fp;
+    fp = fopen("Midias.dat", "ab");
+    fclose(fp);
+}
+
 void midia_gravar(Midia* fulano){
     FILE* fp;
     fp = fopen("Midias.dat", "ab");
@@ -249,6 +255,8 @@ void midia_listar(void){
 
     int i;
 
+    midia_arq();
+
     printf(""
         "=================================\n"
         "======   Lista de Midias   ======\n"
@@ -284,6 +292,8 @@ Midia* midia_busca(void){
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
 
+    midia_arq();
+    
     fp = fopen("Midias.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -325,6 +335,8 @@ void midia_editar(){
     char opcao;
     int achou = False;
 
+    
+    midia_arq();
     
     fp = fopen("Midias.dat", "r+b");
 
@@ -475,6 +487,7 @@ void midia_excluir(){
     int achou = False;
     int var;
 
+    midia_arq();
 
     fp = fopen("Midias.dat", "r+b");
 

@@ -11,6 +11,7 @@ struct usuario {
 void modulo_usuario(void);
 
 void usuario_cadastro(void);
+void usuario_arq(void);
 void usuario_gravar(Usuario* fulano);
 Usuario* usuario_busca(void);
 void usuario_exibe(Usuario* fulano);

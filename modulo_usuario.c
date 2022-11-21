@@ -16,6 +16,7 @@ void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
 int confirmacao(void);
 
+void usuario_arq(void);
 void usuario_cadastro(void);
 void usuario_gravar(Usuario* fulano);
 Usuario* usuario_busca(void);
@@ -166,6 +167,12 @@ void usuario_cadastro(void){
     free(fulano);
 }
 
+void usuario_arq(void){
+    FILE* fp;
+    fp = fopen("usuarios.dat", "ab");
+    fclose(fp);
+}
+
 void usuario_gravar(Usuario* fulano){
   FILE* fp;
   fp = fopen("usuarios.dat", "ab");
@@ -210,6 +217,9 @@ void usuario_listar(void){
     fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
 
     int i;
+
+    usuario_arq();
+
     printf(""
     "=================================\n"
     "======  Lista de Usuários  ======\n"
@@ -243,6 +253,8 @@ Usuario* usuario_busca(void){
 
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
+
+    usuario_arq();
 
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
@@ -285,6 +297,7 @@ void usuario_editar(){
     char opcao;
     int achou = False;
 
+    usuario_arq();
 
     fp = fopen("usuarios.dat", "r+b");
 
@@ -445,6 +458,8 @@ void usuario_excluir(void){
     int var;
 
 
+    usuario_arq();
+    
     fp = fopen("usuarios.dat", "r+b");
 
     if(fp == NULL){

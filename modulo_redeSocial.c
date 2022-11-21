@@ -187,6 +187,12 @@ void redeSocial_cadastro(void){
     free(fulano);
 }
 
+void redeSocial_arq(void){
+    FILE* fp;
+    fp = fopen("redesSociais.dat", "ab");
+    fclose(fp);
+}
+
 
 void redeSocial_gravar(RedeSocial* fulano){
     FILE* fp;
@@ -233,6 +239,8 @@ void redeSocial_listar(void){
 
     int i;
 
+    redeSocial_arq();
+
     printf(""
         "=================================\n"
         "==== Lista de Redes Sociais  ====\n"
@@ -265,6 +273,8 @@ RedeSocial* redeSocial_busca(void){
 
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
+    
+    redeSocial_arq();
     
     fp = fopen("redesSociais.dat", "rb");
     if (fp == NULL) {
@@ -311,7 +321,8 @@ void redeSocial_editar(void){
 
 
 
-
+    redeSocial_arq();
+    
     fp = fopen("redesSociais.dat", "r+b");
 
     if(fp == NULL){
@@ -460,6 +471,8 @@ void redeSocial_excluir(void){
     int var;
 
 
+    redeSocial_arq();
+    
     fp = fopen("redesSociais.dat", "r+b");
 
     if(fp == NULL){
