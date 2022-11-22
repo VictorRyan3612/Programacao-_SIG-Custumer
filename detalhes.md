@@ -1,14 +1,14 @@
 # Explicações sobre o código
 
-As seguintes linhas:
+As seguintes funções:
 
-/*
-#include <locale.h>
+usuario_arq();
+redeSocial_arq();
+midia_arq();
 
-setlocale (LC_ALL, "portuguese");
+Evita que abra um arquivo que não foi criado ainda.
 
-*/
-fazem que os caracteres acentuados funcionem.
+
 
 # Equivalencias C e python
 
@@ -18,7 +18,7 @@ fazem que os caracteres acentuados funcionem.
 
 printf("Aperte ENTER para continuar\n");
 
-getch();
+getchar();
 
 ### Em python
 

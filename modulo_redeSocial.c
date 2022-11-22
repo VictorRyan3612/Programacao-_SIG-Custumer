@@ -29,6 +29,7 @@ void redeSocial_excluir(void);
 void redeSocial_gravar(RedeSocial* fulano);
 void redeSocial_exibe(RedeSocial* fulano);
 
+int redes_existente(char fulano_cpf[12]);
 
 
 void modulo_redeSocial(void){
@@ -81,25 +82,35 @@ void redeSocial_cadastro(void){
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
     int resp;
-    int achou;
-    char cpf_busca_dig[13];
+    int achou_user;
+    int achou_rede;
+    char cpf_busca_dig[12];
     char confir;
     
-
     do{
-        fulano_user = usuario_busca();
-        if (fulano_user != NULL){
-            achou = True;
-        }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-            achou = False;
-        }
-    }while(achou == False);
+        do{
+            fulano_user = usuario_busca();
+            if (fulano_user != NULL){
+                achou_user = True;
+            }
+            else{
+                printf("Não encontrado, Digite novamente\n");
+                achou_user = False;
+            }
+        }while(achou_user == False);
 
-    strcpy(fulano -> cpf, fulano_user -> cpf);
-    strcpy(cpf_busca_dig, fulano -> cpf);
-    
+
+        strcpy(fulano -> cpf, fulano_user -> cpf);
+        strcpy(cpf_busca_dig, fulano -> cpf);
+        
+        achou_rede = redes_existente(cpf_busca_dig);
+
+
+        if (achou_rede == True){
+            printf("Redes Sociais desse usuário já cadastradas, digite outro usuario\n");
+        }
+    } while (achou_rede == True);
+
 
     system("cls||clear");
     menu_redeSocial_cadastro();
@@ -117,7 +128,7 @@ void redeSocial_cadastro(void){
                 );
 
             printf("\n");
-            scanf("%s",fulano -> steam);
+            scanf("%21[^\n]",fulano -> steam);
             getchar();
 
             resp = validar_twitterSteam(fulano -> steam);
@@ -125,6 +136,9 @@ void redeSocial_cadastro(void){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> steam,"");
     }
     
     
@@ -142,7 +156,7 @@ void redeSocial_cadastro(void){
                 );
 
             printf("\n");
-            scanf("%s",fulano -> twitter);
+            scanf("%21[^\n]",fulano -> twitter);
             getchar();
 
             
@@ -153,6 +167,9 @@ void redeSocial_cadastro(void){
             
         
             } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> twitter,"");
     }
 
     //youtube
@@ -167,7 +184,7 @@ void redeSocial_cadastro(void){
                 );
 
             printf("\n");
-            scanf("%s",fulano -> youtube);
+            scanf("%41[^\n]",fulano -> youtube);
             getchar();
 
 
@@ -177,7 +194,11 @@ void redeSocial_cadastro(void){
             
         }while (resp != True);
     }
-    
+    else{
+        strcpy(fulano -> steam,"");
+    }
+
+
     printf("Voltando ao menu principal...\n");
     getchar();
 
@@ -187,10 +208,46 @@ void redeSocial_cadastro(void){
     free(fulano);
 }
 
+int redes_existente(char fulano_cpf[12]){
+    int achou;
+    FILE* fp;
+
+    RedeSocial* fulano_aqr;
+    fulano_aqr = (RedeSocial*) malloc(sizeof(RedeSocial));
+
+    redeSocial_arq();
+
+    fp = fopen("arq_redes_Sociais.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano_aqr, sizeof(RedeSocial), 1, fp);
+            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
+                fclose(fp);
+                return achou = True;;
+            }
+        }
+
+    fclose(fp);
+    return achou = False;
+}
+
+
+
+void redeSocial_arq(void){
+    FILE* fp;
+    fp = fopen("arq_redes_Sociais.dat", "ab");
+    fclose(fp);
+}
+
 
 void redeSocial_gravar(RedeSocial* fulano){
     FILE* fp;
-    fp = fopen("redesSociais.dat", "ab");
+    fp = fopen("arq_redes_Sociais.dat", "ab");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -233,12 +290,14 @@ void redeSocial_listar(void){
 
     int i;
 
+    redeSocial_arq();
+
     printf(""
         "=================================\n"
         "==== Lista de Redes Sociais  ====\n"
         "=================================\n"
     "");
-    fp = fopen("redesSociais.dat", "rb");
+    fp = fopen("arq_redes_Sociais.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -266,7 +325,9 @@ RedeSocial* redeSocial_busca(void){
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
     
-    fp = fopen("redesSociais.dat", "rb");
+    redeSocial_arq();
+    
+    fp = fopen("arq_redes_Sociais.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -311,8 +372,9 @@ void redeSocial_editar(void){
 
 
 
-
-    fp = fopen("redesSociais.dat", "r+b");
+    redeSocial_arq();
+    
+    fp = fopen("arq_redes_Sociais.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -460,7 +522,9 @@ void redeSocial_excluir(void){
     int var;
 
 
-    fp = fopen("redesSociais.dat", "r+b");
+    redeSocial_arq();
+    
+    fp = fopen("arq_redes_Sociais.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");

@@ -29,9 +29,9 @@ void midia_listar(void);
 Midia* midia_busca(void);
 
 
-void modulo_midia(){
+int midia_existente(char fulano_cpf[12]);
 
-    
+void modulo_midia(){
     char opcao = '\0';
 
 
@@ -83,26 +83,36 @@ void midia_cadastro(){
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
     int resp;
-    int achou;
-    char cpf_busca_dig[13];
+    int achou_user;
+    int achou_midia;
+    char cpf_busca_dig[12];
     char confir;
     
 
     do{
-        fulano_user = usuario_busca();
-        if (fulano_user != NULL){
-            achou = True;
-        }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-            achou = False;
-        }
-    }while(achou == False);
+        do{
+            fulano_user = usuario_busca();
+            if (fulano_user != NULL){
+                achou_user = True;
+            }
+            else{
+                printf("Não encontrado, Digite novamente\n");
+                achou_user = False;
+            }
+        } while(achou_user == False);
 
 
-    strcpy(fulano -> cpf, fulano_user -> cpf);
-    strcpy(cpf_busca_dig, fulano -> cpf);
-    
+        strcpy(fulano -> cpf, fulano_user -> cpf);
+        strcpy(cpf_busca_dig, fulano -> cpf);
+        
+        strcpy(cpf_busca_dig,fulano -> cpf);
+        achou_midia = midia_existente(cpf_busca_dig);
+
+        if (achou_midia == True){
+            printf("Midias já cadastradas para esse usuário, digite outro\n");
+        }
+    } while(achou_midia == True);
+
 
     system("cls||clear");
     menu_midia_cadastro();
@@ -121,7 +131,7 @@ void midia_cadastro(){
                 );
             printf("(use ; para mais de um)\n");
             printf("\n");
-            scanf("%61[^\n]", fulano -> jogo);
+            scanf("%101[^\n]", fulano -> jogo);
             getchar();
 
             resp = validar_nomeMidia(fulano -> jogo);
@@ -129,6 +139,9 @@ void midia_cadastro(){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> jogo,"");
     }
 
 
@@ -144,7 +157,7 @@ void midia_cadastro(){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%51[^\n]", fulano -> livro);
+            scanf("%101[^\n]", fulano -> livro);
             getchar();
 
             resp = validar_nomeMidia(fulano -> livro);
@@ -152,6 +165,9 @@ void midia_cadastro(){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> livro,"");
     }
 
 
@@ -167,7 +183,7 @@ void midia_cadastro(){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%41[^\n]", fulano -> filme);
+            scanf("%101[^\n]", fulano -> filme);
             getchar();
 
             resp = validar_nomeMidia(fulano -> filme);
@@ -176,6 +192,10 @@ void midia_cadastro(){
             }
         } while (resp != True);
     }
+    else{
+        strcpy(fulano -> filme,"");
+    }
+
 
     printf("Voltando ao menu principal...\n");
     getchar();
@@ -186,9 +206,44 @@ void midia_cadastro(){
     free(fulano);
 }
 
+int midia_existente(char fulano_cpf[12]){
+    int achou;
+    FILE* fp;
+
+    Midia* fulano_aqr;
+    fulano_aqr = (Midia*) malloc(sizeof(Midia));
+
+    midia_arq();
+
+    fp = fopen("arq_midias.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano_aqr, sizeof(Midia), 1, fp);
+            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
+                fclose(fp);
+                return achou = True;;
+            }
+        }
+
+    fclose(fp);
+    return achou = False;
+}
+
+
+void midia_arq(void){
+    FILE* fp;
+    fp = fopen("arq_midias.dat", "ab");
+    fclose(fp);
+}
+
 void midia_gravar(Midia* fulano){
     FILE* fp;
-    fp = fopen("Midias.dat", "ab");
+    fp = fopen("arq_midias.dat", "ab");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -212,25 +267,25 @@ void midia_exibe(Midia* fulano){
         printf("CPF do usuario: %s\n", fulano -> cpf);
 
 
-        printf("\n\n");
+        printf("\n");
         printf("Jogos do usuario:\n");
         strcpy(vizualidar_midia , fulano -> jogo);
         vizualizar_lista(vizualidar_midia);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         printf("Livros do Usuario:\n");
         strcpy(vizualidar_midia , fulano -> livro);
         vizualizar_lista(vizualidar_midia);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         printf("Filmes do usuario:\n");
         strcpy(vizualidar_midia , fulano -> filme);
         vizualizar_lista(vizualidar_midia);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         status = fulano->status;
         strcpy(situacao,status_exibe(status,situacao));
         printf("Situação das Midias: %s\n", situacao);
@@ -249,12 +304,14 @@ void midia_listar(void){
 
     int i;
 
+    midia_arq();
+
     printf(""
         "=================================\n"
         "======   Lista de Midias   ======\n"
         "=================================\n"
     "");
-    fp = fopen("Midias.dat", "rb");
+    fp = fopen("arq_midias.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -284,7 +341,9 @@ Midia* midia_busca(void){
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
 
-    fp = fopen("Midias.dat", "rb");
+    midia_arq();
+    
+    fp = fopen("arq_midias.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -326,7 +385,9 @@ void midia_editar(){
     int achou = False;
 
     
-    fp = fopen("Midias.dat", "r+b");
+    midia_arq();
+    
+    fp = fopen("arq_midias.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -475,8 +536,9 @@ void midia_excluir(){
     int achou = False;
     int var;
 
+    midia_arq();
 
-    fp = fopen("Midias.dat", "r+b");
+    fp = fopen("arq_midias.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");

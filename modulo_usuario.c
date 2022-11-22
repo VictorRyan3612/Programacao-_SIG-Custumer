@@ -16,6 +16,7 @@ void menu_usuario_editar(void);
 void menu_usuario_excluir(void);
 int confirmacao(void);
 
+void usuario_arq(void);
 void usuario_cadastro(void);
 void usuario_gravar(Usuario* fulano);
 Usuario* usuario_busca(void);
@@ -26,7 +27,7 @@ void usuario_editar(void);
 void usuario_excluir(void);
 
 
-
+int usuario_existente(char fulano_cpf[12]);
 
 
 
@@ -80,10 +81,44 @@ void usuario_cadastro(void){
 
     int resp;
     int valido;
+    int achou;
+    char fulano_cpf[12];
 
     system("cls||clear");
     printf("\n");
 
+
+    // CPF
+    do {
+        printf(""
+            "=======================================\n"
+            "====       Informe seu cpf:        ====\n"
+            "=======================================\n"
+        );
+        printf("\n");
+        scanf("%12[^\n]", fulano -> cpf);
+        getchar();
+        
+        resp = validar_num(fulano -> cpf);
+        valido = validar_cpf(fulano -> cpf);
+        if (resp != True){
+            printf("Caractere inválido detectado, digite novamente:\n");
+            }
+        else if (valido != True){
+            printf("CPF inválido, digite novamente:\n");
+        }
+
+
+        strcpy(fulano_cpf,fulano -> cpf);
+        achou = usuario_existente(fulano_cpf);
+        if (achou == True){
+            printf("Usuário já cadastrado, digite outro\n");
+        }
+
+    } while ((resp != True) || (valido != True) || (achou == True));
+
+
+    
     //nome
     do {
         printf(""
@@ -100,28 +135,6 @@ void usuario_cadastro(void){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
-
-
-    // CPF
-    do {
-        printf(""
-            "=======================================\n"
-            "====       Informe seu cpf:        ====\n"
-            "=======================================\n"
-        );
-        printf("\n");
-        scanf("%s", fulano -> cpf);
-        getchar();
-        
-        resp = validar_num(fulano -> cpf);
-        valido = validar_cpf(fulano -> cpf);
-        if (resp != True){
-            printf("Caractere inválido detectado, digite novamente:\n");
-            }
-        else if (valido != True){
-            printf("CPF inválido, digite novamente:\n");
-        }
-    } while ((resp != True) || (valido != True));
 
 
     //email
@@ -149,9 +162,10 @@ void usuario_cadastro(void){
             "=======================================\n"
             "====     Informe seu telefone:     ====\n"
             "=======================================\n"
+            "obs: apenas numeros e parenteses\n"
         );
         printf("\n");
-        scanf("%s", fulano -> telefone);
+        scanf("%21[^\n]", fulano -> telefone);
         getchar();
 
         resp = validar_telefone(fulano -> telefone);
@@ -166,9 +180,47 @@ void usuario_cadastro(void){
     free(fulano);
 }
 
+
+
+int usuario_existente(char fulano_cpf[12]){
+    int achou;
+    FILE* fp;
+
+    Usuario* fulano_aqr;
+    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+
+    usuario_arq();
+
+    fp = fopen("arq_usuarios.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano_aqr, sizeof(Usuario), 1, fp);
+            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
+                fclose(fp);
+                return achou = True;;
+            }
+        }
+
+    fclose(fp);
+    return achou = False;
+}
+
+
+
+void usuario_arq(void){
+    FILE* fp;
+    fp = fopen("arq_usuarios.dat", "ab");
+    fclose(fp);
+}
+
 void usuario_gravar(Usuario* fulano){
   FILE* fp;
-  fp = fopen("usuarios.dat", "ab");
+  fp = fopen("arq_usuarios.dat", "ab");
   if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
     printf("Não é possível continuar este programa...\n");
@@ -210,12 +262,15 @@ void usuario_listar(void){
     fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
 
     int i;
+
+    usuario_arq();
+
     printf(""
     "=================================\n"
     "======  Lista de Usuários  ======\n"
     "=================================\n"
     ""); 
-    fp = fopen("usuarios.dat", "rb");
+    fp = fopen("arq_usuarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -244,7 +299,9 @@ Usuario* usuario_busca(void){
     char* cpf_busca_dig;
     cpf_busca_dig = cpf_busca();
 
-    fp = fopen("usuarios.dat", "rb");
+    usuario_arq();
+
+    fp = fopen("arq_usuarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
         printf("Não é possível continuar este programa...\n");
@@ -285,8 +342,9 @@ void usuario_editar(){
     char opcao;
     int achou = False;
 
+    usuario_arq();
 
-    fp = fopen("usuarios.dat", "r+b");
+    fp = fopen("arq_usuarios.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -445,7 +503,9 @@ void usuario_excluir(void){
     int var;
 
 
-    fp = fopen("usuarios.dat", "r+b");
+    usuario_arq();
+
+    fp = fopen("arq_usuarios.dat", "r+b");
 
     if(fp == NULL){
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
