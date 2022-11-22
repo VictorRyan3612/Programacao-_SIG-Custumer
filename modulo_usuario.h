@@ -20,4 +20,4 @@ void usuario_pesquisar(void);
 void usuario_editar(void);
 void usuario_excluir(void);
 
-Usuario* usuario_existente(char fulano_cpf[12]);
+int usuario_existente(char fulano_cpf[12]);

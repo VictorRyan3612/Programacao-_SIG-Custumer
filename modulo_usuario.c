@@ -27,7 +27,7 @@ void usuario_editar(void);
 void usuario_excluir(void);
 
 
-Usuario* usuario_existente(char fulano_cpf[12]);
+int usuario_existente(char fulano_cpf[12]);
 
 
 
@@ -110,18 +110,10 @@ void usuario_cadastro(void){
         char fulano_cpf[12];
 
 
-        Usuario* fulano_aqr;
-        fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
-
         strcpy(fulano_cpf,fulano -> cpf);
-        fulano_aqr = usuario_existente(fulano_cpf);
-        
-        if (fulano_aqr != NULL){
-            printf("Usuario já Existente\n");
-            achou = True;
-        }
-        else{
-            achou = False;
+        achou = usuario_existente(fulano_cpf);
+        if (achou == True){
+            printf("Usuário já cadastrado, digite outro\n");
         }
 
     } while ((resp != True) || (valido != True) || (achou == True));
@@ -188,7 +180,11 @@ void usuario_cadastro(void){
     usuario_gravar(fulano);
     free(fulano);
 }
-Usuario* usuario_existente(char fulano_cpf[12]){
+
+
+
+int usuario_existente(char fulano_cpf[12]){
+    int achou;
     FILE* fp;
 
     Usuario* fulano_aqr;
@@ -207,12 +203,13 @@ Usuario* usuario_existente(char fulano_cpf[12]){
         fread(fulano_aqr, sizeof(Usuario), 1, fp);
             if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
                 fclose(fp);
-                return fulano_aqr;
+                return achou = True;;
             }
         }
 
-        fclose(fp);
-    return NULL;
+    fclose(fp);
+    achou = False;
+    return achou;
 }
 
 
