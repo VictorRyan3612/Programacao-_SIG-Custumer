@@ -256,7 +256,7 @@ int validar_telefone(char a[]){
         if((a[i] >= '0' ) && (a[i] <= '9')){
             i += 1;
         } 
-        else if ((a[i] == '(' ) || (a[i] <= ')') || (a[i] == ' ')){
+        else if ((a[i] == '(' ) || (a[i] <= ')' )){
             i += 1;
         }
         else{

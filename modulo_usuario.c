@@ -152,9 +152,10 @@ void usuario_cadastro(void){
             "=======================================\n"
             "====     Informe seu telefone:     ====\n"
             "=======================================\n"
+            "obs: apenas numeros e parenteses\n"
         );
         printf("\n");
-        scanf("%s", fulano -> telefone);
+        scanf("%21[^\n]", fulano -> telefone);
         getchar();
 
         resp = validar_telefone(fulano -> telefone);
