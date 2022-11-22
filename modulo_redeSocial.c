@@ -110,6 +110,8 @@ void redeSocial_cadastro(void){
             printf("Redes Sociais desse usuário já cadastradas, digite outro usuario\n");
         }
     } while (achou_rede == True);
+
+    
     system("cls||clear");
     menu_redeSocial_cadastro();
 

@@ -29,9 +29,9 @@ void midia_listar(void);
 Midia* midia_busca(void);
 
 
-void modulo_midia(){
+int midia_existente(char fulano_cpf[12]);
 
-    
+void modulo_midia(){
     char opcao = '\0';
 
 
@@ -83,26 +83,36 @@ void midia_cadastro(){
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
     int resp;
-    int achou;
+    int achou_user;
+    int achou_midia;
     char cpf_busca_dig[12];
     char confir;
     
 
     do{
-        fulano_user = usuario_busca();
-        if (fulano_user != NULL){
-            achou = True;
-        }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-            achou = False;
-        }
-    }while(achou == False);
+        do{
+            fulano_user = usuario_busca();
+            if (fulano_user != NULL){
+                achou_user = True;
+            }
+            else{
+                printf("Não encontrado, Digite novamente\n");
+                achou_user = False;
+            }
+        } while(achou_user == False);
 
 
-    strcpy(fulano -> cpf, fulano_user -> cpf);
-    strcpy(cpf_busca_dig, fulano -> cpf);
-    
+        strcpy(fulano -> cpf, fulano_user -> cpf);
+        strcpy(cpf_busca_dig, fulano -> cpf);
+        
+        strcpy(cpf_busca_dig,fulano -> cpf);
+        achou_midia = midia_existente(cpf_busca_dig);
+
+        if (achou_midia == True){
+            printf("Midias já cadastradas para esse usuário, digite outro\n");
+        }
+    } while(achou_midia == True);
+
 
     system("cls||clear");
     menu_midia_cadastro();
@@ -185,6 +195,35 @@ void midia_cadastro(){
     midia_gravar(fulano);
     free(fulano);
 }
+
+int midia_existente(char fulano_cpf[12]){
+    int achou;
+    FILE* fp;
+
+    Midia* fulano_aqr;
+    fulano_aqr = (Midia*) malloc(sizeof(Midia));
+
+    midia_arq();
+
+    fp = fopen("arq_midias.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano_aqr, sizeof(Midia), 1, fp);
+            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
+                fclose(fp);
+                return achou = True;;
+            }
+        }
+
+    fclose(fp);
+    return achou = False;
+}
+
 
 void midia_arq(void){
     FILE* fp;

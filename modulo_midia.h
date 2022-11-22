@@ -22,3 +22,5 @@ void midia_excluir(void);
 void midia_exibe(Midia* fulano);
 void midia_listar(void);
 Midia* midia_busca(void);
+
+int midia_existente(char fulano_cpf[12]);
