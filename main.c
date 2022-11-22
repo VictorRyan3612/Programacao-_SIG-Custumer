@@ -23,9 +23,9 @@ void modulo_midia(void);
 
 
 
+
 int main(void){
     
-
     char opcao = '\0';
     do {
         system("cls||clear");
