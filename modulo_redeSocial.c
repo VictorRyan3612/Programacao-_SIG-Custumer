@@ -29,6 +29,7 @@ void redeSocial_excluir(void);
 void redeSocial_gravar(RedeSocial* fulano);
 void redeSocial_exibe(RedeSocial* fulano);
 
+int redes_existente(char fulano_cpf[12]);
 
 
 void modulo_redeSocial(void){
@@ -81,26 +82,34 @@ void redeSocial_cadastro(void){
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
     int resp;
-    int achou;
+    int achou_user;
+    int achou_rede;
     char cpf_busca_dig[12];
     char confir;
     
-
     do{
-        fulano_user = usuario_busca();
-        if (fulano_user != NULL){
-            achou = True;
-        }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-            achou = False;
-        }
-    }while(achou == False);
+        do{
+            fulano_user = usuario_busca();
+            if (fulano_user != NULL){
+                achou_user = True;
+            }
+            else{
+                printf("Não encontrado, Digite novamente\n");
+                achou_user = False;
+            }
+        }while(achou_user == False);
 
-    strcpy(fulano -> cpf, fulano_user -> cpf);
-    strcpy(cpf_busca_dig, fulano -> cpf);
-    
 
+        strcpy(fulano -> cpf, fulano_user -> cpf);
+        strcpy(cpf_busca_dig, fulano -> cpf);
+        
+        achou_rede = redes_existente(cpf_busca_dig);
+
+
+        if (achou_rede == True){
+            printf("Redes Sociais desse usuário já cadastradas, digite outro usuario\n");
+        }
+    } while (achou_rede == True);
     system("cls||clear");
     menu_redeSocial_cadastro();
 
@@ -186,6 +195,36 @@ void redeSocial_cadastro(void){
     redeSocial_gravar(fulano);
     free(fulano);
 }
+
+int redes_existente(char fulano_cpf[12]){
+    int achou;
+    FILE* fp;
+
+    RedeSocial* fulano_aqr;
+    fulano_aqr = (RedeSocial*) malloc(sizeof(RedeSocial));
+
+    redeSocial_arq();
+
+    fp = fopen("arq_redes_Sociais.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano_aqr, sizeof(RedeSocial), 1, fp);
+            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
+                fclose(fp);
+                return achou = True;;
+            }
+        }
+
+    fclose(fp);
+    return achou = False;
+}
+
+
 
 void redeSocial_arq(void){
     FILE* fp;

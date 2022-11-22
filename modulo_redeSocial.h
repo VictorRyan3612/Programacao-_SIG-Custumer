@@ -19,3 +19,5 @@ void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
 void redeSocial_excluir(void);
 void redeSocial_exibe(RedeSocial* fulano);
+
+int redes_existente(char fulano_cpf[12]);

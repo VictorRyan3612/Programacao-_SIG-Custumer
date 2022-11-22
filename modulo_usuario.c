@@ -82,6 +82,7 @@ void usuario_cadastro(void){
     int resp;
     int valido;
     int achou;
+    char fulano_cpf[12];
 
     system("cls||clear");
     printf("\n");
@@ -106,8 +107,6 @@ void usuario_cadastro(void){
         else if (valido != True){
             printf("CPF inválido, digite novamente:\n");
         }
-
-        char fulano_cpf[12];
 
 
         strcpy(fulano_cpf,fulano -> cpf);
@@ -208,8 +207,7 @@ int usuario_existente(char fulano_cpf[12]){
         }
 
     fclose(fp);
-    achou = False;
-    return achou;
+    return achou = False;
 }
 
 
