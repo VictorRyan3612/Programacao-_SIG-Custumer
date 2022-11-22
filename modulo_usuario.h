@@ -19,3 +19,5 @@ void usuario_listar(void);
 void usuario_pesquisar(void);
 void usuario_editar(void);
 void usuario_excluir(void);
+
+Usuario* usuario_existente(char fulano_cpf[12]);

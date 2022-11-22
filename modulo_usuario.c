@@ -27,7 +27,7 @@ void usuario_editar(void);
 void usuario_excluir(void);
 
 
-
+Usuario* usuario_existente(char fulano_cpf[12]);
 
 
 
@@ -81,6 +81,7 @@ void usuario_cadastro(void){
 
     int resp;
     int valido;
+    int achou;
 
     system("cls||clear");
     printf("\n");
@@ -105,7 +106,25 @@ void usuario_cadastro(void){
         else if (valido != True){
             printf("CPF inválido, digite novamente:\n");
         }
-    } while ((resp != True) || (valido != True));
+
+        char fulano_cpf[12];
+
+
+        Usuario* fulano_aqr;
+        fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+
+        strcpy(fulano_cpf,fulano -> cpf);
+        fulano_aqr = usuario_existente(fulano_cpf);
+        
+        if (fulano_aqr != NULL){
+            printf("Usuario já Existente\n");
+            achou = True;
+        }
+        else{
+            achou = False;
+        }
+
+    } while ((resp != True) || (valido != True) || (achou == True));
 
 
     
@@ -169,6 +188,34 @@ void usuario_cadastro(void){
     usuario_gravar(fulano);
     free(fulano);
 }
+Usuario* usuario_existente(char fulano_cpf[12]){
+    FILE* fp;
+
+    Usuario* fulano_aqr;
+    fulano_aqr = (Usuario*) malloc(sizeof(Usuario));
+
+    usuario_arq();
+
+    fp = fopen("arq_usuarios.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    while(!feof(fp)) {
+        fread(fulano_aqr, sizeof(Usuario), 1, fp);
+            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
+                fclose(fp);
+                return fulano_aqr;
+            }
+        }
+
+        fclose(fp);
+    return NULL;
+}
+
+
 
 void usuario_arq(void){
     FILE* fp;
