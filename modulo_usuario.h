@@ -1,7 +1,7 @@
 typedef struct usuario Usuario;
 
 struct usuario {
-    char cpf[13];
+    char cpf[12];
     char nome[81];
     char email[41];
     char telefone[21];

@@ -167,7 +167,7 @@ void redeSocial_cadastro(void){
                 );
 
             printf("\n");
-            scanf("%s",fulano -> youtube);
+            scanf("%41[^\n]",fulano -> youtube);
             getchar();
 
 

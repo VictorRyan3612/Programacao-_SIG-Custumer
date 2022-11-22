@@ -1,9 +1,9 @@
 typedef struct redeSocial RedeSocial;
 struct redeSocial {
-    char cpf[13];
-    char steam[81];
-    char twitter[51];
-    char youtube[41];
+    char cpf[12];
+    char steam[21];
+    char twitter[21];
+    char youtube[31];
     char status;
 };
 
