@@ -111,7 +111,7 @@ void redeSocial_cadastro(void){
         }
     } while (achou_rede == True);
 
-    
+
     system("cls||clear");
     menu_redeSocial_cadastro();
 
@@ -128,7 +128,7 @@ void redeSocial_cadastro(void){
                 );
 
             printf("\n");
-            scanf("%s",fulano -> steam);
+            scanf("%21[^\n]",fulano -> steam);
             getchar();
 
             resp = validar_twitterSteam(fulano -> steam);
@@ -136,6 +136,9 @@ void redeSocial_cadastro(void){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> steam,"");
     }
     
     
@@ -153,7 +156,7 @@ void redeSocial_cadastro(void){
                 );
 
             printf("\n");
-            scanf("%s",fulano -> twitter);
+            scanf("%21[^\n]",fulano -> twitter);
             getchar();
 
             
@@ -164,6 +167,9 @@ void redeSocial_cadastro(void){
             
         
             } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> twitter,"");
     }
 
     //youtube
@@ -188,7 +194,11 @@ void redeSocial_cadastro(void){
             
         }while (resp != True);
     }
-    
+    else{
+        strcpy(fulano -> steam,"");
+    }
+
+
     printf("Voltando ao menu principal...\n");
     getchar();
 

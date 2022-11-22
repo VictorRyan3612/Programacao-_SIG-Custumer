@@ -131,7 +131,7 @@ void midia_cadastro(){
                 );
             printf("(use ; para mais de um)\n");
             printf("\n");
-            scanf("%61[^\n]", fulano -> jogo);
+            scanf("%101[^\n]", fulano -> jogo);
             getchar();
 
             resp = validar_nomeMidia(fulano -> jogo);
@@ -139,6 +139,9 @@ void midia_cadastro(){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> jogo,"");
     }
 
 
@@ -154,7 +157,7 @@ void midia_cadastro(){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%51[^\n]", fulano -> livro);
+            scanf("%101[^\n]", fulano -> livro);
             getchar();
 
             resp = validar_nomeMidia(fulano -> livro);
@@ -162,6 +165,9 @@ void midia_cadastro(){
                 printf("Caractere inválido detectado, Digite novamente:\n");
             }
         } while (resp != True);
+    }
+    else{
+        strcpy(fulano -> livro,"");
     }
 
 
@@ -177,7 +183,7 @@ void midia_cadastro(){
                 );
             printf("use ; para mais de um\n");
             printf("\n");
-            scanf("%41[^\n]", fulano -> filme);
+            scanf("%101[^\n]", fulano -> filme);
             getchar();
 
             resp = validar_nomeMidia(fulano -> filme);
@@ -186,6 +192,10 @@ void midia_cadastro(){
             }
         } while (resp != True);
     }
+    else{
+        strcpy(fulano -> filme,"");
+    }
+
 
     printf("Voltando ao menu principal...\n");
     getchar();
@@ -257,25 +267,25 @@ void midia_exibe(Midia* fulano){
         printf("CPF do usuario: %s\n", fulano -> cpf);
 
 
-        printf("\n\n");
+        printf("\n");
         printf("Jogos do usuario:\n");
         strcpy(vizualidar_midia , fulano -> jogo);
         vizualizar_lista(vizualidar_midia);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         printf("Livros do Usuario:\n");
         strcpy(vizualidar_midia , fulano -> livro);
         vizualizar_lista(vizualidar_midia);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         printf("Filmes do usuario:\n");
         strcpy(vizualidar_midia , fulano -> filme);
         vizualizar_lista(vizualidar_midia);
 
 
-        printf("\n\n\n");
+        printf("\n\n");
         status = fulano->status;
         strcpy(situacao,status_exibe(status,situacao));
         printf("Situação das Midias: %s\n", situacao);

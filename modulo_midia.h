@@ -1,9 +1,9 @@
 typedef struct midia Midia;
 struct midia {
     char cpf[12];
-    char jogo[100];
-    char livro[100];
-    char filme[100];
+    char jogo[101];
+    char livro[101];
+    char filme[101];
     char status;
 };
 

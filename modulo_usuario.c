@@ -96,7 +96,7 @@ void usuario_cadastro(void){
             "=======================================\n"
         );
         printf("\n");
-        scanf("%s", fulano -> cpf);
+        scanf("%12[^\n]", fulano -> cpf);
         getchar();
         
         resp = validar_num(fulano -> cpf);
