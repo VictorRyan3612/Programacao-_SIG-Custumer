@@ -44,7 +44,7 @@ void modulo_redeSocial(void){
                 redeSocial_cadastro();
             }
             else if (opcao == '2'){
-                redeSocial_listar();
+                rel_redeSocial_listar();
             }
             else if (opcao == '3'){
                 redeSocial_pesquisar();

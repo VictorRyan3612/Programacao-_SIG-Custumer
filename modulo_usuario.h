@@ -15,7 +15,7 @@ void usuario_arq(void);
 void usuario_gravar(Usuario* fulano);
 Usuario* usuario_busca(void);
 void usuario_exibe(Usuario* fulano);
-void usuario_listar(void);
+void rel_usuario_listar(void);
 void usuario_pesquisar(void);
 void usuario_editar(void);
 void usuario_excluir(void);

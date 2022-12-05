@@ -11,9 +11,9 @@
 void menu_relatorio(void);
 void menu_listar_todos(void);
 
-void usuario_listar(void);
-void redeSocial_listar(void);
-void midia_listar(void);
+void rel_usuario_listar(void);
+void rel_redeSocial_listar(void);
+void rel_midia_listar(void);
 
 void listar_todos();
 
@@ -56,13 +56,13 @@ void listar_todos(void){
         opcao = opcoes_pergunta();
         if (opcao != '0'){
             if (opcao == '1'){
-                usuario_listar();
+                rel_usuario_listar();
             }
             else if (opcao == '2'){
-                redeSocial_listar();
+                rel_redeSocial_listar();
             }
             else if (opcao == '3'){
-                midia_listar();
+                rel_midia_listar();
             }
         
             else {
@@ -82,7 +82,7 @@ void listar_todos(void){
 }
 
 
-void usuario_listar(void){
+void rel_usuario_listar(void){
     system("cls||clear");
 
     FILE* fp;
@@ -120,7 +120,7 @@ void usuario_listar(void){
 
 
 
-void redeSocial_listar(void){
+void rel_redeSocial_listar(void){
     system("cls||clear");
 
     FILE* fp;
@@ -157,7 +157,7 @@ void redeSocial_listar(void){
 }
 
 
-void midia_listar(void){
+void rel_midia_listar(void){
     system("cls||clear");
 
     FILE* fp;

@@ -14,13 +14,12 @@ void modulo_midia(void);
 void midia_cadastro(void);
 void midia_arq(void);
 void midia_gravar(Midia* fulano);
-void midia_listar(void);
+void rel_midia_listar(void);
 void midia_pesquisar(void);
 void midia_editar(void);
 void midia_excluir(void);
 
 void midia_exibe(Midia* fulano);
-void midia_listar(void);
 Midia* midia_busca(void);
 
 int midia_existente(char fulano_cpf[12]);

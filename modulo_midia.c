@@ -25,7 +25,7 @@ void midia_editar(void);
 void midia_excluir(void);
 
 void midia_exibe(Midia* fulano);
-void midia_listar(void);
+void rel_midia_listar(void);
 Midia* midia_busca(void);
 
 
@@ -45,7 +45,7 @@ void modulo_midia(){
                 midia_cadastro();
             }
             else if (opcao == '2'){
-                midia_listar();
+                rel_midia_listar();
             }
             else if (opcao == '3'){
                 midia_pesquisar();
