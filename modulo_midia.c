@@ -295,42 +295,6 @@ void midia_exibe(Midia* fulano){
 }
 
 
-void midia_listar(void){
-    system("cls||clear");
-
-    FILE* fp;
-    Midia* fulano_aqr;
-    fulano_aqr = (Midia*) malloc(sizeof(Midia));
-
-    int i;
-
-    midia_arq();
-
-    printf(""
-        "=================================\n"
-        "======   Lista de Midias   ======\n"
-        "=================================\n"
-    "");
-    fp = fopen("arq_midias.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-
-    i = 1;
-    while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
-        if (fulano_aqr->status != 'x') {
-            printf("\n= = = Midias nº %d = = =\n",i);
-            midia_exibe(fulano_aqr);
-            i+=1;
-        }
-    }
-
-    fclose(fp);
-    free(fulano_aqr);
-}
-
 
 Midia* midia_busca(void){
     FILE* fp;
