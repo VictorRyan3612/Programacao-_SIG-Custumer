@@ -48,8 +48,37 @@ void modulo_relatorio(){
 }
 
 void listar_todos(void){
-    menu_listar_todos();
-    
+    char opcao = '\0';
+    do{
+        system("cls||clear");
+        menu_listar_todos();
+
+        opcao = opcoes_pergunta();
+        if (opcao != '0'){
+            if (opcao == '1'){
+                usuario_listar();
+            }
+            else if (opcao == '2'){
+                redeSocial_listar();
+            }
+            else if (opcao == '3'){
+                midia_listar();
+            }
+        
+            else {
+               printf("Opção não dessenvolvida ou inválida\n");
+            }
+            enter();
+        }
+            
+        
+        else{
+            printf("Voltando ao menu principal...\n");
+        }
+
+
+
+    }while (opcao != '0');
 }
 
 
