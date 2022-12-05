@@ -70,18 +70,19 @@ void menu_usuario(void){
             "===================================================\n"
             "===================================================\n"
             "====                                           ====\n"
-            "====        Controle de conta de Usuário       ====\n"
+            "====         Controle de conta de Usuário      ====\n"
             "====                                           ====\n"
             "====                                           ====\n"
-            "====          Digite qual deseja:              ====\n"
-            "====         1 - Cadastrar Usuário             ====\n"
-            "====         2 - Listar Usuários               ====\n"
-            "====         3 - Procurar Usuário              ====\n"
-            "====         4 - Editar Usuário                ====\n"
-            "====         5 - Excluir Usuário               ====\n"
+            "====               Digite qual deseja:         ====\n"
+            "====             1 - Cadastrar Usuário         ====\n"
+            "====             2 - Listar Usuários           ====\n"
+            "====             3 - Procurar Usuário          ====\n"
+            "====             4 - Editar Usuário            ====\n"
+            "====             5 - Excluir Usuário           ====\n"
             "====                                           ====\n"
             "====                                           ====\n"
             "====               0 - Voltar                  ====\n"
+            "===================================================\n"
             "===================================================\n"
             "===================================================\n"
         );
@@ -139,7 +140,28 @@ void menu_midia(void){
     
 }
 
+void menu_relatorio(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
 
+    printf(""
+            "===================================================\n"
+            "===================================================\n"
+            "====                                           ====\n"
+            "====             Controle de Relatorio        ====\n"
+            "====                                           ====\n"
+            "====                                           ====\n"
+            "====             Digite qual deseja:           ====\n"
+            "====               1 - Listar Todos            ====\n"
+            "====               2 - Por letra               ====\n"
+            "====                                           ====\n"
+            "====                                           ====\n"
+            "====               0 - Voltar                  ====\n"
+            "===================================================\n"
+            "===================================================\n"
+        );
+    
+}
 
 ///// Usuário
 

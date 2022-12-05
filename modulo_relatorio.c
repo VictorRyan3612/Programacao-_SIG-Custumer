@@ -9,6 +9,6 @@
 
 void modulo_relatorio(){
     printf("\n");
-
     
+
 }
