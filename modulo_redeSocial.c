@@ -64,7 +64,7 @@ void modulo_redeSocial(void){
         }
             
         
-        if (opcao == '0'){
+        else{
             printf("Voltando ao menu principal...\n");
         }
 
