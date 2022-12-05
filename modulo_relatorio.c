@@ -12,7 +12,8 @@ void menu_relatorio(void);
 
 void modulo_relatorio(){
     system("cls||clear");
-    
+
     menu_relatorio();
 
+    
 }
