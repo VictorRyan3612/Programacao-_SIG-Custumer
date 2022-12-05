@@ -20,7 +20,6 @@ void menu_redeSocial_editar(void);
 void menu_redeSocial_excluir(void);
 
 void redeSocial_cadastro(void);
-void redeSocial_listar(void);
 RedeSocial* redeSocial_busca(void);
 void redeSocial_pesquisar(void);
 void redeSocial_editar(void);
@@ -281,41 +280,6 @@ void redeSocial_exibe(RedeSocial* fulano){
     }
 }
 
-void redeSocial_listar(void){
-    system("cls||clear");
-
-    FILE* fp;
-    RedeSocial* fulano_aqr;
-    fulano_aqr = (RedeSocial*) malloc(sizeof(RedeSocial));
-
-    int i;
-
-    redeSocial_arq();
-
-    printf(""
-        "=================================\n"
-        "==== Lista de Redes Sociais  ====\n"
-        "=================================\n"
-    "");
-    fp = fopen("arq_redes_Sociais.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-
-    i = 1;
-    while(fread(fulano_aqr, sizeof(RedeSocial), 1, fp)) {
-        if (fulano_aqr->status != 'x') {
-            printf("\n= = = Redes Sociais nº %d = = =\n",i);
-            redeSocial_exibe(fulano_aqr);
-            i+=1;
-        }
-    }
-
-    fclose(fp);
-    free(fulano_aqr);
-}
 
 RedeSocial* redeSocial_busca(void){
     FILE* fp;
