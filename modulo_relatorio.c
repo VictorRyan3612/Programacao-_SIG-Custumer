@@ -11,9 +11,28 @@
 void menu_relatorio(void);
 
 void modulo_relatorio(){
-    system("cls||clear");
+    char opcao = '\0';
 
-    menu_relatorio();
+    do{
+        system("cls||clear");
+        menu_relatorio();
 
-    
+        opcao = opcoes_pergunta();
+
+        if (opcao != '0'){
+            if (opcao == '1'){
+                printf("");
+            }
+            else {
+                printf("Opção não dessenvolvida ou inválida\n");
+            }
+            enter();
+        }
+            
+        else{
+            printf("Voltando ao menu principal...\n");
+        }
+        
+    } while (opcao != '0');
+
 }
