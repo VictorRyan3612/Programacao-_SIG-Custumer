@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "modulo_midia.h"
+
 #include "modulo_usuario.h"
 #include "modulo_redeSocial.h"
+#include "modulo_midia.h"
+#include "modulo_relatorio.h"
 #include "funcoes_aux.h"
 
 
@@ -17,7 +19,6 @@ int menu_sobre(void);
 void modulo_usuario(void);
 void modulo_redeSocial(void);
 void modulo_midia(void);
-
 
 
 
@@ -43,6 +44,9 @@ int main(void){
             modulo_midia();
         }
         else if (opcao == '4'){
+            modulo_relatorio();
+        }
+        else if (opcao == '5'){
             menu_sobre();
         }
         else if (opcao == '0'){
