@@ -9,11 +9,13 @@
 
 
 void menu_relatorio(void);
+void menu_listar_todos(void);
 
 void usuario_listar(void);
 void redeSocial_listar(void);
 void midia_listar(void);
 
+void listar_todos();
 
 
 
@@ -29,7 +31,7 @@ void modulo_relatorio(){
 
         if (opcao != '0'){
             if (opcao == '1'){
-                usuario_listar();
+                listar_todos();
             }
             else {
                 printf("Opção não dessenvolvida ou inválida\n");
@@ -44,6 +46,12 @@ void modulo_relatorio(){
     } while (opcao != '0');
 
 }
+
+void listar_todos(void){
+    menu_listar_todos();
+    
+}
+
 
 void usuario_listar(void){
     system("cls||clear");

@@ -148,7 +148,7 @@ void menu_relatorio(void){
             "===================================================\n"
             "===================================================\n"
             "====                                           ====\n"
-            "====             Controle de Relatorio        ====\n"
+            "====             Controle de Relatorio         ====\n"
             "====                                           ====\n"
             "====                                           ====\n"
             "====             Digite qual deseja:           ====\n"
@@ -163,8 +163,9 @@ void menu_relatorio(void){
     
 }
 
-///// Usuário
 
+
+///// Usuário
 
 void menu_usuario_editar(void){
     setlocale (LC_ALL, "portuguese");
@@ -320,3 +321,28 @@ void menu_redeSocial_excluir(void){
 }
 
 
+
+
+// Relatorios
+
+
+void menu_listar_todos(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####                Listagem geral             ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####                                           ####\n"
+        "####              Usuários:         1          ####\n"
+        "####              Redes Sociais:    2          ####\n"
+        "####              Mídias:           3          ####\n"
+        "####                                           ####\n"
+        "####                   Voltar:  0              ####\n"
+        "###################################################\n"
+    );
+    printf("\n\n");
+}
