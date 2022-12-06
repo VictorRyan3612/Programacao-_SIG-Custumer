@@ -367,3 +367,24 @@ void menu_listar_letra(void){
     );
     printf("\n\n");
 }
+
+void menu_letra_midia(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####               Listagem por letra          ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####               Digite qual deseja:         ####\n"
+        "####                                           ####\n"
+        "####                   Jogos:     1            ####\n"
+        "####                   Livros:    2            ####\n"
+        "####                   Filmes:    3            ####\n"
+        "####                                           ####\n"
+        "####                   Voltar:  0              ####\n"
+        "###################################################\n"
+    );
+    printf("\n\n");
+}

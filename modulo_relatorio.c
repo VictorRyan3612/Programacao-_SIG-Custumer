@@ -25,7 +25,7 @@ void listar_letra(void);
 void rel_letra_usuario(void);
 void rel_letra_redeSocial(void);
 void rel_letra_midia(void);
-
+void menu_letra_midia(void);
 
 
 
@@ -277,35 +277,83 @@ void rel_letra_midia(void){
     system("cls||clear");
 
     FILE* fp;
+    midia_arq();
+    fp = fopen("arq_midias.dat", "rb");
+
+
     Midia* fulano_aqr;
     fulano_aqr = (Midia*) malloc(sizeof(Midia));
 
-    int i;
+    int i=1;
     char nome_dig;
+    char opcao;
 
+    do{
+        menu_letra_midia();
+        opcao = opcoes_pergunta();
 
-    nome_dig = char_busca();
+        if (opcao == '1'){
+            printf(""
+                "=================================\n"
+                "======    Lista de Jogos   ======\n"
+                "=================================\n"
+            "");
+            nome_dig = char_busca();
 
-
-    midia_arq();
-
-    printf(""
-        "=================================\n"
-        "======   Lista de Midias   ======\n"
-        "=================================\n"
-    "");
-    fp = fopen("arq_midias.dat", "rb");
-    
-
-    i = 1;
-    while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
-        if ((fulano_aqr->status != 'x') && 
-        ((toupper(nome_dig) == fulano_aqr ->jogo[0]) || (tolower(nome_dig) == fulano_aqr -> jogo[0]))){
-            printf("\n= = = Midias nº %d = = =\n",i);
-            midia_exibe(fulano_aqr);
-            i+=1;
+            while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                if ((fulano_aqr->status != 'x') && 
+                ((toupper(nome_dig) == fulano_aqr ->jogo[0]) || (tolower(nome_dig) == fulano_aqr -> jogo[0]))){
+                    printf("\n= = = Jogo nº %d = = =\n",i);
+                    midia_exibe(fulano_aqr);
+                    i+=1;
+                }
+            }
         }
-    }
+
+
+        else if (opcao == '2'){
+            printf(""
+                "=================================\n"
+                "======    Lista de Livros   ======\n"
+                "=================================\n"
+            "");
+            nome_dig = char_busca();
+
+            while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                if ((fulano_aqr->status != 'x') && 
+                ((toupper(nome_dig) == fulano_aqr ->livro[0]) || (tolower(nome_dig) == fulano_aqr -> livro[0]))){
+                    printf("\n= = = Livro nº %d = = =\n",i);
+                    midia_exibe(fulano_aqr);
+                    i+=1;
+                }
+            }
+        }
+
+
+        else if (opcao == '3'){
+            printf(""
+                "=================================\n"
+                "======   Lista de Filmes   ======\n"
+                "=================================\n"
+            "");
+            nome_dig = char_busca();
+
+            while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                if ((fulano_aqr->status != 'x') && 
+                ((toupper(nome_dig) == fulano_aqr ->jogo[0]) || (tolower(nome_dig) == fulano_aqr -> jogo[0]))){
+                    printf("\n= = = Filme nº %d = = =\n",i);
+                    midia_exibe(fulano_aqr);
+                    i+=1;
+                }
+            }
+        }
+
+        else {
+            printf("Opção não dessenvolvida ou inválida\n");
+        }
+        enter();
+    }while(opcao != '0');
+    
 
     fclose(fp);
     free(fulano_aqr);
