@@ -26,6 +26,7 @@ void rel_letra_usuario(void);
 void rel_letra_redeSocial(void);
 void rel_letra_midia(void);
 void menu_letra_midia(void);
+void menu_letra_rede(void);
 
 
 
@@ -269,9 +270,95 @@ void rel_letra_usuario(void){
     enter();
 }
 
+
+
 void rel_letra_redeSocial(void){
-    printf("\n");
+
+    FILE* fp;
+    redeSocial_arq();
+    fp = fopen("arq_redes_Sociais.dat", "rb");
+
+    RedeSocial* fulano_aqr;
+    fulano_aqr = (RedeSocial*) malloc(sizeof(RedeSocial));
+    
+
+    int i = 1;
+    char nome_dig;
+    char opcao;
+
+    
+    do{
+        system("cls||clear");
+        menu_letra_rede();
+        opcao = opcoes_pergunta();
+
+        if (opcao == '1'){
+            printf(""
+                "=================================\n"
+                "====     Lista de Steam      ====\n"
+                "=================================\n"
+            "");
+            nome_dig = char_busca();
+
+            while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                if ((fulano_aqr->status != 'x') && 
+                ((toupper(nome_dig) == fulano_aqr ->steam[0]) || (tolower(nome_dig) == fulano_aqr -> steam[0]))){
+                    printf("\n= = = Jogo nº %d = = =\n",i);
+                    redeSocial_exibe(fulano_aqr);
+                    i+=1;
+                }
+            }
+        }
+
+        else if (opcao =='2'){
+            printf(""
+                "=================================\n"
+                "====     Lista de Twitter    ====\n"
+                "=================================\n"
+            "");
+            nome_dig = char_busca();
+
+            while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                if ((fulano_aqr->status != 'x') && 
+                ((toupper(nome_dig) == fulano_aqr ->twitter[0]) || (tolower(nome_dig) == fulano_aqr -> twitter[0]))){
+                    printf("\n= = = Jogo nº %d = = =\n",i);
+                    redeSocial_exibe(fulano_aqr);
+                    i+=1;
+                }
+            }
+        }
+
+        else if (opcao =='3'){
+            printf(""
+                    "=================================\n"
+                    "====     Lista de Youtube    ====\n"
+                    "=================================\n"
+                "");
+            nome_dig = char_busca();
+
+            while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                if ((fulano_aqr->status != 'x') && 
+                ((toupper(nome_dig) == fulano_aqr ->youtube[0]) || (tolower(nome_dig) == fulano_aqr -> youtube[0]))){
+                    printf("\n= = = Jogo nº %d = = =\n",i);
+                    redeSocial_exibe(fulano_aqr);
+                    i+=1;
+                }
+            }
+        }
+
+        else {
+            printf("Opção não dessenvolvida ou inválida\n");
+        }
+        enter();
+    }while(opcao != '0');
+
+
+
+    fclose(fp);
+    free(fulano_aqr);
 }
+
+
 
 void rel_letra_midia(void){
     system("cls||clear");
@@ -279,7 +366,6 @@ void rel_letra_midia(void){
     FILE* fp;
     midia_arq();
     fp = fopen("arq_midias.dat", "rb");
-
 
     Midia* fulano_aqr;
     fulano_aqr = (Midia*) malloc(sizeof(Midia));

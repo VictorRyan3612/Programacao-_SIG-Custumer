@@ -386,3 +386,23 @@ void menu_letra_midia(void){
     );
     printf("\n\n");
 }
+
+void menu_letra_rede(void){
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####               Listagem por letra          ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####               Digite qual deseja:         ####\n"
+        "####                                           ####\n"
+        "####                   Steam:      1           ####\n"
+        "####                   Twitter:    2           ####\n"
+        "####                   Youtube:    3           ####\n"
+        "####                                           ####\n"
+        "####                   Voltar:  0              ####\n"
+        "###################################################\n"
+    );
+    printf("\n\n");
+}
