@@ -327,12 +327,6 @@ void redeSocial_editar(void){
     
     fp = fopen("arq_redes_Sociais.dat", "r+b");
 
-    if(fp == NULL){
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar o programa...\n");
-        exit(1);
-    }
-
     menu_redeSocial_editar();
     
     do{
@@ -356,7 +350,7 @@ void redeSocial_editar(void){
 
         // Steam
         if (opcao == '1'){
-            printf("Seu atual perfil da steam é esse:\n");
+            printf("#### Seu atual perfil da steam é esse: ####\n");
             printf("%s", fulano -> steam);
             printf("\n\n");
 
@@ -383,7 +377,7 @@ void redeSocial_editar(void){
 
         // Twitter
         else if (opcao == '2'){
-            printf("Seu atual twitter é esse:\n");
+            printf("#### Seu atual twitter é esse: ####\n");
             printf("%s", fulano -> twitter);
             printf("\n\n");
             
@@ -411,7 +405,7 @@ void redeSocial_editar(void){
 
         // Youtube
         else if (opcao =='3'){
-            printf("Seu atual nome é esse:\n");
+            printf("#### Seu atual nome é esse: ####\n");
             printf("%s", fulano -> youtube);
             printf("\n\n");
             

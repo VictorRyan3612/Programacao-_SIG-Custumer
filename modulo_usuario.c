@@ -336,7 +336,7 @@ void usuario_editar(){
 
         // Editar nome
         else if (opcao == '2'){
-            printf("Seu atual nome é esse:\n");
+            printf("#### Seu atual nome é esse: ####\n");
             printf("%s", fulano -> nome);
             printf("\n\n");
             
@@ -364,7 +364,7 @@ void usuario_editar(){
 
         // Editar email
         else if (opcao == '3'){
-            printf("Seu atual email é esse:\n");
+            printf("#### Seu atual email é esse: ####\n");
             printf("%s", fulano -> email);
             printf("\n\n");
 
@@ -392,7 +392,7 @@ void usuario_editar(){
             
         // Editar telefone
         else if (opcao == '4'){
-            printf("Seu atual telefone é esse:\n");
+            printf("#### Seu atual telefone é esse: ####\n");
             printf("%s", fulano -> telefone);
             printf("\n\n");
 

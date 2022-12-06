@@ -340,12 +340,6 @@ void midia_editar(){
     
     fp = fopen("arq_midias.dat", "r+b");
 
-    if(fp == NULL){
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar o programa...\n");
-        exit(1);
-    }
-
     menu_midia_editar();
 
 
@@ -370,7 +364,7 @@ void midia_editar(){
         opcao = opcoes_pergunta();
 
         if (opcao == '1'){
-            printf("Seus atuais jogos são esses:\n");
+            printf("#### Seus atuais jogos são esses: ####\n");
             printf("%s", fulano -> jogo);
             printf("\n\n");
 
@@ -398,7 +392,7 @@ void midia_editar(){
 
         //Livros
         if (opcao == '2'){
-            printf("Seus atuais Livros são esses:\n");
+            printf("#### Seus atuais Livros são esses: ####\n");
             printf("%s", fulano -> livro);
             printf("\n\n");
 
@@ -425,7 +419,7 @@ void midia_editar(){
 
         // Filmes
         else if (opcao =='3'){
-            printf("Seu atual nome é esse:\n");
+            printf("#### Seus atuais Filmes são esses: ####\n");
             printf("%s", fulano -> filme);
             printf("\n\n");
             
