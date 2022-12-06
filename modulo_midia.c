@@ -398,7 +398,7 @@ void midia_editar(){
                         "=======================================\n"
                     );
                     printf("\n");
-                    scanf("%s", fulano -> jogo);
+                    scanf("%101[^\n]", fulano -> jogo);
                     getchar();
                     resp = validar_nomeMidia(fulano -> jogo);
                     if (resp != True){
@@ -425,7 +425,7 @@ void midia_editar(){
                         "=======================================\n"
                     );
                     printf("\n");
-                    scanf("%s", fulano -> livro);
+                    scanf("%101[^\n]", fulano -> livro);
                     getchar();
 
                     resp = validar_nomeMidia(fulano -> livro);
@@ -453,7 +453,7 @@ void midia_editar(){
                         "=======================================\n"
                     );
                     printf("\n");
-                    scanf("%s", fulano -> filme);
+                    scanf("%101[^\n]", fulano -> filme);
                     getchar();
 
                     resp = validar_nomeMidia(fulano -> filme);
