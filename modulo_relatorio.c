@@ -305,5 +305,55 @@ void rel_letra_redeSocial(void){
 }
 
 void rel_letra_midia(void){
-    printf("\n");
+    system("cls||clear");
+
+    FILE* fp;
+    Midia* fulano_aqr;
+    fulano_aqr = (Midia*) malloc(sizeof(Midia));
+
+    int i;
+    char nome_dig;
+    int valido;
+
+
+    do{
+        printf("Digite a letra que deseja buscar\n");
+        scanf("%c", &nome_dig);
+        getchar();
+
+        valido = validar_nome_char(nome_dig);
+        if (valido == False){
+            printf("Caractere Inválido, digite outro\n\n");
+        }
+        
+    }while(valido == False);
+
+
+
+    midia_arq();
+
+    printf(""
+        "=================================\n"
+        "======   Lista de Midias   ======\n"
+        "=================================\n"
+    "");
+    fp = fopen("arq_midias.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+
+    i = 1;
+    while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+        if ((fulano_aqr->status != 'x') && 
+        ((toupper(nome_dig) == fulano_aqr ->jogo[0]) || (tolower(nome_dig) == fulano_aqr -> jogo[0]))){
+            printf("\n= = = Midias nº %d = = =\n",i);
+            midia_exibe(fulano_aqr);
+            i+=1;
+        }
+    }
+
+    fclose(fp);
+    free(fulano_aqr);
 }
