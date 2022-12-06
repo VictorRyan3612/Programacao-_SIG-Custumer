@@ -291,6 +291,7 @@ void rel_letra_redeSocial(void){
         system("cls||clear");
         menu_letra_rede();
         opcao = opcoes_pergunta();
+
         if (opcao != '0'){
             if (opcao == '1'){
                 printf(""
@@ -300,7 +301,7 @@ void rel_letra_redeSocial(void){
                 "");
                 nome_dig = char_busca();
 
-                while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                while(fread(fulano_aqr, sizeof(RedeSocial), 1, fp)) {
                     if ((fulano_aqr->status != 'x') && 
                     ((toupper(nome_dig) == fulano_aqr ->steam[0]) || (tolower(nome_dig) == fulano_aqr -> steam[0]))){
                         printf("\n= = = Jogo nº %d = = =\n",i);
@@ -318,7 +319,7 @@ void rel_letra_redeSocial(void){
                 "");
                 nome_dig = char_busca();
 
-                while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                while(fread(fulano_aqr, sizeof(RedeSocial), 1, fp)) {
                     if ((fulano_aqr->status != 'x') && 
                     ((toupper(nome_dig) == fulano_aqr ->twitter[0]) || (tolower(nome_dig) == fulano_aqr -> twitter[0]))){
                         printf("\n= = = Jogo nº %d = = =\n",i);
@@ -336,7 +337,7 @@ void rel_letra_redeSocial(void){
                     "");
                 nome_dig = char_busca();
 
-                while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
+                while(fread(fulano_aqr, sizeof(RedeSocial), 1, fp)) {
                     if ((fulano_aqr->status != 'x') && 
                     ((toupper(nome_dig) == fulano_aqr ->youtube[0]) || (tolower(nome_dig) == fulano_aqr -> youtube[0]))){
                         printf("\n= = = Jogo nº %d = = =\n",i);
@@ -446,7 +447,7 @@ void rel_letra_midia(void){
         else{
             printf("Voltando...\n");
         }
-        
+
     }while(opcao != '0');
     
 
