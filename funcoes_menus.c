@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 
 
 void menu_sobre(void){
-    setlocale (LC_ALL, "portuguese");
+
     printf("\n"
     "\t\tSobre o projeto:\n"
     "\tSIG-Custumer: Um sistema de controle de cliente\n"
@@ -38,7 +37,7 @@ void menu_sobre(void){
 
 
 void menu_principal(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "|===================================================|\n"
@@ -63,7 +62,7 @@ void menu_principal(void){
 }
 
 void menu_usuario(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
 
     printf(""
@@ -84,13 +83,12 @@ void menu_usuario(void){
             "====               0 - Voltar                  ====\n"
             "===================================================\n"
             "===================================================\n"
-            "===================================================\n"
         );
     
 }
 
 void menu_redeSocial(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
 
     printf(""
@@ -115,7 +113,7 @@ void menu_redeSocial(void){
 }
 
 void menu_midia(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
 
     printf(""
@@ -141,7 +139,7 @@ void menu_midia(void){
 }
 
 void menu_relatorio(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
 
     printf(""
@@ -168,7 +166,7 @@ void menu_relatorio(void){
 ///// Usuário
 
 void menu_usuario_editar(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -189,7 +187,7 @@ void menu_usuario_editar(void){
 }
 
 void menu_usuario_excluir(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -208,7 +206,7 @@ void menu_usuario_excluir(void){
 
 /////// midia
 void menu_midia_cadastro(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -228,7 +226,7 @@ void menu_midia_cadastro(void){
 }
 
 void menu_midia_editar(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -248,7 +246,7 @@ void menu_midia_editar(void){
 }
 
 void menu_midia_excluir(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -266,7 +264,7 @@ void menu_midia_excluir(void){
 
 ////// Rede Social
 void menu_redeSocial_cadastro(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -286,7 +284,7 @@ void menu_redeSocial_cadastro(void){
 }
 
 void menu_redeSocial_editar(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -306,7 +304,7 @@ void menu_redeSocial_editar(void){
 }
 
 void menu_redeSocial_excluir(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -327,7 +325,7 @@ void menu_redeSocial_excluir(void){
 
 
 void menu_listar_todos(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -348,7 +346,7 @@ void menu_listar_todos(void){
 }
 
 void menu_listar_letra(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
@@ -369,7 +367,7 @@ void menu_listar_letra(void){
 }
 
 void menu_letra_midia(void){
-    setlocale (LC_ALL, "portuguese");
+
     system("cls||clear");
     printf(""
         "###################################################\n"
