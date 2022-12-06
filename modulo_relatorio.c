@@ -11,11 +11,17 @@
 void menu_relatorio(void);
 void menu_listar_todos(void);
 
-void rel_usuario_listar(void);
-void rel_redeSocial_listar(void);
-void rel_midia_listar(void);
+void rel_listar_usuario(void);
+void rel_listar_redeSocial(void);
+void rel_listar_midia(void);
 
 void listar_todos();
+void menu_listar_letra(void);
+
+void listar_letra(void);
+void rel_letra_usuario(void);
+void rel_letra_redeSocial(void);
+void rel_letra_midia(void);
 
 
 
@@ -32,6 +38,9 @@ void modulo_relatorio(){
         if (opcao != '0'){
             if (opcao == '1'){
                 listar_todos();
+            }
+            else if (opcao == '2'){
+                listar_letra();
             }
             else {
                 printf("Opção não dessenvolvida ou inválida\n");
@@ -56,13 +65,13 @@ void listar_todos(void){
         opcao = opcoes_pergunta();
         if (opcao != '0'){
             if (opcao == '1'){
-                rel_usuario_listar();
+                rel_listar_usuario();
             }
             else if (opcao == '2'){
-                rel_redeSocial_listar();
+                rel_listar_redeSocial();
             }
             else if (opcao == '3'){
-                rel_midia_listar();
+                rel_listar_midia();
             }
         
             else {
@@ -81,8 +90,42 @@ void listar_todos(void){
     }while (opcao != '0');
 }
 
+void listar_letra(void){
+    char opcao = '\0';
 
-void rel_usuario_listar(void){
+    do{
+        system("cls||clear");
+        menu_listar_letra();
+        opcao = opcoes_pergunta();
+
+        if (opcao != '0'){
+            if (opcao == '1'){
+                rel_letra_usuario();
+            }
+            else if (opcao == '2'){
+                rel_letra_redeSocial();
+            }
+            else if (opcao == '3'){
+                rel_letra_midia();
+            }
+        
+            else {
+               printf("Opção não dessenvolvida ou inválida\n");
+            }
+            enter();
+        }
+            
+        
+        else{
+            printf("Voltando ao menu principal...\n");
+        }
+
+
+
+    }while(opcao != '0');  
+}
+
+void rel_listar_usuario(void){
     system("cls||clear");
 
     FILE* fp;
@@ -120,7 +163,7 @@ void rel_usuario_listar(void){
 
 
 
-void rel_redeSocial_listar(void){
+void rel_listar_redeSocial(void){
     system("cls||clear");
 
     FILE* fp;
@@ -157,7 +200,7 @@ void rel_redeSocial_listar(void){
 }
 
 
-void rel_midia_listar(void){
+void rel_listar_midia(void){
     system("cls||clear");
 
     FILE* fp;
@@ -191,4 +234,17 @@ void rel_midia_listar(void){
 
     fclose(fp);
     free(fulano_aqr);
+}
+
+
+void rel_letra_usuario(void){
+    printf("\n");
+}
+
+void rel_letra_redeSocial(void){
+    printf("\n");
+}
+
+void rel_letra_midia(void){
+    printf("\n");
 }

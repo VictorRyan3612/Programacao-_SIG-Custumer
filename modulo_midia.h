@@ -14,7 +14,7 @@ void modulo_midia(void);
 void midia_cadastro(void);
 void midia_arq(void);
 void midia_gravar(Midia* fulano);
-void rel_midia_listar(void);
+void rel_listar_midia(void);
 void midia_pesquisar(void);
 void midia_editar(void);
 void midia_excluir(void);

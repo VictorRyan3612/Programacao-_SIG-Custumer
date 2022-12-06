@@ -346,3 +346,24 @@ void menu_listar_todos(void){
     );
     printf("\n\n");
 }
+
+void menu_listar_letra(void){
+    setlocale (LC_ALL, "portuguese");
+    system("cls||clear");
+    printf(""
+        "###################################################\n"
+        "####                                           ####\n"
+        "####              Listagem por letra           ####\n"
+        "####                                           ####\n"
+        "####                                           ####\n"
+        "####              Digite qual deseja:          ####\n"
+        "####                                           ####\n"
+        "####              Usuários:         1          ####\n"
+        "####              Redes Sociais:    2          ####\n"
+        "####              Mídias:           3          ####\n"
+        "####                                           ####\n"
+        "####                   Voltar:  0              ####\n"
+        "###################################################\n"
+    );
+    printf("\n\n");
+}

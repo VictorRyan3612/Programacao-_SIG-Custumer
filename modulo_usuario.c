@@ -44,7 +44,7 @@ void modulo_usuario(void){
                 usuario_cadastro();
             }
             else if (opcao == '2'){
-                rel_usuario_listar();
+                rel_listar_usuario();
             }
             else if (opcao == '3'){
                 usuario_pesquisar();
