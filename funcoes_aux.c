@@ -8,7 +8,7 @@ typedef struct midia Midia;
 
 void enter(void){
     printf("\n");
-    printf("Aperte enter para continuar\n");
+    printf("Aperte ENTER para continuar\n");
     getchar();
 }
 
@@ -226,7 +226,19 @@ int validar_nome(char a[]){
     }
     return True;
 }
-
+int validar_nome_char(char a){
+    if(((a >= 'a' ) && (a <= 'z')) || (a == ' ')){
+        return True;
+    } 
+    else if ((a >= 'A' ) && (a <= 'Z')){
+        return True;
+    }
+    else{
+        return False;
+    }
+    
+    return True;
+}
 // usado em usuario.c
 int validar_email(char a[]){
     int i;

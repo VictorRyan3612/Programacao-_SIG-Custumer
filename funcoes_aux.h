@@ -25,3 +25,4 @@ int validar_twitterSteam(char a[]);
 int validar_youtube(char a[]);
 
 int validar_nomeMidia(char a[]);
+int validar_nome_char(char a);
