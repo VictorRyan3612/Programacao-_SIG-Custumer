@@ -191,11 +191,7 @@ int usuario_existente(char fulano_cpf[12]){
     usuario_arq();
 
     fp = fopen("arq_usuarios.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     while(!feof(fp)) {
         fread(fulano_aqr, sizeof(Usuario), 1, fp);
@@ -220,11 +216,6 @@ void usuario_arq(void){
 void usuario_gravar(Usuario* fulano){
   FILE* fp;
   fp = fopen("arq_usuarios.dat", "ab");
-  if (fp == NULL) {
-    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Não é possível continuar este programa...\n");
-    exit(1);
-  }
   fwrite(fulano, sizeof(Usuario), 1, fp);
   fclose(fp);
 }
@@ -265,11 +256,7 @@ Usuario* usuario_busca(void){
     usuario_arq();
 
     fp = fopen("arq_usuarios.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     while(!feof(fp)) {
         fread(fulano, sizeof(Usuario), 1, fp);

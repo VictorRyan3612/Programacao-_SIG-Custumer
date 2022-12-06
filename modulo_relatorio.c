@@ -145,11 +145,7 @@ void rel_listar_usuario(void){
     "=================================\n"
     ""); 
     fp = fopen("arq_usuarios.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     i = 1;
     while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
@@ -184,11 +180,7 @@ void rel_listar_redeSocial(void){
         "=================================\n"
     "");
     fp = fopen("arq_redes_Sociais.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     i = 1;
 
@@ -222,11 +214,7 @@ void rel_listar_midia(void){
         "=================================\n"
     "");
     fp = fopen("arq_midias.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     i = 1;
     while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {
@@ -275,11 +263,7 @@ void rel_letra_usuario(void){
     "=================================\n"
     ""); 
     fp = fopen("arq_usuarios.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
 
 
@@ -338,11 +322,7 @@ void rel_letra_midia(void){
         "=================================\n"
     "");
     fp = fopen("arq_midias.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     i = 1;
     while(fread(fulano_aqr, sizeof(Midia), 1, fp)) {

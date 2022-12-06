@@ -216,11 +216,7 @@ int midia_existente(char fulano_cpf[12]){
     midia_arq();
 
     fp = fopen("arq_midias.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     while(!feof(fp)) {
         fread(fulano_aqr, sizeof(Midia), 1, fp);
@@ -244,11 +240,6 @@ void midia_arq(void){
 void midia_gravar(Midia* fulano){
     FILE* fp;
     fp = fopen("arq_midias.dat", "ab");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
     fwrite(fulano, sizeof(Midia), 1, fp);
     fclose(fp);
 }
@@ -308,11 +299,7 @@ Midia* midia_busca(void){
     midia_arq();
     
     fp = fopen("arq_midias.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
+    
 
     while(!feof(fp)) {
         fread(fulano, sizeof(Midia), 1, fp);
