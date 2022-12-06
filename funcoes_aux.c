@@ -6,6 +6,10 @@
 #define False 0
 typedef struct midia Midia;
 
+
+int validar_nome_char(char a);
+
+
 void enter(void){
     printf("\n");
     printf("Aperte ENTER para continuar\n");
@@ -60,6 +64,24 @@ char* cpf_busca(void){
     getchar();
     
     return cpf_busca_dig;
+}
+
+
+char char_busca(void){
+    int valido;
+    char nome_dig;
+    do{
+        printf("Digite a letra que deseja buscar\n");
+        scanf("%c", &nome_dig);
+        getchar();
+
+        valido = validar_nome_char(nome_dig);
+        if (valido == False){
+            printf("Caractere Inválido, digite outro\n\n");
+        }
+    
+    }while(valido == False);
+    return nome_dig;
 }
 
 char* status_exibe(char status, char* situacao){

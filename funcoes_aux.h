@@ -3,6 +3,7 @@ int confirmacao(void);
 char opcoes_pergunta(void);
 void vizualizar_lista(char a[]);
 char* cpf_busca(void);
+char char_busca(void);
 char* status_exibe(char status,char* situacao);
 
 

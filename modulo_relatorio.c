@@ -240,20 +240,8 @@ void rel_letra_usuario(void){
 
     int i;
     char nome_dig;
-    int valido;
 
-    do{
-        printf("Digite a letra que deseja buscar\n");
-        scanf("%c", &nome_dig);
-        getchar();
-
-        valido = validar_nome_char(nome_dig);
-        if (valido == False){
-            printf("Caractere Inválido, digite outro\n\n");
-        }
-        
-    }while(valido == False);
-
+    nome_dig = char_busca();
 
     usuario_arq();
 
@@ -264,9 +252,6 @@ void rel_letra_usuario(void){
     ""); 
     fp = fopen("arq_usuarios.dat", "rb");
     
-
-
-
 
     i = 1;
     while(fread(fulano_aqr, sizeof(Usuario), 1, fp)) {
@@ -297,21 +282,9 @@ void rel_letra_midia(void){
 
     int i;
     char nome_dig;
-    int valido;
 
 
-    do{
-        printf("Digite a letra que deseja buscar\n");
-        scanf("%c", &nome_dig);
-        getchar();
-
-        valido = validar_nome_char(nome_dig);
-        if (valido == False){
-            printf("Caractere Inválido, digite outro\n\n");
-        }
-        
-    }while(valido == False);
-
+    nome_dig = char_busca();
 
 
     midia_arq();
