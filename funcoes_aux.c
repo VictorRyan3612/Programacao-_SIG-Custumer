@@ -163,24 +163,29 @@ int validar_cpf(char x[]){
     char a[12];
     strcpy(a, x);
 
+    // algoritmo a partir desse site: 
+    //https://blog.dbins.com.br/como-funciona-a-logica-da-validacao-do-cpf
 
     // Parte 1, primeiro dígito verificador
     int b = 0, c = 0, d = 0, e = 0, f = 0, g = 0;
+    int bb = 0;
+    int ff = 0;
     int num =10;
     int valido;
 
     for (int i = 0; i <=8; i+=1){
         a[i] = a[i]-48;
-        // printf("a[%d]=%d\t",i,a[i]);
-        // printf("%d",num);
+        printf("a[%d]=%d\t",i,a[i]);
+        printf("%d",num);
         b += a[i] * num;
         num -= 1;
-        // printf("\tb[%d]=%d\n",i,b);
+        printf("\tb[%d]=%d\n",i,b);
     }
-    // printf("b = %d\n",b);
-    c = b % 11;
-    // printf("c = %d\n",c); // essencial
-    if (c >= 10){
+    printf("b = %d\n",b);
+    bb= b/11;
+    c = b -(11*bb);
+    printf("c = %d\n",c); // essencial
+    if ((c == 0)||(c == 1)){
         c = 0;
         d = 0;
     }
@@ -190,24 +195,24 @@ int validar_cpf(char x[]){
     else{
         d = 11 - c;
     }
-    // printf("d = %d\n",d); // essencial
+    printf("d = %d\n",d); // essencial
 
     // Parte 2, segundo dígito verificador
     num = 11;
     a[9]= a[9]-48;
     a[10]= a[10]-48;
     for (int i = 0; i <= 9; i+=1){
-        // printf("a[%d]%d\t",i,a[i]);
-        // printf("%d",num);
+        printf("a[%d]%d\t",i,a[i]);
+        printf("%d",num);
         e += a[i] * num;
-        // printf("e[%d]=%d\n",i,e);
+        printf("\te[%d]=%d\n",i,e);
         num -= 1;
     }
-    // printf("e = %d\n",e);
-
-    f = e % 11;
-    // printf("f = %d\n",f); // essencial
-    if (f >= 10){
+    printf("e = %d\n",e);
+    ff = e/11;
+    f= e -(11*ff);
+    printf("f = %d\n",f); // essencial
+    if ((f == 0)||(f == 1)){
         f = 0;
         g = 0;
     }
@@ -217,7 +222,7 @@ int validar_cpf(char x[]){
     else{
         g = 11 - f;
     }
-    // printf("g = %d\n",g); // essencial
+    printf("g = %d\n",g); // essencial
 
     // parte 3, verificar se os dígitos verificadores estão certos
     if ((a[9] == d) && (a[10] == g)){
