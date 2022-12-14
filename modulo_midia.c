@@ -281,7 +281,6 @@ void midia_exibe(Midia* fulano){
         strcpy(situacao,status_exibe(status,situacao));
         printf("Situação das Midias: %s\n", situacao);
 
-        enter();
     }
 }
 
