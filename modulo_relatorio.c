@@ -192,6 +192,7 @@ void rel_listar_redeSocial(void){
             i+=1;
         }
     }
+    enter();
 
     fclose(fp);
     free(fulano_aqr);
