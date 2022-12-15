@@ -29,7 +29,6 @@ void rel_listar_midia(void);
 Midia* midia_busca(void);
 
 
-int midia_existente(char fulano_cpf[12]);
 
 void modulo_midia(){
     char opcao = '\0';
@@ -75,159 +74,154 @@ void modulo_midia(){
 
 
 void midia_cadastro(){
+    FILE* fp_user;
+    FILE* fp_midia;
 
-    Midia* fulano;
-    fulano = (Midia*) malloc(sizeof(Midia));
+
+    Midia* fulano_midia;
+    fulano_midia = (Midia*) malloc(sizeof(Midia));
 
     Usuario* fulano_user;
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
     int resp;
-    int achou_user;
-    int achou_midia;
-    char cpf_busca_dig[12];
+    int achou_user = False;
+    int achou_midia = False;
     char confir;
     
 
-    do{
-        do{
-            fulano_user = usuario_busca();
-            if (fulano_user != NULL){
-                achou_user = True;
-            }
-            else{
-                printf("Não encontrado, Digite novamente\n");
-                achou_user = False;
-            }
-        } while(achou_user == False);
-
-
-        strcpy(fulano -> cpf, fulano_user -> cpf);
-        strcpy(cpf_busca_dig, fulano -> cpf);
-        
-        strcpy(cpf_busca_dig,fulano -> cpf);
-        achou_midia = midia_existente(cpf_busca_dig);
-
-        if (achou_midia == True){
-            printf("Midias já cadastradas para esse usuário, digite outro\n");
-        }
-    } while(achou_midia == True);
-
-
-    system("cls||clear");
-    menu_midia_cadastro();
-
-
-
-    //Jogo
-    printf("\n\nDeseja Cadastrar um Jogo?\n");
-    confir = confirmacao();
-    if (confir == True){
-        do {
-            printf(""
-                "=======================================\n"
-                "====  Qual jogo está interessado?  ====\n"
-                "=======================================\n"
-                );
-            printf("(use ; para mais de um)\n");
-            printf("\n");
-            scanf("%101[^\n]", fulano -> jogo);
-            getchar();
-
-            resp = validar_nomeMidia(fulano -> jogo);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
-    else{
-        strcpy(fulano -> jogo,"");
-    }
-
-
-    //Livro
-    printf("\n\nDeseja Cadastrar um livro?\n");
-    confir = confirmacao();
-    if (confir == True){
-        do {
-            printf(""
-                "=======================================\n"
-                "====  Qual livro está interessado? ====\n"
-                "=======================================\n"
-                );
-            printf("use ; para mais de um\n");
-            printf("\n");
-            scanf("%101[^\n]", fulano -> livro);
-            getchar();
-
-            resp = validar_nomeMidia(fulano -> livro);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
-    else{
-        strcpy(fulano -> livro,"");
-    }
-
-
-    //Filme
-    printf("\n\nDeseja Cadastrar uma filme?\n");
-    confir = confirmacao();
-    if (confir == True){
-        do{
-            printf(""
-                "=======================================\n"
-                "====  Qual Filme está interessado? ====\n"
-                "=======================================\n"
-                );
-            printf("use ; para mais de um\n");
-            printf("\n");
-            scanf("%101[^\n]", fulano -> filme);
-            getchar();
-
-            resp = validar_nomeMidia(fulano -> filme);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
-    }
-    else{
-        strcpy(fulano -> filme,"");
-    }
-
-
-    printf("Voltando ao menu principal...\n");
-    getchar();
-
-    fulano -> status = 'c'; //cadastrado
-
-    midia_gravar(fulano);
-    free(fulano);
-}
-
-int midia_existente(char fulano_cpf[12]){
-    int achou;
-    FILE* fp;
-
-    Midia* fulano_aqr;
-    fulano_aqr = (Midia*) malloc(sizeof(Midia));
-
+    usuario_arq();
     midia_arq();
 
-    fp = fopen("arq_midias.dat", "rb");
-    
 
-    while(!feof(fp)) {
-        fread(fulano_aqr, sizeof(Midia), 1, fp);
-            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
-                fclose(fp);
-                return achou = True;;
+    fp_user = fopen("arq_usuarios.dat", "rb");
+    fp_midia = fopen("arq_midias.dat", "r+b");
+
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+
+    // Procura usuario
+    while((!feof(fp_user)) && (achou_user == False)){
+        fread(fulano_user, sizeof(Usuario), 1, fp_user);
+        if ((strcmp(fulano_user->cpf, cpf_busca_dig) == 0) && (fulano_user->status != 'x')){
+            achou_user = True;
+        }
+    }
+
+    if (achou_user == False){
+        printf("Usuario não encontrado\n");
+    }
+    else{
+
+        // Procura Midias do usuario
+        while(!feof(fp_midia) && achou_midia == False){
+            fread(fulano_midia, sizeof(Midia), 1, fp_midia);
+            if ((strcmp(fulano_midia->cpf, cpf_busca_dig) == 0) && (fulano_midia->status != 'x')){
+                achou_midia = True;
             }
         }
+    
 
-    fclose(fp);
-    return achou = False;
+        if (achou_midia == True){
+            printf("Midias de usuario já cadastradas\n");
+        }
+    }
+    if (achou_user == True && achou_midia == False){
+        strcpy(fulano_midia -> cpf, fulano_user -> cpf);
+        system("cls||clear");
+        menu_midia_cadastro();
+
+
+        //Jogo
+        printf("\n\nDeseja Cadastrar um Jogo?\n");
+        confir = confirmacao();
+        if (confir == True){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====  Qual jogo está interessado?  ====\n"
+                    "=======================================\n"
+                    );
+                printf("(use ; para mais de um)\n");
+                printf("\n");
+                scanf("%101[^\n]", fulano_midia -> jogo);
+                getchar();
+
+                resp = validar_nomeMidia(fulano_midia -> jogo);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+            } while (resp != True);
+        }
+        else{
+            strcpy(fulano_midia -> jogo,"");
+        }
+
+
+        //Livro
+        printf("\n\nDeseja Cadastrar um livro?\n");
+        confir = confirmacao();
+        if (confir == True){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====  Qual livro está interessado? ====\n"
+                    "=======================================\n"
+                    );
+                printf("use ; para mais de um\n");
+                printf("\n");
+                scanf("%101[^\n]", fulano_midia -> livro);
+                getchar();
+
+                resp = validar_nomeMidia(fulano_midia -> livro);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+            } while (resp != True);
+        }
+        else{
+            strcpy(fulano_midia -> livro,"");
+        }
+
+
+        //Filme
+        printf("\n\nDeseja Cadastrar uma filme?\n");
+        confir = confirmacao();
+        if (confir == True){
+            do{
+                printf(""
+                    "=======================================\n"
+                    "====  Qual Filme está interessado? ====\n"
+                    "=======================================\n"
+                    );
+                printf("use ; para mais de um\n");
+                printf("\n");
+                scanf("%101[^\n]", fulano_midia -> filme);
+                getchar();
+
+                resp = validar_nomeMidia(fulano_midia -> filme);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+            } while (resp != True);
+        }
+        else{
+            strcpy(fulano_midia -> filme,"");
+        }
+
+
+        printf("Voltando ao menu principal...\n");
+        getchar();
+
+        fulano_midia -> status = 'c'; //cadastrado
+        midia_gravar(fulano_midia);
+    }
+    free(cpf_busca_dig);
+    free(fulano_user);
+    free(fulano_midia);
+
+    fclose(fp_user);
+    fclose(fp_midia);
 }
 
 
@@ -324,9 +318,9 @@ void midia_pesquisar(){
 void midia_editar(){
     system("cls||clear");
 
-    FILE* fp;
-    Midia* fulano;
-    fulano = (Midia*) malloc(sizeof(Midia));
+    FILE* fp_midia;
+    Midia* fulano_midia;
+    fulano_midia = (Midia*) malloc(sizeof(Midia));
 
     char resp;
     int certeza;
@@ -334,138 +328,144 @@ void midia_editar(){
     char opcao;
     int achou = False;
 
-    
-    midia_arq();
-    
-    fp = fopen("arq_midias.dat", "r+b");
-
     menu_midia_editar();
 
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+    
+    midia_arq();
+    fp_midia = fopen("arq_midias.dat", "r+b");
 
-    do{
-        fulano = midia_busca();
-        if (fulano != NULL){
+
+    while(!feof(fp_midia) && achou == False) {
+        fread(fulano_midia, sizeof(Midia), 1, fp_midia);
+        if ((strcmp(fulano_midia->cpf, cpf_busca_dig) == 0) && (fulano_midia->status != 'x')){
             achou = True;
         }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-        }
-    }while(achou == False);
+    }
 
 
-    do{
-        system("cls||clear");
-        menu_midia_editar();
-        midia_exibe(fulano);
+    if (achou == False){
+        printf("Mdias do usuario não concontradas\n");
+    }
 
-        printf("\n\n");
-        printf("Digite qual campo deseja editar\n");
-        opcao = opcoes_pergunta();
+    else if (achou == True){
 
-        if (opcao == '1'){
-            printf("#### Seus atuais jogos são esses: ####\n");
-            printf("%s", fulano -> jogo);
+        do{
+            system("cls||clear");
+            menu_midia_editar();
+            midia_exibe(fulano_midia);
+
             printf("\n\n");
+            printf("Digite qual campo deseja editar\n");
+            opcao = opcoes_pergunta();
 
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
+            if (opcao == '1'){
+                printf("#### Seus atuais jogos são esses: ####\n");
+                printf("%s", fulano_midia -> jogo);
+                printf("\n\n");
 
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====        Atualize a lista       ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%101[^\n]", fulano -> jogo);
-                    getchar();
-                    resp = validar_nomeMidia(fulano -> jogo);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
+
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====        Atualize a lista       ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%101[^\n]", fulano_midia -> jogo);
+                        getchar();
+                        resp = validar_nomeMidia(fulano_midia -> jogo);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
+
             }
 
-        }
+            //Livros
+            if (opcao == '2'){
+                printf("#### Seus atuais Livros são esses: ####\n");
+                printf("%s", fulano_midia -> livro);
+                printf("\n\n");
 
-        //Livros
-        if (opcao == '2'){
-            printf("#### Seus atuais Livros são esses: ####\n");
-            printf("%s", fulano -> livro);
-            printf("\n\n");
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====        Atualize a lista       ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%101[^\n]", fulano_midia -> livro);
+                        getchar();
 
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====        Atualize a lista       ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%101[^\n]", fulano -> livro);
-                    getchar();
-
-                    resp = validar_nomeMidia(fulano -> livro);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+                        resp = validar_nomeMidia(fulano_midia -> livro);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
             }
-        }
 
-        // Filmes
-        else if (opcao =='3'){
-            printf("#### Seus atuais Filmes são esses: ####\n");
-            printf("%s", fulano -> filme);
-            printf("\n\n");
-            
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
+            // Filmes
+            else if (opcao =='3'){
+                printf("#### Seus atuais Filmes são esses: ####\n");
+                printf("%s", fulano_midia -> filme);
+                printf("\n\n");
+                
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
 
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====        Atualize a lista       ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%101[^\n]", fulano -> filme);
-                    getchar();
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====        Atualize a lista       ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%101[^\n]", fulano_midia -> filme);
+                        getchar();
 
-                    resp = validar_nomeMidia(fulano -> filme);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+                        resp = validar_nomeMidia(fulano_midia -> filme);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
             }
-        }
 
-        else if (opcao == '0'){
-            printf("Voltando ao menu principal...\n");
-            getchar();
-            continuar = False;
-        }
-        else{
-            printf("Opção não dessenvolvida ou inválida\n");
-        }
-        if (opcao!='0'){
-            printf("\nDeseja continuar?");
-            continuar = confirmacao();
-        }
+            else if (opcao == '0'){
+                printf("Voltando ao menu principal...\n");
+                getchar();
+                continuar = False;
+            }
+            else{
+                printf("Opção não dessenvolvida ou inválida\n");
+            }
+            if (opcao!='0'){
+                printf("\nDeseja continuar?");
+                continuar = confirmacao();
+            }
 
 
-    }while(continuar == True);
+        }while(continuar == True);
 
-    int var = -1;
-    fseek(fp, var*sizeof(Usuario), SEEK_CUR);
-    fwrite(fulano, sizeof(Usuario), 1, fp);
+        int var = -1;
+        fseek(fp_midia, var*sizeof(Midia), SEEK_CUR);
+        fwrite(fulano_midia, sizeof(Midia), 1, fp_midia);
+    }
 
-    free(fulano);
-    fclose(fp);
+        free(cpf_busca_dig);
+        free(fulano_midia);
+        fclose(fp_midia);
 }
 
 void midia_excluir(){
