@@ -294,149 +294,151 @@ void usuario_editar(){
 
     usuario_arq();
 
-    fp = fopen("arq_usuarios.dat", "r+b");
-
-    if(fp == NULL){
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar o programa...\n");
-        exit(1);
-    }
-
-
+    char* cpf_busca_dig;
     menu_usuario_editar();
+    cpf_busca_dig = cpf_busca();
 
 
-    do{
-        fulano = usuario_busca();
-        if (fulano != NULL){
+    fp = fopen("arq_usuarios.dat", "r+b");
+    
+
+    while(!feof(fp) && achou == False){
+        fread(fulano, sizeof(Usuario), 1, fp);
+        if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
             achou = True;
         }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-        }
-    }while(achou == False);
+    }
 
-    do{
-        system("cls||clear");
-        menu_usuario_editar();
-        usuario_exibe(fulano);
+    if (achou == False){
+        printf("Usuario não concontrado\n");
+    }
 
-        printf("\n\n");
-        printf("Digite qual campo deseja editar\n");
-        opcao = opcoes_pergunta();
+    else if (achou == True){
+        do{
+            system("cls||clear");
+            menu_usuario_editar();
+            usuario_exibe(fulano);
 
-
-        // Editar cpf
-        if (opcao == '1'){
-            printf("Indisponível no momento\n");
-            enter();
-
-        }
-
-
-        // Editar nome
-        else if (opcao == '2'){
-            printf("#### Seu atual nome é esse: ####\n");
-            printf("%s", fulano -> nome);
             printf("\n\n");
-            
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
+            printf("Digite qual campo deseja editar\n");
+            opcao = opcoes_pergunta();
 
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====      Informe o atualizado:    ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%81[^\n]", fulano -> nome);
-                    getchar();
 
-                    resp = validar_nome(fulano -> nome);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+            // Editar cpf
+            if (opcao == '1'){
+                printf("Indisponível no momento\n");
+                enter();
             }
-        }
 
-        // Editar email
-        else if (opcao == '3'){
-            printf("#### Seu atual email é esse: ####\n");
-            printf("%s", fulano -> email);
-            printf("\n\n");
 
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====      Informe o atualizado:    ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%s", fulano -> email);
-                    getchar();
-                    
-                    resp = validar_email(fulano -> email);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+            // Editar nome
+            else if (opcao == '2'){
+                printf("#### Seu atual nome é esse: ####\n");
+                printf("%s", fulano -> nome);
+                printf("\n\n");
+                
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
+
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====      Informe o atualizado:    ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%81[^\n]", fulano -> nome);
+                        getchar();
+
+                        resp = validar_nome(fulano -> nome);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
             }
-        }
 
-            
-        // Editar telefone
-        else if (opcao == '4'){
-            printf("#### Seu atual telefone é esse: ####\n");
-            printf("%s", fulano -> telefone);
-            printf("\n\n");
+            // Editar email
+            else if (opcao == '3'){
+                printf("#### Seu atual email é esse: ####\n");
+                printf("%s", fulano -> email);
+                printf("\n\n");
 
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
-
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====      Informe o atualizado:    ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%s", fulano -> telefone);
-                    getchar();
-
-                    resp = validar_telefone(fulano -> telefone);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====      Informe o atualizado:    ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%s", fulano -> email);
+                        getchar();
+                        
+                        resp = validar_email(fulano -> email);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
             }
-        }
 
-        else if (opcao == '0'){
-            printf("Voltando ao menu principal...\n");
-            getchar();
-            continuar = False;
-        }
-        else{
-            printf("Opção não dessenvolvida ou inválida\n");
-        }
-        if (opcao!='0'){
-            printf("\nDeseja continuar?");
-            continuar = confirmacao();
-        }
+                
+            // Editar telefone
+            else if (opcao == '4'){
+                printf("#### Seu atual telefone é esse: ####\n");
+                printf("%s", fulano -> telefone);
+                printf("\n\n");
 
-    }while(continuar == True); 
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
 
-    int var = -1;
-    fseek(fp, var*sizeof(Usuario), SEEK_CUR);
-    fwrite(fulano, sizeof(Usuario), 1, fp);
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====      Informe o atualizado:    ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%s", fulano -> telefone);
+                        getchar();
 
+                        resp = validar_telefone(fulano -> telefone);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
+            }
+
+            else if (opcao == '0'){
+                printf("Voltando ao menu principal...\n");
+                getchar();
+                continuar = False;
+            }
+            else{
+                printf("Opção não dessenvolvida ou inválida\n");
+            }
+            if (opcao!='0'){
+                printf("\nDeseja continuar?");
+                continuar = confirmacao();
+            }
+
+        }while(continuar == True); 
+
+        int var = 0;
+
+        var = -1;
+
+        fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+        fwrite(fulano, sizeof(Usuario), 1, fp);
+
+    }
+    free(cpf_busca_dig);
     free(fulano);
     fclose(fp);
 }
@@ -452,47 +454,51 @@ void usuario_excluir(void){
     int achou = False;
     int var;
 
-
     usuario_arq();
 
-    fp = fopen("arq_usuarios.dat", "r+b");
-
-    if(fp == NULL){
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar o programa...\n");
-        exit(1);
-    }
-
-
     menu_usuario_excluir();
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
 
 
-    do{
-        fulano = usuario_busca();
-        if (fulano != NULL){
+    fp = fopen("arq_usuarios.dat", "r+b");
+    
+
+    while(!feof(fp) && achou == False){
+        fread(fulano, sizeof(Usuario), 1, fp);
+        if ((strcmp(fulano->cpf, cpf_busca_dig) == 0) && (fulano->status != 'x')){
             achou = True;
         }
-        else{
-            printf("Não encontrado, Digite novamente\n");
+    }
+
+    if (achou == False){
+        printf("Usuário não encontrado\n");
+        enter();
+    }
+
+    else if (achou == True){
+        usuario_exibe(fulano);
+        printf("\n\n\n");
+        printf("Deseja realmente apagar este usuario?");
+        certeza = confirmacao();
+        if (certeza == True){
+
+            fulano->status = 'x';
+            var = -1;
+            fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+            fwrite(fulano, sizeof(Usuario), 1, fp);
+            printf("\nUsuario excluído com sucesso!\n");
+            fseek(fp, var*sizeof(Usuario), SEEK_CUR);
+            fwrite(fulano, sizeof(Usuario), 1, fp);
         }
-    }while(achou == False);
+        else{
+            printf("\nOk, os dados não foram alterados\n");
+        }
 
-    usuario_exibe(fulano);
-    printf("\n\n\n");
-    printf("Deseja realmente apagar este usuario?");
-    certeza = confirmacao();
-    if (certeza == True){
+        
 
-        fulano->status = 'x';
-        var = -1;
-        fseek(fp, var*sizeof(Usuario), SEEK_CUR);
-        fwrite(fulano, sizeof(Usuario), 1, fp);
-        printf("\nUsuario excluído com sucesso!\n");
     }
-    else{
-        printf("\nOk, os dados não foram alterados\n");
-    }
-
   free(fulano);
+  free(cpf_busca_dig);
   fclose(fp);
 }
