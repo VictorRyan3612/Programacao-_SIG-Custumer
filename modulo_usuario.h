@@ -6,6 +6,7 @@ struct usuario {
     char email[41];
     char telefone[21];
     char status;
+    Usuario* prox;
 };
 
 void modulo_usuario(void);

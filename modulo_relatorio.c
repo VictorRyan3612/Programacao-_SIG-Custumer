@@ -11,22 +11,34 @@
 #define True 1
 #define False 0
 
+
+// Menus
 void menu_relatorio(void);
 void menu_listar_todos(void);
+void menu_listar_todos_usuario(void);
 
+void listar_todos();
+
+// Listagem total de usuario
 void rel_listar_usuario(void);
+void rel_listar_usuario_alfa(void);
+void rel_listar_usuario_natural(void);
+
 void rel_listar_redeSocial(void);
 void rel_listar_midia(void);
 
-void listar_todos();
+// Menus Listar letra
 void menu_listar_letra(void);
+void menu_letra_midia(void);
+void menu_letra_rede(void);
 
+// Listagem letra
 void listar_letra(void);
 void rel_letra_usuario(void);
 void rel_letra_redeSocial(void);
 void rel_letra_midia(void);
-void menu_letra_midia(void);
-void menu_letra_rede(void);
+
+
 
 
 
@@ -129,7 +141,28 @@ void listar_letra(void){
     }while(opcao != '0');  
 }
 
+
 void rel_listar_usuario(void){
+    char opcao = '\0';
+
+    do{
+        system("cls||clear");
+        menu_listar_todos_usuario();
+        opcao = opcoes_pergunta();
+
+        if (opcao != '0'){
+            if (opcao == '1'){
+                rel_listar_usuario_natural();
+            }
+            else if (opcao == '2'){
+                rel_listar_usuario_alfa();
+            }
+        }
+    }while(opcao != '0');
+}
+
+
+void rel_listar_usuario_natural(void){
     system("cls||clear");
 
     FILE* fp;
@@ -159,9 +192,108 @@ void rel_listar_usuario(void){
 
     fclose(fp);
     free(fulano_aqr);
+    enter();
 }
 
 
+// adaptado de Vinicius link:
+// https://github.com/ViniciusMaiaM/SIG-Check
+
+void rel_listar_usuario_alfa(void){
+    FILE *fp_user;
+    Usuario *fulano_user;
+    Usuario *lista;
+    Usuario *novo;
+
+    system("cls||clear");
+
+    printf(""
+    "=================================\n"
+    "======  Lista de Usuários  ======\n"
+    "=================================\n"
+    ""); 
+
+    fp_user = fopen("arq_usuarios.dat", "rb");
+
+    if (fp_user == NULL)
+    {
+        printf("\nNão é possível continuar a listagem");
+    }
+
+    else
+    {
+        lista = NULL;
+        fulano_user = (Usuario *)malloc(sizeof(Usuario));
+
+        while (fread(fulano_user, sizeof(Usuario), 1, fp_user))
+        {
+            if (fulano_user->status != 'X')
+            {
+                novo = (Usuario*)malloc(sizeof(Usuario));
+
+                strcpy(novo->cpf, fulano_user->cpf);
+
+                strcpy(novo->nome, fulano_user->nome);
+
+                strcpy(novo->telefone, fulano_user->telefone);
+
+                strcpy(novo->email, fulano_user->email);
+
+
+                novo->status = fulano_user->status;
+            }
+
+            if (lista == NULL)
+            {
+                lista = novo;
+                novo->prox = NULL;
+            }
+
+            else if (strcmp(novo->nome, lista->nome) < 0)
+            {
+                novo->prox = lista;
+                lista = novo;
+            }
+
+            else
+            {
+                Usuario *anterior = lista;
+                Usuario *atual = lista->prox;
+
+                while ((atual != NULL) && strcmp(atual->nome, novo->nome) < 0)
+                {
+                    anterior = atual;
+                    atual = novo->prox;
+                }
+
+                anterior->prox = novo;
+                novo->prox = atual;
+            }
+        }
+    }
+
+    free(fulano_user);
+    novo = lista;
+
+    while (novo != NULL)
+    {
+        usuario_exibe(novo);
+
+        novo = novo->prox;
+    }
+
+    novo = lista;
+
+    while (lista != NULL)
+    {
+        lista = lista->prox;
+        free(novo);
+        novo = lista;
+    }
+    free(lista);
+    fclose(fp_user);
+    enter();
+}
 
 void rel_listar_redeSocial(void){
     system("cls||clear");

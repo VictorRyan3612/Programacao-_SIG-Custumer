@@ -24,6 +24,7 @@ void menu_midia_excluir(void);
 // Relatório
 void menu_relatorio(void);
 void menu_listar_todos(void);
+void menu_listar_todos_usuario(void);
 void menu_listar_letra(void);
 void menu_letra_midia(void);
 void menu_letra_rede(void);
