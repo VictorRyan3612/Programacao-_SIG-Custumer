@@ -74,161 +74,155 @@ void modulo_redeSocial(void){
 
 
 void redeSocial_cadastro(void){
-    RedeSocial* fulano;
-    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+    FILE* fp_user;
+    FILE* fp_rede;
+
+    RedeSocial* fulano_rede;
+    fulano_rede = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     Usuario* fulano_user;
     fulano_user = (Usuario*) malloc(sizeof(Usuario));
 
     int resp;
-    int achou_user;
-    int achou_rede;
-    char cpf_busca_dig[12];
+    int achou_user = False;
+    int achou_rede = False;
     char confir;
-    
-    do{
-        do{
-            fulano_user = usuario_busca();
-            if (fulano_user != NULL){
-                achou_user = True;
+
+    usuario_arq();
+    redeSocial_arq();
+    fp_user = fopen("arq_usuarios.dat", "rb");
+    fp_rede = fopen("arq_redes_Sociais.dat", "r+b");
+
+
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+
+    // Procura usuario
+    while((!feof(fp_user)) && (achou_user == False)){
+        fread(fulano_user, sizeof(Usuario), 1, fp_user);
+        if ((strcmp(fulano_user->cpf, cpf_busca_dig) == 0) && (fulano_user->status != 'x')){
+            achou_user = True;
+        }
+    }
+
+    if (achou_user == False){
+        printf("Usuario não encontrado\n");
+    }
+    else{
+
+        // Procura Rede social do usuario
+        while(!feof(fp_rede) && achou_rede == False){
+            fread(fulano_rede, sizeof(RedeSocial), 1, fp_rede);
+            if ((strcmp(fulano_rede->cpf, cpf_busca_dig) == 0) && (fulano_rede->status != 'x')){
+                achou_rede = True;
             }
-            else{
-                printf("Não encontrado, Digite novamente\n");
-                achou_user = False;
-            }
-        }while(achou_user == False);
-
-
-        strcpy(fulano -> cpf, fulano_user -> cpf);
-        strcpy(cpf_busca_dig, fulano -> cpf);
-        
-        achou_rede = redes_existente(cpf_busca_dig);
-
+        }
 
         if (achou_rede == True){
-            printf("Redes Sociais desse usuário já cadastradas, digite outro usuario\n");
+            printf("Redes sociais de usuario já cadastradas\n");
         }
-    } while (achou_rede == True);
-
-
-    system("cls||clear");
-    menu_redeSocial_cadastro();
-
-
-    //steam
-    printf("Deseja Cadastrar uma steam?\n");
-    confir = confirmacao();
-    if (confir == True){
-        do {
-            printf(""
-                "=======================================\n"
-                "====  Informe seu perfil da steam: ====\n"
-                "=======================================\n"
-                );
-
-            printf("\n");
-            scanf("%21[^\n]",fulano -> steam);
-            getchar();
-
-            resp = validar_twitterSteam(fulano -> steam);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-        } while (resp != True);
     }
-    else{
-        strcpy(fulano -> steam,"");
-    }
-    
-    
+    if (achou_user == True && achou_rede == False){
+        strcpy(fulano_rede -> cpf, fulano_user -> cpf);
+        system("cls||clear");
+        menu_redeSocial_cadastro();
 
-    //twitter
-    printf("Deseja Cadastrar um Twitter?\n");
-    confir = confirmacao();
-    if (confir == True){
-    
-        do {
-            printf(""
-                "=======================================\n"
-                "====     Informe seu Twitter:      ====\n"
-                "=======================================\n"
-                );
 
-            printf("\n");
-            scanf("%21[^\n]",fulano -> twitter);
-            getchar();
+        //steam
+        printf("Deseja Cadastrar uma steam?\n");
+        confir = confirmacao();
+        if (confir == True){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====  Informe seu perfil da steam: ====\n"
+                    "=======================================\n"
+                    );
 
-            
-            resp = validar_twitterSteam(fulano -> twitter);
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
-            
-        
+                printf("\n");
+                scanf("%21[^\n]",fulano_rede -> steam);
+                getchar();
+
+                resp = validar_twitterSteam(fulano_rede -> steam);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
             } while (resp != True);
-    }
-    else{
-        strcpy(fulano -> twitter,"");
-    }
+        }
+        else{
+            strcpy(fulano_rede -> steam,"");
+        }
+        
+        
 
-    //youtube
-    printf("Deseja Cadastrar um Youtube?\n");
-    confir = confirmacao();
-    if (confir == True){
-        do {
-            printf(""
-                "=======================================\n"
-                "====     Informe seu Youtube:      ====\n"
-                "=======================================\n"
-                );
+        //twitter
+        printf("Deseja Cadastrar um Twitter?\n");
+        confir = confirmacao();
+        if (confir == True){
+        
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====     Informe seu Twitter:      ====\n"
+                    "=======================================\n"
+                    );
 
-            printf("\n");
-            scanf("%41[^\n]",fulano -> youtube);
-            getchar();
+                printf("\n");
+                scanf("%21[^\n]",fulano_rede -> twitter);
+                getchar();
 
-
-            if (resp != True){
-                printf("Caractere inválido detectado, Digite novamente:\n");
-            }
+                
+                resp = validar_twitterSteam(fulano_rede -> twitter);
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+                
             
-        }while (resp != True);
-    }
-    else{
-        strcpy(fulano -> steam,"");
-    }
-
-
-    printf("Voltando ao menu principal...\n");
-    getchar();
-
-    fulano -> status = 'c'; //cadastrado
-
-    redeSocial_gravar(fulano);
-    free(fulano);
-}
-
-int redes_existente(char fulano_cpf[12]){
-    int achou;
-    FILE* fp;
-
-    RedeSocial* fulano_aqr;
-    fulano_aqr = (RedeSocial*) malloc(sizeof(RedeSocial));
-
-    redeSocial_arq();
-
-    fp = fopen("arq_redes_Sociais.dat", "rb");
-    
-
-    while(!feof(fp)) {
-        fread(fulano_aqr, sizeof(RedeSocial), 1, fp);
-            if ((strcmp(fulano_aqr->cpf, fulano_cpf) == 0) && (fulano_aqr->status != 'x')){
-                fclose(fp);
-                return achou = True;;
-            }
+                } while (resp != True);
+        }
+        else{
+            strcpy(fulano_rede -> twitter,"");
         }
 
-    fclose(fp);
-    return achou = False;
+        //youtube
+        printf("Deseja Cadastrar um Youtube?\n");
+        confir = confirmacao();
+        if (confir == True){
+            do {
+                printf(""
+                    "=======================================\n"
+                    "====     Informe seu Youtube:      ====\n"
+                    "=======================================\n"
+                    );
+
+                printf("\n");
+                scanf("%41[^\n]",fulano_rede -> youtube);
+                getchar();
+
+
+                if (resp != True){
+                    printf("Caractere inválido detectado, Digite novamente:\n");
+                }
+                
+            }while (resp != True);
+        }
+        else{
+            strcpy(fulano_rede -> steam,"");
+        }
+
+
+        printf("Voltando ao menu principal...\n");
+        getchar();
+
+        fulano_rede -> status = 'c'; //cadastrado
+
+        redeSocial_gravar(fulano_rede);
+        free(cpf_busca_dig);
+        free(fulano_user);
+        free(fulano_rede);
+        fclose(fp_user);
+        fclose(fp_rede);
+    }
 }
 
 
@@ -267,7 +261,6 @@ void redeSocial_exibe(RedeSocial* fulano){
         strcpy(situacao,status_exibe(status,situacao));
         printf("Situação das Redes Sociais: %s\n", situacao);
 
-        enter();
     }
 }
 
@@ -311,9 +304,9 @@ void redeSocial_pesquisar(void){
 void redeSocial_editar(void){
     system("cls||clear");
 
-    FILE* fp;
-    RedeSocial* fulano;
-    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+    FILE* fp_rede;
+    RedeSocial* fulano_rede;
+    fulano_rede = (RedeSocial*) malloc(sizeof(RedeSocial));
 
     char resp;
     int certeza;
@@ -322,191 +315,202 @@ void redeSocial_editar(void){
     int achou = False;
 
 
+    menu_redeSocial_editar();
 
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+    
     redeSocial_arq();
     
-    fp = fopen("arq_redes_Sociais.dat", "r+b");
-
-    menu_redeSocial_editar();
     
-    do{
-        fulano = redeSocial_busca();
-        if (fulano != NULL){
+    fp_rede = fopen("arq_redes_Sociais.dat", "r+b");
+    
+
+    while(!feof(fp_rede) && achou == False) {
+        fread(fulano_rede, sizeof(RedeSocial), 1, fp_rede);
+        if ((strcmp(fulano_rede->cpf, cpf_busca_dig) == 0) && (fulano_rede->status != 'x')){
             achou = True;
         }
-        else{
-            printf("Não encontrado, Digite novamente\n");
-        }
-    }while(achou == False);
+    }
 
-    do{
-        system("cls||clear");
-        menu_redeSocial_editar();
-        redeSocial_exibe(fulano);
 
-        printf("\n\n");
-        printf("Digite qual campo deseja editar\n");
-        opcao = opcoes_pergunta();
+    
+    if (achou == False){
+        printf("Rede sociais do usuario não concontradas\n");
+    }
 
-        // Steam
-        if (opcao == '1'){
-            printf("#### Seu atual perfil da steam é esse: ####\n");
-            printf("%s", fulano -> steam);
+    else if (achou == True){
+
+        do{
+            system("cls||clear");
+            menu_redeSocial_editar();
+            redeSocial_exibe(fulano_rede);
+
             printf("\n\n");
+            printf("Digite qual campo deseja editar\n");
+            opcao = opcoes_pergunta();
 
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
+            // Steam
+            if (opcao == '1'){
+                printf("#### Seu atual perfil da steam é esse: ####\n");
+                printf("%s", fulano_rede -> steam);
+                printf("\n\n");
 
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====      Informe o atualizado:    ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%s", fulano -> steam);
-                    getchar();
-                    resp = validar_twitterSteam(fulano -> steam);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
-            }
-        }
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
 
-        // Twitter
-        else if (opcao == '2'){
-            printf("#### Seu atual twitter é esse: ####\n");
-            printf("%s", fulano -> twitter);
-            printf("\n\n");
-            
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
-
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====      Informe o atualizado:    ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%s", fulano -> twitter);
-                    getchar();
-
-                    resp = validar_twitterSteam(fulano -> twitter);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
-            }
-        }
-
-        // Youtube
-        else if (opcao =='3'){
-            printf("#### Seu atual nome é esse: ####\n");
-            printf("%s", fulano -> youtube);
-            printf("\n\n");
-            
-            printf("Deseja realmente editar?\n");
-            certeza = confirmacao();
-
-            if (certeza == True){
-                do{
-                    printf(""
-                        "=======================================\n"
-                        "====      Informe o atualizado:    ====\n"
-                        "=======================================\n"
-                    );
-                    printf("\n");
-                    scanf("%41[^\n]", fulano -> youtube);
-                    getchar();
-
-                    resp = validar_youtube(fulano -> youtube);
-                    if (resp != True){
-                        printf("Caractere inválido detectado, Digite novamente:\n");
-                    }
-                } while (resp != True);
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====      Informe o atualizado:    ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%s", fulano_rede -> steam);
+                        getchar();
+                        resp = validar_twitterSteam(fulano_rede -> steam);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
             }
 
-        }
-        else if (opcao == '0'){
-            printf("Voltando ao menu principal...\n");
-            getchar();
-            continuar = False;
-        }
-        else{
-            printf("Opção não dessenvolvida ou inválida\n");
-        }
-        if (opcao!='0'){
-            printf("\nDeseja continuar?");
-            continuar = confirmacao();
-        }
+            // Twitter
+            else if (opcao == '2'){
+                printf("#### Seu atual twitter é esse: ####\n");
+                printf("%s", fulano_rede -> twitter);
+                printf("\n\n");
+                
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
 
-    } while(continuar == True);
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====      Informe o atualizado:    ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%s", fulano_rede -> twitter);
+                        getchar();
 
-    int var = -1;
-    fseek(fp, var*sizeof(Usuario), SEEK_CUR);
-    fwrite(fulano, sizeof(Usuario), 1, fp);
+                        resp = validar_twitterSteam(fulano_rede -> twitter);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
+            }
 
-    free(fulano);
-    fclose(fp);
+            // Youtube
+            else if (opcao =='3'){
+                printf("#### Seu atual nome é esse: ####\n");
+                printf("%s", fulano_rede -> youtube);
+                printf("\n\n");
+                
+                printf("Deseja realmente editar?\n");
+                certeza = confirmacao();
+
+                if (certeza == True){
+                    do{
+                        printf(""
+                            "=======================================\n"
+                            "====      Informe o atualizado:    ====\n"
+                            "=======================================\n"
+                        );
+                        printf("\n");
+                        scanf("%41[^\n]", fulano_rede -> youtube);
+                        getchar();
+
+                        resp = validar_youtube(fulano_rede -> youtube);
+                        if (resp != True){
+                            printf("Caractere inválido detectado, Digite novamente:\n");
+                        }
+                    } while (resp != True);
+                }
+
+            }
+            else if (opcao == '0'){
+                printf("Voltando ao menu principal...\n");
+                getchar();
+                continuar = False;
+            }
+            else{
+                printf("Opção não dessenvolvida ou inválida\n");
+            }
+            if (opcao!='0'){
+                printf("\nDeseja continuar?");
+                continuar = confirmacao();
+            }
+
+        } while(continuar == True);
+
+        int var = -1;
+        fseek(fp_rede, var*sizeof(RedeSocial), SEEK_CUR);
+        fwrite(fulano_rede, sizeof(RedeSocial), 1, fp_rede);
+
+    }
+    free(cpf_busca_dig);
+    free(fulano_rede);
+    fclose(fp_rede);
 }
 
 void redeSocial_excluir(void){
     system("cls||clear");
 
-    FILE* fp;
-    RedeSocial* fulano;
-    fulano = (RedeSocial*) malloc(sizeof(RedeSocial));
+    FILE* fp_rede;
+    RedeSocial* fulano_rede;
+    fulano_rede = (RedeSocial*) malloc(sizeof(RedeSocial));
 
 
     int certeza;
-    int achou = False;
     int var;
-
-
-    redeSocial_arq();
-    
-    fp = fopen("arq_redes_Sociais.dat", "r+b");
-
-    if(fp == NULL){
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar o programa...\n");
-        exit(1);
-    }
+    int achou = False;
 
 
     menu_redeSocial_excluir();
 
+    char* cpf_busca_dig;
+    cpf_busca_dig = cpf_busca();
+    
+    redeSocial_arq();
+    
+    
+    fp_rede = fopen("arq_redes_Sociais.dat", "r+b");
+    
 
-    do{
-        fulano = redeSocial_busca();
-        if (fulano != NULL){
+    while(!feof(fp_rede) && achou == False) {
+        fread(fulano_rede, sizeof(RedeSocial), 1, fp_rede);
+        if ((strcmp(fulano_rede->cpf, cpf_busca_dig) == 0) && (fulano_rede->status != 'x')){
             achou = True;
         }
-        else{
-            printf("Não encontrado, Digite novamente\n");
+    }
+
+    if (achou == False){
+        printf("Rede sociais do usuario não concontradas\n");
+    }
+
+    else if (achou == True){
+
+        redeSocial_exibe(fulano_rede);
+        printf("\n\n\n");
+        printf("Deseja realmente apagar este usuario?");
+        certeza = confirmacao();
+        if (certeza == True){
+
+            fulano_rede->status = 'x';
+            var = -1;
+            fseek(fp_rede, var*sizeof(RedeSocial), SEEK_CUR);
+            fwrite(fulano_rede, sizeof(RedeSocial), 1, fp_rede);
+            printf("\nRedes Sociais excluídas com sucesso!!!\n");
         }
-    }while(achou == False);
-
-    redeSocial_exibe(fulano);
-    printf("\n\n\n");
-    printf("Deseja realmente apagar este usuario?");
-    certeza = confirmacao();
-    if (certeza == True){
-
-        fulano->status = 'x';
-        var = -1;
-        fseek(fp, var*sizeof(RedeSocial), SEEK_CUR);
-        fwrite(fulano, sizeof(RedeSocial), 1, fp);
-        printf("\nUsuario excluído com sucesso!!!\n");
+        else{
+            printf("\nOk, os dados não foram alterados\n");
+        }
     }
-    else{
-        printf("\nOk, os dados não foram alterados\n");
-    }
-
-  free(fulano);
-  fclose(fp);
+  free(fulano_rede);
+  fclose(fp_rede);
 }
